@@ -1,0 +1,215 @@
+<!doctype html>
+<html data-dpr = "1" style= "font-size: 48px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2, user-scalable=yes">
+    <title> N i n g k k o</title>
+    <link rel= "icon"; sizes="144x144"； href="img/ning.png">
+    <style>
+        body {
+            background: #000;
+        }
+
+        #container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            weight: 100%;
+        }
+
+        #owl {
+            position: absolute;
+            left: 50.5%;
+            top: 485px;
+            -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+        }
+
+
+        #eye1_4 {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgb(255, 180, 212);
+            border-radius: 150px;
+            top: 20px;
+            left: 360px;
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+            -webkit-transition: all 1s;
+            transition: all 1s;
+        }
+
+        #owl:hover #eye1_4{
+            -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+        }
+
+        #owl:hover #eye1_4{
+            -webkit-transform: scale(0.27);
+            transform: scale(0.27);
+        }
+
+        .nalist p{
+            margin-top: 5px;
+            margin-bottom: 3px;
+        }
+        .nalist ul{
+            margin-top: 5px;
+            margin-bottom: 3px;
+            padding-left: 0;
+        }
+
+        .nalist li{
+            list-style-type:none;
+        }
+        .nalist a:hover, a:visited, a:link, a:active {
+            color: white;
+            font-size: 25px;
+            text-decoration:none;
+        }
+        .nalist a:hover {
+            color: yellowgreen;
+            font-size: 25px;
+            text-decoration:none;
+        }
+
+    </style>
+</head>
+<body id="background">
+<div id="container" 
+     style="margin: auto;  
+            display: block; 
+            width: 1100px">
+        
+    <img style="margin: auto;
+                display: block;" 
+         width="1100" 
+         src="img/bg.gif">
+    <a>
+        <div style="
+                    width: 380px;
+                    height:65px;
+                    position: relative;
+                    background-color:black;
+                    left: 53%;
+                    top: -1280px;">
+        </div>
+    </a>
+    
+    <!--  email  -->
+    <a href="mailto:makiasagawa@gmail.com">
+        <div style="width: 345px;
+                    height: 50px;
+                    left: 60%;
+                    top: -1058px;
+                    position: relative;">
+        </div>
+    </a>
+    
+    <!--  github  -->
+    <a href="https://github.com/ningkko" target="_blank">
+        <div style="width: 210px;
+                    height: 44px;
+                    left: 48%;
+                    top: -550px;
+                    position: relative;">
+        </div>
+    </a>    
+    
+    <!-- lain -->
+    <a href="https://www.baidu.com" target="_blank">
+        <div style="width: 220px;
+                    height: 44px;
+                    left: 50%;
+                    top: -550px;
+                    position: relative;">
+        </div>
+    </a>
+    
+    <!--  art works  -->
+    <a href="https://www.baidu.com" target="_blank">
+        <div style="width: 220px;
+                    height: 44px;
+                    left: 50%;
+                    top: -600px;
+                    position: relative;">
+        </div>
+    </a>
+    
+    <!--  Offline  -->
+    <a href="https://www.baidu.com">
+        <div style="width: 120px;
+                    height: 50px;
+                    left: 75%;
+                    top: -550px;
+                    position: relative;">
+        </div>
+    </a>    
+    <a href="https://www.baidu.com">
+        <div style="width: 120px;
+                    height: 40px;
+                    left: 69%;
+                    top: -550px;
+                    position: relative;">
+        </div>
+    </a>
+    
+    
+    <a href="https://fauux.neocities.com" target="_blank" >
+        <div style="width: 150px;
+                    height: 140px;
+                    left: 3%;
+                    top: -1750px;
+                    position: relative;">
+        </div>
+    </a>
+    
+    
+    <div id="owl" >
+        <div id = "eyes" >
+            <div id = "eye1_4"></div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+
+    var owl = document.getElementById('owl');
+    owl.style.transform = "translate(-220px, 150px) scale(0.5)";
+
+    var eye1 = document.getElementById('eye1_4');
+
+    //The eyes movements
+    window.onmousemove = function(e){
+
+        if (e.clientX > window.innerWidth/2 + 90) {
+            eye1.style.left = "380px";
+        }
+
+        if (e.clientX < window.innerWidth/2 - 100) {
+            eye1.style.left = "340px";
+        }
+
+        if ((e.clientX <= window.innerWidth/2 + 90) && (e.clientX >= window.innerWidth/2 - 100)) {
+            eye1.style.left = "360px";
+        }
+        if (e.clientY > 170) {
+            eye1.style.top = "40px";
+        }
+        if (e.clientY < 480) {
+            eye1.style.top = "0px";
+        }
+        if ((e.clientY <= 480) && (e.clientY >= 170)) {
+            eye1.style.top = "20px";
+        }
+    }
+</script>
+    
+<audio autoplay="" loop="">
+  <source src="/sound/psx_lain.wav" type="audio/wav">
+</audio>
+
+</body>
+</html>
+
