@@ -8,12 +8,26 @@
         color:palevioletred;
     }    
 
-    body{zoom:1;
+    body{
         background-color: black;}
+    
+    @media screen and (min-width: 500px) {
+        body {
+            zoom: 0.8;
+            background: #000;
+        }
+        }
+    @media screen and (max-width: 499px){
+        body {
+            zoom: 0.6;
+            background: #000;
+        }
+        }
+    
     p{  
         
         position: relative;
-        font-size: 15;
+        font-size: 20;
         line-height: 2;
     }
 
