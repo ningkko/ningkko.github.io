@@ -10,14 +10,12 @@
         body {
             background: #000;
         }
-
         #container {
             position: relative;
             height: 100%;
             width: 100%;
             weight: 100%;
         }
-
         #owl {
             position: absolute;
             left: 50.5%;
@@ -25,8 +23,6 @@
             -webkit-transform: translate(-50%, 0%);
             transform: translate(-50%, 0%);
         }
-
-
         #eye1_4 {
             position: absolute;
             width: 180px;
@@ -40,17 +36,14 @@
             -webkit-transition: all 1s;
             transition: all 1s;
         }
-
         #owl:hover #eye1_4{
             -webkit-transform: scale(0.3);
             transform: scale(0.3);
         }
-
         #owl:hover #eye1_4{
             -webkit-transform: scale(0.27);
             transform: scale(0.27);
         }
-
         .nalist p{
             margin-top: 5px;
             margin-bottom: 3px;
@@ -60,7 +53,6 @@
             margin-bottom: 3px;
             padding-left: 0;
         }
-
         .nalist li{
             list-style-type:none;
         }
@@ -74,7 +66,6 @@
             font-size: 25px;
             text-decoration:none;
         }
-
     </style>
 </head>
 <body id="background">
@@ -183,23 +174,17 @@
 </div>
 <script src="js/jquery.min.js"></script>
 <script>
-
     var owl = document.getElementById('owl');
     owl.style.transform = "translate(-220px, 150px) scale(0.5)";
-
     var eye1 = document.getElementById('eye1_4');
-
     //The eyes movements
     window.onmousemove = function(e){
-
         if (e.clientX > window.innerWidth/2 + 90) {
             eye1.style.left = "380px";
         }
-
         if (e.clientX < window.innerWidth/2 - 100) {
             eye1.style.left = "340px";
         }
-
         if ((e.clientX <= window.innerWidth/2 + 90) && (e.clientX >= window.innerWidth/2 - 100)) {
             eye1.style.left = "360px";
         }
@@ -218,6 +203,5 @@
 <audio autoplay="" loop="">
   <source src="/sound/psx_lain.wav" type="audio/wav">
 </audio>
-
 </body>
 </html>
