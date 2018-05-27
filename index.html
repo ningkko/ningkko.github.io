@@ -1,207 +1,56 @@
-<!doctype html>
-<html data-dpr = "1" style= "font-size: 48px;">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1",user-scalable=no" >
-    <link rel= "icon"; sizes="144x144"； href="img/ning.png">
-    <style>
-        body {
-            background: #000;
-        }
-        #container {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            weight: 100%;
-        }
-        #owl {
-            position: absolute;
-            left: 50.5%;
-            top: 485px;
-            -webkit-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
-        }
-        #eye1_4 {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            background: rgb(255, 180, 212);
-            border-radius: 150px;
-            top: 20px;
-            left: 360px;
-            -webkit-transform: scale(0.2);
-            transform: scale(0.2);
-            -webkit-transition: all 1s;
-            transition: all 1s;
-        }
-        #owl:hover #eye1_4{
-            -webkit-transform: scale(0.3);
-            transform: scale(0.3);
-        }
-        #owl:hover #eye1_4{
-            -webkit-transform: scale(0.27);
-            transform: scale(0.27);
-        }
-        .nalist p{
-            margin-top: 5px;
-            margin-bottom: 3px;
-        }
-        .nalist ul{
-            margin-top: 5px;
-            margin-bottom: 3px;
-            padding-left: 0;
-        }
-        .nalist li{
-            list-style-type:none;
-        }
-        .nalist a:hover, a:visited, a:link, a:active {
-            color: white;
-            font-size: 25px;
-            text-decoration:none;
-        }
-        .nalist a:hover {
-            color: yellowgreen;
-            font-size: 25px;
-            text-decoration:none;
-        }
-    </style>
-</head>
-<body id="background">
-<div id="container" 
-     style="margin: auto;  
-            display: block; 
-            width: 1100px">
-        
-    <img style="margin: auto;
-                display: block;" 
-         width="1100" 
-         src="img/bg.gif">
-    <a>
-        <div style="
-                    width: 380px;
-                    height:65px;
-                    position: absolute;
-                    left: 53%;
-                    top: 920px;">
-        </div>
-    </a>
-    <!--  Refer back  -->
-    <a href="https://ningkko.github.io/">
-        <div style="width: 250px;
-                    height:40px;
-                    left: 40%;
-                    top: 760px;
-                    position: absolute;">
-        </div>
-    </a>
-    
-    <!--  email  -->
-    <a href="mailto:makiasagawa@gmail.com">
-        <div style="width: 345px;
-                    height: 40px;
-                    left: 59%;
-                    top: 1205px;
-                    position: absolute;">
-        </div>
-    </a>
-    
-    <!--  github  -->
-    <a href="https://github.com/ningkko" target="_blank">
-        <div style="width: 130px;
-                    height: 40px;
-                    left: 48%;
-                    top: 1725px;
-                    position: absolute;">
-        </div>
-    </a>    
-    <a href="https://github.com/ningkko" target="_blank">
-        <div style="width: 70px;
-                    height: 44px;
-                    left: 61%;
-                    top: 1709px;
-                    position: absolute;">
-        </div>
-    </a>
-        
-    <!--  art works  -->
-    <a href="https://www.baidu.com" target="_blank">
-        <div style="width: 130px;
-                    height: 40px;
-                    left: 48%;
-                    top: 1775px;
-                    position: absolute;">
-        </div>
-    </a>
-    <a href="https://www.baidu.com">
-        <div style="width: 90px;
-                    height: 35px;
-                    left: 62%;
-                    top: 1768px;
-                    position: absolute;">
-        </div>
-    </a>
-                                        
-    
-    <!--  Offline  -->
-    <a href="https://www.baidu.com">
-        <div style="width: 120px;
-                    height: 80px;
-                    left: 72%;
-                    top: 1910px;
-                    position: absolute;">
-        </div>
-    </a>    
-  
-    
-    <!--  WEIBSITE COLLECTION  -->
-    <a href="https://fauux.neocities.com" target="_blank" >
-        <div style="width: 150px;
-                    height: 140px;
-                    left: 3%;
-                    top: 780px;
-                    position: absolute;">
-        </div>
-    </a>
-    
-    
-    <div id="owl" >
-        <div id = "eyes" >
-            <div id = "eye1_4"></div>
-        </div>
-    </div>
-</div>
-<script src="js/jquery.min.js"></script>
-<script>
-    var owl = document.getElementById('owl');
-    owl.style.transform = "translate(-220px, 150px) scale(0.5)";
-    var eye1 = document.getElementById('eye1_4');
-    //The eyes movements
-    window.onmousemove = function(e){
-        if (e.clientX > window.innerWidth/2 + 90) {
-            eye1.style.left = "380px";
-        }
-        if (e.clientX < window.innerWidth/2 - 100) {
-            eye1.style.left = "340px";
-        }
-        if ((e.clientX <= window.innerWidth/2 + 90) && (e.clientX >= window.innerWidth/2 - 100)) {
-            eye1.style.left = "360px";
-        }
-        if (e.clientY > 170) {
-            eye1.style.top = "40px";
-        }
-        if (e.clientY < 480) {
-            eye1.style.top = "0px";
-        }
-        if ((e.clientY <= 480) && (e.clientY >= 170)) {
-            eye1.style.top = "20px";
-        }
+<html>
+<head>    
+<style>
+
+    a{color:black;}
+    a:hover{
+        color:palevioletred;
+    }    
+/*
+    p{font-family: 'Josefin Sans', sans-serif;
+}   
+*/
+    body{zoom:1;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 7.5;
+        line-height: 2;
+
+}
+
+    .avatar{
+        margin-top: 5%;
+        width:150px;
+        height:150px;
+        position: relative;
+        background-image: url(img/pepe.jpg);
+        background-size: cover;
+        display: block;
+/*
+        border-radius: 50%;
+        -webit-boder-radius:50%;
+        -moz-border-radius:50%;
+*/
     }
-</script>
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+
+    </head>
+<body>
+
+<center><div class = "avatar"></div>
     
-<audio autoplay="" loop="">
-  <source src="/sound/psx_lain.wav" type="audio/wav">
-</audio>
-</body>
+ <h1 style="margin-top:3%;">
+    YINING HUA</h1>
+    --------------------------------------------</br></br>
+    <p>Email: <a href="mailto:yhua@smith.edu">yhua@smith.edu</a>  |  Phone: +(86)13558754346</br></br>
+    B.A in Physics & Computer Science</br>
+09/2017 - 05/2021 @Smith College</br></br>   
+    --------------------------------------------</br></br>
+    <a href = "resume.pdf">Resume</a></br></br>
+    <a href = "https://github.com/ningkko">Github</a></br></br>
+    <a href="online.html">Personal website</a></br></br></br></br>
+    1 Chapin Way, #7860 Northampton, MA, 01063</center></p>
+    </body>
 </html>
