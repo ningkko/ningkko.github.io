@@ -1,0 +1,19 @@
+a{color:black;}
+    a:hover{
+        color:palevioletred;
+    }    
+    
+    body{
+        font-family: 'Press Start 2P', cursive;
+        font-size: 8.5;
+        line-height: 2;
+}
+    .avatar{
+        margin-top: 5%;
+        width:150px;
+        height:150px;
+        position: relative;
+        background-image: url(img/pepe.jpg);
+        background-size: cover;
+        display: block;
+}
