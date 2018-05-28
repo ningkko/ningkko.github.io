@@ -1,0 +1,91 @@
+body{
+    background:#000;}
+@media screen and (min-width: 900px) {
+    body {
+        zoom: 0.9;
+    }
+    }
+@media screen and (max-width: 900px) and (min-width:800px){
+    body {
+        zoom: 0.8;
+    }
+    }
+@media screen and (max-width: 800px) and (min-width:700px) {
+    body {
+        zoom: 0.7;
+    }
+    }
+@media screen and (max-width: 700px) and (min-width:600px) {
+    body {
+        zoom: 0.6;
+    }
+    }
+
+@media screen and (max-width: 600px) and (min-width:500px) {
+    body {
+        zoom: 0.5;
+    }
+    }
+@media screen and (max-width: 499px) and (min-width:300px) {
+    body {
+        zoom: 0.36;
+    }
+    }
+
+
+#container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    weight: 100%;
+    }
+#owl {
+    position: absolute;
+    left: 50.5%;
+    top: 485px;
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    }
+#eye1_4 {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: rgb(255, 180, 212);
+    border-radius: 150px;
+    top: 20px;
+    left: 360px;
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    }   
+#owl:hover #eye1_4{
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    }
+#owl:hover #eye1_4{
+    -webkit-transform: scale(0.27);
+    transform: scale(0.27);
+    }
+.nalist p{
+    margin-top: 5px;
+    margin-bottom: 3px;
+    }
+.nalist ul{
+    margin-top: 5px;
+    margin-bottom: 3px;
+    padding-left: 0;
+    }
+.nalist li{
+    list-style-type:none;
+    }
+.nalist a:hover, a:visited, a:link, a:active {
+    color: white;
+    font-size: 25px;
+    text-decoration:none;
+    }   
+.nalist a:hover {
+    color: yellowgreen;
+    font-size: 25px;
+    text-decoration:none;
+    }
