@@ -1,0 +1,35 @@
+a{color:black;}
+a:hover{
+    color:palevioletred;
+}    
+body{
+    background-color: black;}
+
+@media screen and (min-width: 500px) {
+    body {
+        zoom: 0.9;
+        background: #000;
+    }
+    }
+@media screen and (max-width: 499px){
+    body {
+        zoom: 0.7;
+        background: #000;
+    }
+    }
+
+p{  
+
+    position: relative;
+    font-size: 20;
+    line-height: 2;
+}
+.EmailMe{
+    margin-top: 150px;
+    width:450px;
+    height:400px;
+    position: relative;
+    background-image: url(img/mail.png);
+    background-size: cover;
+    display: block;
+}
