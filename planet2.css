@@ -1,0 +1,17 @@
+body{zoom:0.65;
+    background-color: black;
+}
+p{ 
+    position: relative;
+    font-size: 55;
+    line-height: 2;
+}
+
+.planet{
+    width:2400px;
+    height:1260px;
+    position: relative;
+    background-image: url(img/universe.jpg);
+    background-size: cover;
+    display: block;
+}
