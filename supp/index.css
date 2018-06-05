@@ -13,7 +13,7 @@ a{color:black;}
         width:150px;
         height:150px;
         position: relative;
-        background-image: url(img/pepe.jpg);
+        background-image: url(/supp/img/pepe.jpg);
         background-size: cover;
         display: block;
 }
