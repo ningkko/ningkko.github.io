@@ -1,9 +1,14 @@
-a{color:hotpink;}
-    a:hover{
-        color:transparent;
+a{
+    color:hotpink;
+}
+   
+a:hover{
+    color:transparent;        
+    text-decoration-line: none;
+
     }    
     
-    body{
+body{
         width: 350px;
         height: 200px;
         margin-left: auto;

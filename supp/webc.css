@@ -1,0 +1,14 @@
+a{color:azure;
+    }
+    a:hover{
+        color:transparent;
+    }    
+    
+    body{
+        background: blue;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 12;
+        line-height: 2.5;
+        
+}
+.highlight{color: deeppink;}
