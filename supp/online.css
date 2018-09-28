@@ -29,11 +29,10 @@ body{
 @media screen and (max-width: 499px) and (min-width:300px) {
     body {
         zoom: 0.36;
-    }
-    }
+    } 
+}
 
 
-    height: 100%;
 #owl {
     position: absolute;
     left: 50.5%;
@@ -199,6 +198,12 @@ body{
 }
 
 #off{
-    visibility: hidden;
-    zoom:.33;
+    position: absolute;
+    background-image: url(img/datalost.png);
+    background-repeat: no-repeat;
+    left: 5%;
+    margin-right: auto;
+    display: none;
+    width=1100px; 
+    height:800px;
 }
