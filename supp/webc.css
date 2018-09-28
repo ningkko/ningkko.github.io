@@ -1,14 +1,16 @@
-a{color:azure;
-    }
-    a:hover{
-        color:transparent;
+a{
+    color:hotpink;
+}
+   
+a:hover{
+    color:transparent;        
     }    
     
-    body{
-        background: blue;
+body{
+        background: black;
+        color: black;
         font-family: 'Press Start 2P', cursive;
         font-size: 12;
-        line-height: 2.5;
-        
+        line-height: 2.5;        
 }
-.highlight{color: deeppink;}
+

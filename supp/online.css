@@ -33,16 +33,11 @@ body{
     }
 
 
-#container {
-    position: relative;
     height: 100%;
-    width: 100%;
-    weight: 100%;
-    }
 #owl {
     position: absolute;
     left: 50.5%;
-    top: 485px;
+    top: 395px;
     -webkit-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
     }
@@ -89,3 +84,121 @@ body{
     font-size: 25px;
     text-decoration:none;
     }
+.cover{
+    background-color: black;
+    width: 380px;
+    height:65px;
+    position: absolute;
+    left: 53%;
+    top: 795px;
+}
+.container{
+    position: relative;
+    height: 100%;
+    margin: auto;  
+    display: block; 
+    width: 1100px;
+}
+.referback{
+    width: 220px;
+    height:40px;
+    left: 43%;
+    top: 660px;
+    position: absolute
+}
+.bgimg{
+    margin: auto;
+    display: block;
+    width=1100; 
+}
+.email{
+       width: 345px;
+        height: 40px;
+        left: 56%;
+        top: 1055px;
+        position: absolute;
+}
+.mail1{
+        width: 150px;
+        height: 110px;
+        left: 72%;
+        top: 890px;
+        position: absolute;
+}
+.mail2{
+    width: 150px;
+        height: 90px;
+        left: 59%;
+        top: 960px;
+        position: absolute;
+}
+.planet1{
+    width: 110px;
+    height: 100px;
+    left: 74%;
+    top: 470px;
+    position: absolute;
+}
+.planet2{
+        width: 90px;
+        height: 85px;
+        left: 78.5%;
+        top: 368px;
+        position: absolute;
+    }
+.github{
+        width: 130px;
+        height: 40px;
+        left: 47%;
+        top: 1495px;
+        position: absolute;
+}
+.github2{
+    
+    width: 70px;
+    height: 44px;
+    left: 59%;
+    top: 1489px;
+    position: absolute;
+}
+.art1{
+    width: 130px;
+    height: 40px;
+    left: 48%;
+    top: 1545px;
+    position: absolute;
+}
+.art2{
+    width: 90px;
+    height: 35px;
+    left: 62%;
+    top: 1538px;
+    position: absolute;
+}
+.offline{width: 120px;
+        height: 80px;
+        left: 67%;
+        top: 1650px;
+        position: absolute;
+}
+.computer{
+    width: 150px;
+    height: 140px;
+    left: 8%;
+    top: 680px;
+    position: absolute;
+}
+
+#poweroff{
+    width: 25px;
+    height:25px;
+    left: 13.8%;
+    top: 1075px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#off{
+    visibility: hidden;
+    zoom:.33;
+}
