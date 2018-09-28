@@ -1,19 +1,20 @@
-a{color:black;}
+a{color:deeppink;}
     a:hover{
-        color:palevioletred;
+        color:transparent;
     }    
     
     body{
+        width: 350px;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        background: blue;
+        color: azure;
         font-family: 'Press Start 2P', cursive;
-        font-size: 8.5;
-        line-height: 2;
+        font-size: 12;
+        line-height: 2.5;
+        text-align: justify;
+        text-decoration: underline;
+        
 }
-    .avatar{
-        margin-top: 5%;
-        width:150px;
-        height:150px;
-        position: relative;
-        background-image: url(/supp/img/pepe.jpg);
-        background-size: cover;
-        display: block;
-}
+
