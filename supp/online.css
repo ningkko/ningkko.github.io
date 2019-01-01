@@ -1,5 +1,7 @@
 body{
-    background:#000;}
+    background:#000;
+    margin: auto
+}
 @media screen and (min-width: 900px) {
     body {
         zoom: 0.9;
@@ -105,10 +107,20 @@ body{
     top: 660px;
     position: absolute
 }
+.avatar{
+    width:320px;
+    height:220px;
+    left: 35%;
+    top: 170px;
+    position: absolute;
+    
+}
 .bgimg{
     margin: auto;
     display: block;
     width=1100; 
+    overflow: hidden;
+
 }
 .email{
        width: 345px;
