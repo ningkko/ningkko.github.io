@@ -1,1 +1,1 @@
-[Nene is now online,](https://ningkko.github.io)
+[Nene is now online](https://ningkko.github.io)
