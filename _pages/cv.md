@@ -11,11 +11,11 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-
-Work experience
+* B.S. in Computer Science and B.A. in Linguistics, Emory University, 2014-2018 (summa cum laude)
+* M.S. in Symbolic Systems, Stanford University, 2018-2020
+<!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+ -->
+<!-- Work experience
 ======
 * Summer 2015: Research Assistant
   * Github University
@@ -57,3 +57,4 @@ Teaching
 Service and leadership
 ======
 * Currently signed in to 43 different slack teams
+ -->
