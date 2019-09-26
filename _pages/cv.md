@@ -13,28 +13,35 @@ Education
 ======
 * B.S. in Computer Science and B.A. in Linguistics, Emory University, 2014-2018 (summa cum laude)
 * M.S. in Symbolic Systems, Stanford University, 2018-2020
-<!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
- -->
-<!-- Work experience
-======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Work experience
+======
+* Summer 2019: Machine Learning Applied to Natural Language Processing Intern
+  * Apple Inc.
+  * Task: Internal NLP Engine for CoreML
+  * Supervisor: [Bing Zhao](https://www.cs.cmu.edu/~bzhao/), [Vivek Kumar Rangarajan Sridhar](https://scholar.google.com/citations?user=VfezouUAAAAJ&hl=en)
+
+* Summer 2018: Natural Language Processing Intern
+  * Educational Testing Service
+  * Task: Grammar Error Detection
+  * Supervisor: Professor [Martin Chodorow](https://scholar.google.com/citations?user=PuwfixYAAAAJ&hl=en), [Nitin Madnani](https://scholar.google.com/citations?hl=en&user=ow3PIFcAAAAJ), [Aoife Cahill](https://scholar.google.com/citations?hl=en&user=1a-TXfYAAAAJ)
+
+* Summer 2017: Summer Research Intern
+  * Carnegie Mellon University
+  * Task: ASR on Aphasia Speech & Building Intelligent English Tutor
+  * Supervisor: Professor [Brian MacWhinney](https://scholar.google.com/citations?user=V8EhIsIAAAAJ&hl=en)
+
+* Summer 2016: Summer Research Fellowship Program
+  * Emory University
+  * Task: Sequence-to-sequence Model for Chinese Word Segmentation
+  * Supervisor: Professor [Jinho D. Choi](http://www.mathcs.emory.edu/~choi/home.html)
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* PyTorch, Tensorflow
+* Python, C/C++, Java, R, Javascript, Swift
+* Amazon Mechanical Turk
+* English, Mandarin
 
 Publications
 ======
@@ -57,4 +64,3 @@ Teaching
 Service and leadership
 ======
 * Currently signed in to 43 different slack teams
- -->
