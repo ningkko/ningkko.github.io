@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Hang Jiang"
 title_separator          : "-"
 name                     : &name "Hang Jiang"
-description              : &description "Study NLP, ML, and CogSci"
+description              : &description "Let Machines Speak Languages"
 url                      : https://hjian42.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "hjian42.github.io"
@@ -86,7 +86,7 @@ author:
   location         : "Palo Alto, CA"
   employer         :
   pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "citations?user=9qvTNQ4AAAAJ&hl=en"
+  googlescholar    : # "citations?user=9qvTNQ4AAAAJ&hl=en"
   email            : "hjian42 AT stanford DOT edu"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
