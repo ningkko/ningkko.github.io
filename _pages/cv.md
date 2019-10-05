@@ -54,9 +54,9 @@ Talks
 
 **Jiang, Hang**; Doris Zhou; Alec Wolyniec; and Roberto Franzosi. 2017. Automatic Extraction of Actors and Actions from News Stories of Lynching. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/1Bp3m0nl1kQpOX08okLLuZaeUBMtCZfacijmAENKA84w/edit?usp=sharing)\]
 
-Zhou, Doris; **Hang Jiang**; and Roberto Franzosi. 2017. He, She, They... Who Are They? Automatic and Semi-Automatic Anaphora Resolution. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/18_qE5QWf1dWsGJMnRCjpC_gJ-3bpcKJCO7swNsggCSM/edit?usp=sharing)\]
+Zhou, Doris; **Hang Jiang**; and Roberto Franzosi. 2017. He, She, They... Who Are They? Automatic and Semi-Automatic Anaphora Resolution. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/1FKq4X83y7zV3J1X9Zpesz4e6tkq2dhBcsfGVcurHZ34/edit?usp=sharing)\]
 
-**Jiang, Hang**; Catherine Xiao; and Jinho D. Choi. 2017. Seq2seq Model to Tokenize the Chinese Language. Emory Undergraduate Research Symposium in Fall, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/seq2seq-model-to-tokenize-the-chinese-language-89086568)\]
+Xiao, Catherine;**Hang Jiang**; and Jinho D. Choi. 2017. Seq2seq Model to Tokenize the Chinese Language. Emory Undergraduate Research Symposium in Fall, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/seq2seq-model-to-tokenize-the-chinese-language-89086568)\]
 
 **Jiang, Hang**; and Jinho D. Choi. 2016. Chinese Grammar vs English Grammar in Universal Dependency. Emory Undergraduate Research Symposium in Spring, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/chinese-grammar-vs-english-grammar-in-universal-dependency)\]
 

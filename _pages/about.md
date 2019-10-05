@@ -10,7 +10,7 @@ redirect_from:
 
 Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanford.edu/) at [Stanford University](https://www.stanford.edu/), where I am fortunate to work with [Michael C. Frank](https://web.stanford.edu/~mcfrank/) ([The Stanford Language and Cognition Lab](http://langcog.stanford.edu/)) and [Vivek Kulkarni](https://viveksck.github.io/) ([Stanford NLP Lab](https://nlp.stanford.edu/people/)). *I am actively applying for PhD programs in natural language processing, computational linguistics, and computational social science for Fall 2020.*
 
-My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to not only improve the natural language processing (NLP) benchmarks but also to understand how machine and human actually learn language. I also want to apply ML and NLP techniques in the field of education and sustainable development. 
+My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to not only improve the natural language processing (NLP) benchmarks but also to understand *how machine and human learn language*. In the application side, I am passionate about applying ML and NLP techniques in the field of education and sustainable development to make the world a better place. 
 
 Overall, my research interest includes but not limited to:
 *  Natural Language Processing, Computational Linguistics, Machine Learning
@@ -18,7 +18,7 @@ Overall, my research interest includes but not limited to:
 *  Language Variation and Change, Social Reasoning, Language Acquisition 
 *  Machine Learning for Education and Sustainable Development
 
-Prior to Stanford, I spent four years as an undergraduate at [Emory University](http://www.emory.edu/home/index.html), where I worked with [Jinho D. Choi](http://www.mathcs.emory.edu/~choi/home.html) in [Emory NLP Lab](http://nlp.mathcs.emory.edu/home.html). 
+Prior to Stanford, I spent four years as an undergraduate at [Emory University](http://www.emory.edu/home/index.html), where I worked with [Jinho D. Choi](http://www.mathcs.emory.edu/~choi/home.html) in [Emory NLP Lab](http://nlp.mathcs.emory.edu/home.html) and [Roberto Franzosi](https://scholar.google.com/citations?user=I5SYOqoAAAAJ&hl=en) in [Emory Program for Computer-Assisted Coding of Events (PC-ACE)](https://pc-ace.com/about/team/).
 
 I've also spent time at 
 * [CMU](https://www.cmu.edu/) (working with [Brian MacWhinney](https://scholar.google.com/citations?user=V8EhIsIAAAAJ&hl=en))
