@@ -11,8 +11,11 @@ redirect_from:
 NEWS
 ======
 \[10/04/2019\]: Attended [10th Annual New Directions in Analyzing Text as Data](https://www.textasdata2019.net/) at Stanford, CA.
+
 \[09/20/2019\]: Submited a student abstract to [AAAI 2020](https://aaai.org/Conferences/AAAI-20/). 
+
 \[09/20/2019\]: Finished my last day as ML Applied to NLP Intern at [Apple Inc.](https://www.apple.com/). 
+
 \[09/14/2019\]: My long paper was accepted by [The Society for Computation in Linguistics (SCiL) 2020](https://blogs.umass.edu/scil/call-for-papers-scil-2020/) with oral presentation!
 
 BIBLIOGRAPHY
