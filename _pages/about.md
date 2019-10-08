@@ -15,7 +15,7 @@ BIBLIOGRAPHY
 
 Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanford.edu/) at [Stanford University](https://www.stanford.edu/), where I am fortunate to work with [Michael C. Frank](https://web.stanford.edu/~mcfrank/) ([The Stanford Language and Cognition Lab](http://langcog.stanford.edu/)) and [Vivek Kulkarni](https://viveksck.github.io/) ([Stanford NLP Lab](https://nlp.stanford.edu/people/)). *I am actively applying for PhD programs in natural language processing, computational psycholinguistics, and computational social science for Fall 2020.*
 
-My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to not only improve natural language processing (NLP) benchmarks but also make *machines achieve learning and reasoning capabilities closer to human learners*. My favorite quote is from [Andrew Ng](http://www.robotics.stanford.edu/~ang/contact.html): *Artificial Intelligence is the New Electricity*. Therefore, I am also passionate about applying ML and NLP techniques in the field of education and sustainable development to make everyone benefit from the changes brought by AI.
+My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to not only improve natural language processing (NLP) benchmarks but also make *machines achieve learning and reasoning capabilities closer to human learners*. My favorite quote is from [Andrew Ng](http://www.robotics.stanford.edu/~ang/contact.html): *Artificial Intelligence is the New Electricity*. Therefore, I am also passionate about applying ML and NLP techniques in the field of education and sustainable development to make everyone benefit from AI technologies.
 
 Overall, my research interest includes but not limited to:
 *  Natural Language Processing, Computational Linguistics, Machine Learning
@@ -34,7 +34,10 @@ I've also spent time at
 NEWS
 ======
 \[10/04/2019\]: Attended [10th Annual New Directions in Analyzing Text as Data](https://www.textasdata2019.net/) at Stanford, CA.
+
 \[09/20/2019\]: Submited a student abstract to [AAAI 2020](https://aaai.org/Conferences/AAAI-20/). 
+
 \[09/20/2019\]: Finished my last day as ML Applied to NLP Intern at [Apple Inc.](https://www.apple.com/). 
+
 \[09/14/2019\]: My long paper was accepted by [The Society for Computation in Linguistics (SCiL) 2020](https://blogs.umass.edu/scil/call-for-papers-scil-2020/) with oral presentation!
 
