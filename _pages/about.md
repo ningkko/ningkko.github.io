@@ -8,11 +8,10 @@ redirect_from:
   - /about.html
 ---
 
-BIBLIOGRAPHY
-======
-
 \[[Hang Jiang's Full Curriculum Vitae (CV)](https://hjian42.github.io/files/cv.pdf)\]
 
+BIBLIOGRAPHY
+======
 Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanford.edu/) at [Stanford University](https://www.stanford.edu/), where I am fortunate to work with [Michael C. Frank](https://web.stanford.edu/~mcfrank/) ([The Stanford Language and Cognition Lab](http://langcog.stanford.edu/)) and [Vivek Kulkarni](https://viveksck.github.io/) ([Stanford NLP Lab](https://nlp.stanford.edu/people/)). *I am actively applying for PhD programs in natural language processing, computational psycholinguistics, and computational social science for Fall 2020.*
 
 My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to not only improve natural language processing (NLP) benchmarks but also make *machines achieve learning and reasoning capabilities closer to human learners*. My favorite quote is from [Andrew Ng](http://www.robotics.stanford.edu/~ang/contact.html): *Artificial Intelligence is the New Electricity*. Therefore, I am also passionate about applying ML and NLP techniques in the field of education and sustainable development to make everyone benefit from AI technologies.
