@@ -13,8 +13,8 @@ redirect_from:
 
 Education
 ======
+* M.S. in [Symbolic Systems](https://symsys.stanford.edu/), Stanford University, 2018-2020
 * B.S. in Computer Science and B.A. in Linguistics, Emory University, 2014-2018, *Summa Cum Laude*
-* M.S. in Symbolic Systems, Stanford University, 2018-2020
 
 Internship Experience
 ======
@@ -50,15 +50,15 @@ Publications
 
 Talks
 ======
-**Jiang, Hang**; and Roberto Franzosi. 2018. Shape of Stories. Emory SIAM Student Chapter Event ”Bridging the Gap: Math across Emory”, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/18XrYYj4XBsax8lz2qFrfUmpyGEfzJH3KYuWf_yu2OmU/edit?usp=sharing)\]
+**Jiang, Hang**; and Roberto Franzosi. 2018. *Shape of Stories*. Emory SIAM Student Chapter Event ”Bridging the Gap: Math across Emory”, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/18XrYYj4XBsax8lz2qFrfUmpyGEfzJH3KYuWf_yu2OmU/edit?usp=sharing)\]
 
-**Jiang, Hang**; Doris Zhou; Alec Wolyniec; and Roberto Franzosi. 2017. Automatic Extraction of Actors and Actions from News Stories of Lynching. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/1Bp3m0nl1kQpOX08okLLuZaeUBMtCZfacijmAENKA84w/edit?usp=sharing)\]
+**Jiang, Hang**; Doris Zhou; Alec Wolyniec; and Roberto Franzosi. 2017. *Automatic Extraction of Actors and Actions from News Stories of Lynching*. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/1Bp3m0nl1kQpOX08okLLuZaeUBMtCZfacijmAENKA84w/edit?usp=sharing)\]
 
-Zhou, Doris; **Hang Jiang**; and Roberto Franzosi. 2017. He, She, They... Who Are They? Automatic and Semi-Automatic Anaphora Resolution. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/1FKq4X83y7zV3J1X9Zpesz4e6tkq2dhBcsfGVcurHZ34/edit?usp=sharing)\]
+Zhou, Doris; **Hang Jiang**; and Roberto Franzosi. 2017. *He, She, They... Who Are They? Automatic and Semi-Automatic Anaphora Resolution*. Mini-Conference: Lynching in Historical Perspective, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/1FKq4X83y7zV3J1X9Zpesz4e6tkq2dhBcsfGVcurHZ34/edit?usp=sharing)\]
 
-Xiao, Catherine; **Hang Jiang**; and Jinho D. Choi. 2017. Seq2seq Model to Tokenize the Chinese Language. Emory Undergraduate Research Symposium in Fall, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/seq2seq-model-to-tokenize-the-chinese-language-89086568)\]
+Xiao, Catherine; **Hang Jiang**; and Jinho D. Choi. 2017. *Seq2seq Model to Tokenize the Chinese Language*. Emory Undergraduate Research Symposium in Fall, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/seq2seq-model-to-tokenize-the-chinese-language-89086568)\]
 
-**Jiang, Hang**; and Jinho D. Choi. 2016. Chinese Grammar vs English Grammar in Universal Dependency. Emory Undergraduate Research Symposium in Spring, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/chinese-grammar-vs-english-grammar-in-universal-dependency)\]
+**Jiang, Hang**; and Jinho D. Choi. 2016. *Chinese Grammar vs English Grammar in Universal Dependency*. Emory Undergraduate Research Symposium in Spring, Atlanta, GA. \[[poster](https://www.slideshare.net/jchoi7s/chinese-grammar-vs-english-grammar-in-universal-dependency)\]
 
 
 Selected Projects
