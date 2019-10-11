@@ -67,6 +67,8 @@ Ensemble BERT with Data Augmentation and Linguistic Knowledge on SQuAD 2.0, CS22
 
 Improving Sentiment Analysis with Data Augmentation, CS229A Applied Machine Learning, Younes Bensouda Mourri, Andrew Ng, 2019, \[[report](https://hjian42.github.io/files/CS229A_Report.pdf), [poster](https://hjian42.github.io/files/CS229A_poster.pdf), [photo](https://hjian42.github.io/images/ng.jpeg)\]
 
+JoyBot: Your Personal Mood Tracker, Apple iContest for Interns. \[[demo](https://hjian42.github.io/files/hackathon_2019.pdf)\]
+
   
 Teaching
 ======

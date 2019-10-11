@@ -32,6 +32,8 @@ I've also spent time at
 
 NEWS
 ======
+\[10/10/2019\]: Thanks to Professor [Chris Potts](https://web.stanford.edu/~cgpotts/)'s letter, received [Grants for Education And Research (GEAR)](https://symsys.stanford.edu/opportunitiesresearch/grants-education-and-research-gear) from [Stanford Symbolic Systems Program](https://symsys.stanford.edu/).
+
 \[10/04/2019\]: Attended [10th Annual New Directions in Analyzing Text as Data](https://www.textasdata2019.net/) at Stanford, CA.
 
 \[09/20/2019\]: Submited a student abstract to [AAAI 2020](https://aaai.org/Conferences/AAAI-20/). 
