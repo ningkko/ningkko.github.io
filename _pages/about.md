@@ -30,6 +30,15 @@ I've also spent time at
 * Apple Inc. (working with [Bing Zhao](https://www.cs.cmu.edu/~bzhao/), [Vivek Kumar Rangarajan Sridhar](https://scholar.google.com/citations?user=VfezouUAAAAJ&hl=en))
 
 
+CURRENT PROJECTS
+======
+* Semantic Changes During Child Language Development (Collaborators: [Vivek Kulkarni](https://viveksck.github.io/), [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), [Michael C. Frank](https://web.stanford.edu/~mcfrank/))
+* A Novel Approach to Unsupervised Data Augmentation (Collaborators: [Jiequan Zhang](https://www.linkedin.com/in/jiequanzhang/), [Sharon Zhou](http://sharonzhou.me/), [Torbjörn Lundh](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xlundt), [Andrew Ng](https://scholar.google.com/citations?user=mG4imMEAAAAJ&hl=en))
+* Modeling Pragmatic *some* under Rational Speech Act (Collaborators: [Judith Degen](https://sites.google.com/site/judithdegen/), [Chris Potts](https://web.stanford.edu/~cgpotts/))
+* Automatic Earthquake Detection from Multiple Stations with Deep Learning (Collaborators: [Weiqiang Zhu](https://scholar.google.com/citations?user=e5iFLJUAAAAJ&hl=en), [Kai Sheng Tai](https://kaishengtai.github.io/))
+
+
+
 NEWS
 ======
 \[10/10/2019\]: Thanks to Professor [Chris Potts](https://web.stanford.edu/~cgpotts/)'s letter, received [Grants for Education And Research (GEAR)](https://symsys.stanford.edu/opportunitiesresearch/grants-education-and-research-gear) from [Stanford Symbolic Systems Program](https://symsys.stanford.edu/).
