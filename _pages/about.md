@@ -17,7 +17,8 @@ Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanfor
 My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to not only improve natural language processing (NLP) benchmarks but also make *machines achieve learning and reasoning capabilities closer to human learners*. My favorite quote is from [Andrew Ng](http://www.robotics.stanford.edu/~ang/contact.html): *Artificial Intelligence is the New Electricity*. Therefore, I am also passionate about applying ML and NLP techniques in the field of education and sustainable development to make everyone benefit from AI technologies.
 
 Overall, my research interest includes but not limited to:
-*  Natural Language Processing, Computational Linguistics, Machine Learning
+*  Machine Learning, Deep Learning
+*  Natural Language Processing, Computational Linguistics
 *  Computational Social Science, Computational Cognitive Science
 *  Language Variation and Change, Social Reasoning, Language Acquisition 
 *  Machine Learning for Education and Sustainable Development
@@ -32,9 +33,9 @@ I've also spent time at
 
 CURRENT PROJECTS
 ======
-* Semantic Changes During Child Language Development (Collaborators: [Vivek Kulkarni](https://viveksck.github.io/), [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), [Michael C. Frank](https://web.stanford.edu/~mcfrank/))
+* Explore Semantic Changes During Child Language Development (Collaborators: [Vivek Kulkarni](https://viveksck.github.io/), [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), [Michael C. Frank](https://web.stanford.edu/~mcfrank/))
 * A Novel Approach to Unsupervised Data Augmentation (Collaborators: [Jiequan Zhang](https://www.linkedin.com/in/jiequanzhang/), [Sharon Zhou](http://sharonzhou.me/), [Torbjörn Lundh](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xlundt), [Andrew Ng](https://scholar.google.com/citations?user=mG4imMEAAAAJ&hl=en))
-* Modeling Pragmatic *some* under Rational Speech Act (Collaborators: [Judith Degen](https://sites.google.com/site/judithdegen/), [Chris Potts](https://web.stanford.edu/~cgpotts/))
+* Modeling Pragmatic *some* under Rational Speech Act Framework (Collaborators: [Judith Degen](https://sites.google.com/site/judithdegen/))
 * Automatic Earthquake Detection from Multiple Stations with Deep Learning (Collaborators: [Weiqiang Zhu](https://scholar.google.com/citations?user=e5iFLJUAAAAJ&hl=en), [Kai Sheng Tai](https://kaishengtai.github.io/))
 
 
