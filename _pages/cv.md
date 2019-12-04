@@ -48,7 +48,7 @@ Publications
 **Jiang, Hang**; and Jinho D. Choi. 2018. Automatic Personality Prediction with Attention-based Neural Networks. *Electronic Theses and Dissertations, Emory University, Atlanta, GA.* \[[paper](https://etd.library.emory.edu/concern/etds/rv042t11v?locale=en), [data](https://github.com/emorynlp/personality-detection), [github](https://github.com/hjian42/automatic-personality-prediction)\] (<span style="color:red;">Highest Honors</span>)
 
 
-Talks
+Talks and Presentations
 ======
 **Jiang, Hang**; and Roberto Franzosi. 2018. *Shape of Stories*. Emory SIAM Student Chapter Event ”Bridging the Gap: Math across Emory”, Atlanta, GA. \[[slides](https://docs.google.com/presentation/d/18XrYYj4XBsax8lz2qFrfUmpyGEfzJH3KYuWf_yu2OmU/edit?usp=sharing)\]
 
@@ -72,7 +72,9 @@ JoyBot: Your Personal Mood Tracker, Apple iContest for Interns. \[[demo](https:/
   
 Teaching
 ======
-* [CS 145 Data Management and Data Systems, Stanford University (Autumn 2019)](https://cs145-fa19.github.io/)
+* [CS 145 Data Management and Data Systems](https://cs145-fa19.github.io/) taught by [Shiva shivakumar](https://www.linkedin.com/in/shiva-shivakumar-902a681b/), Stanford University (Autumn 2019)
+* [CS224N Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/) taught by [Christopher Manning](https://nlp.stanford.edu/~manning/), Stanford University (Winter 2020)
+
   
 Service and Leadership
 ======
