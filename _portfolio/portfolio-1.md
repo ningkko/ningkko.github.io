@@ -1,6 +1,6 @@
 ---
 title: "Portfolio Page"
-excerpt: "Click to see <br/><a href="http://web.stanford.edu/~hjian42/">Hang Jiang's Portfolio Page</a>"
+excerpt: "Click to see <br/><a href="http://web.stanford.edu/~hjian42/">Hang Jiang's Portfolio Page</a>
 collection: portfolio
 ---
 
