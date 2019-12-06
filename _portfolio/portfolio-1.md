@@ -1,6 +1,6 @@
 ---
 title: "Portfolio Page"
-excerpt: "<a href="http://web.stanford.edu/~hjian42/">Hang Jiang's Portfolio Page</a><br/><img src='/images/500x300.png'>"
+excerpt: "Short description of portfolio item number 1"
 collection: portfolio
 ---
 
