@@ -1,5 +1,6 @@
 ---
+title: "Portfolio Website"
 collection: portfolio
 ---
 
-Please click to check my [portfolio](http://web.stanford.edu/~hjian42/).
+Please click the link to check my [portfolio](http://web.stanford.edu/~hjian42/).
