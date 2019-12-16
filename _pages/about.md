@@ -12,7 +12,13 @@ redirect_from:
 
 BIBLIOGRAPHY
 ======
-Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanford.edu/) at [Stanford University](https://www.stanford.edu/), where I am fortunate to work with [Michael C. Frank](https://web.stanford.edu/~mcfrank/) ([The Stanford Language and Cognition Lab](http://langcog.stanford.edu/)) and [Vivek Kulkarni](https://viveksck.github.io/) ([Stanford NLP Lab](https://nlp.stanford.edu/people/)). **I am actively applying for doctoral programs in natural language processing, computational psycholinguistics, and computational social science for Fall 2020.**
+Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanford.edu/) at [Stanford University](https://www.stanford.edu/), where I am fortunate to be advised by [Michael C. Frank](https://web.stanford.edu/~mcfrank/). **I am actively applying for doctoral programs in natural language processing, computational psycholinguistics, and computational social science for Fall 2020.**
+
+At Stanford, I am working for
+
+*	[Stanford NLP Lab](https://nlp.stanford.edu/people/) with [Dr.Vivek Kulkarni](https://viveksck.github.io/), [Yuhao Zhang](http://yuhao.im/), and [Christopher Manning](https://nlp.stanford.edu/~manning/)
+*	[The Stanford Language and Cognition Lab](http://langcog.stanford.edu/) with [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), [Michael C. Frank](https://web.stanford.edu/~mcfrank/)
+*	[Stanford Machine Learning Group](https://stanfordmlgroup.github.io/) with [Sharon Zhou](http://sharonzhou.me/), [Torbjörn Lundh](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xlundt), [Andrew Ng](https://scholar.google.com/citations?user=mG4imMEAAAAJ&hl=en)
 
 My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to make *machines achieve learning and reasoning capabilities closer to human learners*. 
 

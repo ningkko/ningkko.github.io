@@ -19,8 +19,8 @@ Education
 
 Research Lab Affiliations
 ======
-* Stanford NLP Group, Stanford Language and Cognition Lab, and Stanford Machine Learning Group
-* Emory NLP Lab, Emory PC-ACE Lab
+* [Stanford NLP Group](https://nlp.stanford.edu/), [Stanford Language and Cognition Lab](http://langcog.stanford.edu/), and [Stanford Machine Learning Group](https://stanfordmlgroup.github.io/)
+* [Emory NLP Lab](http://nlp.cs.emory.edu/home.html), [Emory PC-ACE Lab](https://pc-ace.com/)
 
 
 Internship Experience
