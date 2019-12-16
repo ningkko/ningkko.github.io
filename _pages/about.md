@@ -35,10 +35,10 @@ I've also spent time at
 
 CURRENT PROJECTS
 ======
-* Modeling Semantic Development with Diachronic Word Embeddings (Collaborators: [Vivek Kulkarni](https://viveksck.github.io/), [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), [Michael C. Frank](https://web.stanford.edu/~mcfrank/))
-* Semi-supervised Data Augmentation with Mobius Transformation (Collaborators: [Jiequan Zhang](https://www.linkedin.com/in/jiequanzhang/), [Sharon Zhou](http://sharonzhou.me/), [Torbjörn Lundh](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xlundt), [Andrew Ng](https://scholar.google.com/citations?user=mG4imMEAAAAJ&hl=en))
-* Modeling Pragmatic *some* with Rational Speech Act Framework and Deep Learning (Collaborators: [Judith Degen](https://sites.google.com/site/judithdegen/))
-* Automatic Earthquake Detection from Multiple Stations with Deep Learning (Collaborators: [Weiqiang Zhu](https://scholar.google.com/citations?user=e5iFLJUAAAAJ&hl=en), [Kai Sheng Tai](https://kaishengtai.github.io/))
+* Modeling Semantic Development with Diachronic Word Embeddings (Collaborators: [Vivek Kulkarni](https://viveksck.github.io/), [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), [Michael C. Frank](https://web.stanford.edu/~mcfrank/)) [writing paper]
+* Improving pragmatic inference of *some* with Rational Speech Act Framework and BERT (Collaborators: [Reuben Cohn-Gordon](https://reubencohngordon.com/), [Judith Degen](https://sites.google.com/site/judithdegen/)) [writing paper]
+* Semi-supervised Data Augmentation with Mobius Transformation (Collaborators: [Jiequan Zhang](https://www.linkedin.com/in/jiequanzhang/), [Sharon Zhou](http://sharonzhou.me/), [Torbjörn Lundh](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xlundt), [Andrew Ng](https://scholar.google.com/citations?user=mG4imMEAAAAJ&hl=en)) [experimenting]
+* Improving Radiology Report Summarization with Pre-trained Models (Collaborators: [Yuhao Zhang](http://yuhao.im/), [Christopher Manning](https://nlp.stanford.edu/~manning/)) [experimenting]
 
 
 

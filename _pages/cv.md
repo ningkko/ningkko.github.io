@@ -16,6 +16,13 @@ Education
 * M.S. in [Symbolic Systems](https://symsys.stanford.edu/), Stanford University, 2018-2020
 * B.S. in Computer Science and B.A. in Linguistics, Emory University, 2014-2018, *Summa Cum Laude*
 
+
+Research Lab Affiliations
+======
+* Stanford NLP Group, Stanford Language and Cognition Lab, and Stanford Machine Learning Group
+* Emory NLP Lab, Emory PC-ACE Lab
+
+
 Internship Experience
 ======
 * Summer 2019: Machine Learning Applied to Natural Language Processing Intern
@@ -43,7 +50,7 @@ Publications
 ======
 **Jiang, Hang**; Xianzhe Zhang; and Jinho D. Choi. 2019. Automatic Text-based Personality Recognition on Monologues and Multiparty Dialogues Using Attentive Networks and Contextual Embeddings. To appear in *Proceedings of the 34th AAAI Conference on Artificial Intelligence: Student Abstract and Poster Program, of AAAI:SAP’20. New York, USA.* \[[paper](https://hjian42.github.io/files/AAAI_Student_Abstract_Program.pdf), [supplemental](https://hjian42.github.io/files/AAAI_supplemental.pdf), [data](https://github.com/emorynlp/personality-detection), [github](https://github.com/hjian42/automatic-personality-prediction)\] (<span style="color:red;">Strong Accept</span>)
 
-**Jiang, Hang**\*; Haoshen Hong\*; Yuxing Chen\*; and Vivek Kulkarni. 2019. DialectGram: Automatic Detection of Dialectal Changes with Multi-geographic Resolution Analysis. To appear in *Proceedings of the Society for Computation in Linguistics. New Orleans: Linguistic Society of America.* \[[paper](https://hjian42.github.io/files/Dialect_Change.pdf), [github](https://github.com/yuxingch/DialectGram), [data](https://github.com/hjian42/Geo-Twitter2019)\] (<span style="color:red;">Oral Presentation</span>)
+**Jiang, Hang**\*; Haoshen Hong\*; Yuxing Chen\*; and Vivek Kulkarni. 2019. DialectGram: Detecting Dialectal Variation at Multiple Geographic Resolutions. To appear in *Proceedings of the Society for Computation in Linguistics. New Orleans: Linguistic Society of America.* \[[paper](https://hjian42.github.io/files/Dialect_Change.pdf), [github](https://github.com/yuxingch/DialectGram), [data](https://github.com/hjian42/Geo-Twitter2019)\] (<span style="color:red;">Oral Presentation</span>)
 
 **Jiang, Hang**; and Jinho D. Choi. 2018. Automatic Personality Prediction with Attention-based Neural Networks. *Electronic Theses and Dissertations, Emory University, Atlanta, GA.* \[[paper](https://etd.library.emory.edu/concern/etds/rv042t11v?locale=en), [data](https://github.com/emorynlp/personality-detection), [github](https://github.com/hjian42/automatic-personality-prediction)\] (<span style="color:red;">Highest Honors</span>)
 
