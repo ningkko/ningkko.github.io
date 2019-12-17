@@ -17,7 +17,7 @@ Hi, I am a second-year M.S. student in [Symbolic Systems](https://symsys.stanfor
 At Stanford, I am working for
 
 *	[Stanford NLP Lab](https://nlp.stanford.edu/people/) with [Vivek Kulkarni](https://viveksck.github.io/), [Yuhao Zhang](http://yuhao.im/), and [Christopher Manning](https://nlp.stanford.edu/~manning/)
-*	[The Stanford Language and Cognition Lab](http://langcog.stanford.edu/) with [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), and [Michael C. Frank](https://web.stanford.edu/~mcfrank/)
+*	[Stanford Language and Cognition Lab](http://langcog.stanford.edu/) with [Abdellah Fourtassi](https://sites.google.com/site/fourtassi/), and [Michael C. Frank](https://web.stanford.edu/~mcfrank/)
 *	[Stanford Machine Learning Group](https://stanfordmlgroup.github.io/) with [Sharon Zhou](http://sharonzhou.me/), [Torbjörn Lundh](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xlundt), and [Andrew Ng](https://scholar.google.com/citations?user=mG4imMEAAAAJ&hl=en)
 
 My research focuses on studying language and cognition with machine learning. My goal for pursuing a Ph.D degree is to make *machines achieve learning and reasoning capabilities closer to human learners*. 
