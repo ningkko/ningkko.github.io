@@ -1,3 +1,0 @@
-Redirect /portfolio https://hjian42.github.io/
-Redirect 301 /portfolio https://hjian42.github.io/
-ErrorDocument 404 https://hjian42.github.io/
