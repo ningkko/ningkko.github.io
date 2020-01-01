@@ -1,6 +1,8 @@
 body{
     background:#000;
-    margin: auto
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
 }
 @media screen and (min-width: 900px) {
     body {
@@ -210,12 +212,93 @@ body{
 }
 
 #off{
-    position: absolute;
-    background-image: url(img/datalost.png);
+    position: relative;
+    margin:auto;
+    height: fit-content;
+    width: fit-content;
     background-repeat: no-repeat;
-    left: 5%;
-    margin-right: auto;
-    display: none;
-    width=1100px; 
-    height:800px;
+    visibility: hidden;
+    font-family: 'Press Start 2P', cursive;
+    color: lime;
+    white-space: nowrap;
+    font-size: 38px;
 }
+
+:root {
+    --width: 400px;
+    --x-speed: 13s;
+    --y-speed: 7s;
+    --transition-speed: 2.2s;
+  }
+  
+  .blob { 
+    position: absolute;
+    width: var(--width);
+    height: var(--width);
+    background: blue;
+    opacity: 0.7;
+    transition: border-radius var(--transition-speed) linear;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    font-size:30px;
+    margin-top: 200px;
+    text-align: center;
+  }
+  .blob-2 {
+    top: 0;
+    right: 0;
+  }
+
+  .blob-3{
+    top: 0;
+  }
+  .blob-2 .blob {
+    background: orchid;
+  }
+
+  .blob-3 .blob{
+      background: mediumslateblue;
+  }
+  
+  .x {
+    animation: x var(--x-speed) linear infinite alternate;
+  }
+  .x2 {
+    animation: x2 var(--x-speed) linear infinite alternate;
+  }
+  .x3 {
+    animation: x3 var(--x-speed) linear infinite alternate;
+  }
+  .y {
+    animation: y var(--y-speed) linear infinite alternate;
+  }
+  
+  @keyframes x {
+    100% {
+      transform: translateX(calc(100vw - var(--width)));
+    }
+  }
+  @keyframes x2 {
+    100% {
+      transform: translateX(calc(-100vw + var(--width)));
+    }
+  }
+  
+  
+  @keyframes y {
+    100% {
+      transform: translateY(calc(100vh - var(--width)));
+    }
+  }
+
+.addMore{
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: #eee;
+    transition: all ease-in-out 0.01s;
+    cursor: pointer;
+  }
+  .addMore:hover{
+    border: 1px solid #888;
+    background-color: #ddd;
+  }
