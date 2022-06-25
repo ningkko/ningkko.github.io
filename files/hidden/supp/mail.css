@@ -1,0 +1,59 @@
+a{color:black;}
+a:hover{
+    color:palevioletred;
+}    
+body{
+    background-color: black;}
+
+@media screen and (min-width: 500px) {
+    body {
+        zoom: 0.9;
+    }
+}
+@media screen and (max-width: 499px){
+    body {
+        zoom: 0.7;
+    }
+}
+
+
+.emailMe{
+    background-image: url(img/mail.png);
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    width:450px;
+    height:400px;
+    background-size: cover;
+    display: block;
+}
+
+.mailTo{
+    width: 310px;
+    height:30px;
+    left:-10px;
+    top: 215px;
+    position: relative;
+}
+
+.index{
+    width: 180px;
+    height:80px;
+    left:60px;
+    top:30px;
+    position: relative;
+}
+
+.text{
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12;
+    line-height: 2;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    color: violet;
+}

@@ -1,0 +1,293 @@
+body{
+    background:#000;
+    margin: auto;
+    width: min-content;
+    height: min-content;
+}
+@media screen and (min-width: 900px) {
+    body {
+        zoom: 0.9;
+    }
+    }
+@media screen and (max-width: 900px) and (min-width:800px){
+    body {
+        zoom: 0.8;
+    }
+    }
+@media screen and (max-width: 800px) and (min-width:700px) {
+    body {
+        zoom: 0.7;
+    }
+    }
+@media screen and (max-width: 700px) and (min-width:600px) {
+    body {
+        zoom: 0.6;
+    }
+    }
+
+@media screen and (max-width: 600px) and (min-width:500px) {
+    body {
+        zoom: 0.5;
+    }
+    }
+@media screen and (max-width: 499px) and (min-width:300px) {
+    body {
+        zoom: 0.36;
+    } 
+}
+
+
+#owl {
+    position: absolute;
+    left: 50.5%;
+    top: 395px;
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    }
+#eye1_4 {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: rgb(255, 180, 212);
+    border-radius: 150px;
+    top: 20px;
+    left: 360px;
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    }   
+#owl:hover #eye1_4{
+    -webkit-transform: scale(0.27);
+    transform: scale(0.27);
+    }
+
+
+.cover{
+    background-color: black;
+    width: 380px;
+    height:65px;
+    position: absolute;
+    left: 53%;
+    top: 795px;
+}
+
+.referback{
+    width: 220px;
+    height:40px;
+    left: 40%;
+    top: 660px;
+    position: absolute;
+}
+.avatar{
+    width:320px;
+    height:220px;
+    left: 35%;
+    top: 170px;
+    position: absolute;
+}
+.bgimg{
+    margin: auto;
+    display: block;
+    width: 1100; 
+    height: 100%;
+}
+.email{
+       width: 345px;
+        height: 40px;
+        left: 56%;
+        top: 1055px;
+        position: absolute;
+}
+.mail1{
+        width: 150px;
+        height: 110px;
+        left: 74%;
+        top: 890px;
+        position: absolute;
+}
+
+.mail2{
+    width: 150px;
+        height: 90px;
+        left: 59%;
+        top: 960px;
+        position: absolute;
+}
+
+.planet1{
+    width: 110px;
+    height: 100px;
+    left: 77%;
+    top: 470px;
+    position: absolute;
+}
+.planet2{
+        width: 90px;
+        height: 85px;
+        left: 83%;
+        top: 368px;
+        position: absolute;
+    }
+
+.river{
+    width: 150px;
+    height: 300px;
+    left: 30%;
+    top: 1050px;
+    position: absolute;
+}
+
+.github{
+        width: 130px;
+        height: 40px;
+        left: 47%;
+        top: 1495px;
+        position: absolute;
+
+}
+.github2{
+    
+    width: 70px;
+    height: 44px;
+    left: 59%;
+    top: 1489px;
+    position: absolute;
+}
+
+.art1{
+    width: 130px;
+    height: 40px;
+    left: 48%;
+    top: 1545px;
+    position: absolute;
+}
+.art2{
+    width: 90px;
+    height: 35px;
+    left: 62%;
+    top: 1538px;
+    position: absolute;
+}
+.offline{width: 120px;
+        height: 80px;
+        left: 71%;
+        top: 1650px;
+        position: absolute;
+}
+.computer{
+    width: 150px;
+    height: 140px;
+    left: 2%;
+    top: 680px;
+    position: absolute;
+}
+
+#poweroff{
+    width: 25px;
+    height:25px;
+    left: 8.5%;
+    top: 1075px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#isOn{
+    position: relative;
+    width: min-content;
+    height: min-content;    
+    margin: auto;  
+    display: block; 
+}
+#off{
+    position: relative;
+    margin:auto;
+    height: fit-content;
+    width: fit-content;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    font-family: 'Press Start 2P', cursive;
+    color: lime;
+    white-space: nowrap;
+    font-size: 38px;
+}
+
+:root {
+    --width: 400px;
+    --x-speed: 13s;
+    --y-speed: 7s;
+    --transition-speed: 2.2s;
+  }
+  
+  .blob { 
+    position: absolute;
+    width: var(--width);
+    height: var(--width);
+    background: blue;
+    opacity: 0.7;
+    transition: border-radius var(--transition-speed) linear;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    font-size:30px;
+    margin-top: 200px;
+    text-align: center;
+  }
+  .blob-2 {
+    top: 0;
+    right: 0;
+  }
+
+  .blob-3{
+    top: 0;
+  }
+  .blob-2 .blob {
+    background: orchid;
+  }
+
+  .blob-3 .blob{
+      background: mediumslateblue;
+  }
+  
+  .x {
+    animation: x var(--x-speed) linear infinite alternate;
+  }
+  .x2 {
+    animation: x2 var(--x-speed) linear infinite alternate;
+  }
+  .x3 {
+    animation: x3 var(--x-speed) linear infinite alternate;
+  }
+  .y {
+    animation: y var(--y-speed) linear infinite alternate;
+  }
+  
+  @keyframes x {
+    100% {
+      transform: translateX(calc(100vw - var(--width)));
+    }
+  }
+  @keyframes x2 {
+    100% {
+      transform: translateX(calc(-100vw + var(--width)));
+    }
+  }
+  
+  
+  @keyframes y {
+    100% {
+      transform: translateY(calc(100vh - var(--width)));
+    }
+  }
+
+.addMore{
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: #eee;
+    transition: all ease-in-out 0.01s;
+    cursor: pointer;
+  }
+.addMore:hover{
+    border: 1px solid #888;
+    background-color: #ddd;
+}
+
