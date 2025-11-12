@@ -3,11 +3,13 @@
 
 :root {
     --bg: #ffffff;
-    --surface: #fafafa;
-    --text: #181818;
-    --muted: #5a5a5a;
-    --line: #e0e0e0;
-    --accent: #0f0f0f;
+    --surface: #f8f9fa;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --sticky-offset: 110px;
 }
 
 * {
@@ -22,8 +24,8 @@ body {
     background: var(--bg);
     color: var(--text);
     font-size: 15px;
-    line-height: 1.7;
-    letter-spacing: -0.01em;
+    line-height: 1.65;
+    letter-spacing: -0.011em;
     overflow-x: hidden;
     overflow-y: visible;
 }
@@ -37,7 +39,7 @@ img {
 a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(0,0,0,0.12);
     transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -67,12 +69,14 @@ a:hover {
 }
 
 .top-nav {
-    background: var(--surface);
-    padding: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .nav-container {
@@ -115,14 +119,14 @@ a:hover {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    border-bottom: none;
     display: block;
     padding: 0.5rem 0;
     transition: color 0.2s ease;
+    border-bottom: none;
 }
 
 .nav-menu-horizontal a:hover {
-    color: var(--text);
+    color: var(--accent);
     border-bottom: none;
 }
 
@@ -146,7 +150,7 @@ a:hover {
 
 .navbar-dark .nav-link:hover,
 .navbar-dark .nav-link:focus {
-    color: var(--text) !important;
+    color: var(--accent) !important;
 }
 
 .navbar-toggler {
@@ -174,7 +178,7 @@ a:hover {
 .full-width-section {
     width: 100%;
     background: var(--bg);
-    padding: 3rem 0;
+    padding: 2.5rem 0;
     overflow: visible;
 }
 
@@ -197,12 +201,17 @@ a:hover {
     display: grid;
     grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
     gap: 4.5rem;
+    align-items: start;
 }
 
+/* Keep profile card pinned while the main text scrolls */
 .profile-column {
-    position: static;
-    top: auto;
+    position: sticky;
+    top: var(--sticky-offset);
     align-self: start;
+    max-height: calc(100vh - var(--sticky-offset) - 1rem);
+    overflow-y: auto;
+    padding-right: 1rem;
 }
 
 .profile-card,
@@ -352,6 +361,11 @@ a:hover {
     flex-direction: column;
     gap: 2.25rem;
     padding-left: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+.content-column .section-block {
+    font-size: 0.95em;
 }
 
 .hero-card .lead {
@@ -389,8 +403,8 @@ a:hover {
 }
 
 .section-block {
-    padding: 2.25rem 0;
-    margin-bottom: 4rem;
+    padding: 0;
+    margin-bottom: 3.5rem;
     border-bottom: none;
     overflow: visible;
 }
@@ -401,22 +415,23 @@ a:hover {
 }
 
 .section-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 0 0 2rem 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--line);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
     color: var(--text);
-    letter-spacing: 0.05em;
+    letter-spacing: -0.02em;
 }
 
 .section-title.centered {
     text-align: center;
-    font-size: 1.65rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    border-bottom: 3px solid var(--accent);
-    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.75rem;
     margin-bottom: 2.5rem;
+    color: var(--text);
 }
 
 .experience-entry + .experience-entry {
@@ -455,15 +470,15 @@ a:hover {
 }
 
 .news-list li {
-    margin-bottom: 0.25rem;
-    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    padding: 0.875rem 0;
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--line);
     border-radius: 0;
-    line-height: 1.3;
+    line-height: 1.5;
     color: var(--text);
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .news-list li::before {
@@ -473,6 +488,7 @@ a:hover {
 .news-list li:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+    padding-left: 0.5rem;
 }
 
 .news-date {
@@ -493,13 +509,13 @@ a:hover {
 }
 
 .research-area-title {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--line);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
     color: var(--text);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
 }
 
 .research-area-desc {
@@ -544,17 +560,17 @@ a:hover {
 
 /* Publication Items */
 .publication-item {
-    background: var(--surface);
+    background: var(--bg);
     border: 1px solid var(--line);
-    border-left: 4px solid var(--accent);
-    border-radius: 4px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, padding 0.3s ease, margin 0.3s ease;
+    border-left: 3px solid var(--line);
+    border-radius: 6px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.25s ease;
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     position: relative;
     z-index: 1;
     overflow: visible;
@@ -569,9 +585,10 @@ a:hover {
 
 .publication-item:hover {
     z-index: 10;
-    border-left-color: var(--text);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    border-color: var(--line);
+    border-left-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+    transform: translateY(-1px);
     overflow: visible;
 }
 
@@ -595,7 +612,7 @@ a:hover {
 
 .publication-title a {
     color: var(--text);
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.15);
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
@@ -796,27 +813,41 @@ footer {
     padding: 2rem 0 3rem;
     color: var(--muted);
     font-size: 0.85rem;
+    text-align: center;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid var(--line);
+.content-footer {
+    text-align: center;
 }
 
-/* Responsive */
-@media (max-width: 991px) {
+@media (max-width: 992px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .nav-menu-horizontal {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        width: 100%;
+    }
+
     .content-grid {
         grid-template-columns: 1fr;
     }
 
     .profile-column {
         position: static;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
     }
+}
 
-    .navbar-dark .nav-link {
-        margin-left: 0;
-        margin-bottom: 0.4rem;
-    }
+hr {
+    border: none;
+    border-top: 1px solid var(--line);
 }
 
 /* Talks Section */
@@ -841,6 +872,7 @@ hr {
 .talk-item:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+    padding-left: 0.25rem;
 }
 
 .talk-date {
@@ -894,6 +926,7 @@ hr {
 .award-item:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+    padding-left: 0.25rem;
 }
 
 .award-source {
@@ -924,6 +957,7 @@ hr {
 .review-item:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+    padding-left: 0.25rem;
 }
 
 .review-category-name {
@@ -954,6 +988,7 @@ hr {
 .teaching-item:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+    padding-left: 0.25rem;
 }
 
 /* Responsive adjustments */
