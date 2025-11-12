@@ -21,9 +21,11 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
     letter-spacing: -0.01em;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 img {
@@ -56,7 +58,7 @@ a:hover {
 }
 
 .profile-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     margin: 0 0 1rem 0;
     padding: 0;
@@ -80,7 +82,7 @@ a:hover {
 }
 
 .nav-name {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--text);
     letter-spacing: -0.01em;
@@ -110,7 +112,7 @@ a:hover {
 .nav-menu-horizontal a {
     color: var(--muted);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     border-bottom: none;
@@ -164,12 +166,16 @@ a:hover {
 .container {
     max-width: 1400px;
     width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    overflow: visible;
 }
 
 .full-width-section {
     width: 100%;
     background: var(--bg);
     padding: 3rem 0;
+    overflow: visible;
 }
 
 .full-width-section .section-block {
@@ -212,7 +218,7 @@ a:hover {
 }
 
 .profile-intro {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.6;
     color: var(--text);
     margin-bottom: 1.5rem;
@@ -275,16 +281,23 @@ a:hover {
 .profile-contact,
 .profile-section {
     margin-bottom: 1.4rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .profile-section .stacked-list {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .profile-section .stacked-list li {
     margin-bottom: 0.4rem;
     line-height: 1.5;
+}
+
+.research-interests-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--text);
 }
 
 .research-interests-section {
@@ -294,7 +307,7 @@ a:hover {
 }
 
 .eyebrow {
-    font-size: 0.78rem;
+    font-size: 0.73rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -342,7 +355,7 @@ a:hover {
 }
 
 .hero-card .lead {
-    font-size: 1.05rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
@@ -371,7 +384,7 @@ a:hover {
 /* Sections */
 
 .hero-contact {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--muted);
 }
 
@@ -379,6 +392,7 @@ a:hover {
     padding: 2.25rem 0;
     margin-bottom: 4rem;
     border-bottom: none;
+    overflow: visible;
 }
 
 .section-block:last-child {
@@ -387,7 +401,7 @@ a:hover {
 }
 
 .section-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     margin: 0 0 2rem 0;
     padding-bottom: 0.75rem;
@@ -398,7 +412,7 @@ a:hover {
 
 .section-title.centered {
     text-align: center;
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     font-weight: 700;
     border-bottom: 3px solid var(--accent);
     padding-bottom: 1rem;
@@ -414,13 +428,13 @@ a:hover {
 .experience-entry p {
     margin: 0.4rem 0 0 0;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.5;
 }
 
 /* Latest News */
 .news-year {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .news-year:last-child {
@@ -428,9 +442,9 @@ a:hover {
 }
 
 .news-year-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.5rem 0;
     color: var(--text);
 }
 
@@ -441,13 +455,13 @@ a:hover {
 }
 
 .news-list li {
-    margin-bottom: 1rem;
-    padding: 1rem 1.25rem;
+    margin-bottom: 0.25rem;
+    padding: 0.5rem 1rem;
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--line);
     border-radius: 0;
-    line-height: 1.7;
+    line-height: 1.3;
     color: var(--text);
     transition: color 0.2s ease;
 }
@@ -479,7 +493,7 @@ a:hover {
 }
 
 .research-area-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
     padding-bottom: 0.75rem;
@@ -491,12 +505,12 @@ a:hover {
 .research-area-desc {
     margin: 0 0 1.5rem 0;
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
 }
 
 .related-publication-title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     margin: 0 0 1rem 0;
     color: var(--text);
@@ -521,7 +535,7 @@ a:hover {
 }
 
 .publication-group-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin: 0 0 1.5rem 0;
     color: var(--text);
@@ -536,18 +550,29 @@ a:hover {
     border-radius: 4px;
     padding: 2rem;
     margin-bottom: 2rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    display: grid;
-    grid-template-columns: 1fr auto;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, padding 0.3s ease, margin 0.3s ease;
+    display: flex;
     gap: 1.5rem;
-    align-items: start;
+    align-items: flex-start;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+.publication-item:has(.publication-figure:hover) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
 .publication-item:hover {
+    z-index: 10;
     border-left-color: var(--text);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
+    overflow: visible;
 }
 
 .publication-item:last-child {
@@ -556,10 +581,11 @@ a:hover {
 
 .publication-content {
     min-width: 0;
+    flex: 1;
 }
 
 .publication-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     margin: 0 0 0.85rem 0;
     color: var(--text);
@@ -579,14 +605,14 @@ a:hover {
 }
 
 .publication-authors {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #3a3a3a;
     margin: 0 0 0.5rem 0;
     line-height: 1.6;
 }
 
 .publication-venue {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #4a4a4a;
     margin: 0 0 1rem 0;
     font-style: italic;
@@ -606,51 +632,79 @@ a:hover {
 }
 
 .publication-desc {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #2a2a2a;
     margin: 0.75rem 0 0 0;
     line-height: 1.7;
 }
 
 .publication-figure {
-    width: 200px;
-    min-width: 200px;
+    width: auto;
+    max-width: 180px;
     height: auto;
+    max-height: 100%;
     border-radius: 4px;
     border: 1px solid var(--line);
     overflow: hidden;
     background: var(--bg);
+    align-self: center;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, overflow 0.3s ease;
+    z-index: 2;
+    box-sizing: border-box;
+    transform-origin: right center;
+    padding: 0;
+    margin: 0;
+}
+
+.publication-figure:hover {
+    overflow: visible;
+    transform: scale(3.0);
+    z-index: 10000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: none;
+    background: transparent;
 }
 
 .publication-figure img {
     width: 100%;
     height: auto;
+    max-height: 100%;
+    max-width: 100%;
     display: block;
-    object-fit: cover;
-    transition: opacity 0.2s ease;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    border-radius: 4px;
+    object-position: center;
+    box-sizing: border-box;
 }
 
 .publication-figure a {
     display: block;
     border: none;
     text-decoration: none;
-}
-
-.publication-figure a:hover img {
-    opacity: 0.85;
-    cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 
 /* Responsive: stack figure below on smaller screens */
 @media (max-width: 1200px) {
     .publication-item {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
     
     .publication-figure {
         width: 100%;
         max-width: 400px;
+        max-height: none;
+        height: auto;
         margin: 1rem auto 0;
+        align-self: center;
     }
 }
 
@@ -664,7 +718,7 @@ a:hover {
 
 .experience-heading h4 {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .experience-role {
@@ -792,7 +846,7 @@ hr {
 .talk-date {
     font-weight: 600;
     color: var(--text);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     white-space: nowrap;
     min-width: 70px;
     flex-shrink: 0;
@@ -806,13 +860,13 @@ hr {
 }
 
 .talk-title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--text);
 }
 
 .talk-venue {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--muted);
     font-style: italic;
 }
@@ -828,7 +882,7 @@ hr {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--line);
     transition: color 0.2s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--text);
 }
@@ -858,7 +912,7 @@ hr {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--line);
     transition: color 0.2s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--text);
 }
@@ -888,7 +942,7 @@ hr {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--line);
     transition: color 0.2s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--text);
 }

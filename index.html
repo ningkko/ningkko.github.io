@@ -159,7 +159,7 @@
     "researchInterests": [
       "Healthcare AI & clinical NLP",
       "AI agents & agentic AI",
-      "Real-world evidence & causal inference",
+      "Real-world evidence",
       "LLM evaluations & bias quantification"
     ]
   },
@@ -167,7 +167,7 @@
     "paragraphs": [
       "<strong>Hi, I'm Yining (Nin) Hua</strong>, a third-year PhD student in Epidemiology at the Harvard T.H. Chan School of Public Health. I work on <strong>healthcare AI and computational methods</strong>, with training in NLP, biomedical informatics, epidemiology, and biostatistics. My current focus is on <strong>reliable models for healthcare</strong>: training and evaluation, bias identification/mitigation, and causal reasoning (DAGs).",
       "I build and validate deep learning models, especially large language model systems for healthcare. I pair clinical NLP with bias assessment, trial emulation, and evaluation frameworks so they ship safely. Currently designing RWE studies at Dandelion Health Inc., building LLM/RAG agents for Squirrel AI, and developing digital twins for neurodiseases at Mass General Brigham.",
-      "<strong>I'm open to collaboration and advising. Feel free to email me - I enjoy seeing research as a way of creative experiences with friends.</strong>"
+      "<strong>I'm open to collaboration and advising. Feel free to email me - I enjoy seeing research as a way of creative experiences with friends.</strong> I feel lucky that I've had great collaborators across the world; without them I couldn't have achieved what I have."
     ],
     "education": [
       "PhD, Epidemiology (Population Health Sciences), Harvard T.H. Chan School of Public Health (Expected May 2028)",
@@ -175,8 +175,8 @@
       "BA, Computer Science, Smith College (2017–2021)"
     ],
     "experience": [
-      "<strong>Dandelion Health</strong> · PhD Intern: Core Analyst & Study Designer · Boston, MA · May 2025–Present",
-      "<strong>Squirrel AI</strong> · PhD Research Intern: LLM/RAG Systems · Seattle, WA (Remote) · May 2025–Present",
+	"<strong>Squirrel AI</strong> · PhD Research Intern: LLM/RAG Systems · Seattle, WA (Remote) · June 2025–Present",
+	"<strong>Dandelion Health</strong> · PhD Intern: Core Analyst & Study Designer · Boston, MA · July 2025–Present",
       "<strong>Department of Neurology, Massachusetts General Hospital</strong> · Boston, MA · Oct 2025–Present",
       "<strong>Harvard Medical School & Other Affiliated Hospitals (BWH, BCH, BIDMC) </strong> · Boston, MA · 2021–2025"
     ]
@@ -259,10 +259,10 @@
 		  
         {
           "title": "Detecting Conversational Mental Manipulation with Intent-Aware Prompting",
-          "url": "https://aclanthology.org/2025.coling-main.801/",
+          "url": "https://aclanthology.org/2025.coling-main.616/",
           "authors": "Ma J., Na H., Wang Z., <strong>Hua Y</strong>, Liu Y., Wang W., Chen L.",
           "venue": "<em>COLING</em> 2025, pp. 9176:9183",
-          "description": "✨ <strong>Best Short Paper</strong>. A method for detecting conversational mental manipulation; Best Short Paper at COLING 2025.",
+          "description": "✨ <strong>Best Short Paper</strong>. This paper introduces Intent-Aware Prompting (IAP), a two-stage prompting strategy where an LLM first summarizes each speaker’s intent in a dialogue and then uses those intent summaries to decide whether mental manipulation is present, targeting improved Theory-of-Mind–like reasoning. Evaluated with GPT-4 on the MentalManip dataset, IAP outperforms zero-shot, few-shot, and chain-of-thought prompting, most notably reducing false negatives by 30.5% while improving accuracy and F1 scores.",
           "figure": {
             "src": "src/img/papers/pub5.jpg",
             "alt": "Mental manipulation detection figure"
@@ -270,61 +270,61 @@
         },
         {
           "title": "Large language models are poor clinical decision-makers: a comprehensive benchmark",
-          "url": "https://aclanthology.org/2024.emnlp-main.123/",
+          "url": "https://aclanthology.org/2024.emnlp-main.759/",
           "authors": "Liu F, Li Z, Zhou H, ... , <strong>Hua Y</strong>, ... , Clifton D.A.",
-          "venue": "<em>EMNLP</em> (2024)",
-          "description": "ClinicBench, combining existing and novel datasets to evaluate 22 LLMs across clinical reasoning, generation, and understanding.",
-          "figure": {
+		  "venue": "<em>EMNLP</em> 2024, pp. 13696–13710",
+		  "description": "We introduce ClinicBench, a benchmark spanning 3 scenarios, 11 tasks, and 17 datasets to evaluate 22 general and medical LLMs in zero- and few-shot settings. Commercial models like GPT-4 match or surpass SOTA and humans on close-ended QA but underperform on real-world tasks such as treatment recommendation and long-record summarization. Expert review finds medical LLMs more factual and safer but less complete and preferred, and domain-specific fine-tuning improves reliability yet remains insufficient for clinical decision-making.",
+		  "figure": {
             "src": "src/img/papers/pub9.jpg",
             "alt": "LLM clinical decision-making benchmark figure"
           }
         },
         {
-          "title": "Benchmarking Large Language Models on CMExam: A Comprehensive Chinese Medical Exam Dataset",
-          "url": "https://proceedings.neurips.cc/paper_files/paper/2023",
-          "authors": "Liu J*, Zhou P*, <strong>Hua Y*</strong>, ...",
-          "venue": "<em>NeurIPS</em> (2023)",
-          "description": "This work introduces CMExam, a comprehensive Chinese medical examination dataset with over 60,000 multiple-choice questions sourced from the Chinese National Medical Licensing Examination, which provides standardized evaluation and solution explanations for benchmarking large language models on medical knowledge, reasoning, and clinical decision-making.",
-          "figure": {
-            "src": "src/img/papers/pub11.jpg",
-            "alt": "CMExam benchmark figure"
-          }
-        }
+			"title": "Benchmarking Large Language Models on CMExam: A Comprehensive Chinese Medical Exam Dataset",
+			"url": "https://github.com/williamliujl/CMExam",
+			"authors": "Liu J, Zhou P, <strong>Hua Y</strong>, Chong D, Tian Z, Liu A, Wang H, You C, Guo Z, Zhu L, Li M.L., et al.",
+			"venue": "<em>NeurIPS</em> 2023 (Datasets and Benchmarks Track)",
+			"description": "We introduce CMExam, a 60K+ Chinese medical QA benchmark built from the National Medical Licensing Examination, with multiple-choice questions, solution explanations, and five expert-verified test labels (ICD-11 group, department, discipline, competency, difficulty). Across general and medical LLMs, GPT-4 reaches 61.6% accuracy vs. 71.6% for humans, while current Chinese medical LLMs perform poorly zero-shot. Finetuning lightweight LLMs on CMExam narrows the gap to GPT-3.5 and yields better explanations, but still falls short of clinically reliable performance.",
+			"figure": {
+			  "src": "src/img/papers/pub10.jpg",
+			  "alt": "Overview of the CMExam Chinese medical exam benchmark and LLM evaluation results"
+			}
+		  }
       ]
     },
     {
       "area": "Clinical and Health Informatics",
-      "description": "Building evaluation frameworks and benchmarks for healthcare AI systems, with focus on safety, bias assessment, and clinical decision-making.",
+      "description": "Developing deep learning and NLP methods for clinical information extraction, patient identification, and outcome prediction from electronic health records. Focus areas include psychiatric condition detection, patient population identification, and predictive modeling for clinical decision support.",
       "publications": [
         {
           "title": "Identifying psychosis episodes in psychiatric admission notes via rule-based methods, machine learning, and pre-trained language models",
-          "url": "https://doi.org/10.1016/j.jbi.2024.104623",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10984080/",
           "authors": "<strong>Hua Y</strong>, Blackley S.V., Shinn A.K., Skinner J.P., Moran L.V., Zhou L.",
-          "venue": "<em>Research Square</em> preprint (2024)",
-          "description": "Preprint evaluating rules-based, ML, and PLM approaches on 4,617 admission notes; best model achieved F1 ≈ 0.888 (AUROC ≈ 0.973), outperforming ICD code baselines. Not (yet) a JBI 2024 publication.",
-          "figure": {
+          "venue": "<em>Translational Psychiatry</em>; Accepted (2025)",
+		  "description": "This study systematically compares rule-based, machine learning, and transformer-based NLP approaches for identifying psychosis from 4,629 psychiatric admission notes at McLean Hospital (2005–2019). We introduce a keyword-assisted pipeline that first filters notes using expert-curated psychosis terms, then applies TF-IDF + XGBoost and fine-tuned BERT models for classification. We demonstrate how keyword preselection reduces noise, enables analysis of long clinical texts, and provides a reproducible framework for automating psychosis detection from unstructured EHR data.",
+		  "figure": {
             "src": "src/img/papers/pub21.jpg",
             "alt": "Psychosis identification in admission notes figure"
           }
         },
-        {
-          "title": "A Deep Learning Approach for Transgender and Gender Diverse Patient Identification in Electronic Health Records",
-          "url": "https://doi.org/10.1016/j.jbi.2023.104456",
-          "authors": "<strong>Hua Y</strong>, Wang L., Nguyen V., Rieu-Werden M., McDowell A., Bates D.W., Foer D., Zhou L.",
-          "venue": "<em>Journal of Biomedical Informatics</em> (2023)",
-          "description": "This study presents a deep learning approach to identify transgender and gender diverse patients within electronic health records, which aims to improve the accuracy and efficiency of patient identification and enhance healthcare delivery for these populations.",
-          "figure": {
-            "src": "src/img/papers/pub22.jpg",
-            "alt": "Transgender patient identification figure"
-          }
-        },
+		{
+			"title": "A Deep Learning Approach for Transgender and Gender Diverse Patient Identification in Electronic Health Records",
+			"url": "https://doi.org/10.1016/j.jbi.2023.104507",
+			"authors": "<strong>Hua Y</strong>, Wang L., Nguyen V., Rieu-Werden M., McDowell A., Bates D.W., Foer D., Zhou L.",
+			"venue": "<em>Journal of Biomedical Informatics</em> 147 (Nov 2023): 104507",
+			"description": "We developed a deep learning–based NLP pipeline combining structured EHR data and clinical notes to identify transgender and gender diverse patients. The workflow integrates curated and model-expanded gender-related keywords, text-converted structured fields, and a ClinicalBERT classifier that outperforms rule-based and traditional ML methods for patient-level identification.",
+			"figure": {
+			  "src": "src/img/papers/pub22.jpg",
+			  "alt": "Transgender patient identification pipeline"
+			}
+		  },
         {
           "title": "Prediction of early-stage melanoma recurrence using clinical and histopathologic features",
-          "url": "https://doi.org/10.1038/s41698-022-00322-3",
+          "url": "https://www.nature.com/articles/s41698-022-00321-4",
           "authors": "Wan G., Nguyen N., Liu F., DeSimone M.S., Leung B.W., Rajeh A., Collier M.R., ..., <strong>Hua Y</strong>, ...",
           "venue": "<em>npj Precision Oncology</em> 6(1):79 (2022)",
-          "description": "✨ <strong>39 citations</strong>. This study develops machine learning models to predict early-stage melanoma recurrence by integrating clinical variables and histopathologic features from electronic health records, which enables personalized risk stratification and improved patient monitoring strategies.",
-          "figure": {
+          "description": "We used multi-institutional EHR registries (MGB, DFCI; 1,720 stage I/II melanomas) to curate 36 clinical and histopathologic features and trained machine-learning and survival models to predict early-stage melanoma recurrence and time-to-recurrence. We performed internal 5-fold cross-validation plus external validation, sensitivity analyses on cleaner subcohorts, and permutation-based feature importance to identify key prognostic factors such as Breslow thickness and mitotic rate.",
+			"figure": {
             "src": "src/img/papers/pub16.jpg",
             "alt": "Melanoma recurrence prediction figure"
           }
@@ -340,43 +340,32 @@
           "url": "https://proceedings.neurips.cc/paper_files/paper/2022",
           "authors": "Zhou P., Wang Z., Chong D., Guo Z., <strong>Hua Y</strong>, Su Z., Teng Z., Wu J., Yang J.",
           "venue": "<em>NeurIPS</em> 35:21916-21932 (2022)",
-          "description": "✨ <strong>31 citations</strong>. This work introduces Mets-COV, a large-scale dataset for medical entity recognition and targeted sentiment analysis on COVID-19-related tweets, which enables fine-grained analysis of public health discourse and medication perceptions during the pandemic.",
-          "figure": {
+          "description": "We created METS-CoV, a COVID-19 Twitter dataset with expert-annotated medical + general entities and targeted sentiments toward key entities (drugs, vaccines, people, organizations). We then benchmarked classic and state-of-the-art NER and TSA models (including COVID-specific PLMs), showing domain-tuned models help but performance is still far from saturated, leaving room for better medical social media NLP methods.",
+		   "figure": {
             "src": "src/img/papers/pub17.jpg",
             "alt": "Mets-COV dataset figure"
           }
         },
         {
           "title": "Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications",
-          "url": "https://academic.oup.com/jamia/article/29/10/1668/6607000",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9278189/",
           "authors": "<strong>Hua Y</strong>, Jiang H., Lin S., Yang J., Plasek J.M., Bates D.W., Zhou L.",
           "venue": "<em>JAMIA</em> 29(10):1668:1678 (2022)",
-          "description": "This study leverages Twitter data and natural language processing to analyze public perceptions and discussions about approved versus off-label COVID-19 medications, extracting insights on medication safety concerns, efficacy beliefs, and treatment preferences during the pandemic.",
-          "figure": {
+          "description": "We biult a BERT-based Twitter analysis pipeline to track public stance toward four COVID-19 drugs (off-label: Hydroxychloroquine, Ivermectin; FDA-authorized: Remdesivir, Molnupiravir) across two years of U.S. tweets. Off-label drugs dominated discussion and support, heavily shaped by politics, celebrity influence, and misinformation, while FDA-authorized drugs were less discussed; stance patterns varied sharply by party, geography, and healthcare background, highlighting targets for public health communication.",
+		  "figure": {
             "src": "src/img/papers/pub13.jpg",
             "alt": "Twitter COVID-19 medication perceptions figure"
           }
         },
         {
           "title": "Streamlining social media information retrieval for COVID-19 research with deep learning",
-          "url": "https://academic.oup.com/jamia/article/31/7/1569/7691230",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11187427/",
           "authors": "<strong>Hua Y</strong>, Lin S., Li M., Zhang Y., Foer D., Zhou P., Zhou L., Yang J.",
           "venue": "<em>JAMIA</em> 31(7):1569:1577 (2024)",
-          "description": "This work develops deep learning pipelines for efficient information retrieval from social media platforms for COVID-19 research, which automates data extraction, filtering, and analysis to accelerate public health surveillance and enable real-time monitoring of health-related discussions.",
-          "figure": {
+          "description": "We present a three-step NLP pipeline (medical NER → entity normalization → UMLS mapping) to automatically curate a colloquial symptom dictionary from 18M+ COVID-19–related English tweets. The final lexicon links 38k lay symptom expressions to 966 UMLS concepts with 95% accuracy, and captures many more symptoms, especially mental health symptoms like anxiety and depression, than traditional keyword lists, improving social media–based public health surveillance and information retrieval.",
+		   "figure": {
             "src": "src/img/papers/pub14.jpg",
             "alt": "Social media information retrieval figure"
-          }
-        },
-        {
-          "title": "Annotating the Tweebank corpus on named entity recognition and building NLP models for social media analysis",
-          "url": "https://aclanthology.org/2022.lrec-1.123/",
-          "authors": "Jiang H., <strong>Hua Y</strong>, Beeferman D., Roy D.",
-          "venue": "<em>LREC</em> (2022)",
-          "description": "✨ <strong>52 citations</strong>. This work presents comprehensive annotations for named entity recognition on the Tweebank corpus, a large-scale social media dataset, and develops state-of-the-art NLP models for social media text analysis, which addresses unique challenges in informal language processing.",
-          "figure": {
-            "src": "src/img/papers/pub19.jpg",
-            "alt": "Tweebank NER annotation figure"
           }
         }
       ]
@@ -531,6 +520,9 @@
 
 			// Render research
 			renderResearch(data.research);
+			
+			// Adjust figure heights to match content
+			adjustFigureHeights();
 
 			// Render talks
 			renderTalks(data.talks);
@@ -709,6 +701,44 @@
 
 			teachingContent.innerHTML = html;
 		}
+		
+		function adjustFigureHeights() {
+			const publicationItems = document.querySelectorAll('.publication-item');
+			publicationItems.forEach(item => {
+				const content = item.querySelector('.publication-content');
+				const figure = item.querySelector('.publication-figure');
+				
+				if (content && figure) {
+					const adjustHeight = () => {
+						const contentHeight = content.offsetHeight;
+						// Set max-height on both figure and image to ensure proper constraint
+						figure.style.maxHeight = contentHeight + 'px';
+						const img = figure.querySelector('img');
+						if (img) {
+							img.style.maxHeight = contentHeight + 'px';
+						}
+					};
+					
+					// Adjust immediately
+					setTimeout(adjustHeight, 0);
+					
+					// Adjust when images load
+					const images = figure.querySelectorAll('img');
+					images.forEach(img => {
+						if (img.complete) {
+							setTimeout(adjustHeight, 0);
+						} else {
+							img.addEventListener('load', () => {
+								setTimeout(adjustHeight, 0);
+							});
+						}
+					});
+				}
+			});
+		}
+		
+		// Also adjust on window resize
+		window.addEventListener('resize', adjustFigureHeights);
 	</script>
 </body>
 
