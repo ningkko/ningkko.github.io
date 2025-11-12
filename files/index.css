@@ -28,6 +28,8 @@ body {
     letter-spacing: -0.011em;
     overflow-x: hidden;
     overflow-y: visible;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 img {
@@ -41,6 +43,8 @@ a {
     text-decoration: none;
     border-bottom: 1px solid rgba(0,0,0,0.12);
     transition: color 0.2s ease, border-color 0.2s ease;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 a:hover {
@@ -119,10 +123,12 @@ a:hover {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0.5rem 0;
     transition: color 0.2s ease;
     border-bottom: none;
+    min-height: 44px;
 }
 
 .nav-menu-horizontal a:hover {
@@ -300,6 +306,8 @@ a:hover {
 .profile-section .stacked-list li {
     margin-bottom: 0.4rem;
     line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .research-interests-text {
@@ -608,6 +616,8 @@ a:hover {
     color: var(--text);
     line-height: 1.5;
     letter-spacing: -0.01em;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .publication-title a {
@@ -747,6 +757,16 @@ a:hover {
         max-width: 100%;
         width: 100%;
     }
+    
+    /* Improve text wrapping on mobile */
+    .publication-title,
+    .publication-authors,
+    .publication-desc,
+    .talk-title,
+    .news-list li {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
 }
 
 @media (max-width: 480px) {
@@ -884,6 +904,13 @@ footer::after {
     text-align: center;
 }
 
+.footer-note {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
 @media (max-width: 992px) {
     .nav-container {
         flex-direction: column;
@@ -899,6 +926,7 @@ footer::after {
 
     .content-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .profile-column {
@@ -1056,26 +1084,357 @@ hr {
 }
 
 /* Responsive adjustments */
+@media (max-width: 992px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    
+    .main-container {
+        padding-top: 1.5rem;
+        padding-bottom: 3rem;
+    }
+    
+    .content-column {
+        padding-left: 0;
+        gap: 2rem;
+    }
+    
+    .section-title.centered {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.35rem;
+    }
+    
+    .profile-card {
+        text-align: center;
+    }
+    
+    .profile-photo {
+        margin-bottom: 1.25rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    
+    .top-nav {
+        padding: 1rem 0;
+    }
+    
+    .nav-name {
+        font-size: 1.15rem;
+    }
+    
+    .nav-menu-horizontal {
+        gap: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+    
+    .nav-menu-horizontal a {
+        font-size: 0.75rem;
+        padding: 0.4rem 0;
+    }
+    
+    .main-container {
+        padding-top: 1rem;
+        padding-bottom: 2.5rem;
+    }
+    
+    .profile-card {
+        padding: 1.5rem 0;
+    }
+    
+    .profile-image {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .content-column {
+        gap: 1.75rem;
+    }
+    
+    .section-block {
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-title.centered {
+        font-size: 1.35rem;
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .research-area-title {
+        font-size: 1.2rem;
+    }
+    
+    .publication-item {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    
+    .publication-title {
+        font-size: 0.95rem;
+    }
+    
+    .publication-authors,
+    .publication-venue,
+    .publication-desc {
+        font-size: 0.8rem;
+    }
+    
+    .news-date {
+        min-width: 60px;
+        font-size: 0.85rem;
+    }
+    
+    .news-list li {
+        font-size: 0.9rem;
+        padding: 0.75rem 0;
+    }
+    
     .talk-item {
         flex-direction: column;
         gap: 0.4rem;
+        padding: 0.875rem 0;
     }
     
     .talk-date {
         min-width: auto;
+        font-size: 0.8rem;
+    }
+    
+    .talk-title {
+        font-size: 0.85rem;
+    }
+    
+    .talk-venue {
+        font-size: 0.75rem;
+    }
+    
+    .award-item,
+    .review-item,
+    .teaching-item {
+        font-size: 0.85rem;
+        padding: 0.625rem 0;
     }
 }
 
 @media (max-width: 600px) {
-    .hero-card,
-    .section-block,
-    .profile-card {
-        padding: 1.75rem;
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
+    
+    .top-nav {
+        padding: 0.875rem 0;
+    }
+    
+    .nav-container {
+        gap: 0.75rem;
+    }
+    
+    .nav-name {
+        font-size: 1.05rem;
+    }
+    
+    .nav-menu-horizontal {
+        gap: 0.4rem 0.75rem;
+    }
+    
+    .nav-menu-horizontal a {
+        font-size: 0.7rem;
+        padding: 0.35rem 0;
+    }
+    
+    .main-container {
+        padding-top: 0.75rem;
+        padding-bottom: 2rem;
+    }
+    
+    .profile-card {
+        padding: 1.25rem 0;
+    }
+    
+    .profile-image {
+        max-width: 180px;
+    }
+    
+    .profile-section {
+        font-size: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .profile-section .stacked-list {
+        font-size: 0.75rem;
+    }
+    
+    .eyebrow {
+        font-size: 0.7rem;
+    }
+    
+    .content-column {
+        gap: 1.5rem;
+    }
+    
+    .section-block {
+        margin-bottom: 2rem;
+        font-size: 0.9em;
+    }
+    
+    .section-title.centered {
+        font-size: 1.25rem;
+        margin-bottom: 1.75rem;
+        padding-bottom: 0.625rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .research-area {
+        margin-bottom: 2rem;
+    }
+    
+    .research-area-title {
+        font-size: 1.1rem;
+    }
+    
+    .research-area-desc {
+        font-size: 0.85rem;
+    }
+    
+    .publication-item {
+        padding: 1rem;
+        gap: 0.875rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .publication-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .publication-authors,
+    .publication-venue {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .publication-desc {
+        font-size: 0.8rem;
+        margin-top: 0.625rem;
+    }
+    
+    .news-year-title {
+        font-size: 0.95rem;
+    }
+    
+    .news-date {
+        min-width: 55px;
+        font-size: 0.8rem;
+    }
+    
+    .news-list li {
+        font-size: 0.85rem;
+        padding: 0.625rem 0;
+    }
+    
+    .talk-item {
+        padding: 0.75rem 0;
+    }
+    
+    .talk-date {
+        font-size: 0.75rem;
+    }
+    
+    .talk-title {
+        font-size: 0.8rem;
+    }
+    
+    .talk-venue {
+        font-size: 0.7rem;
+    }
+    
+    .award-item,
+    .review-item,
+    .teaching-item {
+        font-size: 0.8rem;
+        padding: 0.5rem 0;
+    }
+    
+    body {
+        font-size: 14px;
+    }
+    
+    [id] {
+        scroll-margin-top: 100px;
+    }
+}
 
-    .hero-cta {
-        flex-direction: column;
-        align-items: flex-start;
+@media (max-width: 480px) {
+    .container {
+        padding-left: 0.875rem;
+        padding-right: 0.875rem;
+    }
+    
+    .nav-menu-horizontal {
+        gap: 0.3rem 0.6rem;
+    }
+    
+    .nav-menu-horizontal a {
+        font-size: 0.65rem;
+    }
+    
+    .profile-image {
+        max-width: 160px;
+    }
+    
+    .section-title.centered {
+        font-size: 1.15rem;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+    }
+    
+    .research-area-title {
+        font-size: 1rem;
+    }
+    
+    .publication-item {
+        padding: 0.875rem;
+    }
+    
+    .publication-title {
+        font-size: 0.85rem;
+    }
+    
+    .publication-authors,
+    .publication-venue,
+    .publication-desc {
+        font-size: 0.7rem;
+    }
+    
+    body {
+        font-size: 13px;
+    }
+    
+    .news-list li,
+    .talk-title,
+    .award-item,
+    .review-item,
+    .teaching-item {
+        font-size: 0.75rem;
     }
 }
