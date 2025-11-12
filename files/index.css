@@ -810,10 +810,34 @@ a:hover {
 }
 
 footer {
-    padding: 2rem 0 3rem;
+    padding: 1rem 0 2rem;
     color: var(--muted);
     font-size: 0.85rem;
     text-align: center;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, var(--line) 0%, var(--line) 45%, transparent 45%, transparent 55%, var(--line) 55%, var(--line) 100%);
+    margin: 0 auto 1rem;
+    position: relative;
+}
+
+footer::after {
+    content: '·';
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -0.5rem;
+    font-size: 1.2rem;
+    color: var(--muted);
+    line-height: 1;
 }
 
 .content-footer {
