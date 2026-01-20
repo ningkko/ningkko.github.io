@@ -507,6 +507,20 @@ a:hover {
     min-width: 70px;
 }
 
+.news-publication {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    padding: 1rem;
+}
+
+.news-publication .publication-figure {
+    max-width: 140px;
+}
+
+.news-publication .publication-desc {
+    margin-top: 0.5rem;
+}
+
 /* Research Areas */
 .research-area {
     margin-bottom: 3rem;
@@ -1371,6 +1385,11 @@ hr {
     .teaching-item {
         font-size: 0.8rem;
         padding: 0.5rem 0;
+    }
+
+    .footer-note {
+        font-size: 0.78rem;
+        line-height: 1.5;
     }
     
     body {
