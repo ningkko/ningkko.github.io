@@ -21,6 +21,144 @@
 	<!-- Custom styles for this template -->
 	<link href="files/index.css" rel="stylesheet">
 	<link rel="shortcut icon" href="files/img/hms.png">
+	<style>
+		.content-grid { grid-template-columns: minmax(220px, 260px) minmax(0, 1fr); }
+		.profile-column, .profile-column .profile-section, .profile-column .profile-section .stacked-list { font-size: 0.65rem; }
+		.profile-column .profile-caption { font-size: 0.58rem; }
+		.profile-column .eyebrow { font-size: 0.59rem; }
+		/* Main prose: one size for content column */
+		.content-column { font-size: 0.84rem; }
+		#Introduction,
+		#Introduction .about-news,
+		#Introduction #credentials-content { font-size: inherit; }
+		#credentials-content { color: #6b7780; }
+		#credentials-content strong { color: #5a6570; font-weight: 600; }
+		#credentials-content ul { color: #8a949e; }
+		#credentials-content li { color: #8a949e; }
+		#credentials-content li strong { color: #7a8690; font-weight: 600; }
+		#credentials-content li.credential-emphasis,
+		#credentials-content li.credential-emphasis strong {
+			color: var(--text, #1a1a1a);
+		}
+		.about-news { margin-top: 1.75rem; }
+		.news-tag-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 1rem; color: #6b7780; font-size: 0.82rem; }
+		.news-tag { display: inline-flex; align-items: center; gap: 0.28rem; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.14rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; white-space: nowrap; vertical-align: 0.08rem; margin-right: 0.5rem; }
+		.news-list .news-date { margin-left: 0.15rem; }
+		button.news-tag { cursor: pointer; font: inherit; margin-right: 0; }
+		.news-tag-legend .news-tag[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
+		.news-tag-icon { font-size: 0.9em; line-height: 1; }
+		.news-tag-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
+		.news-tag-paper { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.news-tag-funding { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
+		.news-tag-teaching { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
+		.news-tag-role { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.news-tag-milestone { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.news-list li[hidden] { display: none !important; }
+		.news-year[hidden] { display: none !important; }
+		.nav-menu-item-with-submenu { position: relative; }
+		.nav-submenu { display: none; position: absolute; z-index: 120; top: 100%; right: 0; min-width: 220px; margin: 0; padding: 0.4rem 0; list-style: none; background: #fff; border: 1px solid #e0e5e9; box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08); }
+		.nav-menu-item-with-submenu:hover .nav-submenu, .nav-menu-item-with-submenu:focus-within .nav-submenu, .nav-menu-item-with-submenu.is-open .nav-submenu { display: block; }
+		.nav-menu-horizontal .nav-submenu a { display: block; padding: 0.55rem 0.75rem; font-size: 0.76rem; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+		.other-section { scroll-margin-top: calc(var(--sticky-offset) + 1rem); }
+		.other-section + .other-section { margin-top: 3.25rem; }
+		.recognition-list { border-top: 1px solid #e0e5e9; }
+		.recognition-year { display: grid; grid-template-columns: 3.75rem minmax(0, 1fr); column-gap: 1rem; border-bottom: 1px solid #e0e5e9; }
+		.recognition-year-label { padding: 0.65rem 0; color: #52616d; font-size: 0.78rem; font-weight: 700; line-height: 1.6; font-variant-numeric: tabular-nums; }
+		.recognition-year-items .award-item { padding: 0.65rem 0; }
+		.recognition-year-items .award-item:last-child { border-bottom: none; }
+		@media (max-width: 576px) {
+			.recognition-year { grid-template-columns: 3.2rem minmax(0, 1fr); column-gap: 0.65rem; }
+		}
+		.pub-subarea-tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1rem 0 1.5rem; }
+		.pub-subarea-tab { border: 1px solid #cfd8df; border-radius: 0.35rem; background: #fff; color: #40505d; padding: 0.45rem 0.7rem; cursor: pointer; font: inherit; }
+		.pub-subarea-tab[aria-selected="true"] { background: #eef2f5; border-color: #8ea0ad; color: #17324d; font-weight: 600; }
+		.pub-subarea-panel[hidden] { display: none !important; }
+		.publication-item[hidden] { display: none !important; }
+		.research-topic-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin: 0 0 1.1rem; color: #6b7780; font-size: 0.82rem; }
+		.research-topic { display: inline-block; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.18rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; }
+		button.research-topic { cursor: pointer; font: inherit; }
+		.research-topic-legend .research-topic[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
+		.research-topic-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
+		.research-topic-rag { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-prompting { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.research-topic-longitudinal { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
+		.research-topic-medicine { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-psychiatry { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.research-topic-psychotherapy { background: #f7f0f3; border-color: #d4b0bf; color: #6d3f52; }
+		.research-topic-chatbots { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
+		.research-topic-mental-health { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
+		.research-topic-agents { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.research-topic-llm-foundation { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-llm-application { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
+		.research-topic-framework { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.research-topic-llms { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-training { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
+		.research-topic-inference-only { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
+		.research-topic-clinical { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
+		.research-topic-frameworks { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.research-topic-benchmarks { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-other { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
+		.research-topic-corpus { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
+		.research-topic-shared-task { background: #f7f0f3; border-color: #d4b0bf; color: #6d3f52; }
+		.research-topic-ehr { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
+		.research-topic-social-media { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-image { background: #f7f0f3; border-color: #d4b0bf; color: #6d3f52; }
+		.research-topic-surveillance { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
+		.research-topic-discourse { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.research-topic-sentiment { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
+		.research-topic-equity { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.research-topic-prediction { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
+		.publication-figure-placeholder { min-height: 150px; border: 1px dashed #b8c2ca; border-radius: 0.35rem; background: #f7f9fa; color: #6b7780; display: flex; align-items: center; justify-content: center; padding: 1rem; text-align: center; font-size: 0.9rem; }
+		.talk-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin: 0 0 1.1rem; color: #6b7780; font-size: 0.82rem; }
+		.talk-type { display: inline-block; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.18rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; }
+		button.talk-type { cursor: pointer; font: inherit; }
+		.talk-legend .talk-type[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
+		.talk-type-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
+		.talk-type-talk { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
+		.talk-type-lecture { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.talk-type-event { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
+		.talk-title .talk-type { margin-right: 0.4rem; vertical-align: 0.08rem; }
+		.talk-item[hidden] { display: none !important; }
+		.main-tab-panel[hidden] { display: none !important; }
+		.main-site-tab[aria-selected="true"] { font-weight: 600; text-decoration: underline; text-underline-offset: 0.25rem; }
+		.impact-inline { margin: 0.85rem 0 1.25rem; line-height: 1.65; font-size: inherit; }
+		.impact-sup-logo { display: inline-block; width: 0.85em; height: 0.85em; margin: 0 0.05em 0 0.12em; vertical-align: super; object-fit: contain; border-radius: 0.1em; }
+		.media-coverage-list { display: flex; flex-direction: column; gap: 0; }
+		.media-coverage-category { margin: 0 0 1.75rem; }
+		.media-coverage-category:last-child { margin-bottom: 0; }
+		.media-coverage-category-title {
+			font-size: 1.2rem;
+			font-weight: 700;
+			margin: 2.5rem 0 0.7rem;
+			padding-bottom: 0.4rem;
+			border-bottom: 1px solid #e0e5e9;
+			color: #17324d;
+			letter-spacing: -0.02em;
+			line-height: 1.3;
+			text-align: center;
+		}
+		.media-coverage-category:first-child .media-coverage-category-title { margin-top: 0.35rem; }
+		.media-coverage-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem 0; border: none; border-bottom: 1px solid #e0e5e9; font-size: inherit; line-height: 1.55; color: inherit; text-decoration: none; }
+		.media-coverage-category .media-coverage-item:last-child { border-bottom: none; }
+		.media-coverage-item:hover { color: #17324d; border-bottom-color: #9aabb7; }
+		.media-coverage-item img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; margin-top: 0.15rem; }
+		.media-coverage-org { font-weight: 600; }
+		.media-coverage-doc { color: #52616d; font-weight: 400; }
+		@media (min-width: 993px) {
+			html, body { height: 100%; }
+			body { display: flex; flex-direction: column; overflow: hidden; }
+			.top-nav { position: relative; flex: 0 0 auto; }
+			.main-container { flex: 1 1 auto; min-height: 0; padding-bottom: 2rem; overflow: hidden; }
+			.content-grid { height: 100%; min-height: 0; align-items: stretch; }
+			.profile-column { position: static; top: auto; height: 100%; max-height: none; overflow-y: auto; overscroll-behavior: contain; }
+			.content-column { height: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+		}
+		@media (max-width: 992px) {
+			.content-grid { grid-template-columns: 1fr; }
+			.profile-photo { max-width: 260px; margin-left: auto; margin-right: auto; }
+			.profile-image { max-width: 240px; width: 100%; margin: 0 auto; }
+		}
+	</style>
 
 </head>
 
@@ -30,15 +168,20 @@
 	<nav class="top-nav">
 		<div class="container">
 			<div class="nav-container">
-				<a href="#top" class="nav-name" id="nav-name">Yining Hua</a>
-				<ul class="nav-menu-horizontal">
-					<li><a href="#Introduction">Introduction</a></li>
-					<li><a href="#News">News</a></li>
-					<li><a href="#Research">Research</a></li>
-					<li><a href="#Talks">Talks & Lectures</a></li>
-					<li><a href="#Recognition">Awards</a></li>
-					<li><a href="#Reviews">Review Service</a></li>
-					<li><a href="#Teaching">Teaching</a></li>
+				<a href="#Introduction" class="nav-name" id="nav-name" data-main-tab-target="Introduction">Yining Hua</a>
+				<ul class="nav-menu-horizontal" role="tablist" aria-label="Site sections">
+					<li><a class="main-site-tab" id="main-tab-about" href="#Introduction" role="tab" aria-controls="Introduction" aria-selected="true">Introduction</a></li>
+					<li><a class="main-site-tab" id="main-tab-research" href="#Research" role="tab" aria-controls="Research" aria-selected="false">Research</a></li>
+					<li><a class="main-site-tab" id="main-tab-talks" href="#Talks" role="tab" aria-controls="Talks" aria-selected="false">Talks &amp; Lectures</a></li>
+					<li><a class="main-site-tab" id="main-tab-media" href="#MediaCoverage" role="tab" aria-controls="MediaCoverage" aria-selected="false">Media Coverage</a></li>
+					<li class="nav-menu-item-with-submenu" id="other-menu">
+						<a class="main-site-tab" id="main-tab-recognition" href="#Recognition" role="tab" aria-controls="Recognition" aria-selected="false" aria-haspopup="true" aria-expanded="false">Other</a>
+						<ul class="nav-submenu" aria-label="Other sections">
+							<li><a href="#AwardsSection" data-other-section="AwardsSection">Awards &amp; Fellowships &amp; Funding</a></li>
+							<li><a href="#ReviewServiceSection" data-other-section="ReviewServiceSection">Review Service</a></li>
+							<li><a href="#TeachingSection" data-other-section="TeachingSection">Teaching</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -53,56 +196,64 @@
 			</aside>
 
 			<div class="content-column">
-				<section class="section-block" id="Introduction">
-					<!-- Introduction content will be populated by JavaScript -->
-				</section>
-
-				<section class="section-block" id="News">
-					<h3 class="section-title centered">Latest News</h3>
-					<div id="news-content">
-						<!-- News content will be populated by JavaScript -->
+				<section class="section-block main-tab-panel" id="Introduction" role="tabpanel" aria-labelledby="main-tab-about">
+					<h3 class="section-title centered">Introduction</h3>
+					<div id="introduction-content"><!-- Introduction content will be populated by JavaScript --></div>
+					<div id="credentials-content"><!-- Education and experience will be populated by JavaScript --></div>
+					<div class="about-news">
+						<h3 class="section-title centered">Latest News</h3>
+						<div id="news-content">
+							<!-- News content will be populated by JavaScript -->
+						</div>
 					</div>
 				</section>
 
-				<section class="section-block" id="Research">
-					<h3 class="section-title centered">Selected Work in LLMs, Agents, and Applied AI</h3>
+				<section class="section-block main-tab-panel" id="Research" role="tabpanel" aria-labelledby="main-tab-research" hidden>
+					<h3 class="section-title centered">Selected Publications</h3>
 					<div id="research-content">
 						<!-- Research content will be populated by JavaScript -->
 					</div>
 				</section>
 
-				<section class="section-block" id="Talks">
-					<h3 class="section-title centered">Talks & Events</h3>
+				<section class="section-block main-tab-panel" id="Talks" role="tabpanel" aria-labelledby="main-tab-talks" hidden>
+					<h3 class="section-title centered">Talks &amp; Events</h3>
 					<div class="talks-list" id="talks-content">
 						<!-- Talks content will be populated by JavaScript -->
 					</div>
 				</section>
 
-				<section class="section-block" id="Recognition">
-					<h3 class="section-title centered">Awards, Fellowships & Funding</h3>
-					<div class="awards-list" id="awards-content">
-						<!-- Awards content will be populated by JavaScript -->
+				<section class="section-block main-tab-panel" id="MediaCoverage" role="tabpanel" aria-labelledby="main-tab-media" hidden>
+					<h3 class="section-title centered">Media Coverage</h3>
+					<div id="impact-content"><!-- Impact intro will be populated by JavaScript --></div>
+					<div class="media-coverage-list" id="media-coverage-content">
+						<!-- Media coverage content will be populated by JavaScript -->
 					</div>
 				</section>
 
-				<section class="section-block" id="Reviews">
-					<h3 class="section-title centered">Review Service</h3>
-					<div class="reviews-list" id="reviews-content">
-						<!-- Reviews content will be populated by JavaScript -->
+				<section class="section-block main-tab-panel" id="Recognition" role="tabpanel" aria-labelledby="main-tab-recognition" hidden>
+					<div class="other-section" id="AwardsSection">
+						<h3 class="section-title centered">Awards &amp; Fellowships &amp; Funding</h3>
+						<div class="awards-list" id="awards-content">
+							<!-- Awards, fellowships, and funding will be populated by JavaScript -->
+						</div>
 					</div>
-				</section>
-
-				<section class="section-block" id="Teaching">
-					<h3 class="section-title centered">Teaching</h3>
-					<div class="teaching-list" id="teaching-content">
-						<!-- Teaching content will be populated by JavaScript -->
+					<div class="other-section" id="ReviewServiceSection">
+						<h3 class="section-title centered">Review Service</h3>
+						<div class="reviews-list" id="reviews-content">
+							<!-- Reviews content will be populated by JavaScript -->
+						</div>
+					</div>
+					<div class="other-section" id="TeachingSection">
+						<h3 class="section-title centered">Teaching</h3>
+						<div class="teaching-list" id="teaching-content">
+							<!-- Teaching content will be populated by JavaScript -->
+						</div>
 					</div>
 				</section>
 
 				<hr>
 				<footer class="content-footer">
-					<p id="last-edited">Last edited: 01/2025</p>
-					<p class="footer-note">Thank you for reading. I had a very old personal website built when I was in undergrad, which I still think is cute: <a href="hidden/wired.html" target="_blank" rel="noopener">W I R E D .</a></p>
+					<p id="last-edited">Last edited: 08/2026</p>
 				</footer>
 			</div>
 		</div>
@@ -117,17 +268,18 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	
 	<!-- Embedded JSON data - Edit the JSON below directly -->
+	<!-- Never restore Mets-cov or Tweebank papers to the publication list. -->
 	<script type="application/json" id="site-data">
 {
   "profile": {
     "name": "Yining Hua",
     "photo": {
       "src": "files/img/ning.jpeg",
-      "alt": "Portrait of Yining Hua",
-      "caption": "Fishers Island, NY, Summer 2021"
+      "alt": "Portrait",
+      "caption": "Fishers Island, NY, Summer 2021<br>(my first cross-country flight, with <a href=\"http://bobbeede.com/\" target=\"_blank\" rel=\"noopener\">Bob</a>)"
     },
     "contact": {
-      "email": "yininghua@g.[myschool].edu",
+      "email": "yininghua@g.harvard.edu",
       "links": [
         {
           "text": "Google Scholar",
@@ -136,51 +288,62 @@
         {
           "text": "LinkedIn",
           "url": "https://www.linkedin.com/in/yining-hua-393b34112/"
-        },
-        {
-          "text": "CV",
-          "url": "files/cv_yininghua.pdf"
         }
       ]
     },
     "researchInterests": [
-      "Large language models & evaluation",
-      "AI agents, RAG, and tool use",
-      "AI safety, bias, and measurement",
-      "Applied NLP in high-stakes domains"
+      "Evaluation science & benchmark design",
+      "Language models & AI agents",
+      "Healthcare AI & human evaluation",
+      "Real-world data, causal inference & prediction"
     ]
   },
   "introduction": {
     "paragraphs": [
-      "<strong>Hi, I'm Yining (Nin) Hua.</strong> I’m a PhD student at Harvard. I work on <strong>LLMs, agentic systems, and reliable AI evaluation</strong>. My background is in NLP, with training in biomedical informatics, epidemiology, and biostatistics, which give me a strong bias toward methods that are measurable, stress-tested, and useful outside toy demos.",
-      "I mostly build and evaluate language model systems: RAG pipelines, benchmark design, bias and safety assessment, and real-world deployment workflows and evidence. I focus on how systems reason, fail, and earn trust, with high-stakes applications.",
-      "<strong>I'm open to collaboration and advising. Feel free to email me - I enjoy seeing research as a way of creative experiences with friends.</strong> I feel lucky that I've had great collaborators across the world; without them I couldn't have achieved what I have."
+      "Hi, I'm Yining (Nin) Hua. I’m a PhD student at Harvard advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>. I am trained in computer science, epidemiology, and biostatistics. I develop <strong>algorithms</strong>, <strong>models</strong>, and <strong>agents</strong> that generate and communicate <strong>evidence from real-world data</strong> and data informed by real-world settings. I also study <strong>agent evaluation</strong> through translating domain expertise into <strong>measurable criteria</strong>. Across my work, epidemiologic principles such as <strong>study design</strong>, <strong>measurement</strong>, <strong>bias</strong>, and <strong>population differences</strong> guide what conclusions can validly be drawn from data and analyses."
     ],
     "education": [
-      "PhD, Epidemiology (Population Health Sciences), Harvard T.H. Chan School of Public Health (Expected May 2028)",
-      "MSc, Biomedical Informatics, Harvard Medical School (2021–2023)",
-      "BA, Computer Science, Smith College (2017–2021; exchange at Harvard College 2020–2021)"
+      "<strong>PhD, Epidemiology (Population Health Sciences)</strong>, Harvard T.H. Chan School of Public Health (Expected May 2027)",
+      "<strong>MSc, Biomedical Informatics</strong>, Harvard Medical School (2021–2023)",
+      "<strong>BA, Computer Science</strong>, Smith College (2017–2021; exchange at Harvard College 2020–2021)"
     ],
     "experience": [
-	"<strong>Squirrel AI</strong> · PhD Research Intern: LLM/RAG Systems · Seattle, WA (Remote) · June 2025–Present",
-	"<strong>Dandelion Health</strong> · PhD Intern: Study Design, Evaluation, and Applied AI · Boston, MA · July 2025–Present",
-      "<strong>Department of Neurology, Massachusetts General Hospital</strong> · AI research on digital twins and multimodal modeling · Boston, MA · Oct 2025–Present",
-      "<strong>Harvard Medical School & Other Affiliated Hospitals (BWH, BCH, BIDMC) </strong> · Boston, MA · 2021–2025"
-    ]
+      "<strong>Raycaster</strong> · Chief Scientist · NYC, New York · Jan 2026–Present",
+      "<strong>Department of Neurology, Massachusetts General Hospital</strong> · Boston, MA · Oct 2025–Present",
+      "<strong>Squirrel AI</strong> · PhD Research Intern · Seattle, WA (Remote) · June 2025–Jan 2026",
+      "<strong>Dandelion Health</strong> · PhD Intern · Boston, MA · July 2025–Jan 2026",
+      "<strong>Harvard Medical School & Other Affiliated Hospitals (BWH, BCH, BIDMC)</strong> · Boston, MA · 2021–2025"
+    ],
+    "closingParagraphs": []
   },
   "news": [
     {
       "year": "2026",
       "items": [
         {
-          "icon": "👩‍🏫",
-          "date": "Spring & Summer 2026",
-          "text": "I'll help teach <em>EPI 288: Intro to ML & Risk Prediction</em> and <em>EPI 236: Analytical Clinical Epidemiology</em> at Harvard T.H. Chan. Both courses emphasize careful modeling, validation, and the kind of empirical discipline I think modern AI work badly needs."
+          "date": "Jul 2026",
+          "text": "Our invited book chapter \"Advancing Mental Health Research With AI\" (chapter 11) is now published in <a href=\"https://shop.elsevier.com/books/artificial-intelligence-in-behavioral-and-mental-health-care/luxton/978-0-443-33151-0\" target=\"_blank\" rel=\"noopener\"><em>Artificial Intelligence in Behavioral and Mental Health Care</em></a>!",
+          "tag": "paper"
         },
         {
-          "icon": "📣",
+          "date": "Jul 2026",
+          "text": "We got selected for <a href=\"https://www.anthropic.com/news/claude-science-ai-workbench\" target=\"_blank\" rel=\"noopener\">Anthropic's AI for Science Program</a> to develop and evaluate an evidence generation agent workbench with Claude Science.",
+          "tag": "funding"
+        },
+        {
+          "date": "Jul 2026",
+          "text": "The <a href=\"https://psydefdetect-shared-task.github.io/\" target=\"_blank\" rel=\"noopener\">PsyDefDetect Shared Task</a> at BioNLP @ ACL 2026 is now archived.",
+          "tag": "milestone"
+        },
+        {
+          "date": "Spring & Summer 2026",
+          "text": "I'll help teach <em>EPI 288: Intro to ML & Risk Prediction</em> and <em>EPI 236: Analytical Clinical Epidemiology</em> at Harvard T.H. Chan. Both courses emphasize careful modeling, validation, and the kind of empirical discipline I think modern AI work badly needs.",
+          "tag": "teaching"
+        },
+        {
           "date": "Jan 2026",
-          "text": "I'm serving as Proceedings Chair for the PsyDefDetect Shared Task at BioNLP @ ACL 2026.<div class=\"publication-item news-publication\"><div class=\"publication-content\"><h5 class=\"publication-title\"><strong><a href=\"https://psydefdetect-shared-task.github.io/\" target=\"_blank\" rel=\"noopener\">PsyDefDetect Shared Task @ BioNLP 2026</a></strong></h5><p class=\"publication-venue\"><em>BioNLP @ ACL 2026</em></p><p class=\"publication-desc\">Built on our work \"<a href=\"https://arxiv.org/pdf/2512.15601\" target=\"_blank\" rel=\"noopener\">You Never Know a Person, You Only Know Their Defenses</a>\" and the PSYDEFCONV dataset for defense mechanism detection in supportive conversations.</p></div><div class=\"publication-figure\"><img src=\"files/img/events/psydef.jpeg\" alt=\"PsyDefDetect Shared Task poster\" onerror=\"this.style.display='none'\"></div></div>"
+          "text": "I joined Raycaster as Chief Scientist. Excited to work on developing harness and infrastructure for long-horizon agents for better evidence retrieval and synthesis.",
+          "tag": "role"
         }
       ]
     },
@@ -188,43 +351,718 @@
       "year": "2025",
       "items": [
         {
-          "icon": "📄",
           "date": "Oct 2025",
-          "text": "Our paper \"<a href=\"https://pubmed.ncbi.nlm.nih.gov/40948070/\" target=\"_blank\" rel=\"noopener\">Charting the evolution of artificial intelligence mental health chatbots from rule-based systems to large language models: a systematic review</a>\" published in <em>World Psychiatry</em>."
+          "text": "Our paper \"<a href=\"https://pubmed.ncbi.nlm.nih.gov/40948070/\" target=\"_blank\" rel=\"noopener\">Charting the evolution of artificial intelligence mental health chatbots from rule-based systems to large language models: a systematic review</a>\" published in <em>World Psychiatry</em>.",
+          "tag": "paper"
         },
         {
-          "icon": "🎉",
           "date": "Jul–Aug 2025",
-          "text": "Multiple papers accepted across LLM evaluation, chatbot assessment, and applied NLP: <em>World Psychiatry</em>, <em>npj Digital Medicine</em>, <em>JMIR AI</em>, <em>Translational Psychiatry</em>, <em>NPP—Digital Psychiatry & Neuroscience</em>."
+          "text": "Multiple papers accepted across LLM evaluation, chatbot assessment, and applied NLP: <em>World Psychiatry</em>, <em>npj Digital Medicine</em>, <em>JMIR AI</em>, <em>Translational Psychiatry</em>, <em>NPP-Digital Psychiatry & Neuroscience</em>.",
+          "tag": "paper"
         },
         {
-          "icon": "🎓",
           "date": "Jun 2025",
-          "text": "Passed PhD Qualification Exam 1 (two written parts; 17 required courses). The biggest milestone in my PhD program so far!"
+          "text": "Passed PhD Qualification Exam 1 (two written parts; 17 required courses). The biggest milestone in my PhD program so far!",
+          "tag": "milestone"
         },
         {
-          "icon": "💼",
           "date": "May 2025",
-          "text": "I joined Squirrel AI and Dandelion Health for summer work spanning LLM systems, RAG pipelines, and applied evaluation."
+          "text": "I joined Squirrel AI and Dandelion Health for summer work spanning LLM systems, RAG pipelines, and applied evaluation.",
+          "tag": "role"
         },
         {
-          "icon": "📄",
           "date": "Apr 2025",
-          "text": "Our paper \"<a href=\"https://www.nature.com/articles/s41746-025-01611-4\" target=\"_blank\" rel=\"noopener\">A scoping review of large language models for generative tasks in mental health care</a>\" published online in <em>npj Digital Medicine</em>."
+          "text": "Our paper \"<a href=\"https://www.nature.com/articles/s41746-025-01611-4\" target=\"_blank\" rel=\"noopener\">A scoping review of large language models for generative tasks in mental health care</a>\" published online in <em>npj Digital Medicine</em>.",
+          "tag": "paper"
         },
         {
-          "icon": "🏆",
           "date": "Jan 2025",
-          "text": "\"<a href=\"https://aclanthology.org/2025.coling-main.616/\" target=\"_blank\" rel=\"noopener\">Detecting Conversational Mental Manipulation with Intent-Aware Prompting</a>\" won Best Short Paper at <strong>COLING 2025</strong>."
+          "text": "\"<a href=\"https://aclanthology.org/2025.coling-main.616/\" target=\"_blank\" rel=\"noopener\">Detecting Conversational Mental Manipulation with Intent-Aware Prompting</a>\" won Best Short Paper at <strong>COLING 2025</strong>.",
+          "tag": "paper"
         }
       ]
     }
   ],
+  "impact": {
+    "summary": "My research has been cited in government reports and professional or clinical guidance, and reported by national and specialist media, such as",
+    "organizations": [
+      {
+        "name": "National Academies of Sciences, Engineering, and Medicine",
+        "document": "Sex and Gender Identification and Implications for Disability Evaluation, commissioned by the U.S. Social Security Administration",
+        "url": "https://nap.nationalacademies.org/catalog/27775/sex-and-gender-identification-and-implications-for-disability-evaluation",
+        "logo": "https://www.google.com/s2/favicons?domain=nationalacademies.org&sz=128",
+        "featured": true,
+        "category": "government"
+      },
+      {
+        "name": "Centers for Disease Control and Prevention",
+        "document": "Cancer Public Health Genomics and Precision Health Knowledge Base: Melanoma",
+        "url": "https://phgkb.cdc.gov/PHGKB/specificPHGKB.action?query=Melanoma&topic=Cancer",
+        "logo": "https://www.google.com/s2/favicons?domain=cdc.gov&sz=128",
+        "featured": true,
+        "category": "government"
+      },
+      {
+        "name": "Agency for Healthcare Research and Quality",
+        "document": "Improving the Source Credibility of Patient-Centered Clinical Decision Support Tools",
+        "url": "https://digital.ahrq.gov/sites/default/files/Final%20TPC%20P3_Source%20Credibility%20to%20AHRQ%208.2.23_508c%20Version.pdf",
+        "logo": "https://www.google.com/s2/favicons?domain=ahrq.gov&sz=128",
+        "featured": true,
+        "category": "government"
+      },
+      {
+        "name": "Office of the National Coordinator for Health Information Technology",
+        "document": "SAFER Self-Assessment: Patient Identification",
+        "url": "https://healthit.gov/wp-content/uploads/2025/01/Safer-Guide-6.-Patient-Identification-Final.pdf",
+        "logo": "https://www.google.com/s2/favicons?domain=healthit.gov&sz=128",
+        "featured": true,
+        "category": "government"
+      },
+      {
+        "name": "American Psychological Association",
+        "document": "Health Advisory on the Use of Generative AI Chatbots and Wellness Applications for Mental Health",
+        "url": "https://www.apa.org/topics/artificial-intelligence-machine-learning/health-advisory-ai-chatbots-wellness-apps-mental-health.pdf",
+        "logo": "https://www.google.com/s2/favicons?domain=apa.org&sz=128",
+        "featured": true,
+        "category": "professional"
+      },
+      {
+        "name": "American Academy of Pediatrics",
+        "document": "Counseling Patients and Families on Using AI Chatbots",
+        "url": "https://www.aap.org/en/patient-care/media-and-children/center-of-excellence-on-social-media-and-youth-mental-health/qa-portal/qa-portal-library/qa-portal-library-questions/counseling-patients-and-families-on-using-ai-chatbots/",
+        "logo": "https://www.google.com/s2/favicons?domain=aap.org&sz=128",
+        "featured": true,
+        "category": "professional"
+      },
+      {
+        "name": "Networking and Information Technology Research and Development Program",
+        "document": "NITRD News Brief #119",
+        "url": "https://www.nitrd.gov/pubs/newsbrief/NITRD-News-Brief-111022.pdf",
+        "logo": "https://www.google.com/s2/favicons?domain=nitrd.gov&sz=128",
+        "category": "government"
+      },
+      {
+        "name": "Massachusetts General Hospital",
+        "document": "Artificial Intelligence Approach May Help Identify Melanoma Survivors Who Face A High Risk of Cancer Recurrence",
+        "url": "https://www.massgeneral.org/news/press-release/artificial-intelligence-may-help-melanoma-survivors-with-high-risk-cancer-recurrence",
+        "logo": "https://www.google.com/s2/favicons?domain=massgeneral.org&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "Harvard Gazette",
+        "document": "AI tool predicts melanoma survivor's risk of recurrence",
+        "url": "https://news.harvard.edu/gazette/story/2022/11/ai-tool-predicts-melanoma-survivors-risk-of-recurrence/",
+        "logo": "https://www.google.com/s2/favicons?domain=harvard.edu&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "The Harvard Crimson",
+        "document": "MGH Researchers Develop AI Tool To Predict Melanoma Recurrence",
+        "url": "https://www.thecrimson.com/article/2022/11/14/mgh-melanoma-research/",
+        "logo": "https://www.google.com/s2/favicons?domain=thecrimson.com&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "Freethink",
+        "document": "AI could help cancer patients avoid a deadly melanoma recurrence",
+        "url": "https://www.freethink.com/robots-ai/melanoma-recurrence",
+        "logo": "https://www.google.com/s2/favicons?domain=freethink.com&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "European Medical Journal",
+        "document": "Is Early-Stage Melanoma Recurrence Predictable with Artificial Intelligence?",
+        "url": "https://www.emjreviews.com/en-us/amj/dermatology/news/is-early-stage-melanoma-recurrence-predictable-with-artificial-intelligence/",
+        "logo": "https://www.google.com/s2/favicons?domain=emjreviews.com&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "Practical Dermatology",
+        "document": "Exploring the Role of AI in Predicting Early-stage Melanoma Recurrence Rate",
+        "url": "https://practicaldermatology.com/topics/practice-management/exploring-the-role-of-ai-in-predicting-early-stage-melanoma-recurrence-rate/23829/",
+        "logo": "https://www.google.com/s2/favicons?domain=practicaldermatology.com&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "ScienceDaily",
+        "document": "Artificial Intelligence Approach May Help Identify Melanoma Survivors Who Face a High Risk of Cancer Recurrence",
+        "url": "https://www.sciencedaily.com/releases/2022/10/221031134034.htm",
+        "logo": "https://www.google.com/s2/favicons?domain=sciencedaily.com&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "EurekAlert",
+        "document": "Artificial Intelligence Approach May Help Identify Melanoma Survivors Who Face a High Risk of Cancer Recurrence",
+        "url": "https://www.eurekalert.org/news-releases/969717",
+        "logo": "https://www.google.com/s2/favicons?domain=eurekalert.org&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "News-Medical",
+        "document": "APA Urges Safeguards for Using AI in Mental Health",
+        "url": "https://www.news-medical.net/news/20251113/APA-urges-safeguards-for-using-AI-in-mental-health.aspx",
+        "logo": "https://www.google.com/s2/favicons?domain=news-medical.net&sz=128",
+        "category": "news"
+      },
+      {
+        "name": "University of Edinburgh",
+        "document": "Equality, Diversity and Inclusion in AI Research: School of Informatics ED&I Reading Group discussion of transgender and gender-diverse patient identification in EHRs",
+        "url": "https://blogs.ed.ac.uk/infpeopleandculture/2024/04/22/equality-diversity-and-inclusion-in-ai-research-why-should-we-care-and-what-can-we-do-about-it/",
+        "logo": "https://www.google.com/s2/favicons?domain=ed.ac.uk&sz=128",
+        "category": "other"
+      },
+      {
+        "name": "American Medical Informatics Association",
+        "document": "AMIA 2025 Annual Symposium: Charting the Evolution of AI Mental Health Chatbots from Rule-Based Systems to Large Language Models",
+        "url": "https://amia.secure-platform.com/symposium/gallery/rounds/82021/details/18835",
+        "logo": "https://www.google.com/s2/favicons?domain=amia.org&sz=128",
+        "category": "other"
+      },
+      {
+        "name": "MindBench.ai",
+        "document": "An actionable platform to evaluate the profile and performance of large language models in a mental healthcare context",
+        "url": "https://mindbench.ai/",
+        "logo": "https://www.google.com/s2/favicons?domain=mindbench.ai&sz=128",
+        "category": "other"
+      }
+    ]
+  },
   "research": [
     {
-      "area": "LLM Systems, Evaluation & Agents",
-      "description": "Research on prompting, benchmark design, evaluation frameworks, conversational reasoning, and domain-specific deployment. The application domains vary, but the recurring question is the same: what makes an LLM system reliable enough to be useful?",
+      "area": "LLM & Agent Development",
+      "description": "Methods and systems for language models and agents.",
       "publications": [
+        {
+          "title": "DeKeyNLU: Enhancing Natural Language to SQL Generation through Task Decomposition and Keyword Extraction",
+          "url": "https://aclanthology.org/2025.findings-emnlp.1312/",
+          "authors": "Chen J, Chen Z, Hu X, Zhou P, <strong>Hua Y</strong>, Fang H, Choy CHY, Ke X, Luo J, Yuan Z",
+          "venue": "<em>Findings of EMNLP</em> 2025, pp. 24160–24176",
+          "description": "We introduce DeKeyNLU, a dataset of 1,500 annotated question-answer pairs for task decomposition and keyword extraction in natural-language-to-SQL systems. DeKeySQL uses the dataset in a three-module RAG pipeline and improves execution accuracy from 62.31% to 69.10% on BIRD and from 84.2% to 88.7% on Spider.",
+          "figure": {
+            "src": "files/img/papers/dekey.png",
+            "alt": "DeKeySQL task decomposition, keyword extraction, and performance comparison"
+          },
+          "topics": [
+            "RAG"
+          ]
+        },
+        {
+          "title": "From Posts to Timelines: Modeling Mental Health Dynamics from Social Media Timelines with Hybrid LLMs",
+          "url": "https://aclanthology.org/2025.clpsych-1.21/",
+          "authors": "Zhou P, <strong>Hua Y</strong>, et al.",
+          "venue": "<em>CLPsych at ACL</em> 2025, pp. 249–255",
+          "description": "We combine classification and generation to identify adaptive and maladaptive evidence, predict well-being, and summarize changes across social-media timelines. The generative approach better captures longitudinal context, showing the value of evaluating mental-health language at the timeline level instead of treating posts as isolated observations.",
+          "figure": {
+            "src": "files/img/papers/posts-timelines.png",
+            "alt": "Hybrid LLM framework for identifying adaptive and maladaptive evidence in social-media timelines"
+          },
+          "topics": [
+            "Longitudinal"
+          ]
+        },
+        {
+          "title": "Detecting Conversational Mental Manipulation with Intent-Aware Prompting",
+          "url": "https://aclanthology.org/2025.coling-main.616/",
+          "authors": "Ma J., Na H., Wang Z., <strong>Hua Y</strong>, Liu Y., Wang W., Chen L.",
+          "venue": "<em>COLING</em> 2025, pp. 9176:9183",
+          "description": "✨ <strong>Best Short Paper</strong>. This paper introduces Intent-Aware Prompting (IAP), a two-stage prompting strategy where an LLM first summarizes each speaker’s intent in a dialogue and then uses those intent summaries to decide whether mental manipulation is present, targeting improved Theory-of-Mind–like reasoning. Evaluated with GPT-4 on the MentalManip dataset, IAP outperforms zero-shot, few-shot, and chain-of-thought prompting, most notably reducing false negatives by 30.5% while improving accuracy and F1 scores.",
+          "figure": {
+            "src": "files/img/papers/pub5.jpg",
+            "alt": "Mental manipulation detection figure"
+          },
+          "topics": [
+            "Prompting"
+          ]
+        },
+        {
+          "title": "Qilin-Med: Multi-stage Knowledge Injection Advanced Medical Large Language Model",
+          "url": "https://arxiv.org/abs/2310.09089",
+          "authors": "Ye Q, Liu J, Chong D, Zhou P, <strong>Hua Y</strong>, Liu F, Cao M, Wang Z, Cheng X, et al.",
+          "venue": "<em>arXiv preprint</em> arXiv:2310.09089 (2023)",
+          "description": "We develop Qilin-Med, a Chinese medical LLM trained with a multi-stage knowledge-injection pipeline: domain continued pre-training, supervised fine-tuning, and direct preference optimization, plus RAG. We also release ChiMed, covering QA, plain text, knowledge graphs, and dialogues. On CMExam, Qilin-Med reaches 38.4–40.0% accuracy after CPT/SFT (vs. 33.5% for Baichuan-7B), and Qilin-Med-RAG reaches 42.8%.",
+          "figure": {
+            "src": "files/img/papers/qilin-med.png",
+            "alt": "Qilin-Med multi-stage CPT–SFT–DPO construction pipeline"
+          },
+          "topics": [
+            "Medicine"
+          ]
+        },
+        {
+          "title": "Qilin-Med-VL: Towards Chinese Large Vision-Language Model for General Healthcare",
+          "url": "https://arxiv.org/abs/2310.17956",
+          "authors": "Liu J, Wang Z, Ye Q, Chong D, Zhou P, <strong>Hua Y</strong>",
+          "venue": "<em>arXiv preprint</em> arXiv:2310.17956 (2023)",
+          "description": "We introduce Qilin-Med-VL, the first Chinese large vision-language model for general healthcare, combining a Vision Transformer with a Chinese LLM through feature alignment and instruction tuning. We also release ChiMed-VL, with more than 1M image–text pairs for medical captioning and multimodal question answering.",
+          "figure": {
+            "src": "files/img/papers/qilin-med-vl.png",
+            "alt": "Two-stage curriculum training scheme of Qilin-Med-VL"
+          },
+          "topics": [
+            "Agents",
+            "LLMs",
+            "Training",
+            "Inference-only"
+          ]
+        },
+        {
+          "title": "Continuous Training and Fine-tuning for Domain-Specific Language Models in Medical Question Answering",
+          "url": "https://arxiv.org/abs/2311.00204",
+          "authors": "Guo Z, <strong>Hua Y</strong>",
+          "venue": "<em>arXiv preprint</em> arXiv:2311.00204 (2023)",
+          "description": "We adapt Llama 2 models to Chinese medical QA with continuous training on ~1B medical tokens followed by instruction fine-tuning on 54K CMExam examples. Continual training plus fine-tuning lifts Llama-2-13B and Chinese-Llama-2-13B to 43.3% and 45.7% F1 on CMExam, approaching GPT-3.5-turbo with far less compute.",
+          "figure": {
+            "src": "files/img/papers/continuous-training.png",
+            "alt": "Continuous training and fine-tuning results for domain-specific medical language models"
+          },
+          "topics": [
+            "Medicine"
+          ]
+        },
+        {
+          "title": "GreenPLM: Cross-Lingual Transfer of Monolingual Pre-Trained Language Models at Almost No Cost",
+          "url": "https://doi.org/10.24963/ijcai.2023/698",
+          "authors": "Zeng Q, Garay L, Zhou P, Chong D, <strong>Hua Y</strong>, Wu J, Pan Y, Zhou H, Voigt R, Yang J",
+          "venue": "<em>IJCAI</em> 2023, pp. 6290–6298",
+          "description": "We propose GreenPLM, an energy-efficient framework that uses bilingual lexicons to transfer monolingual pretrained language models into new languages at almost no additional cost. Across 18 languages, GreenPLM matches or beats costly heuristics, and light continued pre-training (GreenPLM+) outperforms original monolingual PLMs in six of seven tested languages with up to 200× less pre-training effort.",
+          "figure": {
+            "src": "files/img/papers/greenplm.png",
+            "alt": "Trends of complexity and training cost in mainstream pretrained language models"
+          }
+        },
+        {
+          "title": "Identification of an ANCA-associated vasculitis cohort using deep learning and electronic health records",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39864108/",
+          "authors": "Wang L, Novoa-Laurentiev J, Cook C, Srivatsan S, <strong>Hua Y</strong>, Yang J, Miloslavsky E, Choi HK, Zhou L, Wallace ZS",
+          "venue": "<em>International Journal of Medical Informatics</em> 196:105797 (2025)",
+          "description": "We developed a deep-learning pipeline to identify patients with ANCA-associated vasculitis from longitudinal electronic health records. A hierarchical attention network achieved AUROCs of 0.983–0.991 across three labeled clinical-note datasets and an estimated sensitivity of 0.975 in a 2,000-patient test cohort. Compared with the strongest rule-based method, it identified six additional cases, representing 13% of confirmed cases.",
+          "figure": {
+            "src": "files/img/papers/anca.jpg",
+            "alt": "Two-phase process for identifying ANCA-associated vasculitis cases from electronic health records"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        },
+        {
+          "title": "Identifying psychosis episodes in psychiatric admission notes via rule-based methods, machine learning, and pre-trained language models",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10984080/",
+          "authors": "<strong>Hua Y</strong>, Blackley S.V., Shinn A.K., Skinner J.P., Moran L.V., Zhou L.",
+          "venue": "<em>Translational Psychiatry</em>; Accepted (2025)",
+          "description": "This study systematically compares rule-based, machine learning, and transformer-based NLP approaches for identifying psychosis from 4,629 psychiatric admission notes at McLean Hospital (2005–2019). We introduce a keyword-assisted pipeline that first filters notes using expert-curated psychosis terms, then applies TF-IDF + XGBoost and fine-tuned BERT models for classification. We demonstrate how keyword preselection reduces noise, enables analysis of long clinical texts, and provides a reproducible framework for automating psychosis detection from unstructured EHR data.",
+          "figure": {
+            "src": "files/img/papers/pub21.jpg",
+            "alt": "Psychosis identification in admission notes figure"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        },
+        {
+          "title": "Analysis of longitudinal social media for monitoring symptoms during a pandemic",
+          "url": "https://www.sciencedirect.com/science/article/pii/S1532046425000073",
+          "authors": "Lin S, Garay L, <strong>Hua Y</strong>, Guo Z, Li W, Li M, Zhang Y, Xu X, Yang J",
+          "venue": "<em>Journal of Biomedical Informatics</em> 162:104778 (2025)",
+          "description": "We develop a longitudinal social-media pipeline for pandemic symptom surveillance using named-entity recognition, GCN-BERT denoising, and UMLS normalization. From 191,096 self-reported COVID-19 cases and 811 million historical tweets, the pipeline retained 832,287 user-experienced symptom posts and achieved 0.927 F1. The resulting cohort supports comparison of symptom prevalence, duration, and co-occurrence across pandemic variants.",
+          "figure": {
+            "src": "files/img/papers/longitudinal-symptom-monitoring.png",
+            "alt": "Longitudinal social-media pipeline for pandemic symptom surveillance with NER, denoising, and UMLS normalization"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        },
+        {
+          "title": "Streamlining social media information retrieval for COVID-19 research with deep learning",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11187427/",
+          "authors": "<strong>Hua Y</strong>, Lin S., Li M., Zhang Y., Foer D., Zhou P., Zhou L., Yang J.",
+          "venue": "<em>JAMIA</em> 31(7):1569:1577 (2024)",
+          "description": "We present a three-step NLP pipeline (medical NER → entity normalization → UMLS mapping) to automatically curate a colloquial symptom dictionary from 18M+ COVID-19–related English tweets. The final lexicon links 38k lay symptom expressions to 966 UMLS concepts with 95% accuracy, and captures many more symptoms, especially mental health symptoms like anxiety and depression, than traditional keyword lists, improving social media–based public health surveillance and information retrieval.",
+          "figure": {
+            "src": "files/img/papers/social-media-retrieval.png",
+            "alt": "Pipeline and example for colloquial symptom dictionary construction from COVID-19 tweets"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        },
+        {
+          "title": "High-performing Multi-task Model of Urinary Tract Dilation (UTD) Classification for Neonatal Ultrasound Reports Through Natural Language Processing",
+          "url": "https://www.medrxiv.org/content/10.1101/2024.01.23.24301680v1",
+          "authors": "<strong>Hua Y</strong>, Mukkamala A, Estrada C, Li ML, Wang HHS",
+          "venue": "<em>medRxiv preprint</em> (2024)",
+          "description": "We develop a multi-task Bio_ClinicalBERT model for 11 urinary-tract-dilation classification tasks on 2,460 neonatal ultrasound reports. Shared representations with iterative label correction reach weighted F1 &gt; 0.9 across UTD components and outperform GPT-3.5 by 20–30% accuracy, supporting scalable extraction from unstructured radiology text.",
+          "figure": {
+            "src": "files/img/papers/utd-ultrasound.png",
+            "alt": "Overall study design for multi-task UTD classification from neonatal ultrasound reports"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        },
+        {
+          "title": "A Deep Learning Approach for Transgender and Gender Diverse Patient Identification in Electronic Health Records",
+          "url": "https://doi.org/10.1016/j.jbi.2023.104507",
+          "authors": "<strong>Hua Y</strong>, Wang L., Nguyen V., Rieu-Werden M., McDowell A., Bates D.W., Foer D., Zhou L.",
+          "venue": "<em>Journal of Biomedical Informatics</em> 147 (Nov 2023): 104507",
+          "description": "We developed a deep learning–based NLP pipeline combining structured EHR data and clinical notes to identify transgender and gender diverse patients. The workflow integrates curated and model-expanded gender-related keywords, text-converted structured fields, and a ClinicalBERT classifier that outperforms rule-based and traditional ML methods for patient-level identification.",
+          "figure": {
+            "src": "files/img/papers/pub22.jpg",
+            "alt": "Transgender patient identification pipeline"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        },
+        {
+          "title": "Exploring Social Media for Early Detection of Depression in COVID-19 Patients",
+          "url": "https://arxiv.org/abs/2302.12044",
+          "authors": "Wu J, Wu X, <strong>Hua Y</strong>, Lin S, Zheng Y, Yang J",
+          "venue": "<em>Proceedings of the ACM Web Conference</em> 2023, pp. 3968–3977",
+          "description": "We construct a longitudinal social-media dataset covering activity before and after self-reported COVID-19 infection and examine signals associated with later depression risk. The proposed model combines textual and emotional features with daily mood variation through knowledge distillation, reaching an AUROC of 0.9317 and an AUPRC of 0.8116 for early depression-risk detection.",
+          "figure": {
+            "src": "files/img/papers/depression.png",
+            "alt": "Longitudinal social-media timeline for early depression-risk prediction"
+          },
+          "topics": [
+            "Training",
+            "LLMs",
+            "Longitudinal"
+          ]
+        },
+        {
+          "title": "Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9278189/",
+          "authors": "<strong>Hua Y</strong>, Jiang H., Lin S., Yang J., Plasek J.M., Bates D.W., Zhou L.",
+          "venue": "<em>JAMIA</em> 29(10):1668:1678 (2022)",
+          "description": "We biult a BERT-based Twitter analysis pipeline to track public stance toward four COVID-19 drugs (off-label: Hydroxychloroquine, Ivermectin; FDA-authorized: Remdesivir, Molnupiravir) across two years of U.S. tweets. Off-label drugs dominated discussion and support, heavily shaped by politics, celebrity influence, and misinformation, while FDA-authorized drugs were less discussed; stance patterns varied sharply by party, geography, and healthcare background, highlighting targets for public health communication.",
+          "figure": {
+            "src": "files/img/papers/pub13.jpg",
+            "alt": "Twitter COVID-19 medication perceptions figure"
+          },
+          "topics": [
+            "Training",
+            "LLMs"
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Evaluation & Benchmarks",
+      "description": "Benchmarks and evaluation for models and agents.",
+      "publications": [
+        {
+          "title": "Design and Report Benchmarks for Knowledge Work",
+          "url": "https://arxiv.org/abs/2605.23262",
+          "authors": "<strong>Hua Y</strong>, Na H, Ayubcha C, Lian L",
+          "venue": "<em>arXiv preprint</em> arXiv:2605.23262 (2026)",
+          "description": "We propose a three-step approach for evaluating knowledge-work agents: define the work activity, specify the tested setting, and score the work product left by the system. Drawing on work studies and an inventory of 18 activities derived from O*NET, we analyze GDPval, OfficeQA Pro, and APEX-SWE to show how task, setting, and scoring choices limit the strongest real-world claim a benchmark score can support.",
+          "figure": {
+            "src": "files/img/papers/design-benchmarks.png",
+            "alt": "Work-activity atlas of O*NET knowledge work across 18 top-level operations"
+          },
+          "topics": [
+            "Frameworks"
+          ]
+        },
+        {
+          "title": "You Never Know a Person, You Only Know Their Defenses: Detecting Levels of Psychological Defense Mechanisms in Supportive Conversations",
+          "url": "https://aclanthology.org/2026.findings-acl.708/",
+          "authors": "Na H, Wang Z, Chen Z, Zhou P, <strong>Hua Y</strong>, Zhou GZ, Zhang H, Shen T, Wang W, Torous J, Ji S, Chen L",
+          "venue": "<em>Findings of ACL</em> 2026, pp. 14428–14448",
+          "description": "We introduce PsyDefConv, a corpus of 200 dialogues and 4,709 utterances, including 2,336 help-seeker turns labeled for defense level with Cohen’s κ of 0.639. DMRS Co-Pilot provides evidence-based pre-annotations through a four-stage pipeline and reduced average annotation time by 24.0%. The best benchmark macro-F1 remained near 30%, showing substantial headroom for fine-grained clinical-language modeling.",
+          "figure": {
+            "src": "files/img/papers/psydefconv.png",
+            "alt": "PsyDefConv defense-level distributions and dialogue trajectories"
+          },
+          "topics": [
+            "Other"
+          ]
+        },
+        {
+          "title": "Standardizing and scaffolding healthcare AI-chatbot evaluation",
+          "url": "https://ai.jmir.org/2025/1/e69006",
+          "authors": "<strong>Hua Y</strong>, Xia W, Bates D.W., Hartstein G.L., Kim H.T., Li M., Nelson B.W., Stromeyer C. IV, King D., Suh J., Zhou L., Torous J.",
+          "venue": "<em>JMIR AI</em>. 4:e69006 (2025)",
+          "description": "A PRISMA-guided systematic review of 11 evaluation frameworks (from 266 records) for health care AI chatbots that develops HAICEF, the Health Care AI Chatbot Evaluation Framework. HAICEF maps 271 evaluation questions into 3 priority domains (safety/privacy/fairness; trustworthiness/usefulness; design and operational effectiveness), 18 subdomains, and 60 constructs to scaffold standardized, stakeholder-informed assessment.",
+          "figure": {
+            "src": "files/img/papers/pub3.jpg",
+            "alt": "Healthcare AI chatbot evaluation figure"
+          },
+          "topics": [
+            "Frameworks"
+          ]
+        },
+        {
+          "title": "BrowseComp-ZH: Benchmarking Web Browsing Ability of Large Language Models in Chinese",
+          "url": "https://arxiv.org/abs/2504.19314",
+          "authors": "Zhou P, Leon B, Ying X, Zhang C, Shao Y, Ye Q, Chong D, Jin Z, Xie C, Cao M, Gu Y, Hong S, Ren J, Chen J, Liu C, <strong>Hua Y</strong>",
+          "venue": "<em>arXiv preprint</em> arXiv:2504.19314 (2025)",
+          "description": "We introduce a Chinese benchmark of 289 multi-hop questions across 11 domains to test whether language models can find and integrate dispersed web evidence. Most of the 20-plus evaluated models score below 10%, while the strongest deep-research system reaches 42.9%, showing a large gap in Chinese web-browsing performance.",
+          "figure": {
+            "src": "files/img/papers/browsecomp.png",
+            "alt": "Performance of models and AI search products on the BrowseComp-ZH dataset"
+          },
+          "topics": [
+            "Benchmarks"
+          ]
+        },
+        {
+          "title": "Mindbench.ai: an actionable platform to evaluate the profile and performance of large language models in a mental healthcare context",
+          "url": "https://www.nature.com/articles/s44277-025-00049-6",
+          "authors": "Dwyer B, Flathers M, Sano A, ... , <strong>Hua Y</strong>, ... , Torous J",
+          "venue": "<em>NPP-Digital Psychiatry and Neuroscience</em> (2025)",
+          "description": "We introduce MindBench.ai, an open platform for transparent evaluation of language models and LLM-based tools in mental health. Developed with the National Alliance on Mental Illness, experts, and people with lived experience, the platform combines technical profiles, conversational dynamics, benchmark leaderboards, and reasoning analyses so patients, clinicians, researchers, and regulators can examine model safety and clinical performance using traceable evidence.",
+          "figure": {
+            "src": "files/img/papers/mindbench.png",
+            "alt": "MindBench.ai integrated evaluation platform and assessment components"
+          },
+          "topics": [
+            "Frameworks"
+          ]
+        },
+        {
+          "title": "Large language models are poor clinical decision-makers: a comprehensive benchmark",
+          "url": "https://aclanthology.org/2024.emnlp-main.759/",
+          "authors": "Liu F, Li Z, Zhou H, ... , <strong>Hua Y</strong>, ... , Clifton D.A.",
+          "venue": "<em>EMNLP</em> 2024, pp. 13696–13710",
+          "description": "We introduce ClinicBench, a benchmark spanning 3 scenarios, 11 tasks, and 17 datasets to evaluate 22 general and medical LLMs in zero- and few-shot settings. Commercial models like GPT-4 match or surpass SOTA and humans on close-ended QA but underperform on real-world tasks such as treatment recommendation and long-record summarization. Expert review finds medical LLMs more factual and safer but less complete and preferred, and domain-specific fine-tuning improves reliability yet remains insufficient for clinical decision-making.",
+          "figure": {
+            "src": "files/img/papers/pub9.jpg",
+            "alt": "LLM clinical decision-making benchmark figure"
+          },
+          "topics": [
+            "Benchmarks"
+          ]
+        },
+        {
+          "title": "FinTextQA: A Dataset for Long-form Financial Question Answering",
+          "url": "https://aclanthology.org/2024.acl-long.328/",
+          "authors": "Chen J, Zhou P, <strong>Hua Y</strong>, Loh Y, Chen K, Li Z, Zhu B, Liang J",
+          "venue": "<em>ACL</em> 2024, pp. 6025–6047",
+          "description": "We introduce FinTextQA, a dataset of 1,262 source-attributed, long-form financial question-answer pairs drawn from textbooks and government websites. We also develop a retrieval-augmented generation pipeline with embedding, retrieval, reranking, and generation components, then compare configurations using human rankings, automatic metrics, and GPT-4 scoring under noisy-context conditions.",
+          "figure": {
+            "src": "files/img/papers/fintextqa.png",
+            "alt": "FinTextQA retrieval-augmented long-form question-answering workflow"
+          },
+          "topics": [
+            "Other"
+          ]
+        },
+        {
+          "title": "Benchmarking Large Language Models on CMExam: A Comprehensive Chinese Medical Exam Dataset",
+          "url": "https://github.com/williamliujl/CMExam",
+          "authors": "Liu J, Zhou P, <strong>Hua Y</strong>, Chong D, Tian Z, Liu A, Wang H, You C, Guo Z, Zhu L, Li M.L., et al.",
+          "venue": "<em>NeurIPS</em> 2023 (Datasets and Benchmarks Track)",
+          "description": "We introduce CMExam, a 60K+ Chinese medical QA benchmark built from the National Medical Licensing Examination, with multiple-choice questions, solution explanations, and five expert-verified test labels (ICD-11 group, department, discipline, competency, difficulty). Across general and medical LLMs, GPT-4 reaches 61.6% accuracy vs. 71.6% for humans, while current Chinese medical LLMs perform poorly zero-shot. Finetuning lightweight LLMs on CMExam narrows the gap to GPT-3.5 and yields better explanations, but still falls short of clinically reliable performance.",
+          "figure": {
+            "src": "files/img/papers/pub10.jpg",
+            "alt": "Overview of the CMExam Chinese medical exam benchmark and LLM evaluation results"
+          },
+          "topics": [
+            "Benchmarks"
+          ]
+        },
+        {
+          "title": "Humans Against Large Language Models on Hard Paraphrase Detection Tasks",
+          "url": "https://scholarworks.smith.edu/csc_facpubs/368",
+          "authors": "Macbeth JC, Chang E, Chen JG, <strong>Hua Y</strong>, Grandic S, Zheng WX",
+          "venue": "<em>Advances in Cognitive Systems</em> 10:85–102 (2023)",
+          "description": "We build a hard paraphrase corpus from a system with non-linguistic meaning representations, then compare human and neural-model paraphrase detection. Unlike humans, models fail when sentences use different words and syntax for the same meaning, highlighting evaluation gaps tied to surface-form similarity.",
+          "figure": {
+            "src": "files/img/papers/humans-paraphrase.png",
+            "alt": "Human versus model performance on hard paraphrase detection"
+          },
+          "topics": [
+            "Other"
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Applied NLP",
+      "description": "NLP on clinical records and online health discourse.",
+      "publications": [
+        {
+          "title": "Life, Death, and 280 Characters: A Hashtag Analysis of #AssistedSuicide on X (2015–2025)",
+          "url": "https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1744855/full",
+          "authors": "Opriessnig E, Litvinova O, Ma Z, <strong>Hua Y</strong>, MohanaSundaram A, Kletecka-Pulker M, Atanasov AG, Wochele-Thoma T",
+          "venue": "<em>Frontiers in Digital Health</em> 8:1744855 (2026)",
+          "description": "We analyze 105,130 posts with #AssistedSuicide from 28,314 users (2015–2025), mapping geography, sentiment, and legislative themes. The discourse is concentrated in a few English-speaking countries and closely tracks end-of-life policy debates.",
+          "figure": {
+            "src": "files/img/papers/assisted-suicide.png",
+            "alt": "Hashtag and keyword structure of #AssistedSuicide discourse on X"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        },
+        {
+          "title": "Global English-Language-Dominated Discourse on Artificial Intelligence in Healthcare: A Three-Year Longitudinal Analysis of the #AIinHealthcare Movement on X",
+          "url": "https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1795488/full",
+          "authors": "Wochele-Thoma T, Ijinu TP, Sasidharan SP, ... , Ma Z, <strong>Hua Y</strong>, Ławiński M, ... , Atanasov AG",
+          "venue": "<em>Frontiers in Digital Health</em> 8:1795488 (2026)",
+          "description": "We study 57,880 #AIinHealthcare posts from 17,991 users across 141 countries (2022–2025). English dominates the discourse, engagement concentrates in a few countries, and themes shift from generative-AI enthusiasm toward implementation, governance, and ethics.",
+          "figure": {
+            "src": "files/img/papers/ai-healthcare.png",
+            "alt": "Thematic structure of the #AIinHealthcare discourse on X"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        },
+        {
+          "title": "Mapping the Global Digital Discourse on Nutraceuticals: A Two-Year Hashtag Analysis of the X Platform",
+          "url": "https://doi.org/10.2478/aspr-2026-0010",
+          "authors": "Ijinu TP, Sasidharan SP, Khakimovich TF, ... , Ma Z, <strong>Hua Y</strong>, Marchewka J, ... , Atanasov AG",
+          "venue": "<em>Animal Science Papers and Reports</em> 44(2):145–168 (2026)",
+          "description": "I conducted the NLP analysis for this two-year study of 82,804 posts from 61,527 accounts across 170 countries. We map the topics, geography, and engagement structure of online nutraceutical discourse and identify where commercial, scientific, and public-health narratives intersect.",
+          "figure": {
+            "src": "files/img/papers/nutraceutical.png",
+            "alt": "Temporal distribution of nutraceutical-related posts by month, with an October 2024 spike"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        },
+        {
+          "title": "Characterizing Public Sentiments and Drug Interactions in the COVID-19 Pandemic Using Social Media",
+          "url": "https://www.jmir.org/2025/1/e63755/",
+          "authors": "Li W, <strong>Hua Y</strong>, Zhou P, Zhou L, Xu X, Yang J",
+          "venue": "<em>Journal of Medical Internet Research</em> 27:e63755 (2025)",
+          "description": "We combine medical-entity extraction, targeted sentiment analysis, topic modeling, and network analysis to examine public discussion of COVID-19 drugs. The study connects sentiment toward specific treatments with co-mentioned medications and interaction patterns, supporting more precise monitoring of fast-changing public perceptions.",
+          "figure": {
+            "src": "files/img/papers/drug-sentiment.png",
+            "alt": "Workflow for extracting drug mentions, sentiment, topics, and co-occurrence networks from social media"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        },
+        {
+          "title": "Sexual and Gender-Diverse Individuals Face More Health Challenges During COVID-19: A Large-Scale Social Media Analysis with Natural Language Processing",
+          "url": "https://spj.science.org/doi/10.34133/hds.0127",
+          "authors": "Zhang Z, <strong>Hua Y</strong>, Zhou P, Lin S, Li M, Zhang Y, Zhou L, Liao Y, Yang J",
+          "venue": "<em>Health Data Science</em> 4:0127 (2024)",
+          "description": "We use profile-based cohort identification, topic modeling, sentiment analysis, and symptom extraction to compare sexual and gender-diverse users with other users during the COVID-19 pandemic. The analysis finds greater burdens across self-reported symptoms and several mental-health measures and illustrates both the value and limits of social-media cohorts for health-equity research.",
+          "figure": {
+            "src": "files/img/papers/sgd-covid-health.png",
+            "alt": "Symptom distributions and organ-system impacts for SGD and non-SGD users who self-report COVID-19 positive"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        },
+        {
+          "title": "Trend and Co-Occurrence Network of COVID-19 Symptoms From Large-Scale Social Media Data",
+          "url": "https://www.jmir.org/2023/1/e45419/",
+          "authors": "Wu J, Wang L, <strong>Hua Y</strong>, Li M, Zhou L, Bates DW, Yang J",
+          "venue": "<em>Journal of Medical Internet Research</em> 25:e45419 (2023)",
+          "description": "We extract 201 symptoms from 471.6 million tweets and model their temporal and co-occurrence patterns. Weekly symptom signals lead reported infections by one week with a correlation of 0.8802, showing how large-scale language data can complement conventional public-health surveillance.",
+          "figure": {
+            "src": "files/img/papers/symptom-network.png",
+            "alt": "COVID-19 symptom extraction, prevalence, and co-occurrence analysis workflow"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        },
+        {
+          "title": "Tracking the Impact of COVID-19 and Lockdown Policies on Public Mental Health Using Social Media",
+          "url": "https://www.jmir.org/2022/10/e39676/",
+          "authors": "Li M, <strong>Hua Y</strong>, Liao Y, Zhou L, Li X, Wang L, Yang J",
+          "venue": "<em>Journal of Medical Internet Research</em> 24(10):e39676 (2022)",
+          "description": "We analyze 4.21 million mental-health-related tweets from 2.32 million users and use topic modeling and interrupted time-series analysis to study changes associated with state lockdown policies. The results distinguish short-term shifts in anxiety, depression, substance use, and related concerns across policy settings.",
+          "figure": {
+            "src": "files/img/papers/lockdown-mental-health.png",
+            "alt": "State-level mental-health discussion map and monthly heatmap during COVID-19 lockdowns"
+          },
+          "topics": [
+            "Social Media"
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Reviews",
+      "description": "Surveys and reviews of AI in medicine and mental health.",
+      "publications": [
+        {
+          "title": "Advancing Mental Health Research With AI",
+          "url": "https://shop.elsevier.com/books/artificial-intelligence-in-behavioral-and-mental-health-care/luxton/978-0-443-33151-0",
+          "authors": "<strong>Hua Y</strong>, Torous J",
+          "venue": "Invited chapter 11 in D. D. Luxton (Ed.), <em>Artificial Intelligence in Behavioral and Mental Health Care</em> (2nd ed.). Elsevier (published 30 July 2026)",
+          "description": "We review the history of AI in mental health research, survey key application areas, and outline current challenges and future directions.",
+          "figure": {
+            "src": "files/img/papers/ai-behavioral-mental-health-care.png",
+            "alt": "Cover of Artificial Intelligence in Behavioral and Mental Health Care, 2nd edition"
+          },
+          "topics": [
+            "Mental Health"
+          ]
+        },
+        {
+          "title": "Application of large language models in medicine",
+          "url": "https://www.nature.com/articles/s44222-025-00279-5",
+          "authors": "Liu F, Zhou H, <strong>Hua Y</strong>, et al.",
+          "venue": "<em>Nature Reviews Bioengineering</em> 3:445–464 (2025)",
+          "description": "We review how medical language models are developed, adapted, evaluated, and deployed across clinical and research settings. The paper connects model architecture and data choices with practical applications, safety concerns, and the evidence required for responsible medical use.",
+          "figure": {
+            "src": "files/img/papers/medical-llms.png",
+            "alt": "Development and scale of general and medical large language models"
+          },
+          "topics": [
+            "Medicine"
+          ]
+        },
+        {
+          "title": "Large Language Models in Mental Health Care: A Scoping Review",
+          "url": "https://doi.org/10.1007/s40501-025-00363-y",
+          "authors": "<strong>Hua Y</strong>, Liu F, Yang K, Li Z, Na H, Sheu Y, Zhou P, Moran LV, Ananiadou S, Clifton DA, Beam A, Torous J",
+          "venue": "<em>Current Treatment Options in Psychiatry</em> 12(1):27 (2025)",
+          "description": "We review 34 studies on LLMs in mental health care spanning diagnostics, therapy, and patient engagement. The review maps current applications and highlights gaps in data quality, evaluation methods, clinical applicability, and ethical standards needed before safe deployment.",
+          "figure": {
+            "src": "files/img/papers/llm-mh-scoping.png",
+            "alt": "Distribution of reviewed LLM mental health care studies by application area"
+          },
+          "topics": [
+            "Mental Health"
+          ]
+        },
+        {
+          "title": "From statistics to deep learning: Using large language models in psychiatric research",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11707704/",
+          "authors": "<strong>Hua Y</strong>, Beam A, Chibnik LB, Torous J",
+          "venue": "<em>International Journal of Methods in Psychiatric Research</em> 34(1):e70007 (2025)",
+          "description": "We describe how large language models can support psychiatric research, from statistical programming and literature synthesis to analysis of clinical language. We also identify reliability, privacy, and reproducibility limits and explain where expert review remains necessary.",
+          "figure": {
+            "src": "files/img/papers/llm-psychiatric-research.png",
+            "alt": "Large language models implementation considerations across stages of psychiatric care"
+          },
+          "topics": [
+            "Psychiatry"
+          ]
+        },
+        {
+          "title": "A Survey of Large Language Models in Psychotherapy: Current Landscape and Future Directions",
+          "url": "https://aclanthology.org/2025.findings-acl.385/",
+          "authors": "Na H, <strong>Hua Y</strong>, Wang Z, Shen T, Yu B, Wang L, Wang W, Torous J, Chen L",
+          "venue": "<em>Findings of ACL</em> 2025, pp. 7362–7376",
+          "description": "We organize LLM research in psychotherapy around the connected stages of assessment, diagnosis, and treatment. The review identifies persistent gaps in dynamic symptom modeling, linguistic and cultural coverage, diagnostic reliability, and integration with psychological theory. It outlines priorities for continuous multi-stage modeling, real-time adaptation, and broader evaluation across disorders and therapeutic approaches.",
+          "figure": {
+            "src": "files/img/papers/psychotherapy-survey.png",
+            "alt": "Comparison of psychological assessment studies by input characteristics and methodology"
+          },
+          "topics": [
+            "Psychotherapy"
+          ]
+        },
         {
           "title": "A scoping review of large language models for generative tasks in mental health care",
           "url": "https://www.nature.com/articles/s41746-025-01611-4",
@@ -234,7 +1072,10 @@
           "figure": {
             "src": "files/img/papers/pub1.jpg",
             "alt": "LLM mental health care scoping review figure"
-          }
+          },
+          "topics": [
+            "Mental Health"
+          ]
         },
         {
           "title": "Charting the evolution of AI mental health chatbots: from rule-based to large language models",
@@ -245,130 +1086,10 @@
           "figure": {
             "src": "files/img/papers/pub2.jpg",
             "alt": "AI mental health chatbot evolution figure"
-          }
-        },
-		{
-			"title": "Standardizing and scaffolding healthcare AI-chatbot evaluation",
-			"url": "https://ai.jmir.org/2025/1/e69006",
-			"authors": "<strong>Hua Y</strong>, Xia W, Bates D.W., Hartstein G.L., Kim H.T., Li M., Nelson B.W., Stromeyer C. IV, King D., Suh J., Zhou L., Torous J.",
-			"venue": "<em>JMIR AI</em>. 4:e69006 (2025)",
-			"description": "A PRISMA-guided systematic review of 11 evaluation frameworks (from 266 records) for health care AI chatbots that develops HAICEF, the Health Care AI Chatbot Evaluation Framework. HAICEF maps 271 evaluation questions into 3 priority domains (safety/privacy/fairness; trustworthiness/usefulness; design and operational effectiveness), 18 subdomains, and 60 constructs to scaffold standardized, stakeholder-informed assessment.",
-			"figure": {
-			  "src": "files/img/papers/pub3.jpg",
-			  "alt": "Healthcare AI chatbot evaluation figure"
-			}
-		  },
-		  
-        {
-          "title": "Detecting Conversational Mental Manipulation with Intent-Aware Prompting",
-          "url": "https://aclanthology.org/2025.coling-main.616/",
-          "authors": "Ma J., Na H., Wang Z., <strong>Hua Y</strong>, Liu Y., Wang W., Chen L.",
-          "venue": "<em>COLING</em> 2025, pp. 9176:9183",
-          "description": "✨ <strong>Best Short Paper</strong>. This paper introduces Intent-Aware Prompting (IAP), a two-stage prompting strategy where an LLM first summarizes each speaker’s intent in a dialogue and then uses those intent summaries to decide whether mental manipulation is present, targeting improved Theory-of-Mind–like reasoning. Evaluated with GPT-4 on the MentalManip dataset, IAP outperforms zero-shot, few-shot, and chain-of-thought prompting, most notably reducing false negatives by 30.5% while improving accuracy and F1 scores.",
-          "figure": {
-            "src": "files/img/papers/pub5.jpg",
-            "alt": "Mental manipulation detection figure"
-          }
-        },
-        {
-          "title": "Large language models are poor clinical decision-makers: a comprehensive benchmark",
-          "url": "https://aclanthology.org/2024.emnlp-main.759/",
-          "authors": "Liu F, Li Z, Zhou H, ... , <strong>Hua Y</strong>, ... , Clifton D.A.",
-		  "venue": "<em>EMNLP</em> 2024, pp. 13696–13710",
-		  "description": "We introduce ClinicBench, a benchmark spanning 3 scenarios, 11 tasks, and 17 datasets to evaluate 22 general and medical LLMs in zero- and few-shot settings. Commercial models like GPT-4 match or surpass SOTA and humans on close-ended QA but underperform on real-world tasks such as treatment recommendation and long-record summarization. Expert review finds medical LLMs more factual and safer but less complete and preferred, and domain-specific fine-tuning improves reliability yet remains insufficient for clinical decision-making.",
-		  "figure": {
-            "src": "files/img/papers/pub9.jpg",
-            "alt": "LLM clinical decision-making benchmark figure"
-          }
-        },
-        {
-			"title": "Benchmarking Large Language Models on CMExam: A Comprehensive Chinese Medical Exam Dataset",
-			"url": "https://github.com/williamliujl/CMExam",
-			"authors": "Liu J, Zhou P, <strong>Hua Y</strong>, Chong D, Tian Z, Liu A, Wang H, You C, Guo Z, Zhu L, Li M.L., et al.",
-			"venue": "<em>NeurIPS</em> 2023 (Datasets and Benchmarks Track)",
-			"description": "We introduce CMExam, a 60K+ Chinese medical QA benchmark built from the National Medical Licensing Examination, with multiple-choice questions, solution explanations, and five expert-verified test labels (ICD-11 group, department, discipline, competency, difficulty). Across general and medical LLMs, GPT-4 reaches 61.6% accuracy vs. 71.6% for humans, while current Chinese medical LLMs perform poorly zero-shot. Finetuning lightweight LLMs on CMExam narrows the gap to GPT-3.5 and yields better explanations, but still falls short of clinically reliable performance.",
-			"figure": {
-			  "src": "files/img/papers/pub10.jpg",
-			  "alt": "Overview of the CMExam Chinese medical exam benchmark and LLM evaluation results"
-			}
-		  }
-      ]
-    },
-    {
-      "area": "Applied NLP for High-Stakes Data",
-      "description": "Building NLP and predictive modeling pipelines where the data are messy, the labels are expensive, and failure matters. This includes information extraction, long-document classification, patient identification, and outcome prediction.",
-      "publications": [
-        {
-          "title": "Identifying psychosis episodes in psychiatric admission notes via rule-based methods, machine learning, and pre-trained language models",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10984080/",
-          "authors": "<strong>Hua Y</strong>, Blackley S.V., Shinn A.K., Skinner J.P., Moran L.V., Zhou L.",
-          "venue": "<em>Translational Psychiatry</em>; Accepted (2025)",
-		  "description": "This study systematically compares rule-based, machine learning, and transformer-based NLP approaches for identifying psychosis from 4,629 psychiatric admission notes at McLean Hospital (2005–2019). We introduce a keyword-assisted pipeline that first filters notes using expert-curated psychosis terms, then applies TF-IDF + XGBoost and fine-tuned BERT models for classification. We demonstrate how keyword preselection reduces noise, enables analysis of long clinical texts, and provides a reproducible framework for automating psychosis detection from unstructured EHR data.",
-		  "figure": {
-            "src": "files/img/papers/pub21.jpg",
-            "alt": "Psychosis identification in admission notes figure"
-          }
-        },
-		{
-			"title": "A Deep Learning Approach for Transgender and Gender Diverse Patient Identification in Electronic Health Records",
-			"url": "https://doi.org/10.1016/j.jbi.2023.104507",
-			"authors": "<strong>Hua Y</strong>, Wang L., Nguyen V., Rieu-Werden M., McDowell A., Bates D.W., Foer D., Zhou L.",
-			"venue": "<em>Journal of Biomedical Informatics</em> 147 (Nov 2023): 104507",
-			"description": "We developed a deep learning–based NLP pipeline combining structured EHR data and clinical notes to identify transgender and gender diverse patients. The workflow integrates curated and model-expanded gender-related keywords, text-converted structured fields, and a ClinicalBERT classifier that outperforms rule-based and traditional ML methods for patient-level identification.",
-			"figure": {
-			  "src": "files/img/papers/pub22.jpg",
-			  "alt": "Transgender patient identification pipeline"
-			}
-		  },
-        {
-          "title": "Prediction of early-stage melanoma recurrence using clinical and histopathologic features",
-          "url": "https://www.nature.com/articles/s41698-022-00321-4",
-          "authors": "Wan G., Nguyen N., Liu F., DeSimone M.S., Leung B.W., Rajeh A., Collier M.R., ..., <strong>Hua Y</strong>, ...",
-          "venue": "<em>npj Precision Oncology</em> 6(1):79 (2022)",
-          "description": "We used multi-institutional EHR registries (MGB, DFCI; 1,720 stage I/II melanomas) to curate 36 clinical and histopathologic features and trained machine-learning and survival models to predict early-stage melanoma recurrence and time-to-recurrence. We performed internal 5-fold cross-validation plus external validation, sensitivity analyses on cleaner subcohorts, and permutation-based feature importance to identify key prognostic factors such as Breslow thickness and mitotic rate.",
-			"figure": {
-            "src": "files/img/papers/pub16.jpg",
-            "alt": "Melanoma recurrence prediction figure"
-          }
-        }
-      ]
-    },
-    {
-      "area": "Language, Behavior & Online Platforms",
-      "description": "Using large-scale language data to study sentiment, perception, misinformation, and behavioral signals in public online spaces. This line of work connects dataset building with applied NLP for monitoring fast-moving social dynamics.",
-      "publications": [
-        {
-          "title": "Mets-cov: A dataset of medical entity and targeted sentiment on covid-19 related tweets",
-          "url": "https://proceedings.neurips.cc/paper_files/paper/2022",
-          "authors": "Zhou P., Wang Z., Chong D., Guo Z., <strong>Hua Y</strong>, Su Z., Teng Z., Wu J., Yang J.",
-          "venue": "<em>NeurIPS</em> 35:21916-21932 (2022)",
-          "description": "We created METS-CoV, a COVID-19 Twitter dataset with expert-annotated medical + general entities and targeted sentiments toward key entities (drugs, vaccines, people, organizations). We then benchmarked classic and state-of-the-art NER and TSA models (including COVID-specific PLMs), showing domain-tuned models help but performance is still far from saturated, leaving room for better medical social media NLP methods.",
-		   "figure": {
-            "src": "files/img/papers/pub17.jpg",
-            "alt": "Mets-COV dataset figure"
-          }
-        },
-        {
-          "title": "Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9278189/",
-          "authors": "<strong>Hua Y</strong>, Jiang H., Lin S., Yang J., Plasek J.M., Bates D.W., Zhou L.",
-          "venue": "<em>JAMIA</em> 29(10):1668:1678 (2022)",
-          "description": "We biult a BERT-based Twitter analysis pipeline to track public stance toward four COVID-19 drugs (off-label: Hydroxychloroquine, Ivermectin; FDA-authorized: Remdesivir, Molnupiravir) across two years of U.S. tweets. Off-label drugs dominated discussion and support, heavily shaped by politics, celebrity influence, and misinformation, while FDA-authorized drugs were less discussed; stance patterns varied sharply by party, geography, and healthcare background, highlighting targets for public health communication.",
-		  "figure": {
-            "src": "files/img/papers/pub13.jpg",
-            "alt": "Twitter COVID-19 medication perceptions figure"
-          }
-        },
-        {
-          "title": "Streamlining social media information retrieval for COVID-19 research with deep learning",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11187427/",
-          "authors": "<strong>Hua Y</strong>, Lin S., Li M., Zhang Y., Foer D., Zhou P., Zhou L., Yang J.",
-          "venue": "<em>JAMIA</em> 31(7):1569:1577 (2024)",
-          "description": "We present a three-step NLP pipeline (medical NER → entity normalization → UMLS mapping) to automatically curate a colloquial symptom dictionary from 18M+ COVID-19–related English tweets. The final lexicon links 38k lay symptom expressions to 966 UMLS concepts with 95% accuracy, and captures many more symptoms, especially mental health symptoms like anxiety and depression, than traditional keyword lists, improving social media–based public health surveillance and information retrieval.",
-		   "figure": {
-            "src": "files/img/papers/pub14.jpg",
-            "alt": "Social media information retrieval figure"
-          }
+          },
+          "topics": [
+            "Chatbots"
+          ]
         }
       ]
     }
@@ -376,100 +1097,145 @@
   "talks": [
     {
       "date": "07/2026",
-      "title": "🛠️ The PsyDefDetect Shared Task",
+      "type": "Event",
+      "title": "The PsyDefDetect Shared Task",
       "venue": "BioNLP Workshop @ ACL 2026, San Diego, CA, USA"
     },
     {
       "date": "11/2025",
-      "title": "🎙️ Charting the Evolution of AI Mental Health Chatbots from Rule-Based Systems to Large Language Models",
+      "type": "Talk",
+      "title": "Charting the Evolution of AI Mental Health Chatbots from Rule-Based Systems to Large Language Models",
       "venue": "AMIA Annual Symposium, Atlanta, GA"
     },
     {
       "date": "04/2025",
-      "title": "🧑‍🏫 Large Language Models: Evaluation, Reliability, and Real-World Use",
+      "type": "Lecture",
+      "title": "Large Language Models: Evaluation, Reliability, and Real-World Use",
       "venue": "EPI 288 lecture, Harvard T.H. Chan School of Public Health"
     },
     {
       "date": "03/2024",
-      "title": "🎙️ One Model Fits All? Multi-task UTD classification from neonatal US reports (NLP)",
+      "type": "Talk",
+      "title": "One Model Fits All? Multi-task UTD classification from neonatal US reports (NLP)",
       "venue": "AMIA Informatics Summit, Boston, MA"
     },
     {
       "date": "03/2024",
-      "title": "🎙️ Wise instance selection reduces annotation for multi-task UTD prediction",
+      "type": "Talk",
+      "title": "Wise instance selection reduces annotation for multi-task UTD prediction",
       "venue": "AMIA Informatics Summit, Boston, MA"
     },
     {
       "date": "03/2024",
-      "title": "🎙️ Identifying psychosis in admission notes: rules vs. ML vs. PLMs",
+      "type": "Talk",
+      "title": "Identifying psychosis in admission notes: rules vs. ML vs. PLMs",
       "venue": "AMIA Informatics Summit, Boston, MA"
     },
     {
       "date": "12/2023",
-      "title": "🎙️ Benchmarking LLMs on CMExam (Chinese medical exams)",
+      "type": "Talk",
+      "title": "Benchmarking LLMs on CMExam (Chinese medical exams)",
       "venue": "NeurIPS, New Orleans, LA"
     },
     {
       "date": "06/2023",
-      "title": "🎙️ Deep learning for social-media information retrieval at scale",
+      "type": "Talk",
+      "title": "Deep learning for social-media information retrieval at scale",
       "venue": "IEEE ICHI, Houston, TX"
     },
     {
       "date": "06/2023",
-      "title": "🎙️ Deep learning approach to identify transgender/gender-diverse patients in EHRs",
+      "type": "Talk",
+      "title": "Deep learning approach to identify transgender/gender-diverse patients in EHRs",
       "venue": "IEEE ICHI, Houston, TX"
     },
     {
       "date": "05/2023",
-      "title": "🧑‍🏫 Using social media data to study behavior and mental health",
+      "type": "Lecture",
+      "title": "Using social media data to study behavior and mental health",
       "venue": "Karestan Koenen Lab, Harvard T.H. Chan School of Public Health"
     },
     {
       "date": "04/2023",
-      "title": "🎙️ Contemporary treatment and outcomes of myasthenia gravis (U.S.)",
+      "type": "Talk",
+      "title": "Contemporary treatment and outcomes of myasthenia gravis (U.S.)",
       "venue": "AAN Annual Meeting, Boston, MA"
     },
     {
       "date": "11/2022",
-      "title": "🎙️ Identifying transgender/gender-diverse individuals in EHRs",
+      "type": "Talk",
+      "title": "Identifying transgender/gender-diverse individuals in EHRs",
       "venue": "AMIA Annual Symposium, Washington, DC"
     },
     {
       "date": "11/2022",
-      "title": "🎙️ Public perceptions of COVID-19 drugs on Twitter",
+      "type": "Talk",
+      "title": "Public perceptions of COVID-19 drugs on Twitter",
       "venue": "AMIA Annual Symposium, Washington, DC"
     },
     {
       "date": "10/2022",
-      "title": "🧑‍🏫 Using deep learning and NLP models in real-world research",
+      "type": "Lecture",
+      "title": "Using deep learning and NLP models in real-world research",
       "venue": "MTERMS Research Lab, Brigham and Women's Hospital"
     },
     {
       "date": "12/2021",
-      "title": "🎙️ Quantifying bilingual (dis)advantage in vocabulary acquisition",
+      "type": "Talk",
+      "title": "Quantifying bilingual (dis)advantage in vocabulary acquisition",
       "venue": "Asia-Pacific Babylab Constellation Conference, Hong Kong"
     }
   ],
   "awards": [
     {
-      "source": "COLING 2025:",
+      "year": 2026,
+      "source": "Anthropic:",
+      "text": "<a href=\"https://www.anthropic.com/news/claude-science-ai-workbench\" target=\"_blank\" rel=\"noopener\">AI for Science Program</a>."
+    },
+    {
+      "year": 2025,
+      "source": "COLING:",
       "text": "Best Short Paper."
     },
     {
-      "source": "NeurIPS 2022:",
-      "text": "Spotlight (long paper); <span class=\"award-source\">NeurIPS 2023:</span> Travel Award."
-    },
-    {
-      "source": "IEEE ICHI 2023:",
-      "text": "Best Poster; <span class=\"award-source\">AMIA 2022:</span> Distinguished Poster."
-    },
-    {
+      "year": 2024,
       "source": "Harvard T.H. Chan:",
-      "text": "Rose Traveling Fellowship (2024); Brian & Heidi MacMahon Epidemiology Educational Fund (2023–2024)."
+      "text": "<a href=\"https://www.linkedin.com/posts/harvardepi_rose-fellows-series-yining-hua-in-this-activity-7216814651144089600-oHgK\" target=\"_blank\" rel=\"noopener\">Rose Traveling Fellowship</a>."
     },
     {
-      "source": "Sigma Xi 2021:",
-      "text": "Outstanding Student Researcher nominee."
+      "year": 2024,
+      "source": "Harvard T.H. Chan:",
+      "text": "Brian & Heidi MacMahon Epidemiology Educational Fund (2023–2024)."
+    },
+    {
+      "year": 2023,
+      "source": "NeurIPS:",
+      "text": "Travel Award."
+    },
+    {
+      "year": 2023,
+      "source": "IEEE ICHI:",
+      "text": "Best Poster."
+    },
+    {
+      "year": 2023,
+      "source": "Harvard T.H. Chan:",
+      "text": "Brian & Heidi MacMahon Epidemiology Educational Fund (2023–2024)."
+    },
+    {
+      "year": 2022,
+      "source": "NeurIPS:",
+      "text": "Spotlight (long paper)."
+    },
+    {
+      "year": 2022,
+      "source": "AMIA:",
+      "text": "Distinguished Poster."
+    },
+    {
+      "year": 2021,
+      "source": "Sigma Xi:",
+      "text": "Outstanding Student Researcher."
     }
   ],
   "reviews": [
@@ -487,7 +1253,7 @@
     },
     {
       "category": "ML/AI venues:",
-      "text": "ACL (2025), NeurIPS (2023–2024), ML4H (2023), COLING (2022)."
+      "text": "ACL (2025), EMNLP (2026), NeurIPS (2023–2024, 2026), ML4H (2023), COLING (2022)."
     }
   ],
   "teaching": [
@@ -500,20 +1266,16 @@
     "PHY 215: Light, Relativity, and Quantum Physics; Smith College (Spring 2020).",
     "PHY 210: Math Methods of Physical Sciences and Engineering; Smith College (Fall 2019)."
   ],
-  "lastEdited": "03/2026"
+  "lastEdited": "07/2026"
 }
 	</script>
-	
-	<!-- Data loading and rendering script -->
 	<script>
-		// Load data from embedded JSON (works with file:// protocol)
 		function loadData() {
 			const dataScript = document.getElementById('site-data');
 			if (!dataScript) {
 				document.body.innerHTML = '<div class="container" style="padding: 2rem;"><p>Error: JSON data script tag not found.</p></div>';
 				return;
 			}
-			
 			try {
 				const data = JSON.parse(dataScript.textContent);
 				renderPage(data);
@@ -522,8 +1284,7 @@
 				document.body.innerHTML = '<div class="container" style="padding: 2rem;"><p>Error parsing page data. Please check the JSON format in the script tag.</p></div>';
 			}
 		}
-		
-		// Load data when page is ready
+
 		if (document.readyState === 'loading') {
 			document.addEventListener('DOMContentLoaded', loadData);
 		} else {
@@ -531,67 +1292,40 @@
 		}
 
 		function renderPage(data) {
-			// Set page title and nav name
 			document.getElementById('page-title').textContent = data.profile.name;
 			document.getElementById('nav-name').textContent = data.profile.name;
 
-			// Render profile
 			renderProfile(data.profile);
-
-			// Render introduction
 			renderIntroduction(data.introduction);
-
-			// Render news
 			renderNews(data.news);
-
-			// Render research
 			renderResearch(data.research);
-			
-			// Adjust figure heights to match content
 			adjustFigureHeights();
-
-			// Render talks
 			renderTalks(data.talks);
-
-			// Render awards
+			renderImpact(data.impact);
+			renderMediaCoverage(data.impact);
 			renderAwards(data.awards);
-
-			// Render reviews
 			renderReviews(data.reviews);
-
-			// Render teaching
 			renderTeaching(data.teaching);
-
-			// Set last edited date
 			document.getElementById('last-edited').textContent = `Last edited: ${data.lastEdited}`;
+			initializeMainTabs();
 		}
 
 		function renderProfile(profile) {
 			const profileCard = document.getElementById('profile-card');
-			
-			// Profile photo
 			let html = `
 				<div class="profile-photo">
 					<img class="img-responsive img-rounded profile-image" src="${profile.photo.src}" alt="${profile.photo.alt}">
 					<p class="profile-caption">${profile.photo.caption}</p>
 				</div>
-			`;
-
-			// Contact section
-			html += `
 				<div class="profile-section">
 					<p class="eyebrow">Contact</p>
 					<ul class="stacked-list">
-						<li>${profile.contact.links.map(link => 
+						<li>${profile.contact.links.map(link =>
 							`<a href="${link.url}" target="_blank" rel="noopener">${link.text}</a>`
 						).join(' | ')}</li>
 						<li>${profile.contact.email}</li>
 					</ul>
 				</div>
-			`;
-
-			// Research interests
-			html += `
 				<div class="profile-section">
 					<p class="eyebrow">Research Interests</p>
 					<ul class="stacked-list">
@@ -599,69 +1333,276 @@
 					</ul>
 				</div>
 			`;
-
 			profileCard.innerHTML = html;
 		}
 
 		function renderIntroduction(intro) {
-			const introSection = document.getElementById('Introduction');
-			
-			let html = intro.paragraphs.map(p => `<p>${p}</p>`).join('');
-			
-			html += '<p><strong>Education:</strong></p>';
-			html += '<ul style="margin-top: 0.5rem; padding-left: 1.5rem;">';
-			html += intro.education.map(item => `<li>${item}</li>`).join('');
-			html += '</ul>';
-			
-			html += '<br>';
-			html += '<p><strong>Experience:</strong></p>';
-			html += '<ul style="margin-top: 0.5rem; padding-left: 1.5rem;">';
-			html += intro.experience.map(item => `<li>${item}</li>`).join('');
-			html += '</ul>';
+			const introContent = document.getElementById('introduction-content');
+			const credentialsContent = document.getElementById('credentials-content');
 
-			introSection.innerHTML = html;
+			introContent.innerHTML = (intro.paragraphs || []).map(p => `<p>${p}</p>`).join('')
+				+ (intro.closingParagraphs || []).map(p => `<p>${p}</p>`).join('');
+
+			// Current/primary roles (Present / expected degree): near-black; others muted
+			const isCredentialEmphasis = (item) => /\bPresent\b|Expected May 2027/.test(item);
+
+			const renderCredentialItems = (items) =>
+				(items || []).map(item => {
+					const cls = isCredentialEmphasis(item) ? ' class="credential-emphasis"' : '';
+					return `<li${cls}>${item}</li>`;
+				}).join('');
+
+			let credentialsHtml = '<p><strong>Education:</strong></p>';
+			credentialsHtml += '<ul style="margin-top: 0.5rem; padding-left: 1.5rem;">';
+			credentialsHtml += renderCredentialItems(intro.education);
+			credentialsHtml += '</ul>';
+			credentialsHtml += '<p style="margin-top: 1.25rem;"><strong>Experience:</strong></p>';
+			credentialsHtml += '<ul style="margin-top: 0.5rem; padding-left: 1.5rem;">';
+			credentialsHtml += renderCredentialItems(intro.experience);
+			credentialsHtml += '</ul>';
+			credentialsContent.innerHTML = credentialsHtml;
+		}
+
+		function wireLegendFilter({ root, buttonSelector, itemSelector, getItemKey, groupSelector, matches }) {
+			const buttons = Array.from(root.querySelectorAll(buttonSelector));
+			const items = Array.from(root.querySelectorAll(itemSelector));
+			const groups = groupSelector ? Array.from(root.querySelectorAll(groupSelector)) : [];
+
+			const apply = (selected) => {
+				buttons.forEach(btn => {
+					btn.setAttribute('aria-pressed', String(btn.dataset.filterValue === selected));
+				});
+				items.forEach(item => {
+					const show = selected === 'all' || (matches
+						? matches(item, selected)
+						: getItemKey(item) === selected);
+					item.hidden = !show;
+				});
+				groups.forEach(group => {
+					const visible = Array.from(group.querySelectorAll(itemSelector)).some(item => !item.hidden);
+					group.hidden = !visible;
+				});
+			};
+
+			buttons.forEach(btn => {
+				btn.addEventListener('click', () => {
+					const value = btn.dataset.filterValue;
+					const isActive = btn.getAttribute('aria-pressed') === 'true';
+					if (value !== 'all' && isActive) {
+						apply('all');
+					} else {
+						apply(value);
+					}
+				});
+			});
+
+			apply('all');
 		}
 
 		function renderNews(news) {
 			const newsContent = document.getElementById('news-content');
-			
-			let html = '';
+			const newsTags = {
+				paper: { icon: '📄', label: 'Paper' },
+				funding: { icon: '✨', label: 'Funding' },
+				role: { icon: '🚀', label: 'Role' },
+				teaching: { icon: '👩‍🏫', label: 'Teaching' },
+				milestone: { icon: '🎓', label: 'Milestone' }
+			};
+
+			const usedTags = [];
+			news.forEach(yearGroup => {
+				yearGroup.items.forEach(item => {
+					if (newsTags[item.tag] && !usedTags.includes(item.tag)) usedTags.push(item.tag);
+				});
+			});
+
+			const legend = `
+				<div class="news-tag-legend" role="group" aria-label="Filter news by tag">
+					<span>Tags:</span>
+					<button class="news-tag news-tag-all" type="button" data-filter-value="all" aria-pressed="true">All</button>
+					${usedTags.map(tag => {
+						const meta = newsTags[tag];
+						return `<button class="news-tag news-tag-${tag}" type="button" data-filter-value="${tag}" aria-pressed="false"><span class="news-tag-icon">${meta.icon}</span>${meta.label}</button>`;
+					}).join('')}
+				</div>
+			`;
+
+			let html = legend;
 			news.forEach(yearGroup => {
 				html += `
 					<div class="news-year">
 						<h4 class="news-year-title">${yearGroup.year}</h4>
 						<ul class="news-list">
-							${yearGroup.items.map(item => `
-								<li>${item.icon} <span class="news-date">${item.date}</span> ${item.text}</li>
-							`).join('')}
+							${yearGroup.items.map(item => {
+								const meta = newsTags[item.tag] || newsTags.paper;
+								const tag = item.tag || 'paper';
+								return `<li data-news-tag="${tag}"><span class="news-tag news-tag-${tag}"><span class="news-tag-icon">${meta.icon}</span>${meta.label}</span> <span class="news-date">${item.date}</span> ${item.text}</li>`;
+							}).join('')}
 						</ul>
 					</div>
 				`;
 			});
 
 			newsContent.innerHTML = html;
+			wireLegendFilter({
+				root: newsContent,
+				buttonSelector: '.news-tag-legend [data-filter-value]',
+				itemSelector: '.news-list li',
+				getItemKey: (item) => item.dataset.newsTag,
+				groupSelector: '.news-year'
+			});
 		}
 
 		function renderResearch(research) {
 			const researchContent = document.getElementById('research-content');
-			
-			let html = '';
-			research.forEach(area => {
-				html += `
-					<div class="research-area">
-						<h4 class="research-area-title">${area.area}</h4>
-						<p class="research-area-desc">${area.description}</p>
-						${area.publications.map(pub => renderPublication(pub)).join('')}
+			const topicClass = topic => 'research-topic-' + topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+			const source = Object.fromEntries(research.map(area => [area.area, area.publications]));
+			const inferenceOnlyAppliedTitles = new Set([
+				'Detecting Conversational Mental Manipulation with Intent-Aware Prompting'
+			]);
+			const topicOverrides = {
+				'DeKeyNLU: Enhancing Natural Language to SQL Generation through Task Decomposition and Keyword Extraction': ['Agents'],
+				'From Posts to Timelines: Modeling Mental Health Dynamics from Social Media Timelines with Hybrid LLMs': ['LLM - Application'],
+				'Detecting Conversational Mental Manipulation with Intent-Aware Prompting': ['Mental Health'],
+				'Qilin-Med: Multi-stage Knowledge Injection Advanced Medical Large Language Model': ['LLM - Foundation'],
+				'Qilin-Med-VL: Towards Chinese Large Vision-Language Model for General Healthcare': ['LLM - Foundation'],
+				'Continuous Training and Fine-tuning for Domain-Specific Language Models in Medical Question Answering': ['LLM - Foundation'],
+				'GreenPLM: Cross-Lingual Transfer of Monolingual Pre-Trained Language Models at Almost No Cost': ['LLM - Foundation'],
+				'Identification of an ANCA-associated vasculitis cohort using deep learning and electronic health records': ['LLM - Application'],
+				'Identifying psychosis episodes in psychiatric admission notes via rule-based methods, machine learning, and pre-trained language models': ['LLM - Application'],
+				'Analysis of longitudinal social media for monitoring symptoms during a pandemic': ['LLM - Application'],
+				'Streamlining social media information retrieval for COVID-19 research with deep learning': ['LLM - Application'],
+				'High-performing Multi-task Model of Urinary Tract Dilation (UTD) Classification for Neonatal Ultrasound Reports Through Natural Language Processing': ['LLM - Application'],
+				'A Deep Learning Approach for Transgender and Gender Diverse Patient Identification in Electronic Health Records': ['LLM - Application'],
+				'Exploring Social Media for Early Detection of Depression in COVID-19 Patients': ['LLM - Application'],
+				'Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications': ['LLM - Application'],
+				'Design and Report Benchmarks for Knowledge Work': ['Framework'],
+				'You Never Know a Person, You Only Know Their Defenses: Detecting Levels of Psychological Defense Mechanisms in Supportive Conversations': ['Benchmarks'],
+				'Standardizing and scaffolding healthcare AI-chatbot evaluation': ['Framework'],
+				'BrowseComp-ZH: Benchmarking Web Browsing Ability of Large Language Models in Chinese': ['Benchmarks'],
+				'Mindbench.ai: an actionable platform to evaluate the profile and performance of large language models in a mental healthcare context': ['Other'],
+				'Large language models are poor clinical decision-makers: a comprehensive benchmark': ['Benchmarks'],
+				'FinTextQA: A Dataset for Long-form Financial Question Answering': ['Benchmarks'],
+				'Benchmarking Large Language Models on CMExam: A Comprehensive Chinese Medical Exam Dataset': ['Benchmarks'],
+				'Humans Against Large Language Models on Hard Paraphrase Detection Tasks': ['Benchmarks'],
+				'Life, Death, and 280 Characters: A Hashtag Analysis of #AssistedSuicide on X (2015–2025)': ['Social Media'],
+				'Global English-Language-Dominated Discourse on Artificial Intelligence in Healthcare: A Three-Year Longitudinal Analysis of the #AIinHealthcare Movement on X': ['Social Media'],
+				'Mapping the Global Digital Discourse on Nutraceuticals: A Two-Year Hashtag Analysis of the X Platform': ['Social Media'],
+				'Characterizing Public Sentiments and Drug Interactions in the COVID-19 Pandemic Using Social Media': ['Social Media'],
+				'Sexual and Gender-Diverse Individuals Face More Health Challenges During COVID-19: A Large-Scale Social Media Analysis with Natural Language Processing': ['Social Media'],
+				'Trend and Co-Occurrence Network of COVID-19 Symptoms From Large-Scale Social Media Data': ['Social Media'],
+				'Tracking the Impact of COVID-19 and Lockdown Policies on Public Mental Health Using Social Media': ['Social Media'],
+				'Advancing Mental Health Research With AI': ['Mental Health'],
+				'Application of large language models in medicine': ['Medicine'],
+				'Large Language Models in Mental Health Care: A Scoping Review': ['Mental Health'],
+				'From statistics to deep learning: Using large language models in psychiatric research': ['Mental Health'],
+				'A Survey of Large Language Models in Psychotherapy: Current Landscape and Future Directions': ['Mental Health'],
+				'A scoping review of large language models for generative tasks in mental health care': ['Mental Health'],
+				'Charting the evolution of AI mental health chatbots: from rule-based to large language models': ['Mental Health']
+			};
+			const retag = pub => ({ ...pub, topics: topicOverrides[pub.title] || pub.topics || [] });
+			const development = source['LLM & Agent Development'] || [];
+			const groupedResearch = [
+				{
+					area: 'LLM & Agent Development',
+					description: 'Model development, adaptation, and agent systems.',
+					publications: development.filter(pub => !inferenceOnlyAppliedTitles.has(pub.title)).map(retag)
+				},
+				{
+					area: 'Evaluation & Benchmarks',
+					description: 'Methods and resources for evaluating models and agents.',
+					publications: (source['Evaluation & Benchmarks'] || []).map(retag)
+				},
+				{
+					area: 'Applied NLP',
+					description: 'Applications using existing NLP models and methods.',
+					publications: [
+						...development.filter(pub => inferenceOnlyAppliedTitles.has(pub.title)),
+						...(source['Applied NLP'] || [])
+					].map(retag)
+				},
+				{
+					area: 'Reviews',
+					description: 'Reviews organized by application field.',
+					publications: (source.Reviews || []).map(retag)
+				}
+			];
+			const publicationYear = pub => {
+				const explicitYear = Number(pub.year);
+				if (explicitYear) return explicitYear;
+				const years = String(pub.venue || '').match(/\b(20\d{2})\b/g);
+				return years ? Math.max(...years.map(Number)) : 0;
+			};
+			const topicsInOrder = (publications) => {
+				const seen = [];
+				publications.forEach(pub => {
+					(pub.topics || []).forEach(topic => {
+						if (!seen.includes(topic)) seen.push(topic);
+					});
+				});
+				return seen;
+			};
+
+			const tabs = groupedResearch.map((area, index) => `
+				<button class="pub-subarea-tab" type="button" role="tab" id="pub-subarea-tab-${index}" aria-controls="pub-subarea-panel-${index}" aria-selected="${index === 0 ? 'true' : 'false'}">${area.area}</button>
+			`).join('');
+
+			const panels = groupedResearch.map((area, index) => {
+				const ordered = [...area.publications].sort((a, b) => publicationYear(b) - publicationYear(a));
+				const usedTopics = topicsInOrder(ordered);
+				const legend = usedTopics.length ? `
+					<div class="research-topic-legend" role="group" aria-label="Filter ${area.area} publications by topic">
+						<button class="research-topic research-topic-all" type="button" data-filter-value="all" aria-pressed="true">All</button>
+						${usedTopics.map(topic =>
+							`<button class="research-topic ${topicClass(topic)}" type="button" data-filter-value="${topic}" aria-pressed="false">${topic}</button>`
+						).join('')}
 					</div>
-				`;
+				` : '';
+				return `
+				<div class="pub-subarea-panel research-area" id="pub-subarea-panel-${index}" role="tabpanel" aria-labelledby="pub-subarea-tab-${index}" ${index === 0 ? '' : 'hidden'}>
+					<p class="research-area-desc">${area.description}</p>
+					${legend}
+					${ordered.map(pub => renderPublication(pub)).join('')}
+				</div>
+			`;
+			}).join('');
+
+			researchContent.innerHTML = `
+				<div class="pub-subarea-tabs" role="tablist" aria-label="Publication sections">${tabs}</div>
+				${panels}
+			`;
+
+			const tabButtons = Array.from(researchContent.querySelectorAll('.pub-subarea-tab'));
+			const panelEls = Array.from(researchContent.querySelectorAll('.pub-subarea-panel'));
+			tabButtons.forEach((tab, index) => {
+				tab.addEventListener('click', () => {
+					tabButtons.forEach((btn, i) => {
+						btn.setAttribute('aria-selected', String(i === index));
+						panelEls[i].hidden = i !== index;
+					});
+					adjustFigureHeights();
+				});
 			});
 
-			researchContent.innerHTML = html;
+			panelEls.forEach(panel => {
+				wireLegendFilter({
+					root: panel,
+					buttonSelector: '.research-topic-legend [data-filter-value]',
+					itemSelector: '.publication-item',
+					matches: (item, selected) => (item.dataset.publicationTopics || '')
+						.split('|')
+						.filter(Boolean)
+						.includes(selected)
+				});
+			});
+			adjustFigureHeights();
 		}
 
 		function renderPublication(pub) {
+			const topics = (pub.topics || []).join('|');
+			const topicAttr = topics ? ` data-publication-topics="${topics}"` : '';
 			let html = `
-				<div class="publication-item">
+				<div class="publication-item"${topicAttr}>
 					<div class="publication-content">
 						<h5 class="publication-title"><strong><a href="${pub.url}" target="_blank" rel="noopener">${pub.title}</a></strong></h5>
 						<p class="publication-authors">${pub.authors}</p>
@@ -670,12 +1611,14 @@
 					</div>
 			`;
 
-			if (pub.figure) {
+			if (pub.figure && pub.figure.src) {
 				html += `
 					<div class="publication-figure">
-						<img src="${pub.figure.src}" alt="${pub.figure.alt}" onerror="this.style.display='none'">
+						<img src="${pub.figure.src}" alt="${pub.figure.alt || ''}" loading="lazy" onerror="this.style.display='none'">
 					</div>
 				`;
+			} else {
+				html += `<div class="publication-figure publication-figure-placeholder">Figure forthcoming</div>`;
 			}
 
 			html += '</div>';
@@ -684,87 +1627,246 @@
 
 		function renderTalks(talks) {
 			const talksContent = document.getElementById('talks-content');
-			
+			const typeOrder = ['Talk', 'Lecture', 'Event'];
+			const presentTypes = typeOrder.filter(type => talks.some(talk => talk.type === type));
+
+			const legend = `
+				<div class="talk-legend" role="group" aria-label="Filter talks and events by type">
+					<button class="talk-type talk-type-all" type="button" data-filter-value="all" aria-pressed="true">All</button>
+					${presentTypes.map(type =>
+						`<button class="talk-type talk-type-${type.toLowerCase()}" type="button" data-filter-value="${type}" aria-pressed="false">${type}</button>`
+					).join('')}
+				</div>
+			`;
+
 			const html = talks.map(talk => `
-				<div class="talk-item">
+				<div class="talk-item" data-talk-type="${talk.type}">
 					<span class="talk-date">${talk.date}</span>
 					<div class="talk-content">
-						<div class="talk-title">${talk.title}</div>
+						<div class="talk-title"><span class="talk-type talk-type-${talk.type.toLowerCase()}">${talk.type}</span>${talk.title}</div>
 						<div class="talk-venue">${talk.venue}</div>
 					</div>
 				</div>
 			`).join('');
 
-			talksContent.innerHTML = html;
+			talksContent.innerHTML = legend + html;
+			wireLegendFilter({
+				root: talksContent,
+				buttonSelector: '.talk-legend [data-filter-value]',
+				itemSelector: '.talk-item',
+				getItemKey: (item) => item.dataset.talkType
+			});
+		}
+
+		function renderOrgInlineLink(org) {
+			const linkLabel = org.document ? `${org.name}: ${org.document}` : org.name;
+			return `<a href="${org.url}" target="_blank" rel="noopener" title="${linkLabel}">${org.name}<img class="impact-sup-logo" src="${org.logo}" alt="" loading="lazy" onerror="this.style.display='none'"></a>`;
+		}
+
+		function renderImpact(impact) {
+			const impactContent = document.getElementById('impact-content');
+			if (!impactContent || !impact) return;
+			const featured = (impact.organizations || []).filter(org => org.featured);
+			const orgs = featured.map(renderOrgInlineLink).join(', ');
+			impactContent.innerHTML = `<p class="impact-inline">${impact.summary} ${orgs}. Read more below.</p>`;
+		}
+
+		function renderMediaCoverage(impact) {
+			const mediaContent = document.getElementById('media-coverage-content');
+			if (!mediaContent || !impact) return;
+
+			const categories = [
+				{ id: 'government', title: 'Government and policy documents' },
+				{ id: 'professional', title: 'Professional and clinical guidance' },
+				{ id: 'news', title: 'News and media reports' },
+				{ id: 'other', title: 'Other documented uptake' }
+			];
+
+			const renderOrgItem = (org) => `
+				<a class="media-coverage-item" href="${org.url}" target="_blank" rel="noopener">
+					<img src="${org.logo}" alt="" loading="lazy" onerror="this.style.display='none'">
+					<span>
+						<span class="media-coverage-org">${org.name}</span>
+						${org.document ? `<span class="media-coverage-doc"> - ${org.document}</span>` : ''}
+					</span>
+				</a>
+			`;
+
+			mediaContent.innerHTML = categories.map(category => {
+				const orgs = (impact.organizations || []).filter(org => org.category === category.id);
+				if (!orgs.length) return '';
+				return `
+					<div class="media-coverage-category">
+						<h4 class="media-coverage-category-title">${category.title}</h4>
+						${orgs.map(renderOrgItem).join('')}
+					</div>
+				`;
+			}).join('');
 		}
 
 		function renderAwards(awards) {
 			const awardsContent = document.getElementById('awards-content');
-			
-			const html = awards.map(award => `
-				<div class="award-item"><span class="award-source">${award.source}</span> ${award.text}</div>
-			`).join('');
-
-			awardsContent.innerHTML = html;
+			if (!awardsContent) return;
+			const ordered = [...(awards || [])].sort((a, b) => b.year - a.year);
+			const years = [...new Set(ordered.map(item => item.year))];
+			awardsContent.innerHTML = `
+				<div class="recognition-list">
+					${years.map(year => `
+						<div class="recognition-year">
+							<div class="recognition-year-label">${year}</div>
+							<div class="recognition-year-items">
+								${ordered.filter(item => item.year === year).map(item =>
+									`<div class="award-item"><span class="award-source">${item.source}</span> ${item.text}</div>`
+								).join('')}
+							</div>
+						</div>
+					`).join('')}
+				</div>
+			`;
 		}
 
 		function renderReviews(reviews) {
 			const reviewsContent = document.getElementById('reviews-content');
-			
-			const html = reviews.map(review => `
-				<div class="review-item"><span class="review-category-name">${review.category}</span> ${review.text}</div>
-			`).join('');
-
-			reviewsContent.innerHTML = html;
+			if (!reviewsContent) return;
+			reviewsContent.innerHTML = (reviews || []).map(review =>
+				`<div class="review-item"><span class="review-category-name">${review.category}</span> ${review.text}</div>`
+			).join('');
 		}
 
 		function renderTeaching(teaching) {
 			const teachingContent = document.getElementById('teaching-content');
-			
-			const html = teaching.map(item => `
-				<div class="teaching-item">${item}</div>
-			`).join('');
-
-			teachingContent.innerHTML = html;
+			if (!teachingContent) return;
+			teachingContent.innerHTML = (teaching || []).map(item =>
+				`<div class="teaching-item">${item}</div>`
+			).join('');
 		}
-		
+
 		function adjustFigureHeights() {
 			const publicationItems = document.querySelectorAll('.publication-item');
 			publicationItems.forEach(item => {
+				if (item.closest('[hidden]')) return;
 				const content = item.querySelector('.publication-content');
 				const figure = item.querySelector('.publication-figure');
-				
-				if (content && figure) {
-					const adjustHeight = () => {
-						const contentHeight = content.offsetHeight;
-						// Set max-height on both figure and image to ensure proper constraint
-						figure.style.maxHeight = contentHeight + 'px';
-						const img = figure.querySelector('img');
-						if (img) {
-							img.style.maxHeight = contentHeight + 'px';
-						}
-					};
-					
-					// Adjust immediately
-					setTimeout(adjustHeight, 0);
-					
-					// Adjust when images load
-					const images = figure.querySelectorAll('img');
-					images.forEach(img => {
-						if (img.complete) {
-							setTimeout(adjustHeight, 0);
-						} else {
-							img.addEventListener('load', () => {
-								setTimeout(adjustHeight, 0);
-							});
-						}
-					});
+				if (!content || !figure || figure.classList.contains('publication-figure-placeholder')) return;
+
+				const adjustHeight = () => {
+					const contentHeight = content.offsetHeight;
+					if (!contentHeight) return;
+					figure.style.maxHeight = contentHeight + 'px';
+					const img = figure.querySelector('img');
+					if (img) img.style.maxHeight = contentHeight + 'px';
+				};
+
+				setTimeout(adjustHeight, 0);
+				const images = figure.querySelectorAll('img');
+				images.forEach(img => {
+					if (img.complete) setTimeout(adjustHeight, 0);
+					else img.addEventListener('load', () => setTimeout(adjustHeight, 0));
+				});
+			});
+		}
+
+		window.addEventListener('resize', adjustFigureHeights);
+
+		function initializeMainTabs() {
+			const tabs = Array.from(document.querySelectorAll('.main-site-tab'));
+			const panels = Array.from(document.querySelectorAll('.main-tab-panel'));
+			const otherMenu = document.getElementById('other-menu');
+			const otherSectionIds = new Set(['AwardsSection', 'ReviewServiceSection', 'TeachingSection']);
+			const panelIds = new Set(panels.map(panel => panel.id));
+
+			const activate = (panelId, updateHash = true) => {
+				const targetId = panelIds.has(panelId) ? panelId : 'Introduction';
+				panels.forEach(panel => {
+					panel.hidden = panel.id !== targetId;
+				});
+				tabs.forEach(tab => {
+					const selected = tab.getAttribute('aria-controls') === targetId;
+					tab.setAttribute('aria-selected', String(selected));
+					if (tab.id === 'main-tab-recognition') {
+						tab.setAttribute('aria-expanded', String(selected));
+					}
+				});
+				if (otherMenu && targetId !== 'Recognition') {
+					otherMenu.classList.remove('is-open');
+				}
+				if (updateHash) {
+					history.replaceState(null, '', '#' + targetId);
+				}
+				const contentColumn = document.querySelector('.content-column');
+				if (contentColumn) contentColumn.scrollTop = 0;
+				if (targetId === 'Research') {
+					adjustFigureHeights();
+				}
+			};
+
+			tabs.forEach(tab => {
+				tab.addEventListener('click', (event) => {
+					event.preventDefault();
+					const panelId = tab.getAttribute('aria-controls');
+					activate(panelId, true);
+				});
+			});
+
+			document.querySelectorAll('[data-main-tab-target]').forEach(link => {
+				link.addEventListener('click', (event) => {
+					const panelId = link.getAttribute('data-main-tab-target');
+					if (!panelIds.has(panelId)) return;
+					event.preventDefault();
+					activate(panelId, true);
+				});
+			});
+
+			document.querySelectorAll('[data-other-section]').forEach(link => {
+				link.addEventListener('click', (event) => {
+					event.preventDefault();
+					const sectionId = link.getAttribute('data-other-section');
+					activate('Recognition', true);
+					if (otherMenu) otherMenu.classList.remove('is-open');
+					setTimeout(() => {
+						document.getElementById(sectionId)?.scrollIntoView({ block: 'start' });
+					}, 0);
+				});
+			});
+
+			if (otherMenu) {
+				const recognitionTab = document.getElementById('main-tab-recognition');
+				recognitionTab?.addEventListener('click', () => {
+					otherMenu.classList.toggle('is-open');
+				});
+			}
+
+			const initialHash = window.location.hash.slice(1);
+			if (initialHash === 'MediaCoverageSection') {
+				activate('MediaCoverage', true);
+			} else if (otherSectionIds.has(initialHash)) {
+				activate('Recognition', false);
+				setTimeout(() => {
+					document.getElementById(initialHash)?.scrollIntoView({ block: 'start' });
+				}, 0);
+			} else if (initialHash === 'News') {
+				activate('Introduction', false);
+				setTimeout(() => {
+					document.querySelector('.about-news')?.scrollIntoView({ block: 'start' });
+				}, 0);
+			} else {
+				activate(initialHash, false);
+			}
+
+			window.addEventListener('hashchange', () => {
+				const hash = window.location.hash.slice(1);
+				if (hash === 'MediaCoverageSection') activate('MediaCoverage', false);
+				else if (otherSectionIds.has(hash)) {
+					activate('Recognition', false);
+					setTimeout(() => document.getElementById(hash)?.scrollIntoView({ block: 'start' }), 0);
+				} else if (hash === 'News') {
+					activate('Introduction', false);
+					setTimeout(() => document.querySelector('.about-news')?.scrollIntoView({ block: 'start' }), 0);
+				} else if (panelIds.has(hash)) {
+					activate(hash, false);
 				}
 			});
 		}
-		
-		// Also adjust on window resize
-		window.addEventListener('resize', adjustFigureHeights);
 	</script>
 </body>
 

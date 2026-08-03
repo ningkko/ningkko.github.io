@@ -1,0 +1,13 @@
+---
+description: Papers that must never be restored to the site publication list
+alwaysApply: true
+---
+
+# Publication exclusion list
+
+Never add these papers back to `index.html` research publications:
+
+- Mets-cov (any Mets-cov / metagenomic COVID social-media paper previously removed)
+- Tweebank
+
+Social-media discourse papers (Assisted Suicide hashtag, #AIinHealthcare, Nutraceuticals) may remain or be restored when requested.
