@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Research strategies for sparse rare-disease data, large clinical text collections, and high-volume online health data.">
+	<title>AI for Real-World Health Data · Yining Hua</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="../../files/index.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../../files/img/hms.png">
+	<style>
+
+  :root{
+    --ink:#1c3048;
+    --text:#273243;
+    --muted:#6a7688;
+    --line:#e1e7ee;
+    --accent:#36786f;
+    --accent-dark:#285f59;
+    --accent-soft:#f3f8f6;
+    --accent-line:#c5dbd6;
+    --paper:#ffffff;
+    --canvas:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body.project-detail-page{background:#fff;overflow-x:hidden}
+  .project-detail-page .content-grid{grid-template-columns:minmax(220px,260px) minmax(0,1fr);gap:4.5rem}
+  .project-detail-page .content-column{min-width:0;padding-left:0;padding-right:1.75rem;padding-bottom:0}
+  .project-detail-page .content-column,.project-detail-page .project-program{background:#fff}
+  .project-detail-page .profile-column{min-width:0}
+  .project-detail-page .profile-card{background:#f3f4f6;border-radius:12px;padding:2rem 1rem}
+  .project-program{width:100%;min-width:0;padding:0 0 1rem}
+  .project-program a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--accent-line)}
+  .project-program a:hover{color:var(--accent);border-color:var(--accent)}
+  .project-program > .eyebrow{margin:0 0 10px;color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
+  .project-program h1{max-width:960px;margin:0;color:#18202c;font-size:clamp(1.6rem,2.5vw,2.1rem);line-height:1.15;letter-spacing:-.03em;overflow-wrap:anywhere}
+  .lede{max-width:940px;margin:20px 0 0;color:#364154;font-size:16px;line-height:1.6}
+  .selected-note{max-width:900px;margin:9px 0 0;color:#7a8697;font-size:13px;font-weight:600;line-height:1.5}
+  .hero-rule{width:100%;height:1px;margin:27px 0;background:var(--line)}
+  .thesis{max-width:990px;margin:0 0 38px;color:#394457;font-size:16px;line-height:1.62}
+  .arc{margin:28px 0 52px;padding:22px;border:1px solid var(--accent-line);border-radius:14px;background:#f7f9fc}
+  .arc-label{margin-bottom:14px;color:#59677a;font-size:12px;font-weight:750;letter-spacing:.17em;text-transform:uppercase}
+  .arc-steps{display:grid;grid-template-columns:repeat(var(--arc-count,4),minmax(0,1fr));gap:12px}
+  .project-program .arc-step{display:grid;grid-template-columns:38px minmax(0,1fr);gap:11px;min-width:0;padding:15px;border:1px solid #d8e0ea;border-radius:10px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 2px 6px rgba(28,48,72,.025);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+  .project-program .arc-step:hover{border-color:#9fb5cf;color:inherit;box-shadow:0 5px 14px rgba(28,48,72,.07);transform:translateY(-2px)}
+  .arc-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:9px;background:var(--accent-soft);color:var(--accent)}
+  .arc-icon svg{width:23px;height:23px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .arc-copy{min-width:0}
+  .arc-num{display:block;color:#7b8798;font-size:10px;font-weight:750;letter-spacing:.12em;line-height:1.1}
+  .arc-name{display:block;margin-top:3px;color:var(--ink);font-size:16px;font-weight:750;line-height:1.25}
+  .arc-sub{display:block;margin-top:4px;color:#6c788a;font-size:12px;line-height:1.4}
+  .section{display:grid;grid-template-columns:148px minmax(0,1fr);gap:34px;margin:0 0 56px;padding:0 0 58px;border-bottom:1px solid var(--line);scroll-margin-top:24px}
+  .section:last-of-type{margin-bottom:28px;border-bottom:0}
+  .section > div:last-child{min-width:0}
+  .section-index{position:sticky;top:110px;align-self:start;display:flex;flex-direction:column;align-items:flex-start;gap:0.2em;padding:9px 10px;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.1em;line-height:1.35;text-transform:uppercase;overflow-wrap:normal;word-break:normal;hyphens:none;white-space:nowrap}
+  .section-index span{display:block}
+  .section h2{margin:0 0 12px;color:var(--ink);font-size:clamp(1.2rem,1.8vw,1.4rem);line-height:1.25;letter-spacing:-.02em}
+  .section-intro{max-width:890px;margin:0 0 13px;color:#4d596a;font-size:16px;line-height:1.62}
+  .selection-note{max-width:880px;margin:16px 0 0;color:#7a8696;font-size:13px;font-weight:600;line-height:1.5}
+  .paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .paper-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .paper-card,.small-card{min-width:0;border:1px solid var(--line);border-radius:11px;background:#fff}
+  .paper-card{padding:21px 22px 19px}
+  .paper-card:hover,.small-card:hover{border-color:var(--accent-line);box-shadow:0 8px 22px rgba(28,48,72,.055)}
+  .paper-card.compact{min-height:0}
+  .meta{margin-bottom:9px;color:#707d90;font-size:11px;font-weight:750;letter-spacing:.12em;line-height:1.45;text-transform:uppercase}
+  .paper-card h3,.small-card h3{margin:0 0 8px;color:var(--ink);font-size:18px;line-height:1.35}
+  .paper-card p{margin:0 0 13px;color:#616c7c;font-size:14px;line-height:1.55}
+  .links{font-size:13px;font-weight:650;line-height:1.6}
+  .framework-card,.fellowship-card,.related-card{min-width:0;padding:27px;border:1px solid var(--accent-line);border-radius:12px;background:linear-gradient(135deg,var(--accent-soft) 0%,#fff 72%)}
+  .framework-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr);gap:28px}
+  .framework-card h3,.fellowship-card h3,.related-card h3{margin:0 0 9px;color:var(--ink);font-size:22px;line-height:1.3}
+  .framework-card p,.fellowship-card>p,.related-card>p{max-width:860px;margin:0 0 16px;color:#5c6878;font-size:15px;line-height:1.6}
+  .framework-list{padding-left:24px;border-left:1px solid var(--accent-line)}
+  .framework-list div{margin-bottom:15px}
+  .framework-list b,.point b,.capability b,.fellowship-step b{display:block;margin-bottom:3px;color:#304a63;font-size:14px}
+  .framework-list span,.point span,.capability span,.fellowship-step span{color:#727f91;font-size:13px;line-height:1.48}
+  .featured{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.65fr);gap:34px;min-width:0;margin-bottom:19px;padding:28px;border:1px solid var(--accent-line);border-radius:13px;background:var(--accent-soft)}
+  .featured .badge{display:inline-block;margin-bottom:12px;padding:5px 9px;border:1px solid var(--accent-line);border-radius:999px;color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+  .featured h3{margin:0 0 10px;color:var(--ink);font-size:26px;line-height:1.25}
+  .featured p{margin:0 0 17px;color:#515d6e;font-size:15px;line-height:1.62}
+  .feature-points{min-width:0;padding-left:26px;border-left:1px solid var(--accent-line)}
+  .point{margin:2px 0 17px}
+  .small-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .small-card{padding:19px;min-height:164px}
+  .small-card h3{font-size:17px}
+  .small-card p{margin:0 0 13px;color:#667283;font-size:13px;line-height:1.55}
+  .release-note{margin-top:13px;color:#6c788a;font-size:13px;font-style:italic}
+  .raycaster-line{display:flex;align-items:center;gap:9px;margin:0 0 17px;color:#647286;font-size:13px;font-weight:650}
+  .raycaster-dot{width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--accent)}
+  .capability-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:19px}
+  .capability{min-width:0;padding-top:13px;border-top:1px solid var(--accent-line)}
+  .fellowship-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:19px 0 17px}
+  .fellowship-step{min-width:0;padding-left:14px;border-left:2px solid var(--accent-line)}
+  .contributor-call{margin-top:21px;padding:23px 24px;border:1px solid var(--accent-line);border-radius:11px;background:#fff}
+  .contributor-call h3{margin:0 0 9px;color:var(--ink);font-size:20px;line-height:1.35}
+  .contributor-call p{max-width:900px;margin:0 0 9px;color:#5e6979;font-size:14px;line-height:1.62}
+  .work-in-progress{display:inline-block;color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
+  .footer-note{margin-top:48px;padding-top:19px;border-top:1px solid var(--line);color:#8994a3;font-size:12px;line-height:1.55}
+  .project-detail-page .interest-list{gap:.5rem}
+  .project-detail-page .interest-icon{color:#8b97a8}
+  @media (max-width:1250px){
+    .arc-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 0}
+  }
+  @media (max-width:1100px){
+    .paper-grid.three,.small-grid{grid-template-columns:1fr}
+    .featured,.framework-card{grid-template-columns:1fr}
+    .feature-points,.framework-list{padding:19px 0 0;border-left:0;border-top:1px solid var(--accent-line)}
+    .capability-grid,.fellowship-steps{grid-template-columns:1fr}
+  }
+  @media (max-width:992px){
+    .project-detail-page .content-grid{grid-template-columns:1fr;gap:2.5rem}
+    .section{grid-template-columns:1fr;gap:10px}
+    .section-index{position:static}
+  }
+  @media (max-width:700px){
+    .project-program h1{font-size:clamp(1.5rem,7vw,1.9rem)}
+    .lede,.thesis{font-size:15px}
+    .arc{padding:21px 20px 22px}
+    .arc-steps{grid-template-columns:1fr;gap:18px}
+    .section{margin-bottom:42px;padding-bottom:44px}
+    .paper-grid{grid-template-columns:1fr}
+    .featured,.framework-card,.fellowship-card,.related-card,.contributor-call{padding:21px}
+  }
+  @media (max-width:440px){
+    .section h2{font-size:1.2rem}
+    .featured h3{font-size:22px}
+  }
+
+	</style>
+</head>
+<body class="project-detail-page" style="--arc-count:3">
+	<nav class="top-nav">
+		<div class="container">
+			<div class="nav-container">
+				<a href="../../index.html#Introduction" class="nav-name">Yining Hua</a>
+				<ul class="nav-menu-horizontal" role="tablist" aria-label="Site sections">
+					<li><a href="../../index.html#Introduction">Introduction</a></li>
+					<li><a class="active" aria-current="page" href="../../index.html#Projects">Projects</a></li>
+					<li><a href="../../index.html#Research">Research</a></li>
+					<li><a href="../../index.html#Talks">Talks &amp; Lectures</a></li>
+					<li><a href="../../index.html#MediaCoverage">Media Coverage</a></li>
+					<li><a href="../../index.html#Recognition">Other</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container main-container">
+		<div class="content-grid">
+			<aside class="sidebar profile-column">
+				<div class="profile-card">
+					<div class="profile-photo">
+						<img class="img-responsive img-rounded profile-image" src="../../files/img/ning.jpeg" alt="Portrait">
+						<p class="profile-caption">Fishers Island, NY, Summer 2021<br>(my first cross-country flight, with <a href="http://bobbeede.com/" target="_blank" rel="noopener">Bob</a>)</p>
+					</div>
+					<div class="profile-section">
+						<p class="eyebrow">Contact</p>
+						<ul class="stacked-list">
+							<li><a href="https://scholar.google.com/citations?user=1uaV0JEAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar</a> | <a href="https://www.linkedin.com/in/yining-hua-393b34112/" target="_blank" rel="noopener">LinkedIn</a></li>
+							<li>yininghua@g.harvard.edu</li>
+						</ul>
+					</div>
+					<div class="profile-section">
+						<p class="eyebrow">Research Interests</p>
+						<ul class="interest-list">
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"></circle><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle><path d="m10.5 6.5-4 4m7-4 4 4m-7 7-4-4m7 4 4-4"></path></svg></span><span>LLMs &amp; agents</span></li>
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-2.8 7.7-7 10-4.2-2.3-7-5.5-7-10V6l7-3z"></path><path d="M9 12l2 2 4-5"></path></svg></span><span>AI Safety &amp; Evaluation</span></li>
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8l3 3v15H5V3h3"></path><path d="M8 17v-3m4 3v-6m4 6v-4"></path></svg></span><span>Evidence Generation</span></li>
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h4l2-5 4 10 2-5h6"></path><path d="M5 5h14v14H5z"></path></svg></span><span>Health AI &amp; Epidemiology</span></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+
+			<div class="content-column">
+				<article class="project-program">
+					<p class="eyebrow">Selected research program</p>
+					<h1>AI for Real-World Health Data</h1>
+					<p class="lede">Different health data regimes fail in different ways. I start with sparsity, irregularity, noise, scale, and selection, then select methods and interpret results in light of those conditions. Each example is grouped by the data constraint that most strongly shapes its design.</p>
+
+					<section class="arc" aria-label="Real-world health data regimes">
+						<div class="arc-label">Real-world health data regimes</div>
+						<div class="arc-steps">
+							<a class="arc-step" href="#longitudinal-data">
+								<span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h4l2-5 4 10 2-5h6"></path><path d="M5 5h14v14H5z"></path></svg></span>
+								<span class="arc-copy"><span class="arc-num">01</span><span class="arc-name">Sparse rare-disease data</span><span class="arc-sub">Few cases, irregular follow-up, and heterogeneous cohorts.</span></span>
+							</a>
+							<a class="arc-step" href="#clinical-text">
+								<span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"></path><path d="M10 9h4M10 13h4M10 17h3"></path></svg></span>
+								<span class="arc-copy"><span class="arc-num">02</span><span class="arc-name">Large clinical text</span><span class="arc-sub">Many notes, few labels, and institution-specific language.</span></span>
+							</a>
+							<a class="arc-step" href="#online-data">
+								<span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M4 12h16M12 4c2.5 2.2 4 4.8 4 8s-1.5 5.8-4 8M12 4c-2.5 2.2-4 4.8-4 8s1.5 5.8 4 8"></path></svg></span>
+								<span class="arc-copy"><span class="arc-num">03</span><span class="arc-name">High-volume online data</span><span class="arc-sub">Abundant observations with noise, drift, and selection bias.</span></span>
+							</a>
+						</div>
+					</section>
+
+					<section class="section" id="longitudinal-data">
+						<div class="section-index"><span>01 ·</span><span>Sparse data</span></div>
+						<div>
+							<h2>Sparse and irregular data in rare disease</h2>
+							<p class="section-intro">Rare-disease datasets contain few confirmed cases, irregular observations, missing follow-up, and variation across clinics, cohorts, and trials. I preserve longitudinal structure, combine compatible sources, and calibrate augmentation or simulation to observed disease trajectories. Synthetic data can expand stress tests and comparators, while patient-level conclusions still require external validation with observed data.</p>
+							<div class="paper-grid three">
+								<article class="paper-card compact">
+									<div class="meta">Int. J. Medical Informatics · 2025</div>
+									<h3>Rare-disease cohort finding</h3>
+									<p>Identifies ANCA-associated vasculitis cases from longitudinal records and evaluates sensitivity among rare positives.</p>
+									<div class="links"><a href="https://pubmed.ncbi.nlm.nih.gov/39864108/" target="_blank" rel="noopener">Paper ↗</a></div>
+								</article>
+								<article class="paper-card compact">
+									<div class="meta">PhD thesis · Ongoing</div>
+									<h3>ALS progression modeling</h3>
+									<p>Models functional decline, respiratory support, and survival across longitudinal ALS cohorts.</p>
+									<span class="work-in-progress">Work in progress</span>
+								</article>
+								<article class="paper-card compact">
+									<div class="meta">PhD thesis · Ongoing</div>
+									<h3>Simulation and external controls</h3>
+									<p>Evaluates patient-level simulations and external comparators against observed trial results.</p>
+									<span class="work-in-progress">Work in progress</span>
+								</article>
+							</div>
+						</div>
+					</section>
+
+					<section class="section" id="clinical-text">
+							<div class="section-index"><span>02 ·</span><span>Clinical text</span></div>
+						<div>
+							<h2>Large clinical text with limited labels</h2>
+							<p class="section-intro">Large clinical-note collections contain copied text, irrelevant context, inconsistent terminology, and few adjudicated labels. I use domain filters and concept normalization, then compare rule-based, classical, and transformer models against clinician-reviewed labels. Evaluation reports patient-level sensitivity and failure cases because performance can shift across institutions and documentation practices.</p>
+							<div class="paper-grid three">
+								<article class="paper-card compact">
+									<div class="meta">Translational Psychiatry · 2024</div>
+									<h3>Psychosis episode identification</h3>
+									<p>Uses expert terms to reduce noise, then compares rule-based, classical, and transformer models.</p>
+									<div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10984080/" target="_blank" rel="noopener">Paper ↗</a></div>
+								</article>
+								<article class="paper-card compact">
+									<div class="meta">J. Biomedical Informatics · 2023</div>
+									<h3>TGD patient identification</h3>
+									<p>Combines structured fields, curated and expanded terms, and clinical notes for patient-level identification.</p>
+									<div class="links"><a href="https://doi.org/10.1016/j.jbi.2023.104507" target="_blank" rel="noopener">Paper ↗</a></div>
+								</article>
+								<article class="paper-card compact">
+									<div class="meta">Clinical report extraction</div>
+									<h3>UTD ultrasound classification</h3>
+									<p>Uses multi-task learning and iterative label correction to structure neonatal ultrasound findings.</p>
+									<div class="links"><a href="https://www.medrxiv.org/content/10.1101/2024.01.23.24301680v1" target="_blank" rel="noopener">Preprint ↗</a></div>
+								</article>
+							</div>
+						</div>
+					</section>
+
+					<section class="section" id="online-data">
+							<div class="section-index"><span>03 ·</span><span>Online health data</span></div>
+						<div>
+							<h2>High-volume data with noise and selection</h2>
+							<p class="section-intro">High-volume online health data contain informal language, duplicated content, platform changes, and selection bias. I normalize lay terms to clinical concepts, model time explicitly, and stratify signals by relevant populations and behaviors. These analyses can reveal platform-level and population signals, while prevalence estimates and causal claims require representative designs and external evidence.</p>
+							<div class="paper-grid three">
+								<article class="paper-card compact">
+									<div class="meta">Online health measurement</div>
+									<h3>COVID symptom dictionary and retrieval</h3>
+									<p>Curates 38,000 lay expressions from more than 18 million posts and maps them to 966 clinical concepts.</p>
+									<div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11187427/" target="_blank" rel="noopener">Paper ↗</a></div>
+								</article>
+								<article class="paper-card compact">
+									<div class="meta">J. Biomedical Informatics · 2025</div>
+									<h3>Longitudinal symptom monitoring</h3>
+									<p>Tracks symptom prevalence, duration, and co-occurrence over time.</p>
+									<div class="links"><a href="https://www.sciencedirect.com/science/article/pii/S1532046425000073" target="_blank" rel="noopener">Paper ↗</a></div>
+								</article>
+								<article class="paper-card compact">
+									<div class="meta">JAMIA · 2022</div>
+									<h3>COVID drug discourse</h3>
+									<p>Studies public perceptions of approved and off-label COVID medications.</p>
+									<div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9278189/" target="_blank" rel="noopener">Paper ↗</a></div>
+								</article>
+							</div>
+							<p class="selection-note">More papers · <a href="../../index.html#Research">View the complete publication list →</a></p>
+						</div>
+					</section>
+				</article>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

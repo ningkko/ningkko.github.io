@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Research on building evaluations for real-world AI systems and agents, from evidence and benchmark design to infrastructure and expert communities.">
+	<title>Evaluation for Real-World AI Systems and Agents · Yining Hua</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="../../files/index.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../../files/img/hms.png">
+	<style>
+
+  :root{
+    --ink:#1c3048;
+    --text:#273243;
+    --muted:#6a7688;
+    --line:#e1e7ee;
+    --accent:#4965a6;
+    --accent-dark:#34518d;
+    --accent-soft:#f4f6fb;
+    --accent-line:#cbd5e7;
+    --paper:#ffffff;
+    --canvas:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body.project-detail-page{background:#fff;overflow-x:hidden}
+  .project-detail-page .content-grid{grid-template-columns:minmax(220px,260px) minmax(0,1fr);gap:4.5rem}
+  .project-detail-page .content-column{min-width:0;padding-left:0;padding-right:1.75rem;padding-bottom:0}
+  .project-detail-page .content-column,.project-detail-page .project-program{background:#fff}
+  .project-detail-page .profile-column{min-width:0}
+  .project-detail-page .profile-card{background:#f3f4f6;border-radius:12px;padding:2rem 1rem}
+  .project-program{width:100%;min-width:0;padding:0 0 1rem}
+  .project-program a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--accent-line)}
+  .project-program a:hover{color:var(--accent);border-color:var(--accent)}
+  .project-program > .eyebrow{margin:0 0 10px;color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
+  .project-program h1{max-width:960px;margin:0;color:#18202c;font-size:clamp(1.6rem,2.5vw,2.1rem);line-height:1.15;letter-spacing:-.03em;overflow-wrap:anywhere}
+  .lede{max-width:940px;margin:20px 0 0;color:#364154;font-size:16px;line-height:1.6}
+  .selected-note{max-width:900px;margin:9px 0 0;color:#7a8697;font-size:13px;font-weight:600;line-height:1.5}
+  .hero-rule{width:100%;height:1px;margin:27px 0;background:var(--line)}
+  .thesis{max-width:990px;margin:0 0 38px;color:#394457;font-size:16px;line-height:1.62}
+  .arc{margin:28px 0 52px;padding:22px;border:1px solid var(--accent-line);border-radius:14px;background:#f7f9fc}
+  .arc-label{margin-bottom:14px;color:#59677a;font-size:12px;font-weight:750;letter-spacing:.17em;text-transform:uppercase}
+  .arc-steps{display:grid;grid-template-columns:repeat(var(--arc-count,4),minmax(0,1fr));gap:12px}
+  .project-program .arc-step{display:grid;grid-template-columns:38px minmax(0,1fr);gap:11px;min-width:0;padding:15px;border:1px solid #d8e0ea;border-radius:10px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 2px 6px rgba(28,48,72,.025);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+  .project-program .arc-step:hover{border-color:#9fb5cf;color:inherit;box-shadow:0 5px 14px rgba(28,48,72,.07);transform:translateY(-2px)}
+  .arc-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:9px;background:var(--accent-soft);color:var(--accent)}
+  .arc-icon svg{width:23px;height:23px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .arc-copy{min-width:0}
+  .arc-num{display:block;color:#7b8798;font-size:10px;font-weight:750;letter-spacing:.12em;line-height:1.1}
+  .arc-name{display:block;margin-top:3px;color:var(--ink);font-size:16px;font-weight:750;line-height:1.25}
+  .arc-sub{display:block;margin-top:4px;color:#6c788a;font-size:12px;line-height:1.4}
+  .section{display:grid;grid-template-columns:148px minmax(0,1fr);gap:34px;margin:0 0 56px;padding:0 0 58px;border-bottom:1px solid var(--line);scroll-margin-top:24px}
+  .section:last-of-type{margin-bottom:28px;border-bottom:0}
+  .section > div:last-child{min-width:0}
+  .section-index{position:sticky;top:110px;align-self:start;display:flex;flex-direction:column;align-items:flex-start;gap:0.2em;padding:9px 10px;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.1em;line-height:1.35;text-transform:uppercase;overflow-wrap:normal;word-break:normal;hyphens:none;white-space:nowrap}
+  .section-index span{display:block}
+  .section h2{margin:0 0 12px;color:var(--ink);font-size:clamp(1.2rem,1.8vw,1.4rem);line-height:1.25;letter-spacing:-.02em}
+  .section-intro{max-width:890px;margin:0 0 13px;color:#4d596a;font-size:16px;line-height:1.62}
+  .selection-note{max-width:880px;margin:0 0 26px;color:#7a8696;font-size:13px;font-weight:600;line-height:1.5}
+  .paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .paper-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .paper-card,.small-card{min-width:0;border:1px solid var(--line);border-radius:11px;background:#fff}
+  .paper-card{padding:21px 22px 19px}
+  .paper-card:hover,.small-card:hover{border-color:var(--accent-line);box-shadow:0 8px 22px rgba(28,48,72,.055)}
+  .paper-card.compact{min-height:0}
+  .meta{margin-bottom:9px;color:#707d90;font-size:11px;font-weight:750;letter-spacing:.12em;line-height:1.45;text-transform:uppercase}
+  .paper-card h3,.small-card h3{margin:0 0 8px;color:var(--ink);font-size:18px;line-height:1.35}
+  .paper-card p,.small-card p{margin:0 0 13px;color:#616c7c;font-size:14px;line-height:1.55}
+  .links{font-size:13px;font-weight:650;line-height:1.6}
+  .release-note{margin-top:10px;color:#6c788a;font-size:13px;font-style:italic}
+  .raycaster-line{display:flex;align-items:center;gap:9px;margin:0 0 10px;color:#647286;font-size:13px;font-weight:650}
+  .raycaster-dot{width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--accent)}
+  .contributor-call{margin-top:22px;padding:24px 26px;border:1px solid var(--accent-line);border-radius:11px;background:var(--accent-soft);box-shadow:0 8px 22px rgba(28,48,72,.06)}
+  .contributor-call .meta{color:var(--accent)}
+  .contributor-call h3{margin:0 0 9px;color:var(--ink);font-size:20px;line-height:1.35}
+  .contributor-call p{max-width:900px;margin:0 0 14px;color:#5e6979;font-size:14px;line-height:1.62}
+  .contributor-call a[href^="mailto:"]{display:inline-block;padding:0.42rem 0.9rem;border:0;border-radius:0.4rem;background:var(--accent);color:#fff;font-weight:650;text-decoration:none;border-bottom:none}
+  .contributor-call a[href^="mailto:"]:hover{background:var(--accent-dark);color:#fff;border-bottom:none}
+  .contributor-call .links a:not([href^="mailto:"]){border-bottom-color:transparent}
+  .work-in-progress{display:inline-block;color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
+  .footer-note{margin-top:48px;padding-top:19px;border-top:1px solid var(--line);color:#8994a3;font-size:12px;line-height:1.55}
+  .project-detail-page .interest-list{gap:.5rem}
+  .project-detail-page .interest-icon{color:#8b97a8}
+  @media (max-width:1250px){
+    .arc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:1100px){
+    .paper-grid.three{grid-template-columns:1fr}
+  }
+  @media (max-width:992px){
+    .project-detail-page .content-grid{grid-template-columns:1fr;gap:2.5rem}
+    .section{grid-template-columns:1fr;gap:10px}
+    .section-index{position:static}
+  }
+  @media (max-width:700px){
+    .project-program h1{font-size:clamp(1.5rem,7vw,1.9rem)}
+    .lede,.thesis{font-size:15px}
+    .arc{padding:21px 20px 22px}
+    .arc-steps{grid-template-columns:1fr;gap:18px}
+    .section{margin-bottom:42px;padding-bottom:44px}
+    .paper-grid{grid-template-columns:1fr}
+    .contributor-call{padding:21px}
+  }
+  @media (max-width:440px){
+    .section h2{font-size:1.2rem}
+  }
+
+	</style>
+</head>
+<body class="project-detail-page" style="--arc-count:4">
+	<nav class="top-nav">
+		<div class="container">
+			<div class="nav-container">
+				<a href="../../index.html#Introduction" class="nav-name">Yining Hua</a>
+				<ul class="nav-menu-horizontal" role="tablist" aria-label="Site sections">
+					<li><a href="../../index.html#Introduction">Introduction</a></li>
+					<li><a class="active" aria-current="page" href="../../index.html#Projects">Projects</a></li>
+					<li><a href="../../index.html#Research">Research</a></li>
+					<li><a href="../../index.html#Talks">Talks &amp; Lectures</a></li>
+					<li><a href="../../index.html#MediaCoverage">Media Coverage</a></li>
+					<li><a href="../../index.html#Recognition">Other</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container main-container">
+		<div class="content-grid">
+			<aside class="sidebar profile-column">
+
+				<div class="profile-card">
+					<div class="profile-photo">
+						<img class="img-responsive img-rounded profile-image" src="../../files/img/ning.jpeg" alt="Portrait">
+						<p class="profile-caption">Fishers Island, NY, Summer 2021<br>(my first cross-country flight, with <a href="http://bobbeede.com/" target="_blank" rel="noopener">Bob</a>)</p>
+					</div>
+					<div class="profile-section">
+						<p class="eyebrow">Contact</p>
+						<ul class="stacked-list">
+							<li><a href="https://scholar.google.com/citations?user=1uaV0JEAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar</a> | <a href="https://www.linkedin.com/in/yining-hua-393b34112/" target="_blank" rel="noopener">LinkedIn</a></li>
+							<li>yininghua@g.harvard.edu</li>
+						</ul>
+					</div>
+					<div class="profile-section">
+						<p class="eyebrow">Research Interests</p>
+						<ul class="interest-list">
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"></circle><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle><path d="m10.5 6.5-4 4m7-4 4 4m-7 7-4-4m7 4 4-4"></path></svg></span><span>LLMs &amp; agents</span></li>
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-2.8 7.7-7 10-4.2-2.3-7-5.5-7-10V6l7-3z"></path><path d="M9 12l2 2 4-5"></path></svg></span><span>AI Safety &amp; Evaluation</span></li>
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8l3 3v15H5V3h3"></path><path d="M8 17v-3m4 3v-6m4 6v-4"></path></svg></span><span>Evidence Generation</span></li>
+							<li><span class="interest-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h4l2-5 4 10 2-5h6"></path><path d="M5 5h14v14H5z"></path></svg></span><span>Health AI &amp; Epidemiology</span></li>
+						</ul>
+					</div>
+				</div>
+
+			</aside>
+			<div class="content-column">
+				<article class="project-program">
+<p class="eyebrow">Research agenda</p>
+      <h1>Evaluation for Real-World AI Systems and Agents</h1>
+      <p class="lede">I examine how to build evaluations for real-world AI systems and agents. I synthesize research evidence and professional guidance into evaluation criteria, operationalize these criteria through benchmarks, and build infrastructure for constructing benchmarks and running evaluations under controlled conditions. Domain experts and shared-task communities contribute real workflows, difficult cases, and output review, creating a feedback loop between evaluation design and practice.</p>
+
+      <section class="arc" aria-label="Research program areas">
+        <div class="arc-label">Four research areas</div>
+        <div class="arc-steps">
+          <a class="arc-step" href="#guidance">
+            <span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8 4.8-2.2Z"></path></svg></span>
+            <span class="arc-copy"><span class="arc-num">01</span><span class="arc-name">Evidence</span><span class="arc-sub">Research evidence and evaluation criteria</span></span>
+          </a>
+          <a class="arc-step" href="#evaluation">
+            <span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"></path><path d="m9.5 10 1.5 1.5 3-3M10 15h4"></path></svg></span>
+            <span class="arc-copy"><span class="arc-num">02</span><span class="arc-name">Benchmarks</span><span class="arc-sub">Tasks, settings, and scoring</span></span>
+          </a>
+          <a class="arc-step" href="#infrastructure">
+            <span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 4 8 4-8 4-8-4 8-4Z"></path><path d="m4 12 8 4 8-4M4 16l8 4 8-4"></path></svg></span>
+            <span class="arc-copy"><span class="arc-num">03</span><span class="arc-name">Infrastructure</span><span class="arc-sub">Benchmark construction and controlled runs</span></span>
+          </a>
+          <a class="arc-step" href="#collaboration">
+            <span class="arc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="10" r="2.5"></circle><path d="M3 20c0-4 2.4-7 6-7s6 3 6 7M14 15c.8-.8 1.8-1.2 3-1.2 2.7 0 4 2.2 4 5.2"></path></svg></span>
+            <span class="arc-copy"><span class="arc-num">04</span><span class="arc-name">Community</span><span class="arc-sub">Domain expertise and shared practice</span></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="guidance">
+        <div class="section-index"><span>01 ·</span><span>Evidence</span></div>
+        <div>
+          <h2>Define what evaluation should measure</h2>
+          <p class="section-intro">This work combines empirical reviews, professional guidance, stakeholder priorities, and reporting frameworks to define the relevant outcomes, risks, tested settings, and work products before tasks or metrics are chosen. This grounding matters because benchmarks otherwise risk rewarding narrow proxies that do not reflect their intended use.</p>
+          <p class="selection-note">Selected work · <a href="../../index.html#Research">Complete publication list</a></p>
+          <div class="paper-grid">
+            <article class="paper-card">
+              <div class="meta">npj Digital Medicine · 2025</div>
+              <h3>LLMs for generative mental-health tasks</h3>
+              <p>Examines whether human evaluations support claims about clinical performance, safety, and use.</p>
+              <div class="links"><a href="https://www.nature.com/articles/s41746-025-01611-4">Paper ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">World Psychiatry · 2025</div>
+              <h3>Evolution of AI mental-health chatbots</h3>
+              <p>Organizes 160 studies across foundational testing, pilot feasibility, and clinical efficacy.</p>
+              <div class="links"><a href="https://onlinelibrary.wiley.com/doi/10.1002/wps.21352">Paper ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">JMIR AI · 2025</div>
+              <h3>HAICEF</h3>
+              <p>Structures 271 questions covering safety, privacy, fairness, usefulness, design, and operations.</p>
+              <div class="links"><a href="https://ai.jmir.org/2025/1/e69006/">Paper ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">Benchmark methodology · 2026</div>
+              <h3>Design and Report Benchmarks for Knowledge Work</h3>
+              <p>Defines work activity, setting, and work product so benchmarks can be compared and claims scoped clearly.</p>
+              <div class="links"><a href="https://arxiv.org/abs/2605.23262">Paper ↗</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="evaluation">
+        <div class="section-index"><span>02 ·</span><span>Benchmarks</span></div>
+        <div>
+          <h2>Turn evaluation requirements into benchmarks</h2>
+          <p class="section-intro">This step operationalizes evaluation criteria as tasks, information states, actions, tested settings, and scoring rules. These choices determine which system capabilities a benchmark can measure and whether its results reflect the work the system is expected to perform.</p>
+          <div class="paper-grid">
+            <article class="paper-card">
+              <div class="meta">Patient-facing triage · 2026</div>
+              <h3>CARE-Bench</h3>
+              <p>Tests whether a patient-facing system requests necessary information and recommends an appropriate level of care at the right time.</p>
+              <div class="links"><a href="https://ningkko.github.io/CARE-bench/">Project</a> &nbsp;·&nbsp; <a href="https://github.com/ningkko/CARE-bench">Code &amp; data</a> &nbsp;·&nbsp; <a href="https://ningkko.github.io/CARE-bench/paper.pdf">Paper</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">EMNLP · 2024</div>
+              <h3>ClinicBench</h3>
+              <p>Evaluates clinical generation, reasoning, long documents, and expert-rated usefulness.</p>
+              <div class="links"><a href="https://aclanthology.org/2024.emnlp-main.759/">Paper ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">Web agents · 2025</div>
+              <h3>BrowseComp-ZH</h3>
+              <p>Tests multi-step browsing, retrieval strategy, and information reconciliation across the Chinese web.</p>
+              <div class="links"><a href="https://arxiv.org/abs/2504.19314">Paper ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">Findings of ACL · 2026</div>
+              <h3>PsyDefConv</h3>
+              <p>Benchmarks fine-grained detection of psychological defense levels across 4,709 utterances in supportive conversations.</p>
+              <div class="links"><a href="https://aclanthology.org/2026.findings-acl.708/">Paper ↗</a></div>
+            </article>
+          </div>
+          <aside class="contributor-call" aria-label="Call for contributors">
+            <div class="meta">Call for contributors</div>
+            <h3>Help evaluate evidence-generation agents</h3>
+            <p>We invite epidemiologists, statisticians, clinicians, data scientists, and agent researchers to review tasks and generated work products for an evidence-generation benchmark.</p>
+            <div class="links"><a href="mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration">Express interest</a> &nbsp;·&nbsp; <a href="https://www.raycaster.ai/ai-fellows">AI Fellows Program ↗</a></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="infrastructure">
+        <div class="section-index"><span>03 ·</span><span>Infrastructure</span></div>
+        <div>
+          <h2>Build benchmarks and run controlled evaluations</h2>
+          <p class="section-intro">This step builds the controlled environments needed to construct benchmarks and run them consistently. It includes versioned files, search results, tool access, workspace updates, trajectories, and final artifacts so benchmark builders can reproduce what an agent saw and separate system behavior from environment inconsistencies.</p>
+          <article class="paper-card">
+            <div class="meta">Agent infrastructure · Raycaster AI</div>
+            <h3>StageWork</h3>
+            <p>Keeps search, native files, edits, diffs, and final submissions tied to one version-controlled workspace state for OfficeQA Pro and APEX-Agents.</p>
+            <div class="links"><a href="https://www.raycaster.ai/blog">Raycaster ↗</a></div>
+            <div class="release-note">Preprint and example code will be released soon.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="collaboration">
+        <div class="section-index"><span>04 ·</span><span>Community</span></div>
+        <div>
+          <h2>Bring domain expertise into evaluation</h2>
+          <p class="section-intro">This step brings domain experts into task selection, criteria design, difficult-case development, and output review. Their participation matters because benchmark validity depends on how the work is performed and which failures affect the next professional decision or artifact.</p>
+          <div class="paper-grid">
+            <article class="paper-card">
+              <div class="meta">Raycaster AI Fellows &amp; Community</div>
+              <h3>Shared evaluation knowledge</h3>
+              <p>Fellows contribute de-identified workflows and edge cases, translate professional standards into observable criteria, and review agent trajectories and artifacts.</p>
+              <div class="links"><a href="https://www.raycaster.ai/ai-fellows">AI Fellows Program ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">Community benchmark · BioNLP Workshop at ACL 2026</div>
+              <h3>PsyDefDetect Shared Task</h3>
+              <p>We hosted the PsyDefDetect Shared Task to bring researchers together to evaluate psychological-defense detection in supportive conversations.</p>
+              <div class="links"><a href="https://psydefdetect-shared-task.github.io/">Shared task ↗</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+				</article>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

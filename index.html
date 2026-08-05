@@ -43,16 +43,18 @@
 		.about-news { margin-top: 1.75rem; }
 		.news-tag-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 1rem; color: #6b7780; font-size: 0.82rem; }
 		.news-tag { display: inline-flex; align-items: center; gap: 0.28rem; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.14rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; white-space: nowrap; vertical-align: 0.08rem; margin-right: 0.5rem; }
+		.news-list .news-tag { border: 0; border-radius: 0; background: transparent; padding: 0; }
+		.news-list .news-tag-icon { width: auto; height: auto; font-size: 1.3rem; line-height: 1; }
 		.news-list .news-date { margin-left: 0.15rem; }
 		button.news-tag { cursor: pointer; font: inherit; margin-right: 0; }
 		.news-tag-legend .news-tag[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
-		.news-tag-icon { font-size: 0.9em; line-height: 1; }
 		.news-tag-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
 		.news-tag-paper { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
 		.news-tag-funding { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
 		.news-tag-teaching { background: #eef2f5; border-color: #b5c2cc; color: #40505d; }
 		.news-tag-role { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
 		.news-tag-milestone { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
+		.news-tag-community { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
 		.news-list li[hidden] { display: none !important; }
 		.news-year[hidden] { display: none !important; }
 		.nav-menu-item-with-submenu { position: relative; }
@@ -120,7 +122,353 @@
 		.talk-title .talk-type { margin-right: 0.4rem; vertical-align: 0.08rem; }
 		.talk-item[hidden] { display: none !important; }
 		.main-tab-panel[hidden] { display: none !important; }
-		.main-site-tab[aria-selected="true"] { font-weight: 600; text-decoration: underline; text-underline-offset: 0.25rem; }
+		.main-tab-panel { margin-bottom: 0; }
+		.main-site-tab[aria-selected="true"] { font-weight: 600; }
+		/* Projects tab: mockup CSS from projects_page_responsive.html, site left panel unchanged */
+		#Projects {
+			--ink: #0b1836;
+			--text: #28354d;
+			--muted: #68748b;
+			--line: #dfe4ec;
+			--blue: #3d5f9f;
+			--blue-dark: #253f6a;
+			--blue-card: #f6f8fc;
+			--blue-line: #c5d1e5;
+			--green: #2f746c;
+			--green-dark: #245d57;
+			--green-card: #f4f9f7;
+			--green-line: #bfd9d3;
+			--shadow: 0 12px 32px rgba(18, 38, 72, 0.06);
+			font-size: 16px;
+			line-height: 1.45;
+			color: var(--text);
+			container-type: inline-size;
+			container-name: projects;
+		}
+		#Projects .intro { margin: 0 0 34px 0; }
+		#Projects .intro .section-title { color: #1a1a1a; }
+		#Projects .intro p,
+		#Projects .projects-lede {
+			margin: 17px 0 0;
+			color: #344057;
+			font-size: 16px;
+			letter-spacing: 0.005em;
+			line-height: 1.45;
+			max-width: none;
+		}
+		#Projects .project-stack { display: grid; gap: 30px; }
+		#Projects .project-card {
+			border: 1px solid;
+			border-radius: 16px;
+			padding: 37px 42px 32px 24px;
+			display: grid;
+			grid-template-columns: 146px minmax(0, 1fr) minmax(255px, 285px);
+			column-gap: 24px;
+			align-items: stretch;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			min-width: 0;
+		}
+		#Projects .project-card.blue {
+			border-color: var(--blue-line);
+			background:
+				radial-gradient(circle at 75% 15%, rgba(219,234,255,0.48), transparent 38%),
+				linear-gradient(140deg, #ffffff 0%, var(--blue-card) 100%);
+		}
+		#Projects .project-card.green {
+			border-color: var(--green-line);
+			background:
+				radial-gradient(circle at 75% 10%, rgba(222,244,227,0.52), transparent 38%),
+				linear-gradient(140deg, #ffffff 0%, var(--green-card) 100%);
+		}
+		#Projects .visual-box {
+			width: 134px;
+			height: 138px;
+			align-self: start;
+			display: grid;
+			place-items: center;
+			border: 1px solid;
+			border-radius: 16px;
+			background: rgba(255,255,255,0.74);
+		}
+		#Projects .blue .visual-box { border-color: #cdd8e9; color: var(--blue); }
+		#Projects .green .visual-box { border-color: #c9ddd8; color: var(--green); }
+		#Projects .hero-icon { width: 84px; height: 84px; }
+		#Projects .project-body { min-width: 0; }
+		#Projects .project-title {
+			margin: -2px 0 12px;
+			color: var(--ink);
+			font-size: 21px;
+			line-height: 1.2;
+			letter-spacing: -0.03em;
+			font-weight: 760;
+			overflow-wrap: break-word;
+			word-break: normal;
+		}
+		#Projects .project-title a {
+			color: inherit;
+			border-bottom: none !important;
+			text-decoration: none;
+		}
+		#Projects .project-title a:hover { color: var(--blue); }
+		#Projects .green .project-title a:hover { color: var(--green); }
+		#Projects .project-description {
+			max-width: 620px;
+			margin: 0;
+			color: #334056;
+			font-size: 15px;
+			line-height: 1.55;
+			overflow-wrap: break-word;
+			word-break: normal;
+		}
+		#Projects .metrics {
+			margin-top: 30px;
+			padding-top: 27px;
+			border-top: 1px solid;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+		#Projects .blue .metrics { border-color: #c2cfe1; }
+		#Projects .green .metrics {
+			grid-template-columns: 0.92fr 1.08fr 1fr;
+			border-color: #c6dad5;
+		}
+		#Projects .metric {
+			padding: 0 8px;
+			display: grid;
+			grid-template-columns: 30px minmax(0, 1fr);
+			gap: 8px;
+			align-items: start;
+			min-width: 0;
+		}
+		#Projects .metric > div { min-width: 0; }
+		#Projects .metric:first-child { padding-left: 0; }
+		#Projects .metric + .metric { border-left: 1px solid #ccd7e6; }
+		#Projects .green .metric + .metric { border-left-color: #c8ddce; }
+		#Projects .metric-icon {
+			width: 30px;
+			height: 30px;
+			margin-top: 2px;
+			display: block;
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 1.8;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		#Projects .blue .metric-icon { color: var(--blue); }
+		#Projects .green .metric-icon { color: var(--green); }
+		#Projects .metric strong {
+			display: block;
+			color: var(--ink);
+			font-size: 24px;
+			line-height: 1;
+			letter-spacing: -0.035em;
+			font-weight: 760;
+			white-space: nowrap;
+		}
+		#Projects .green .metric strong { color: var(--green-dark); }
+		#Projects .metric span {
+			display: block;
+			margin-top: 8px;
+			color: #465168;
+			font-size: 13px;
+			line-height: 1.45;
+			overflow-wrap: normal;
+			word-break: normal;
+			hyphens: none;
+		}
+		#Projects .examples {
+			padding-left: 32px;
+			border-left: 1px solid;
+			min-width: 0;
+		}
+		#Projects .blue .examples { border-color: #c7d2e1; }
+		#Projects .green .examples { border-color: #c8dad6; }
+		#Projects .examples h3 {
+			margin: 2px 0 12px;
+			font-size: 12px;
+			line-height: 1;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			font-weight: 800;
+		}
+		#Projects .blue .examples h3 { color: var(--blue); }
+		#Projects .green .examples h3 { color: var(--green); }
+		#Projects .examples ul {
+			list-style: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			display: grid;
+			gap: 8px;
+		}
+		#Projects .examples li {
+			position: static !important;
+			padding-left: 0 !important;
+			margin-bottom: 0 !important;
+		}
+		#Projects .examples li::before { content: none !important; display: none !important; }
+		#Projects .examples a {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) 18px;
+			gap: 14px;
+			align-items: center;
+			color: var(--blue) !important;
+			font-size: 15px;
+			line-height: 1.3;
+			text-decoration: none;
+			border-bottom: none !important;
+			font-weight: 500;
+			word-break: normal;
+			overflow-wrap: break-word;
+		}
+		#Projects .examples a:hover span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+		#Projects .arrow {
+			font-size: 21px;
+			line-height: 1;
+			text-align: right;
+			transform: translateY(-1px);
+		}
+		#Projects .collab {
+			margin-top: 31px;
+			min-height: 86px;
+			padding: 18px 38px 18px 24px;
+			border: 1px solid #d6dde8;
+			border-radius: 14px;
+			background: #fff;
+			box-shadow: var(--shadow);
+			display: grid;
+			grid-template-columns: 52px minmax(0, 1fr) auto;
+			gap: 18px;
+			align-items: center;
+		}
+		#Projects .collab-icon {
+			width: 50px;
+			height: 50px;
+			border: 1px solid #d9e0ea;
+			border-radius: 50%;
+			display: grid;
+			place-items: center;
+			color: #62718a;
+		}
+		#Projects .collab-icon svg { width: 28px; height: 28px; display: block; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		#Projects .collab h2 {
+			margin: 0 0 4px;
+			color: var(--ink);
+			font-size: 16px;
+			line-height: 1.25;
+			letter-spacing: -0.015em;
+			font-weight: 700;
+		}
+		#Projects .collab p {
+			margin: 0;
+			color: #5d687c;
+			font-size: 13px;
+			line-height: 1.45;
+		}
+		#Projects .button {
+			min-width: 137px;
+			padding: 13px 24px;
+			border-radius: 7px;
+			background: linear-gradient(135deg, #3f649f, #31558f);
+			color: #fff !important;
+			font-size: 14px;
+			font-weight: 700;
+			text-align: center;
+			text-decoration: none;
+			border-bottom: none !important;
+			box-shadow: 0 6px 16px rgba(49, 85, 143, 0.20);
+		}
+		#Projects .button:hover { filter: brightness(0.95); color: #fff !important; }
+		#Projects .hero-icon {
+			display: block;
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 1.8;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		/* Collapse by content width (site has a left panel the mockup didn't) */
+		@container projects (max-width: 980px) {
+			#Projects .project-card {
+				grid-template-columns: 110px minmax(0, 1fr);
+				padding: 31px 30px 29px;
+				column-gap: 26px;
+			}
+			#Projects .visual-box { width: 105px; height: 116px; }
+			#Projects .hero-icon { width: 68px; height: 68px; }
+			#Projects .metric { padding: 0 10px; gap: 8px; }
+			#Projects .metric strong { font-size: 22px; }
+			#Projects .examples {
+				grid-column: 1 / -1;
+				margin-top: 26px;
+				padding: 24px 0 0;
+				border-left: 0;
+				border-top: 1px solid;
+			}
+			#Projects .examples ul {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				column-gap: 28px;
+			}
+		}
+		@container projects (max-width: 560px) {
+			#Projects .project-card { grid-template-columns: 1fr; padding: 25px 22px; }
+			#Projects .visual-box { width: 92px; height: 92px; margin-bottom: 18px; }
+			#Projects .hero-icon { width: 58px; height: 58px; }
+			#Projects .project-title { font-size: 20px; }
+			#Projects .metrics { grid-template-columns: 1fr; gap: 16px; }
+			#Projects .green .metrics { grid-template-columns: 1fr; }
+			#Projects .metric { padding: 0; }
+			#Projects .metric + .metric { border-left: 0; border-top: 1px solid #d5deea; padding-top: 16px; }
+			#Projects .examples { grid-column: auto; }
+			#Projects .examples ul { grid-template-columns: 1fr; }
+			#Projects .collab { grid-template-columns: 48px 1fr; padding-right: 20px; }
+			#Projects .button { grid-column: 1 / -1; width: 100%; }
+		}
+		body.tab-projects .content-grid { gap: 2rem; }
+		body.tab-projects .content-column { padding-left: 0.75rem; }
+		.interest-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+		.interest-list li {
+			display: flex;
+			align-items: flex-start;
+			gap: 0.4rem;
+			line-height: 1.4;
+		}
+		.interest-list .interest-icon {
+			width: 1.05rem;
+			height: 1.05rem;
+			flex: 0 0 auto;
+			margin-top: 0.04rem;
+			color: #8a93a1;
+		}
+		.interest-list .interest-icon svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 1.65;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		.news-tag-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 0.9em;
+			height: 0.9em;
+			color: currentColor;
+		}
+		.news-tag-icon svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 1.7;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
 		.impact-inline { margin: 0.85rem 0 1.25rem; line-height: 1.65; font-size: inherit; }
 		.impact-sup-logo { display: inline-block; width: 0.85em; height: 0.85em; margin: 0 0.05em 0 0.12em; vertical-align: super; object-fit: contain; border-radius: 0.1em; }
 		.media-coverage-list { display: flex; flex-direction: column; gap: 0; }
@@ -144,19 +492,304 @@
 		.media-coverage-item img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; margin-top: 0.15rem; }
 		.media-coverage-org { font-weight: 600; }
 		.media-coverage-doc { color: #52616d; font-weight: 400; }
+		/* Shared card format for content lists */
+		.about-news .section-title,
+		#Talks > .section-title,
+		#MediaCoverage > .section-title,
+		#AwardsSection > .section-title,
+		#ReviewServiceSection > .section-title,
+		#TeachingSection > .section-title {
+			margin-bottom: 1.35rem;
+			padding-bottom: 0.65rem;
+			border-bottom: 2px solid var(--accent, #315d99);
+			text-align: left;
+		}
+		.news-list,
+		.talks-list,
+		.media-coverage-category,
+		.recognition-list,
+		.reviews-list,
+		.teaching-list {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+		.news-list li,
+		.talk-item,
+		.media-coverage-item,
+		.award-item,
+		.review-item,
+		.teaching-item {
+			margin: 0;
+			padding: 1rem 1.15rem;
+			border: 1px solid var(--line, #e0e5e9);
+			border-radius: 0.7rem;
+			background: #fff;
+			color: var(--text, #1a1a1a);
+			box-shadow: 0 1px 2px rgba(23, 50, 77, 0.025);
+			transition: border-color 0.18s ease, box-shadow 0.18s ease;
+		}
+		.news-list li:last-child,
+		.talk-item:last-child,
+		.media-coverage-category .media-coverage-item:last-child,
+		.award-item:last-child,
+		.review-item:last-child,
+		.teaching-item:last-child {
+			border: 1px solid var(--line, #e0e5e9);
+		}
+		.news-list li:hover,
+		.talk-item:hover,
+		.media-coverage-item:hover,
+		.award-item:hover,
+		.review-item:hover,
+		.teaching-item:hover {
+			padding-left: 1.15rem;
+			border-color: #aebdca;
+			color: var(--text, #1a1a1a);
+			box-shadow: 0 4px 12px rgba(23, 50, 77, 0.055);
+		}
+		.list-card-primary {
+			font-size: 0.96rem;
+			font-weight: 600;
+			line-height: 1.45;
+			color: var(--text, #1a1a1a);
+		}
+		.news-card .list-card-primary {
+			font-size: 0.88rem;
+			font-weight: 500;
+			line-height: 1.6;
+		}
+		.list-card-meta {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.3rem 0;
+			margin-top: 0.4rem;
+			font-size: 0.8rem;
+			font-style: normal;
+			line-height: 1.45;
+			color: #667283;
+		}
+		.list-card-meta > span + span::before {
+			content: "•";
+			margin: 0 0.7rem;
+			color: #8d98a6;
+		}
+		.list-card-meta .news-tag { margin: 0; }
+		.list-card-meta .news-date,
+		.list-card-meta .talk-date {
+			min-width: 0;
+			margin: 0;
+			font-weight: 400;
+			color: inherit;
+		}
+		.talk-item { display: block; }
+		.talk-content { gap: 0; }
+		.talk-venue { color: inherit; font-style: normal; }
+		.media-coverage-list { gap: 0; }
+		.media-coverage-category { margin-bottom: 1.5rem; }
+		.media-coverage-category-title {
+			margin: 1.5rem 0 0;
+			padding-bottom: 0.45rem;
+			font-size: 1rem;
+			text-align: left;
+		}
+		.media-coverage-category:first-child .media-coverage-category-title { margin-top: 0; }
+		.media-coverage-item { align-items: center; text-decoration: none; }
+		.media-coverage-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; }
+		.media-coverage-org { font-size: 0.94rem; font-weight: 600; line-height: 1.4; }
+		.media-coverage-copy .list-card-meta { margin-top: 0.25rem; }
+		.media-coverage-doc { color: inherit; }
+		.recognition-list { border-top: 0; }
+		.award-source,
+		.review-category-name { color: inherit; }
 		@media (min-width: 993px) {
 			html, body { height: 100%; }
 			body { display: flex; flex-direction: column; overflow: hidden; }
 			.top-nav { position: relative; flex: 0 0 auto; }
-			.main-container { flex: 1 1 auto; min-height: 0; padding-bottom: 2rem; overflow: hidden; }
+			.main-container { flex: 1 1 auto; min-height: 0; padding-bottom: 0.75rem; overflow: hidden; }
 			.content-grid { height: 100%; min-height: 0; align-items: stretch; }
 			.profile-column { position: static; top: auto; height: 100%; max-height: none; overflow-y: auto; overscroll-behavior: contain; }
-			.content-column { height: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+			.content-column { height: 100%; min-height: 0; padding-bottom: 0.75rem; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
 		}
 		@media (max-width: 992px) {
 			.content-grid { grid-template-columns: 1fr; }
 			.profile-photo { max-width: 260px; margin-left: auto; margin-right: auto; }
 			.profile-image { max-width: 240px; width: 100%; margin: 0 auto; }
+		}
+		@media (max-width: 576px) {
+			.news-list li,
+			.talk-item,
+			.media-coverage-item,
+			.award-item,
+			.review-item,
+			.teaching-item {
+				padding: 0.85rem 0.9rem;
+				border-radius: 0.6rem;
+			}
+			.news-list li:hover,
+			.talk-item:hover,
+			.media-coverage-item:hover,
+			.award-item:hover,
+			.review-item:hover,
+			.teaching-item:hover { padding-left: 0.9rem; }
+			.list-card-primary { font-size: 0.9rem; }
+			.list-card-meta { font-size: 0.76rem; }
+		}
+		/* Restore the earlier compact list presentation. */
+		.about-news .section-title,
+		#Talks > .section-title,
+		#MediaCoverage > .section-title,
+		#AwardsSection > .section-title,
+		#ReviewServiceSection > .section-title,
+		#TeachingSection > .section-title {
+			margin-bottom: 2.5rem;
+			padding-bottom: 0.75rem;
+			border-bottom: 2px solid var(--accent);
+			text-align: center;
+		}
+		.news-list,
+		.talks-list,
+		.reviews-list,
+		.teaching-list {
+			gap: 0;
+		}
+		.news-list li {
+			margin: 0;
+			padding: 0.875rem 0;
+			border: none;
+			border-bottom: 1px solid var(--line);
+			border-radius: 0;
+			background: transparent;
+			box-shadow: none;
+		}
+		.news-list li:last-child { border: none; border-bottom: 1px solid var(--line); }
+		.news-list li:hover {
+			padding-left: 0.5rem;
+			border-color: var(--accent);
+			color: var(--accent);
+			box-shadow: none;
+		}
+		.talk-item {
+			display: flex;
+			gap: 0.6rem;
+			padding: 1rem 0;
+			border: none;
+			border-bottom: 1px solid var(--line);
+			border-radius: 0;
+			background: transparent;
+			box-shadow: none;
+		}
+		.talk-item:last-child { border: none; }
+		.talk-item:hover {
+			padding-left: 0.25rem;
+			border-bottom: 1px solid var(--accent);
+			color: var(--accent);
+			box-shadow: none;
+		}
+		.talk-content { gap: 0.3rem; }
+		.talk-venue { color: var(--muted); font-style: italic; }
+		.media-coverage-list { gap: 0; }
+		.media-coverage-category { display: block; margin: 0 0 1.75rem; }
+		.media-coverage-category-title {
+			margin: 2.5rem 0 0.7rem;
+			padding-bottom: 0.4rem;
+			font-size: 1.2rem;
+			text-align: center;
+		}
+		.media-coverage-category:first-child .media-coverage-category-title { margin-top: 0.35rem; }
+		.media-coverage-item {
+			align-items: flex-start;
+			margin: 0;
+			padding: 0.85rem 0;
+			border: none;
+			border-bottom: 1px solid #e0e5e9;
+			border-radius: 0;
+			background: transparent;
+			box-shadow: none;
+		}
+		.media-coverage-category .media-coverage-item:last-child { border: none; }
+		.media-coverage-item:hover {
+			padding-left: 0;
+			border-bottom: 1px solid #9aabb7;
+			color: #17324d;
+			box-shadow: none;
+		}
+		.media-coverage-org { font-size: inherit; line-height: inherit; }
+		.media-coverage-doc { color: #52616d; }
+		.recognition-list { display: block; border-top: 1px solid #e0e5e9; }
+		.award-item,
+		.review-item,
+		.teaching-item {
+			margin: 0;
+			padding: 0.75rem 0;
+			border: none;
+			border-bottom: 1px solid var(--line);
+			border-radius: 0;
+			background: transparent;
+			box-shadow: none;
+		}
+		.award-item:last-child,
+		.review-item:last-child,
+		.teaching-item:last-child { border: none; }
+		.award-item:hover,
+		.review-item:hover,
+		.teaching-item:hover {
+			padding-left: 0.25rem;
+			border-bottom: 1px solid var(--accent);
+			color: var(--accent);
+			box-shadow: none;
+		}
+		.award-source,
+		.review-category-name { color: var(--text); }
+		#Introduction .news-list li.participant-call {
+			margin: 0.35rem 0 0.85rem;
+			padding: 1rem 1.1rem 1.05rem;
+			border: 1px solid #e0e5e9;
+			border-radius: 0.5rem;
+			background: #f7f9fa;
+			color: var(--text);
+			box-shadow: none;
+			line-height: 1.55;
+		}
+		#Introduction .news-list li.participant-call:last-child {
+			border: 1px solid #e0e5e9;
+		}
+		#Introduction .news-list li.participant-call:hover {
+			padding-left: 1.1rem;
+			border-color: #c5ced6;
+			color: var(--text);
+			background: #f3f6f8;
+			box-shadow: none;
+		}
+		.participant-call a:not([href^="mailto:"]) {
+			color: #52616d;
+			font-weight: 700;
+			border-bottom: none;
+			text-decoration: none;
+		}
+		.participant-call a:not([href^="mailto:"]):hover {
+			color: #31404d;
+		}
+		.participant-call a[href^="mailto:"] {
+			display: inline-block;
+			margin-top: 0.65rem;
+			margin-left: 0;
+			padding: 0;
+			border: 0;
+			border-radius: 0;
+			color: #315d99;
+			font-weight: 600;
+			text-decoration: none;
+		}
+		.participant-call a[href^="mailto:"]::after {
+			content: " →";
+		}
+		.participant-call a[href^="mailto:"]:hover {
+			background: transparent;
+			color: #1e3f6b;
+			text-decoration: underline;
+			text-underline-offset: 0.15em;
 		}
 	</style>
 
@@ -171,6 +804,7 @@
 				<a href="#Introduction" class="nav-name" id="nav-name" data-main-tab-target="Introduction">Yining Hua</a>
 				<ul class="nav-menu-horizontal" role="tablist" aria-label="Site sections">
 					<li><a class="main-site-tab" id="main-tab-about" href="#Introduction" role="tab" aria-controls="Introduction" aria-selected="true">Introduction</a></li>
+					<li><a class="main-site-tab" id="main-tab-projects" href="#Projects" role="tab" aria-controls="Projects" aria-selected="false">Projects</a></li>
 					<li><a class="main-site-tab" id="main-tab-research" href="#Research" role="tab" aria-controls="Research" aria-selected="false">Research</a></li>
 					<li><a class="main-site-tab" id="main-tab-talks" href="#Talks" role="tab" aria-controls="Talks" aria-selected="false">Talks &amp; Lectures</a></li>
 					<li><a class="main-site-tab" id="main-tab-media" href="#MediaCoverage" role="tab" aria-controls="MediaCoverage" aria-selected="false">Media Coverage</a></li>
@@ -205,6 +839,12 @@
 						<div id="news-content">
 							<!-- News content will be populated by JavaScript -->
 						</div>
+					</div>
+				</section>
+
+				<section class="section-block main-tab-panel" id="Projects" role="tabpanel" aria-labelledby="main-tab-projects" hidden>
+					<div id="projects-content">
+						<!-- Projects content will be populated by JavaScript -->
 					</div>
 				</section>
 
@@ -251,10 +891,6 @@
 					</div>
 				</section>
 
-				<hr>
-				<footer class="content-footer">
-					<p id="last-edited">Last edited: 08/2026</p>
-				</footer>
 			</div>
 		</div>
 	</div>
@@ -292,10 +928,18 @@
       ]
     },
     "researchInterests": [
-      "Evaluation science, benchmark design & AI safety",
-      "Language models & AI agents",
-      "Healthcare AI, real-world data & causal inference"
+      { "label": "LLMs & agents", "icon": "network" },
+      { "label": "AI Safety & Evaluation", "icon": "shield" },
+      { "label": "Evidence Generation", "icon": "evidence" },
+      { "label": "Health AI & Epidemiology", "icon": "healthchart" }
     ]
+  },
+  "projectsIntro": "Two connected research programs in AI evaluation and real-world health data.",
+  "projectsCta": {
+    "title": "Interested in collaborating?",
+    "text": "Contact me about research collaboration in AI evaluation or health data.",
+    "buttonLabel": "Get in touch",
+    "buttonUrl": "mailto:yininghua@g.harvard.edu"
   },
   "introduction": {
     "paragraphs": [
@@ -320,6 +964,11 @@
       "year": "2026",
       "items": [
         {
+          "date": "Aug 2026",
+          "text": "We are inviting epidemiologists, biostatisticians, and other professionals working in evidence generation who have some experience with AI to contribute to our new evaluation work on <strong>evidence-generation agents</strong>. Funding is available through the <a href=\"https://www.raycaster.ai/ai-fellows\" target=\"_blank\" rel=\"noopener\">Raycaster AI Fellows program</a>. Contributions include reviewing study materials, validating task designs, and assessing generated work products.<br><a href=\"mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration\">Express interest</a>",
+          "tag": "community"
+        },
+        {
           "date": "Jul 2026",
           "text": "Our invited book chapter \"Advancing Mental Health Research With AI\" (chapter 11) is now published in <a href=\"https://shop.elsevier.com/books/artificial-intelligence-in-behavioral-and-mental-health-care/luxton/978-0-443-33151-0\" target=\"_blank\" rel=\"noopener\"><em>Artificial Intelligence in Behavioral and Mental Health Care</em></a>!",
           "tag": "paper"
@@ -335,8 +984,8 @@
           "tag": "milestone"
         },
         {
-          "date": "Spring & Summer 2026",
-          "text": "I'll help teach <em>EPI 288: Intro to ML & Risk Prediction</em> and <em>EPI 236: Analytical Clinical Epidemiology</em> at Harvard T.H. Chan. Both courses emphasize careful modeling, validation, and the kind of empirical discipline I think modern AI work badly needs.",
+          "date": "Spring 2026",
+          "text": "I helped teach <em>EPI 288: Intro to ML & Risk Prediction</em> at Harvard T.H. Chan. The course emphasizes careful modeling, validation, and the kind of empirical discipline I think modern AI work badly needs.",
           "tag": "teaching"
         },
         {
@@ -564,7 +1213,7 @@
           "url": "https://aclanthology.org/2025.coling-main.616/",
           "authors": "Ma J., Na H., Wang Z., <strong>Hua Y</strong>, Liu Y., Wang W., Chen L.",
           "venue": "<em>COLING</em> 2025, pp. 9176:9183",
-          "description": "✨ <strong>Best Short Paper</strong>. This paper introduces Intent-Aware Prompting (IAP), a two-stage prompting strategy where an LLM first summarizes each speaker’s intent in a dialogue and then uses those intent summaries to decide whether mental manipulation is present, targeting improved Theory-of-Mind–like reasoning. Evaluated with GPT-4 on the MentalManip dataset, IAP outperforms zero-shot, few-shot, and chain-of-thought prompting, most notably reducing false negatives by 30.5% while improving accuracy and F1 scores.",
+          "description": "<strong>Best Short Paper</strong>. This paper introduces Intent-Aware Prompting (IAP), a two-stage prompting strategy where an LLM first summarizes each speaker’s intent in a dialogue and then uses those intent summaries to decide whether mental manipulation is present, targeting improved Theory-of-Mind–like reasoning. Evaluated with GPT-4 on the MentalManip dataset, IAP outperforms zero-shot, few-shot, and chain-of-thought prompting, most notably reducing false negatives by 30.5% while improving accuracy and F1 scores.",
           "figure": {
             "src": "files/img/papers/pub5.jpg",
             "alt": "Mental manipulation detection figure"
@@ -757,11 +1406,25 @@
       "description": "Benchmarks and evaluation for models and agents.",
       "publications": [
         {
+          "title": "CARE-Bench: Benchmarking Patient-Facing LLM Triage",
+          "url": "https://arxiv.org/abs/2608.03731",
+          "authors": "<strong>Hua Y</strong>, Na H, Ayubcha C",
+          "venue": "<em>arXiv preprint</em> arXiv:2608.03731 (2026)",
+          "description": "We introduce CARE-Bench, a source-grounded benchmark for sequential patient-facing triage across four current actions: ask for clarification, self-care, nonurgent care, or urgent escalation, with 500 cases and 1,059 labeled disclosure prefixes. Across 11 models on 269 held-out rounds, unprompted macro-F1 ranges from 31.2 to 50.4 and prompted from 46.9 to 63.4; even after prompting, models often recommend care before clarifying, preserving the ask-for-information step in only 33.5% of those cases.",
+          "figure": {
+            "src": "files/img/papers/care-bench.png",
+            "alt": "Worked example of CARE-Bench case construction from source conversation to disclosure trajectory"
+          },
+          "topics": [
+            "Benchmarks"
+          ]
+        },
+        {
           "title": "Design and Report Benchmarks for Knowledge Work",
           "url": "https://arxiv.org/abs/2605.23262",
           "authors": "<strong>Hua Y</strong>, Na H, Ayubcha C, Lian L",
           "venue": "<em>arXiv preprint</em> arXiv:2605.23262 (2026)",
-          "description": "We propose a three-step approach for evaluating knowledge-work agents: define the work activity, specify the tested setting, and score the work product left by the system. Drawing on work studies and an inventory of 18 activities derived from O*NET, we analyze GDPval, OfficeQA Pro, and APEX-SWE to show how task, setting, and scoring choices limit the strongest real-world claim a benchmark score can support.",
+          "description": "We propose a three-step approach for evaluating knowledge-work agents: define the work activity, specify the tested setting, and score the work product left by the system. This terminology supports horizontal comparison across benchmarks by distinguishing what work is evaluated, under which setting, and through which scored output. Drawing on work studies and an inventory of 18 activities derived from O*NET, we analyze GDPval, OfficeQA Pro, and APEX-SWE to show how task, setting, and scoring choices limit the strongest real-world claim a benchmark score can support.",
           "figure": {
             "src": "files/img/papers/design-benchmarks.png",
             "alt": "Work-activity atlas of O*NET knowledge work across 18 top-level operations"
@@ -778,7 +1441,7 @@
           "description": "We introduce PsyDefConv, a corpus of 200 dialogues and 4,709 utterances, including 2,336 help-seeker turns labeled for defense level with Cohen’s κ of 0.639. DMRS Co-Pilot provides evidence-based pre-annotations through a four-stage pipeline and reduced average annotation time by 24.0%. The best benchmark macro-F1 remained near 30%, showing substantial headroom for fine-grained clinical-language modeling.",
           "figure": {
             "src": "files/img/papers/psydefconv.png",
-            "alt": "PsyDefConv defense-level distributions and dialogue trajectories"
+            "alt": "DMRS Co-Pilot four-stage pipeline for detecting psychological defense mechanisms"
           },
           "topics": [
             "Other"
@@ -1256,7 +1919,6 @@
     }
   ],
   "teaching": [
-    "EPI 236: Analytical Clinical Epidemiology; Harvard T.H. Chan (Summer 2026).",
     "EPI 288: Intro to ML & Risk Prediction; Harvard T.H. Chan (Spring 2025 & Spring 2026).",
     "PHS 2000A: Quantitative Research Methods; Harvard T.H. Chan (Fall 2024).",
     "BMI 707 / EPI 290: Deep Learning for Biomedical Data; Harvard Medical School (Spring 2023).",
@@ -1265,7 +1927,97 @@
     "PHY 215: Light, Relativity, and Quantum Physics; Smith College (Spring 2020).",
     "PHY 210: Math Methods of Physical Sciences and Engineering; Smith College (Fall 2019)."
   ],
-  "lastEdited": "07/2026"
+  "projects": [
+    {
+      "title": "Evaluation for Real-World LLMs and Agents",
+      "summary": "Methods, benchmarks, and infrastructure for evaluating agents in consequential workflows.",
+      "theme": "blue",
+      "icon": "clipboard",
+      "metrics": [
+        { "value": "10+", "label": "Benchmarks &amp;<br>Frameworks", "icon": "database" },
+        { "value": "30+", "label": "Models<br>Evaluated", "icon": "users" },
+        { "value": "15+", "label": "Evaluation<br>Papers", "icon": "book" }
+      ],
+
+      "examples": [
+        {
+          "label": "CARE-Bench",
+          "url": "https://arxiv.org/abs/2608.03731",
+          "external": true
+        },
+        {
+          "label": "HAICEF",
+          "url": "https://ai.jmir.org/2025/1/e69006",
+          "external": true
+        },
+        {
+          "label": "Knowledge-work benchmarks",
+          "url": "https://arxiv.org/abs/2605.23262",
+          "external": true
+        },
+        {
+          "label": "BrowseComp-ZH",
+          "url": "https://arxiv.org/abs/2504.19314",
+          "external": true
+        },
+        {
+          "label": "PsyDefConv",
+          "url": "https://aclanthology.org/2026.findings-acl.708/",
+          "external": true
+        },
+        {
+          "label": "ClinicBench",
+          "url": "https://aclanthology.org/2024.emnlp-main.759/",
+          "external": true
+        },
+        {
+          "label": "StageWork",
+          "url": "projects/real-world-agent-safety/#infrastructure",
+          "external": false
+        }
+      ],
+      "overviewUrl": "projects/real-world-agent-safety/"
+    },
+    {
+      "title": "AI for Real-World Health Data",
+      "summary": "Strategies for sparse rare-disease data, large clinical text, and high-volume online health data.",
+      "theme": "green",
+      "icon": "monitor",
+      "metrics": [
+        { "value": "15+", "label": "Data Studies", "icon": "document" },
+        { "value": "190K+", "label": "Individuals<br>Analyzed", "icon": "users" },
+        { "value": "8+", "label": "Clinical Areas<br>Studied", "icon": "pulse" }
+      ],
+      "examples": [
+        {
+          "label": "Psychosis EHR phenotyping",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10984080/",
+          "external": true
+        },
+        {
+          "label": "ANCA vasculitis EHR",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39864108/",
+          "external": true
+        },
+        {
+          "label": "UTD ultrasound extraction",
+          "url": "https://www.medrxiv.org/content/10.1101/2024.01.23.24301680v1",
+          "external": true
+        },
+        {
+          "label": "ALS progression & digital twins",
+          "url": "projects/real-world-medical-applications/#longitudinal-data",
+          "external": false
+        },
+        {
+          "label": "COVID symptom surveillance",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11187427/",
+          "external": true
+        }
+      ],
+      "overviewUrl": "projects/real-world-medical-applications/"
+    }
+  ]
 }
 	</script>
 	<script>
@@ -1297,6 +2049,7 @@
 			renderProfile(data.profile);
 			renderIntroduction(data.introduction);
 			renderNews(data.news);
+			renderProjects(data.projects, data.projectsIntro, data.projectsCta);
 			renderResearch(data.research);
 			adjustFigureHeights();
 			renderTalks(data.talks);
@@ -1305,12 +2058,54 @@
 			renderAwards(data.awards);
 			renderReviews(data.reviews);
 			renderTeaching(data.teaching);
-			document.getElementById('last-edited').textContent = `Last edited: ${data.lastEdited}`;
 			initializeMainTabs();
+		}
+
+		function projectIconSvg(name, className) {
+			const cls = className ? ` class="${className}"` : '';
+			const icons = {
+				clipboard: '<svg viewBox="0 0 96 96" aria-hidden="true"><path d="M34 23h-6a7 7 0 0 0-7 7v45a7 7 0 0 0 7 7h37a7 7 0 0 0 7-7V53"></path><path d="M39 23v-3a8 8 0 0 1 16 0v3h8v10H31V23h8Z"></path><path d="m34 47 4 4 7-8M34 61l4 4 7-8"></path><path d="M50 48h10M50 62h6"></path><circle cx="69" cy="66" r="15"></circle><path d="m80 77 11 11"></path></svg>',
+				monitor: '<svg viewBox="0 0 96 96" aria-hidden="true"><rect x="17" y="17" width="62" height="48" rx="4"></rect><path d="M29 52 40 41l9 7 16-18"></path><path d="M30 35v17M41 38v14M52 34v18M64 26v26"></path><path d="M39 65v11M57 65v11M29 78h38"></path></svg>',
+				database: '<svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="8" rx="12" ry="5"></ellipse><path d="M8 8v20c0 2.8 5.4 5 12 5s12-2.2 12-5V8"></path><path d="M8 18c0 2.8 5.4 5 12 5s12-2.2 12-5"></path></svg>',
+				users: '<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="15" cy="13" r="5"></circle><circle cx="28" cy="15" r="4"></circle><path d="M5 31c0-7 4-11 10-11s10 4 10 11"></path><path d="M23 23c1.5-2 3.2-3 5-3 5 0 8 3.5 8 9"></path></svg>',
+				book: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 7h12a5 5 0 0 1 5 5v21a6 6 0 0 0-6-6H5Z"></path><path d="M35 7H23a5 5 0 0 0-5 5v21a6 6 0 0 1 6-6h11Z"></path><path d="M9 13h7M9 18h7"></path></svg>',
+				document: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 4h17l7 7v25H8Z"></path><path d="M25 4v8h7M13 19h14M13 25h14M13 31h9"></path></svg>',
+				pulse: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 22h7l4-12 7 23 5-17 4 6h7"></path></svg>',
+				health: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h9.5A2.5 2.5 0 0 1 17 7v13H7.5A2.5 2.5 0 0 1 5 17.5z"/><path d="M9 9h5M9 13h3"/><path d="M17 9h2.5A1.5 1.5 0 0 1 21 10.5V18"/></svg>',
+				flask: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v5.2L5.8 18a2 2 0 0 0 1.8 2.9h8.8a2 2 0 0 0 1.8-2.9L14 8.2V3"/><path d="M8.2 14h7.6"/></svg>',
+				cog: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6 18 18M18 6l-1.4 1.4M7.4 16.6 6 18"/></svg>',
+				arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>',
+				bulb: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 24c-2-2-3-4.5-3-7a9 9 0 1 1 18 0c0 3-1.2 5.5-3.5 7.5-1.3 1.2-2.2-2.2 3.5h-6.6c-.2-1.5-1-2.7-2.7-4Z"></path><path d="M16 32h8M17 36h6M4 17h3M33 17h3M8 7l2 2M30 7l2 2M20 2v3"></path></svg>'
+			};
+			const svg = icons[name] || icons.clipboard;
+			return cls ? svg.replace('<svg ', `<svg${cls} `) : svg;
+		}
+
+		function interestIconSvg(name) {
+			const icons = {
+				network: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2"></circle><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle><path d="m10.5 6.5-4 4m7-4 4 4m-7 7-4-4m7 4 4-4"></path></svg>',
+				shield: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.8 7.7-7 10-4.2-2.3-7-5.5-7-10V6l7-3z"></path><path d="M9 12l2 2 4-5"></path></svg>',
+				evidence: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l3 3v15H5V3h3"></path><path d="M8 17v-3m4 3v-6m4 6v-4"></path></svg>',
+				healthchart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h4l2-5 4 10 2-5h6"></path><path d="M5 5h14v14H5z"></path></svg>',
+				document: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h9l4 4v14H8z"></path><path d="M17 3v5h4M11 12h6M11 16h6M11 20h3"></path></svg>',
+				spark: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.2 6.2l2.8 2.8M15 15l2.8 2.8M17.8 6.2 15 9M9 15l-2.8 2.8"></path></svg>',
+				rocket: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4c3 1 5 4 6 8-4 1-7 3-8 6-3-3-4-6-4-8 2-3 4-5 6-6z"></path><path d="m9 15-4 1 1-4M14 10h.01"></path></svg>',
+				teach: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 12 6l8 4-8 4-8-4z"></path><path d="M8 12v4c2 1.5 6 1.5 8 0v-4M20 10v6"></path></svg>',
+				grad: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 5l9 5-9 5-9-5z"></path><path d="M7 12v4c2.5 2 7.5 2 10 0v-4M21 10v5"></path></svg>',
+				people: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 19c0-3.2 2.5-5 6-5s6 1.8 6 5M14 14.2c1.2-.7 2.5-1 3.8-1 2.7 0 4.2 1.4 4.2 3.8"></path></svg>'
+			};
+			return icons[name] || icons.network;
 		}
 
 		function renderProfile(profile) {
 			const profileCard = document.getElementById('profile-card');
+			const interests = (profile.researchInterests || []).map(interest => {
+				if (interest && typeof interest === 'object') {
+					const mark = `<span class="interest-icon" aria-hidden="true">${interestIconSvg(interest.icon || 'network')}</span>`;
+					return `<li>${mark}<span>${interest.label}</span></li>`;
+				}
+								return `<li>${interest}</li>`;
+			}).join('');
 			let html = `
 				<div class="profile-photo">
 					<img class="img-responsive img-rounded profile-image" src="${profile.photo.src}" alt="${profile.photo.alt}">
@@ -1327,8 +2122,8 @@
 				</div>
 				<div class="profile-section">
 					<p class="eyebrow">Research Interests</p>
-					<ul class="stacked-list">
-						${profile.researchInterests.map(interest => `<li>${interest}</li>`).join('')}
+					<ul class="interest-list">
+						${interests}
 					</ul>
 				</div>
 			`;
@@ -1402,10 +2197,11 @@
 			const newsContent = document.getElementById('news-content');
 			const newsTags = {
 				paper: { icon: '📄', label: 'Paper' },
-				funding: { icon: '✨', label: 'Funding' },
+				funding: { icon: '💰', label: 'Funding' },
 				role: { icon: '🚀', label: 'Role' },
-				teaching: { icon: '👩‍🏫', label: 'Teaching' },
-				milestone: { icon: '🎓', label: 'Milestone' }
+				teaching: { icon: '📚', label: 'Teaching' },
+				milestone: { icon: '🏆', label: 'Milestone' },
+				community: { icon: '🤝', label: 'Community' }
 			};
 
 			const usedTags = [];
@@ -1421,7 +2217,7 @@
 					<button class="news-tag news-tag-all" type="button" data-filter-value="all" aria-pressed="true">All</button>
 					${usedTags.map(tag => {
 						const meta = newsTags[tag];
-						return `<button class="news-tag news-tag-${tag}" type="button" data-filter-value="${tag}" aria-pressed="false"><span class="news-tag-icon">${meta.icon}</span>${meta.label}</button>`;
+						return `<button class="news-tag news-tag-${tag}" type="button" data-filter-value="${tag}" aria-pressed="false"><span class="news-tag-icon" aria-hidden="true">${meta.icon}</span>${meta.label}</button>`;
 					}).join('')}
 				</div>
 			`;
@@ -1435,7 +2231,8 @@
 							${yearGroup.items.map(item => {
 								const meta = newsTags[item.tag] || newsTags.paper;
 								const tag = item.tag || 'paper';
-								return `<li data-news-tag="${tag}"><span class="news-tag news-tag-${tag}"><span class="news-tag-icon">${meta.icon}</span>${meta.label}</span> <span class="news-date">${item.date}</span> ${item.text}</li>`;
+								const itemClass = tag === 'community' ? ' class="participant-call"' : '';
+								return `<li${itemClass} data-news-tag="${tag}"><span class="news-tag news-tag-${tag}" role="img" aria-label="${meta.label}" title="${meta.label}"><span class="news-tag-icon" aria-hidden="true">${meta.icon}</span></span> <span class="news-date">${item.date}</span> ${item.text}</li>`;
 							}).join('')}
 						</ul>
 					</div>
@@ -1450,6 +2247,71 @@
 				getItemKey: (item) => item.dataset.newsTag,
 				groupSelector: '.news-year'
 			});
+		}
+
+
+		function renderProjects(projects, intro, cta) {
+			const root = document.getElementById('projects-content');
+			if (!root) return;
+			const introHtml = `
+				<div class="intro">
+					<h1 class="section-title centered" id="projects-heading">Projects</h1>
+					${intro ? `<p>${intro}</p>` : ''}
+				</div>
+			`;
+			if (!projects || !projects.length) {
+				root.innerHTML = introHtml + '<p>Projects coming soon.</p>';
+				return;
+			}
+			const cards = projects.map(project => {
+				const theme = project.theme === 'green' ? 'green' : 'blue';
+				const examples = (project.examples || project.includes || []).map(item => {
+					if (item && typeof item === 'object' && item.label && item.url) {
+						const external = item.external ? ' target="_blank" rel="noopener"' : '';
+						return `<li><a href="${item.url}"${external}><span>${item.label}</span><span class="arrow" aria-hidden="true">↗</span></a></li>`;
+					}
+					return `<li><span>${item}</span></li>`;
+				}).join('');
+				const metrics = (project.metrics || []).map(metric => `
+					<div class="metric">
+						${projectIconSvg(metric.icon, 'metric-icon')}
+						<div>
+							<strong>${metric.value}</strong>
+							<span>${metric.label}</span>
+						</div>
+					</div>
+				`).join('');
+				const title = project.overviewUrl
+					? `<a href="${project.overviewUrl}">${project.title}</a>`
+					: project.title;
+				return `
+					<article class="project-card ${theme}">
+						<div class="visual-box" aria-hidden="true">${projectIconSvg(project.icon || 'clipboard', 'hero-icon')}</div>
+						<div class="project-body">
+							<h2 class="project-title">${title}</h2>
+							<p class="project-description">${project.summary}</p>
+							${metrics ? `<div class="metrics" aria-label="${project.title} metrics">${metrics}</div>` : ''}
+						</div>
+						${examples ? `
+							<div class="examples">
+								<h3>Examples</h3>
+								<ul>${examples}</ul>
+							</div>
+						` : ''}
+					</article>
+				`;
+			}).join('');
+			const ctaHtml = cta ? `
+				<aside class="collab" aria-label="Collaboration callout">
+					<div class="collab-icon" aria-hidden="true">${projectIconSvg('bulb')}</div>
+					<div>
+						<h2>${cta.title}</h2>
+						<p>${cta.text}</p>
+					</div>
+					<a class="button" href="${cta.buttonUrl || 'mailto:yininghua@g.harvard.edu'}">${cta.buttonLabel || 'Get in touch'}</a>
+				</aside>
+			` : '';
+			root.innerHTML = introHtml + `<div class="project-stack">${cards}</div>` + ctaHtml;
 		}
 
 		function renderResearch(research) {
@@ -1794,6 +2656,7 @@
 				}
 				const contentColumn = document.querySelector('.content-column');
 				if (contentColumn) contentColumn.scrollTop = 0;
+				document.body.classList.toggle('tab-projects', targetId === 'Projects');
 				if (targetId === 'Research') {
 					adjustFigureHeights();
 				}
