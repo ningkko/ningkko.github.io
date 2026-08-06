@@ -26,10 +26,8 @@
   html{scroll-behavior:smooth}
   body.project-detail-page{background:#fff;overflow-x:hidden}
   .project-detail-page .content-grid{grid-template-columns:minmax(220px,260px) minmax(0,1fr);gap:4.5rem}
-  .project-detail-page .content-column{min-width:0;padding-left:0;padding-right:1.75rem;padding-bottom:0}
-  .project-detail-page .content-column,.project-detail-page .project-program{background:#fff}
-  .project-detail-page .profile-column{min-width:0}
-  .project-program{width:100%;min-width:0;padding:0 0 1rem}
+  .project-program{background:#fff}
+  .project-program{width:100%;min-width:0;padding:0 1.75rem 1rem 0}
   .project-program a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--accent-line)}
   .project-program a:hover{color:var(--accent);border-color:var(--accent)}
   .project-program > .eyebrow{margin:0 0 10px;color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
@@ -79,6 +77,15 @@
   .contributor-call .links a:not([href^="mailto:"]){border-bottom-color:transparent}
   .work-in-progress{display:inline-block;color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
   .footer-note{margin-top:48px;padding-top:19px;border-top:1px solid var(--line);color:#8994a3;font-size:12px;line-height:1.55}
+  @media (min-width:993px){
+    html,body{height:100%}
+    body.project-detail-page{display:flex;flex-direction:column;overflow:hidden}
+    .top-nav{position:relative;flex:0 0 auto}
+    .main-container{flex:1 1 auto;min-height:0;padding-bottom:.75rem;overflow:hidden}
+    .content-grid{height:100%;min-height:0;align-items:stretch}
+    .profile-column{position:static;top:auto;height:100%;max-height:none;overflow-y:auto;overscroll-behavior:contain}
+    .content-column{height:100%;min-height:0;padding-bottom:.75rem;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+  }
   @media (max-width:1250px){
     .arc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
@@ -87,6 +94,8 @@
   }
   @media (max-width:992px){
     .project-detail-page .content-grid{grid-template-columns:1fr;gap:2.5rem}
+    .project-detail-page .profile-photo{max-width:260px;margin-left:auto;margin-right:auto}
+    .project-detail-page .profile-image{max-width:240px;width:100%;margin-left:auto;margin-right:auto}
     .section{grid-template-columns:1fr;gap:10px}
     .section-index{position:static}
   }
