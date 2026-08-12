@@ -157,6 +157,22 @@
 			max-width: none;
 		}
 		#Projects .project-stack { display: grid; gap: 30px; }
+		#Projects .project-group-heading {
+			margin: 12px 0 -10px;
+		}
+		#Projects .project-group-heading h2 {
+			margin: 0 0 7px;
+			color: var(--ink);
+			font-size: 24px;
+			line-height: 1.2;
+			letter-spacing: -0.025em;
+		}
+		#Projects .project-group-heading p {
+			margin: 0;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.5;
+		}
 		#Projects .project-card {
 			border: 1px solid;
 			border-radius: 16px;
@@ -416,6 +432,7 @@
 			#Projects .visual-box { width: 92px; height: 92px; margin-bottom: 18px; }
 			#Projects .hero-icon { width: 58px; height: 58px; }
 			#Projects .project-title { font-size: 20px; }
+			#Projects .project-group-heading h2 { font-size: 22px; }
 			#Projects .metrics { grid-template-columns: 1fr; gap: 16px; }
 			#Projects .green .metrics { grid-template-columns: 1fr; }
 			#Projects .metric { padding: 0; }
@@ -934,7 +951,7 @@
       { "label": "Health AI & Epidemiology", "icon": "healthchart" }
     ]
   },
-  "projectsIntro": "Two connected research programs in AI evaluation and real-world health data.",
+  "projectsIntro": "Two connected research programs in AI evaluation and real-world health data, alongside community engagement in evaluation science.",
   "projectsCta": {
     "title": "Interested in collaborating?",
     "text": "Contact me about research collaboration in AI evaluation or health data.",
@@ -962,6 +979,11 @@
     {
       "year": "2026",
       "items": [
+        {
+          "date": "Aug 2026",
+          "text": "We are organizing the <a href=\"evalscience/2026fall-nyc/\"><strong>Agent Evaluation Science Fall 2026 symposium</strong></a> on November 20 in New York City. The program focuses on measurement, benchmark design, evaluation infrastructure, reliability, safety, and real-world agent performance. <a href=\"evalscience/2026fall-nyc/submissions/\">Call for Presentations</a> submissions open August 25.",
+          "tag": "community"
+        },
         {
           "date": "Aug 2026",
           "text": "We are inviting epidemiologists, biostatisticians, and other professionals working in evidence generation who have some experience with AI to contribute to our new evaluation work on <strong>evidence-generation agents</strong>. Funding is available through the <a href=\"https://www.raycaster.ai/ai-fellows\" target=\"_blank\" rel=\"noopener\">Raycaster AI Fellows program</a>. Contributions include reviewing study materials, validating task designs, and assessing generated work products.<br><a href=\"mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration\">Express interest</a>",
@@ -2010,6 +2032,32 @@
         }
       ],
       "overviewUrl": "projects/real-world-medical-applications/"
+    },
+    {
+      "section": "Community Engagement",
+      "sectionSummary": "Initiatives that connect researchers and practitioners around shared evaluation questions.",
+      "title": "Agent Evaluation Science",
+      "summary": "A community initiative advancing the methods, measures, systems, and evidence used to evaluate AI agents. Its Fall 2026 symposium convenes researchers and practitioners in New York City.",
+      "theme": "blue",
+      "icon": "people",
+      "examples": [
+        {
+          "label": "Fall 2026 symposium",
+          "url": "evalscience/2026fall-nyc/",
+          "external": false
+        },
+        {
+          "label": "Call for Presentations",
+          "url": "evalscience/2026fall-nyc/submissions/",
+          "external": false
+        },
+        {
+          "label": "AgentEvalSci2026Fall Committee",
+          "url": "evalscience/2026fall-nyc/committee/",
+          "external": false
+        }
+      ],
+      "overviewUrl": "evalscience/2026fall-nyc/"
     }
   ]
 }
@@ -2065,6 +2113,7 @@
 				book: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 7h12a5 5 0 0 1 5 5v21a6 6 0 0 0-6-6H5Z"></path><path d="M35 7H23a5 5 0 0 0-5 5v21a6 6 0 0 1 6-6h11Z"></path><path d="M9 13h7M9 18h7"></path></svg>',
 				document: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 4h17l7 7v25H8Z"></path><path d="M25 4v8h7M13 19h14M13 25h14M13 31h9"></path></svg>',
 				pulse: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 22h7l4-12 7 23 5-17 4 6h7"></path></svg>',
+				people: '<svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="36" cy="34" r="13"></circle><circle cx="66" cy="39" r="10"></circle><path d="M12 79c0-18 9-29 24-29s24 11 24 29"></path><path d="M57 57c3-4 7-6 12-6 11 0 17 8 17 23"></path></svg>',
 				health: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h9.5A2.5 2.5 0 0 1 17 7v13H7.5A2.5 2.5 0 0 1 5 17.5z"/><path d="M9 9h5M9 13h3"/><path d="M17 9h2.5A1.5 1.5 0 0 1 21 10.5V18"/></svg>',
 				flask: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v5.2L5.8 18a2 2 0 0 0 1.8 2.9h8.8a2 2 0 0 0 1.8-2.9L14 8.2V3"/><path d="M8.2 14h7.6"/></svg>',
 				cog: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6 18 18M18 6l-1.4 1.4M7.4 16.6 6 18"/></svg>',
@@ -2278,11 +2327,19 @@
 				const title = project.overviewUrl
 					? `<a href="${project.overviewUrl}">${project.title}</a>`
 					: project.title;
+				const sectionHeading = project.section ? `
+					<div class="project-group-heading">
+						<h2>${project.section}</h2>
+						${project.sectionSummary ? `<p>${project.sectionSummary}</p>` : ''}
+					</div>
+				` : '';
+				const titleTag = project.section ? 'h3' : 'h2';
 				return `
+					${sectionHeading}
 					<article class="project-card ${theme}">
 						<div class="visual-box" aria-hidden="true">${projectIconSvg(project.icon || 'clipboard', 'hero-icon')}</div>
 						<div class="project-body">
-							<h2 class="project-title">${title}</h2>
+							<${titleTag} class="project-title">${title}</${titleTag}>
 							<p class="project-description">${project.summary}</p>
 							${metrics ? `<div class="metrics" aria-label="${project.title} metrics">${metrics}</div>` : ''}
 						</div>
