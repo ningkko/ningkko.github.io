@@ -29,10 +29,11 @@
   .project-program{background:#fff}
   .project-program{width:100%;min-width:0;padding:0 1.75rem 1rem 0}
   .project-program a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--accent-line)}
-  .project-program a:hover{color:var(--accent);border-color:var(--accent)}
+  .project-program a:hover{color:var(--accent);border-color:var(--accent);text-decoration:none}
   .project-program > .eyebrow{margin:0 0 10px;color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
   .project-program h1{max-width:960px;margin:0;color:#18202c;font-size:clamp(1.6rem,2.5vw,2.1rem);line-height:1.15;letter-spacing:-.03em;overflow-wrap:anywhere}
   .lede{max-width:940px;margin:20px 0 0;color:#364154;font-size:16px;line-height:1.6}
+  .uptake-note{max-width:940px;margin:14px 0 0;color:#7a8697;font-size:14px;line-height:1.55}
   .selected-note{max-width:900px;margin:9px 0 0;color:#7a8697;font-size:13px;font-weight:600;line-height:1.5}
   .hero-rule{width:100%;height:1px;margin:27px 0;background:var(--line)}
   .thesis{max-width:990px;margin:0 0 38px;color:#394457;font-size:16px;line-height:1.62}
@@ -40,7 +41,7 @@
   .arc-label{margin-bottom:14px;color:#59677a;font-size:12px;font-weight:750;letter-spacing:.17em;text-transform:uppercase}
   .arc-steps{display:grid;grid-template-columns:repeat(var(--arc-count,4),minmax(0,1fr));gap:12px}
   .project-program .arc-step{display:grid;grid-template-columns:38px minmax(0,1fr);gap:11px;min-width:0;padding:15px;border:1px solid #d8e0ea;border-radius:10px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 2px 6px rgba(28,48,72,.025);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
-  .project-program .arc-step:hover{border-color:#9fb5cf;color:inherit;box-shadow:0 5px 14px rgba(28,48,72,.07);transform:translateY(-2px)}
+  .project-program .arc-step:hover{border-color:var(--accent);color:inherit;box-shadow:0 5px 14px rgba(28,48,72,.07);transform:translateY(-2px)}
   .arc-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:9px;background:var(--accent-soft);color:var(--accent)}
   .arc-icon svg{width:23px;height:23px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .arc-copy{min-width:0}
@@ -59,7 +60,7 @@
   .paper-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
   .paper-card,.small-card{min-width:0;border:1px solid var(--line);border-radius:11px;background:#fff}
   .paper-card{padding:21px 22px 19px}
-  .paper-card:hover,.small-card:hover{border-color:var(--accent-line);box-shadow:0 8px 22px rgba(28,48,72,.055)}
+  .paper-card:hover,.small-card:hover{border-color:var(--accent);box-shadow:0 8px 22px rgba(28,48,72,.055)}
   .paper-card.compact{min-height:0}
   .meta{margin-bottom:9px;color:#707d90;font-size:11px;font-weight:750;letter-spacing:.12em;line-height:1.45;text-transform:uppercase}
   .paper-card h3,.small-card h3{margin:0 0 8px;color:var(--ink);font-size:18px;line-height:1.35}
@@ -124,7 +125,7 @@
 					<li><a class="active" aria-current="page" href="../../index.html#Projects">Projects</a></li>
 					<li><a href="../../index.html#Research">Research</a></li>
 					<li><a href="../../index.html#Talks">Talks &amp; Lectures</a></li>
-					<li><a href="../../index.html#MediaCoverage">Media Coverage</a></li>
+					<li><a href="../../index.html#MediaCoverage">Media &amp; Impact</a></li>
 					<li><a href="../../index.html#Recognition">Other</a></li>
 				</ul>
 			</div>
@@ -164,6 +165,7 @@
 <p class="eyebrow">Research agenda</p>
       <h1>Evaluation for Real-World AI Systems and Agents</h1>
       <p class="lede">I examine how to build evaluations for real-world AI systems and agents. I synthesize research evidence and professional guidance into evaluation criteria, operationalize these criteria through benchmarks, and build infrastructure for constructing benchmarks and running evaluations under controlled conditions. Domain experts and shared-task communities contribute real workflows, difficult cases, and output review, creating a feedback loop between evaluation design and practice.</p>
+      <p class="uptake-note">Evaluation resources from this research program have been used in public evaluations and model documentation across 13+ technology organizations and 27+ AI systems and evaluation environments.</p>
 
       <section class="arc" aria-label="Research program areas">
         <div class="arc-label">Four research areas</div>
@@ -197,20 +199,20 @@
             <article class="paper-card">
               <div class="meta">npj Digital Medicine · 2025</div>
               <h3>LLMs for generative mental-health tasks</h3>
-              <p>Examines whether human evaluations support claims about clinical performance, safety, and use.</p>
+              <p>726 records screened; 16 studies met final human-evaluation criteria. Examines whether those evaluations support claims about clinical performance, safety, and use.</p>
               <div class="links"><a href="https://www.nature.com/articles/s41746-025-01611-4">Paper ↗</a></div>
             </article>
             <article class="paper-card">
               <div class="meta">World Psychiatry · 2025</div>
               <h3>Evolution of AI mental-health chatbots</h3>
-              <p>Organizes 160 studies across foundational testing, pilot feasibility, and clinical efficacy.</p>
+              <p>Organizes 160 studies across foundational testing, pilot feasibility, and clinical efficacy. 77% remained at early validation; 16% reached clinical-efficacy testing.</p>
               <div class="links"><a href="https://onlinelibrary.wiley.com/doi/10.1002/wps.21352">Paper ↗</a></div>
             </article>
             <article class="paper-card">
               <div class="meta">JMIR AI · 2025</div>
               <h3>HAICEF</h3>
-              <p>Structures 271 questions covering safety, privacy, fairness, usefulness, design, and operations.</p>
-              <div class="links"><a href="https://ai.jmir.org/2025/1/e69006/">Paper ↗</a></div>
+              <p>Structures 271 questions across 18 subdomains and 60 constructs, covering safety, privacy, fairness, usefulness, design, and operations. Companion states that its prompting architecture was built on HAICEF.</p>
+              <div class="links"><a href="https://ai.jmir.org/2025/1/e69006/">Paper ↗</a> &nbsp;·&nbsp; <a href="https://com2.ai/blog/haicef-evaluation-framework-healthcare-ai-chatbots">Companion ↗</a></div>
             </article>
             <article class="paper-card">
               <div class="meta">Benchmark methodology · 2026</div>
@@ -237,19 +239,25 @@
             <article class="paper-card">
               <div class="meta">Patient-facing triage · 2026</div>
               <h3>CARE-Bench</h3>
-              <p>Tests whether a patient-facing system requests necessary information and recommends an appropriate level of care at the right time.</p>
+              <p>500 cases, 1,059 disclosure prefixes, and 11 models. Tests whether a patient-facing system requests necessary information and recommends an appropriate level of care; only 33.5% of the relevant prompted cases preserved the information-gathering step.</p>
               <div class="links"><a href="https://ningkko.github.io/CARE-bench/">Project</a> &nbsp;·&nbsp; <a href="https://github.com/ningkko/CARE-bench">Code &amp; data</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2608.03731">arXiv ↗</a> &nbsp;·&nbsp; <a href="https://ningkko.github.io/CARE-bench/paper.pdf">Paper</a></div>
             </article>
             <article class="paper-card">
               <div class="meta">EMNLP · 2024</div>
               <h3>ClinicBench</h3>
-              <p>Evaluates clinical generation, reasoning, long documents, and expert-rated usefulness.</p>
+              <p>3 scenarios, 11 tasks, 17 datasets, and 22 general and medical LLMs. Models match or beat strong baselines on close-ended QA, but fall short on treatment recommendation, long-record summarization, and expert-rated completeness for clinical decision-making.</p>
               <div class="links"><a href="https://aclanthology.org/2024.emnlp-main.759/">Paper ↗</a></div>
+            </article>
+            <article class="paper-card">
+              <div class="meta">NeurIPS Datasets and Benchmarks · 2023</div>
+              <h3>CMExam</h3>
+              <p>60K+ Chinese medical exam questions. Included in Alibaba DAMO MedEvalKit, and reported on Baichuan's official M1-14B model card.</p>
+              <div class="links"><a href="https://github.com/williamliujl/CMExam">Project</a> &nbsp;·&nbsp; <a href="https://github.com/alibaba-damo-academy/MedEvalKit">MedEvalKit ↗</a> &nbsp;·&nbsp; <a href="https://huggingface.co/baichuan-inc/Baichuan-M1-14B-Instruct">Baichuan ↗</a></div>
             </article>
             <article class="paper-card">
               <div class="meta">Web agents · 2025</div>
               <h3>BrowseComp-ZH</h3>
-              <p>Tests multi-step browsing, retrieval strategy, and information reconciliation across the Chinese web.</p>
+              <p>289 multi-hop questions and 20+ systems evaluated for multi-step browsing, retrieval strategy, and information reconciliation across the Chinese web. The benchmark has since been used in public evaluations and model documentation beyond the original paper.</p>
               <div class="links"><a href="https://arxiv.org/abs/2504.19314">Paper ↗</a></div>
             </article>
             <article class="paper-card">
@@ -297,7 +305,7 @@
             <article class="paper-card">
               <div class="meta">Community benchmark · BioNLP Workshop at ACL 2026</div>
               <h3>PsyDefDetect Shared Task</h3>
-              <p>We hosted the PsyDefDetect Shared Task to bring researchers together to evaluate psychological-defense detection in supportive conversations.</p>
+              <p>172 participants, 563 submissions, 21 final-ranking teams, and 24 institutions across 12 countries, evaluating psychological-defense detection in supportive conversations.</p>
               <div class="links"><a href="https://psydefdetect-shared-task.github.io/">Shared task ↗</a></div>
             </article>
           </div>

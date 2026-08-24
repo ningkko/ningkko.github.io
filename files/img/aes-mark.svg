@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="aes-lilac-title">
+  <title id="aes-lilac-title">Agent Evaluation Science mark</title>
+  <g fill="#090C27">
+    <rect x="16" y="16" width="104" height="14"/><rect x="136" y="16" width="104" height="14"/>
+    <rect x="16" y="226" width="104" height="14"/><rect x="136" y="226" width="104" height="14"/>
+    <rect x="16" y="16" width="14" height="104"/><rect x="16" y="136" width="14" height="104"/>
+    <rect x="226" y="16" width="14" height="104"/><rect x="226" y="136" width="14" height="104"/>
+  </g>
+  <g fill="#6658E8">
+    <rect x="48" y="48" width="72" height="14"/><rect x="136" y="48" width="72" height="14"/>
+    <rect x="48" y="194" width="72" height="14"/><rect x="136" y="194" width="72" height="14"/>
+    <rect x="48" y="48" width="14" height="72"/><rect x="48" y="136" width="14" height="72"/>
+    <rect x="194" y="48" width="14" height="72"/><rect x="194" y="136" width="14" height="72"/>
+  </g>
+  <g fill="#8FD8DE">
+    <rect x="80" y="80" width="40" height="14"/><rect x="136" y="80" width="40" height="14"/>
+    <rect x="80" y="162" width="40" height="14"/><rect x="136" y="162" width="40" height="14"/>
+    <rect x="80" y="80" width="14" height="40"/><rect x="80" y="136" width="14" height="40"/>
+    <rect x="162" y="80" width="14" height="40"/><rect x="162" y="136" width="14" height="40"/>
+  </g>
+  <rect x="122" y="128" width="12" height="112" fill="#6658E8"/>
+  <circle cx="128" cy="128" r="16" fill="#6658E8"/>
+</svg>

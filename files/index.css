@@ -7,8 +7,8 @@
     --text: #1a1a1a;
     --muted: #6b7280;
     --line: #e5e7eb;
-    --accent: #315d99;
-    --accent-hover: #244a7d;
+    --accent: #0044FF;
+    --accent-hover: #0033CC;
     --sticky-offset: 110px;
 }
 
@@ -47,9 +47,11 @@ a {
     overflow-wrap: break-word;
 }
 
-a:hover {
+a:hover,
+a:focus {
     color: var(--accent);
     border-bottom-color: var(--accent);
+    text-decoration: none;
 }
 
 ::selection {
@@ -131,9 +133,11 @@ a:hover {
     min-height: 44px;
 }
 
-.nav-menu-horizontal a:hover {
+.nav-menu-horizontal a:hover,
+.nav-menu-horizontal a:focus {
     color: var(--accent);
     border-bottom: none;
+    text-decoration: none;
 }
 
 .navbar-dark .navbar-brand {
@@ -509,7 +513,6 @@ a:hover {
 }
 
 .news-list li:hover {
-    color: var(--accent);
     border-bottom-color: var(--accent);
     padding-left: 0.5rem;
 }
@@ -622,9 +625,9 @@ a:hover {
 
 .publication-item:hover {
     z-index: 10;
-    border-color: var(--line);
+    border-color: var(--accent);
     border-left-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 68, 255, 0.18);
     transform: translateY(-1px);
     overflow: visible;
 }
@@ -692,6 +695,12 @@ a:hover {
     color: #2a2a2a;
     margin: 0.75rem 0 0 0;
     line-height: 1.7;
+}
+
+.publication-request {
+    margin: 0.55rem 0 0 0;
+    font-size: inherit;
+    line-height: 1.6;
 }
 
 .publication-figure {
@@ -1748,8 +1757,8 @@ hr {
 
 /* 2026 site refinement: consistent shell, minimal icons, and responsive layouts */
 :root {
-    --accent: #315d99;
-    --accent-hover: #244a7d;
+    --accent: #0044FF;
+    --accent-hover: #0033CC;
 }
 
 .interest-list {
@@ -1806,7 +1815,7 @@ hr {
 }
 
 .publication-figure:hover {
-    border-color: #bcc8d6;
+    border-color: var(--accent);
 }
 
 .main-site-tab[aria-selected="true"],

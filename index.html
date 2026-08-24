@@ -22,7 +22,10 @@
 	<link href="files/index.css" rel="stylesheet">
 	<link rel="shortcut icon" href="files/img/hms.png">
 	<style>
-		.content-grid { grid-template-columns: minmax(220px, 260px) minmax(0, 1fr); }
+		:root {
+			--klein: #0044FF;
+			--klein-soft: rgba(0, 68, 255, 0.16);
+		}
 		.profile-column, .profile-column .profile-section, .profile-column .profile-section .stacked-list { font-size: 0.65rem; }
 		.profile-column .profile-caption { font-size: 0.58rem; }
 		.profile-column .eyebrow { font-size: 0.59rem; }
@@ -31,22 +34,83 @@
 		#Introduction,
 		#Introduction .about-news,
 		#Introduction #credentials-content { font-size: inherit; }
-		#credentials-content { color: #6b7780; }
+		#credentials-content { color: #6b7780; margin: 0.85rem 0 0; }
+		#credentials-content p { margin: 0.9rem 0 0.2rem; }
+		#credentials-content p:first-child { margin-top: 0.45rem; }
 		#credentials-content strong { color: #5a6570; font-weight: 600; }
-		#credentials-content ul { color: #8a949e; }
-		#credentials-content li { color: #8a949e; }
+		#credentials-content ul { margin: 0; padding-left: 1.15rem; }
+		#credentials-content li { color: #8a949e; margin: 0.2rem 0; }
 		#credentials-content li strong { color: #7a8690; font-weight: 600; }
 		#credentials-content li.credential-emphasis,
 		#credentials-content li.credential-emphasis strong {
 			color: var(--text, #1a1a1a);
 		}
+		.credential-group .is-folded.is-hidden { display: none; }
+		.fold-toggle {
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.22rem;
+			margin: 0.1rem 0 0 1.15rem;
+			padding: 0.12rem 0;
+			border: 0;
+			background: none;
+			color: #9aa3ab;
+			font: inherit;
+			font-size: 0.72rem;
+			font-weight: 500;
+			letter-spacing: 0.02em;
+			line-height: 1;
+		}
+		.news-fold-wrap .fold-toggle { margin-left: 0; }
+		.fold-caret {
+			display: block;
+			width: 0.62rem;
+			height: 0.62rem;
+			transition: transform 0.18s ease;
+		}
+		.fold-toggle[aria-expanded="true"] .fold-caret { transform: rotate(180deg); }
+		.fold-toggle:hover,
+		.fold-toggle:focus-visible {
+			color: var(--klein, #0044FF);
+		}
+		.news-fold-wrap {
+			position: relative;
+			display: flex;
+			justify-content: flex-start;
+			margin-top: 0.15rem;
+			padding-top: 0.55rem;
+		}
+		.news-fold-wrap::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 100%;
+			height: 1.75rem;
+			background: linear-gradient(to bottom, rgba(255,255,255,0), #fff 85%);
+			pointer-events: none;
+		}
+		.news-fold-wrap.is-expanded::before { content: none; }
+		.news-fold-wrap[hidden] { display: none !important; }
+		.news-year:not(:has(.news-list li:not(.is-folded):not([hidden]))) { display: none; }
 		.about-news { margin-top: 1.75rem; }
 		.news-tag-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 1rem; color: #6b7780; font-size: 0.82rem; }
 		.news-tag { display: inline-flex; align-items: center; gap: 0.28rem; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.14rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; white-space: nowrap; vertical-align: 0.08rem; margin-right: 0.5rem; }
 		.news-list .news-tag { border: 0; border-radius: 0; background: transparent; padding: 0; }
 		.news-list .news-tag-icon { width: auto; height: auto; font-size: 1.3rem; line-height: 1; }
 		.news-list .news-date { margin-left: 0.15rem; }
+		#Introduction .news-list a {
+			border-bottom-color: rgba(0, 68, 255, 0.28);
+		}
+		#Introduction .news-list a:hover,
+		#Introduction .news-list a:focus-visible {
+			color: var(--klein, #0044FF);
+			border-bottom-color: var(--klein, #0044FF);
+		}
 		button.news-tag { cursor: pointer; font: inherit; margin-right: 0; }
+		.news-tag-legend .news-tag:hover,
+		.news-tag-legend .news-tag:focus-visible { border-color: var(--klein, #0044FF); }
 		.news-tag-legend .news-tag[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
 		.news-tag-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
 		.news-tag-paper { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
@@ -55,12 +119,18 @@
 		.news-tag-role { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
 		.news-tag-milestone { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
 		.news-tag-community { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
-		.news-list li[hidden] { display: none !important; }
+		.news-list li[hidden],
+		.news-list li.is-folded { display: none !important; }
 		.news-year[hidden] { display: none !important; }
 		.nav-menu-item-with-submenu { position: relative; }
 		.nav-submenu { display: none; position: absolute; z-index: 120; top: 100%; right: 0; min-width: 220px; margin: 0; padding: 0.4rem 0; list-style: none; background: #fff; border: 1px solid #e0e5e9; box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08); }
 		.nav-menu-item-with-submenu:hover .nav-submenu, .nav-menu-item-with-submenu:focus-within .nav-submenu, .nav-menu-item-with-submenu.is-open .nav-submenu { display: block; }
 		.nav-menu-horizontal .nav-submenu a { display: block; padding: 0.55rem 0.75rem; font-size: 0.76rem; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+		.nav-menu-horizontal .nav-submenu a:hover,
+		.nav-menu-horizontal .nav-submenu a:focus-visible {
+			color: var(--klein, #0044FF);
+			box-shadow: inset 0 0 0 1px var(--klein, #0044FF);
+		}
 		.other-section { scroll-margin-top: calc(var(--sticky-offset) + 1rem); }
 		.other-section + .other-section { margin-top: 3.25rem; }
 		.recognition-list { border-top: 1px solid #e0e5e9; }
@@ -73,12 +143,18 @@
 		}
 		.pub-subarea-tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1rem 0 1.5rem; }
 		.pub-subarea-tab { border: 1px solid #cfd8df; border-radius: 0.35rem; background: #fff; color: #40505d; padding: 0.45rem 0.7rem; cursor: pointer; font: inherit; }
+		.pub-subarea-tab:hover,
+		.pub-subarea-tab:focus-visible { border-color: var(--klein, #0044FF); }
 		.pub-subarea-tab[aria-selected="true"] { background: #eef2f5; border-color: #8ea0ad; color: #17324d; font-weight: 600; }
+		.pub-subarea-tab[aria-selected="true"]:hover,
+		.pub-subarea-tab[aria-selected="true"]:focus-visible { border-color: var(--klein, #0044FF); }
 		.pub-subarea-panel[hidden] { display: none !important; }
 		.publication-item[hidden] { display: none !important; }
 		.research-topic-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin: 0 0 1.1rem; color: #6b7780; font-size: 0.82rem; }
 		.research-topic { display: inline-block; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.18rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; }
 		button.research-topic { cursor: pointer; font: inherit; }
+		.research-topic-legend .research-topic:hover,
+		.research-topic-legend .research-topic:focus-visible { border-color: var(--klein, #0044FF); }
 		.research-topic-legend .research-topic[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
 		.research-topic-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
 		.research-topic-rag { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
@@ -114,6 +190,8 @@
 		.talk-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin: 0 0 1.1rem; color: #6b7780; font-size: 0.82rem; }
 		.talk-type { display: inline-block; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.18rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; }
 		button.talk-type { cursor: pointer; font: inherit; }
+		.talk-legend .talk-type:hover,
+		.talk-legend .talk-type:focus-visible { border-color: var(--klein, #0044FF); }
 		.talk-legend .talk-type[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; font-weight: 700; }
 		.talk-type-all { background: #fff; border-color: #dbe1e6; color: #52616d; }
 		.talk-type-talk { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
@@ -124,6 +202,11 @@
 		.main-tab-panel[hidden] { display: none !important; }
 		.main-tab-panel { margin-bottom: 0; }
 		.main-site-tab[aria-selected="true"] { font-weight: 600; }
+		.main-site-tab:hover,
+		.main-site-tab:focus-visible {
+			color: var(--klein, #0044FF);
+			text-decoration: none;
+		}
 		/* Projects tab: mockup CSS from projects_page_responsive.html, site left panel unchanged */
 		#Projects {
 			--ink: #0b1836;
@@ -184,6 +267,7 @@
 			box-shadow: var(--shadow);
 			overflow: hidden;
 			min-width: 0;
+			transition: border-color 0.18s ease;
 		}
 		#Projects .project-card.blue {
 			border-color: var(--blue-line);
@@ -196,6 +280,12 @@
 			background:
 				radial-gradient(circle at 75% 10%, rgba(222,244,227,0.52), transparent 38%),
 				linear-gradient(140deg, #ffffff 0%, var(--green-card) 100%);
+		}
+		#Projects .project-card:hover,
+		#Projects .project-card.blue:hover,
+		#Projects .project-card.green:hover {
+			border-color: var(--klein, #0044FF);
+			box-shadow: 0 8px 22px var(--klein-soft, rgba(0, 68, 255, 0.16));
 		}
 		#Projects .visual-box {
 			width: 134px;
@@ -210,7 +300,16 @@
 		#Projects .blue .visual-box { border-color: #cdd8e9; color: var(--blue); }
 		#Projects .green .visual-box { border-color: #c9ddd8; color: var(--green); }
 		#Projects .hero-icon { width: 84px; height: 84px; }
+		#Projects .hero-logo {
+			width: 112px;
+			height: 112px;
+			object-fit: contain;
+			display: block;
+		}
 		#Projects .project-body { min-width: 0; }
+		#Projects .project-card.no-metrics .project-body {
+			align-self: center;
+		}
 		#Projects .project-title {
 			margin: -2px 0 12px;
 			color: var(--ink);
@@ -226,7 +325,7 @@
 			border-bottom: none !important;
 			text-decoration: none;
 		}
-		#Projects .project-title a:hover { color: var(--blue); }
+		#Projects .project-title a:hover { color: var(--blue); text-decoration: none; }
 		#Projects .green .project-title a:hover { color: var(--green); }
 		#Projects .project-description {
 			max-width: 620px;
@@ -339,6 +438,12 @@
 			overflow-wrap: break-word;
 		}
 		#Projects .examples a:hover span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+		#Projects .examples a:hover,
+		#Projects .examples a:focus-visible {
+			text-decoration: none;
+			box-shadow: 0 0 0 1px var(--klein, #0044FF);
+			border-radius: 6px;
+		}
 		#Projects .arrow {
 			font-size: 21px;
 			line-height: 1;
@@ -395,7 +500,11 @@
 			border-bottom: none !important;
 			box-shadow: 0 6px 16px rgba(49, 85, 143, 0.20);
 		}
-		#Projects .button:hover { filter: brightness(0.95); color: #fff !important; }
+		#Projects .button:hover {
+			filter: brightness(0.95);
+			color: #fff !important;
+			box-shadow: 0 0 0 1px var(--klein, #0044FF), 0 6px 16px rgba(49, 85, 143, 0.20);
+		}
 		#Projects .hero-icon {
 			display: block;
 			fill: none;
@@ -413,6 +522,7 @@
 			}
 			#Projects .visual-box { width: 105px; height: 116px; }
 			#Projects .hero-icon { width: 68px; height: 68px; }
+			#Projects .hero-logo { width: 92px; height: 92px; }
 			#Projects .metric { padding: 0 10px; gap: 8px; }
 			#Projects .metric strong { font-size: 22px; }
 			#Projects .examples {
@@ -431,6 +541,7 @@
 			#Projects .project-card { grid-template-columns: 1fr; padding: 25px 22px; }
 			#Projects .visual-box { width: 92px; height: 92px; margin-bottom: 18px; }
 			#Projects .hero-icon { width: 58px; height: 58px; }
+			#Projects .hero-logo { width: 78px; height: 78px; }
 			#Projects .project-title { font-size: 20px; }
 			#Projects .project-group-heading h2 { font-size: 22px; }
 			#Projects .metrics { grid-template-columns: 1fr; gap: 16px; }
@@ -486,7 +597,17 @@
 			stroke-linecap: round;
 			stroke-linejoin: round;
 		}
-		.impact-inline { margin: 0.85rem 0 1.25rem; line-height: 1.65; font-size: inherit; }
+		#Introduction .aes-inline-logo {
+			display: inline-block;
+			width: 1.15em;
+			height: 1.15em;
+			margin: 0 0.32em 0 0;
+			vertical-align: -0.18em;
+			object-fit: contain;
+		}
+		.impact-inline { margin: 0.85rem 0 1.1rem; line-height: 1.65; font-size: inherit; }
+		.impact-external-use { margin: 0 0 1.5rem; line-height: 1.65; font-size: inherit; }
+		.media-coverage-category-intro { margin: 0 0 0.85rem; color: #6b7780; line-height: 1.65; font-size: inherit; }
 		.impact-sup-logo { display: inline-block; width: 0.85em; height: 0.85em; margin: 0 0.05em 0 0.12em; vertical-align: super; object-fit: contain; border-radius: 0.1em; }
 		.media-coverage-list { display: flex; flex-direction: column; gap: 0; }
 		.media-coverage-category { margin: 0 0 1.75rem; }
@@ -505,7 +626,7 @@
 		.media-coverage-category:first-child .media-coverage-category-title { margin-top: 0.35rem; }
 		.media-coverage-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem 0; border: none; border-bottom: 1px solid #e0e5e9; font-size: inherit; line-height: 1.55; color: inherit; text-decoration: none; }
 		.media-coverage-category .media-coverage-item:last-child { border-bottom: none; }
-		.media-coverage-item:hover { color: #17324d; border-bottom-color: #9aabb7; }
+		.media-coverage-item:hover { color: #17324d; border-bottom-color: var(--klein, #0044FF); }
 		.media-coverage-item img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; margin-top: 0.15rem; }
 		.media-coverage-org { font-weight: 600; }
 		.media-coverage-doc { color: #52616d; font-weight: 400; }
@@ -518,7 +639,7 @@
 		#TeachingSection > .section-title {
 			margin-bottom: 1.35rem;
 			padding-bottom: 0.65rem;
-			border-bottom: 2px solid var(--accent, #315d99);
+			border-bottom: 2px solid var(--klein, #0044FF);
 			text-align: left;
 		}
 		.news-list,
@@ -561,9 +682,9 @@
 		.review-item:hover,
 		.teaching-item:hover {
 			padding-left: 1.15rem;
-			border-color: #aebdca;
+			border-color: var(--klein, #0044FF);
 			color: var(--text, #1a1a1a);
-			box-shadow: 0 4px 12px rgba(23, 50, 77, 0.055);
+			box-shadow: 0 4px 12px var(--klein-soft, rgba(0, 68, 255, 0.16));
 		}
 		.list-card-primary {
 			font-size: 0.96rem;
@@ -684,7 +805,6 @@
 		.news-list li:hover {
 			padding-left: 0.5rem;
 			border-color: var(--accent);
-			color: var(--accent);
 			box-shadow: none;
 		}
 		.talk-item {
@@ -728,7 +848,7 @@
 		.media-coverage-category .media-coverage-item:last-child { border: none; }
 		.media-coverage-item:hover {
 			padding-left: 0;
-			border-bottom: 1px solid #9aabb7;
+			border-bottom: 1px solid var(--klein, #0044FF);
 			color: #17324d;
 			box-shadow: none;
 		}
@@ -774,7 +894,7 @@
 		}
 		#Introduction .news-list li.participant-call:hover {
 			padding-left: 1.1rem;
-			border-color: #c5ced6;
+			border-color: var(--klein, #0044FF);
 			color: var(--text);
 			background: #f3f6f8;
 			box-shadow: none;
@@ -782,11 +902,12 @@
 		.participant-call a:not([href^="mailto:"]) {
 			color: #52616d;
 			font-weight: 700;
-			border-bottom: none;
+			border-bottom: 1px solid rgba(82, 97, 109, 0.35);
 			text-decoration: none;
 		}
 		.participant-call a:not([href^="mailto:"]):hover {
-			color: #31404d;
+			color: var(--klein, #002FA7);
+			border-bottom-color: var(--klein, #002FA7);
 		}
 		.participant-call a[href^="mailto:"] {
 			display: inline-block;
@@ -795,7 +916,7 @@
 			padding: 0;
 			border: 0;
 			border-radius: 0;
-			color: #315d99;
+			color: var(--klein, #0044FF);
 			font-weight: 600;
 			text-decoration: none;
 		}
@@ -804,9 +925,9 @@
 		}
 		.participant-call a[href^="mailto:"]:hover {
 			background: transparent;
-			color: #1e3f6b;
-			text-decoration: underline;
-			text-underline-offset: 0.15em;
+			color: var(--klein, #0044FF);
+			border-bottom: 1px solid var(--klein, #0044FF);
+			text-decoration: none;
 		}
 	</style>
 
@@ -824,7 +945,7 @@
 					<li><a class="main-site-tab" id="main-tab-projects" href="#Projects" role="tab" aria-controls="Projects" aria-selected="false">Projects</a></li>
 					<li><a class="main-site-tab" id="main-tab-research" href="#Research" role="tab" aria-controls="Research" aria-selected="false">Research</a></li>
 					<li><a class="main-site-tab" id="main-tab-talks" href="#Talks" role="tab" aria-controls="Talks" aria-selected="false">Talks &amp; Lectures</a></li>
-					<li><a class="main-site-tab" id="main-tab-media" href="#MediaCoverage" role="tab" aria-controls="MediaCoverage" aria-selected="false">Media Coverage</a></li>
+					<li><a class="main-site-tab" id="main-tab-media" href="#MediaCoverage" role="tab" aria-controls="MediaCoverage" aria-selected="false">Media &amp; Impact</a></li>
 					<li class="nav-menu-item-with-submenu" id="other-menu">
 						<a class="main-site-tab" id="main-tab-recognition" href="#Recognition" role="tab" aria-controls="Recognition" aria-selected="false" aria-haspopup="true" aria-expanded="false">Other</a>
 						<ul class="nav-submenu" aria-label="Other sections">
@@ -880,7 +1001,7 @@
 				</section>
 
 				<section class="section-block main-tab-panel" id="MediaCoverage" role="tabpanel" aria-labelledby="main-tab-media" hidden>
-					<h3 class="section-title centered">Media Coverage</h3>
+					<h3 class="section-title centered">Media &amp; Impact</h3>
 					<div id="impact-content"><!-- Impact intro will be populated by JavaScript --></div>
 					<div class="media-coverage-list" id="media-coverage-content">
 						<!-- Media coverage content will be populated by JavaScript -->
@@ -960,8 +1081,8 @@
   },
   "introduction": {
     "paragraphs": [
-      "Hi, I'm Yining (Nin) Hua. I’m a PhD student at Harvard advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>. I am trained in computer science, epidemiology, and biostatistics. I develop algorithms, models, and agents that generate and communicate evidence from real-world data and data informed by real-world settings. I also study agent evaluation through translating domain expertise into measurable criteria, with a focus on reliability and safety in high-stakes settings. Across my work, epidemiologic principles such as study design, measurement, bias, and population differences guide what conclusions can validly be drawn from data and analyses.",
-      "I am also a founding director of <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\">Agent Evaluation Science (AES)</a>, an independent nonprofit initiative advancing the science of AI agent evaluation."
+      "Hi, I'm Yining (Nin) Hua. I’m a PhD student at Harvard advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>, trained in computer science, epidemiology, and biostatistics. I develop algorithms, models, and agents that generate evidence from real-world data, and I study how to evaluate them for reliability and safety in high-stakes settings.",
+      "I am also a founding director of <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><img class=\"aes-inline-logo\" src=\"files/img/aes-mark.svg\" alt=\"\" width=\"18\" height=\"18\">Agent Evaluation Science (AES)</a>, an independent nonprofit initiative advancing the science of AI agent evaluation. I share notes on the <a href=\"https://evalscience.org/resources/notes/\" target=\"_blank\" rel=\"noopener\">AES Briefs</a> page, and I hope they can inspire you."
     ],
     "education": [
       "<strong>PhD, Epidemiology (Population Health Sciences)</strong>, Harvard T.H. Chan School of Public Health (Expected May 2027)",
@@ -969,6 +1090,7 @@
       "<strong>BA, Computer Science</strong>, Smith College (2017–2021; exchange at Harvard College 2020–2021)"
     ],
     "experience": [
+      "<strong>Agent Evaluation Science (AES)</strong> · Founding Director · NYC · March 2026–Present",
       "<strong>Department of Neurology, Massachusetts General Hospital</strong> · Boston, MA · Oct 2025–Present",
       "<strong>Squirrel AI</strong> · PhD Research Intern · Seattle, WA (Remote) · June 2025–Jan 2026",
       "<strong>Dandelion Health</strong> · PhD Intern · Boston, MA · July 2025–Jan 2026",
@@ -982,38 +1104,46 @@
       "items": [
         {
           "date": "Aug 2026",
-          "text": "New work on AI evaluation is now on arXiv, including <a href=\"https://arxiv.org/abs/2608.18050\" target=\"_blank\" rel=\"noopener\">StagedWorkspace</a>, <a href=\"https://arxiv.org/abs/2608.03731\" target=\"_blank\" rel=\"noopener\">CARE-Bench</a>, and <a href=\"https://arxiv.org/abs/2608.17330\" target=\"_blank\" rel=\"noopener\">The Preformulation Gap</a>, spanning agent workspaces, sequential patient-facing evaluation, and first-contact medical consultation.",
-          "tag": "paper"
-        },
-        {
-          "date": "Aug 2026",
-          "text": "We are organizing the <a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science Fall 2026 symposium</strong></a> on November 20 in New York City. The program focuses on measurement, benchmark design, evaluation infrastructure, reliability, safety, and real-world agent performance. <a href=\"https://evalscience.org/2026fall-nyc/submissions/\" target=\"_blank\" rel=\"noopener\">Call for Presentations</a> submissions open August 25.",
+          "text": "We are organizing the <a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\"><strong>AES Fall 2026 symposium</strong></a> on November 20 in New York City. <a href=\"https://evalscience.org/2026fall-nyc/submissions/\" target=\"_blank\" rel=\"noopener\">Call for Presentations</a> opens August 25.",
           "tag": "community"
         },
         {
           "date": "Aug 2026",
-          "text": "We are inviting epidemiologists, biostatisticians, and other professionals working in evidence generation who have some experience with AI to contribute to our new evaluation work on <strong>evidence-generation agents</strong>. Funding is available through the <a href=\"https://www.raycaster.ai/ai-fellows\" target=\"_blank\" rel=\"noopener\">Raycaster AI Fellows program</a>. Contributions include reviewing study materials, validating task designs, and assessing generated work products.<br><a href=\"mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration\">Express interest</a>",
+          "text": "We are inviting epidemiologists, biostatisticians, and other professionals working in evidence generation to help evaluate <strong>evidence-generation agents</strong>. Funding is available through the <a href=\"https://www.raycaster.ai/ai-fellows\" target=\"_blank\" rel=\"noopener\">Raycaster AI Fellows program</a>. <a href=\"mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration\">Express interest</a>",
           "tag": "community"
         },
         {
-          "date": "Jul 2026",
-          "text": "Our invited book chapter \"Advancing Mental Health Research With AI\" (chapter 10) is now published in <a href=\"https://shop.elsevier.com/books/artificial-intelligence-in-behavioral-and-mental-health-care/luxton/978-0-443-33151-0\" target=\"_blank\" rel=\"noopener\"><em>Artificial Intelligence in Behavioral and Mental Health Care</em></a>!",
+          "date": "Aug 2026",
+          "text": "New work on AI evaluation is now on arXiv: <a href=\"https://arxiv.org/abs/2608.18050\" target=\"_blank\" rel=\"noopener\">StagedWorkspace</a>, <a href=\"https://arxiv.org/abs/2608.03731\" target=\"_blank\" rel=\"noopener\">CARE-Bench</a>, and <a href=\"https://arxiv.org/abs/2608.17330\" target=\"_blank\" rel=\"noopener\">The Preformulation Gap</a>.",
           "tag": "paper"
         },
         {
           "date": "Jul 2026",
-          "text": "We got selected for <a href=\"https://www.anthropic.com/news/claude-science-ai-workbench\" target=\"_blank\" rel=\"noopener\">Anthropic's AI for Science Program</a> to develop and evaluate an evidence generation agent workbench with Claude Science.",
+          "text": "Invited chapter \"Advancing Mental Health Research With AI\" published in <a href=\"https://shop.elsevier.com/books/artificial-intelligence-in-behavioral-and-mental-health-care/luxton/978-0-443-33151-0\" target=\"_blank\" rel=\"noopener\"><em>Artificial Intelligence in Behavioral and Mental Health Care</em></a>. <a href=\"mailto:yininghua@g.harvard.edu?subject=Request%20for%20Copy%3A%20Advancing%20Mental%20Health%20Research%20With%20AI&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20chapter%20%27Advancing%20Mental%20Health%20Research%20With%20AI%27%20from%20%27Artificial%20Intelligence%20in%20Behavioral%20and%20Mental%20Health%20Care%20(2nd%20ed.)%27.%0A%0AThank%20you.\">Request a copy</a>",
+          "tag": "paper"
+        },
+        {
+          "date": "Jul 2026",
+          "text": "Selected for <a href=\"https://www.anthropic.com/news/claude-science-ai-workbench\" target=\"_blank\" rel=\"noopener\">Anthropic's AI for Science Program</a> to develop and evaluate an evidence-generation agent workbench.",
           "tag": "funding"
         },
         {
           "date": "Jul 2026",
           "text": "The <a href=\"https://psydefdetect-shared-task.github.io/\" target=\"_blank\" rel=\"noopener\">PsyDefDetect Shared Task</a> at BioNLP @ ACL 2026 is now archived.",
-          "tag": "milestone"
+          "tag": "milestone",
+          "fold": true
         },
         {
           "date": "Spring 2026",
-          "text": "I helped teach <em>EPI 288: Intro to ML & Risk Prediction</em> at Harvard T.H. Chan. The course emphasizes careful modeling, validation, and the kind of empirical discipline I think modern AI work badly needs.",
-          "tag": "teaching"
+          "text": "Helped teach <em>EPI 288: Intro to ML & Risk Prediction</em> at Harvard T.H. Chan.",
+          "tag": "teaching",
+          "fold": true
+        },
+        {
+          "date": "Mar 2026",
+          "text": "Founded <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science (AES)</strong></a>, an independent nonprofit for AI agent evaluation.",
+          "tag": "milestone",
+          "fold": true
         }
       ]
     },
@@ -1022,40 +1152,139 @@
       "items": [
         {
           "date": "Oct 2025",
-          "text": "Our paper \"<a href=\"https://pubmed.ncbi.nlm.nih.gov/40948070/\" target=\"_blank\" rel=\"noopener\">Charting the evolution of artificial intelligence mental health chatbots from rule-based systems to large language models: a systematic review</a>\" published in <em>World Psychiatry</em>.",
-          "tag": "paper"
+          "text": "Our systematic review of AI mental health chatbots published in <a href=\"https://pubmed.ncbi.nlm.nih.gov/40948070/\" target=\"_blank\" rel=\"noopener\"><em>World Psychiatry</em></a>.",
+          "tag": "paper",
+          "fold": true
         },
         {
           "date": "Jul–Aug 2025",
-          "text": "Multiple papers accepted across LLM evaluation, chatbot assessment, and applied NLP: <em>World Psychiatry</em>, <em>npj Digital Medicine</em>, <em>JMIR AI</em>, <em>Translational Psychiatry</em>, <em>NPP-Digital Psychiatry & Neuroscience</em>.",
-          "tag": "paper"
+          "text": "Papers accepted at <em>World Psychiatry</em>, <em>npj Digital Medicine</em>, <em>JMIR AI</em>, <em>Translational Psychiatry</em>, and <em>NPP-Digital Psychiatry & Neuroscience</em>.",
+          "tag": "paper",
+          "fold": true
         },
         {
           "date": "Jun 2025",
-          "text": "Passed PhD Qualification Exam 1 (two written parts; 17 required courses). The biggest milestone in my PhD program so far!",
-          "tag": "milestone"
+          "text": "Passed PhD Qualification Exam 1.",
+          "tag": "milestone",
+          "fold": true
         },
         {
           "date": "May 2025",
-          "text": "I joined Squirrel AI and Dandelion Health for summer work spanning LLM systems, RAG pipelines, and applied evaluation.",
-          "tag": "role"
+          "text": "Joined Squirrel AI and Dandelion Health for summer internships.",
+          "tag": "role",
+          "fold": true
         },
         {
           "date": "Apr 2025",
-          "text": "Our paper \"<a href=\"https://www.nature.com/articles/s41746-025-01611-4\" target=\"_blank\" rel=\"noopener\">A scoping review of large language models for generative tasks in mental health care</a>\" published online in <em>npj Digital Medicine</em>.",
-          "tag": "paper"
+          "text": "Our scoping review of LLMs for generative mental-health tasks published in <a href=\"https://www.nature.com/articles/s41746-025-01611-4\" target=\"_blank\" rel=\"noopener\"><em>npj Digital Medicine</em></a>.",
+          "tag": "paper",
+          "fold": true
         },
         {
           "date": "Jan 2025",
-          "text": "\"<a href=\"https://aclanthology.org/2025.coling-main.616/\" target=\"_blank\" rel=\"noopener\">Detecting Conversational Mental Manipulation with Intent-Aware Prompting</a>\" won Best Short Paper at <strong>COLING 2025</strong>.",
-          "tag": "paper"
+          "text": "\"Detecting Conversational Mental Manipulation with Intent-Aware Prompting\" won Best Short Paper at <a href=\"https://aclanthology.org/2025.coling-main.616/\" target=\"_blank\" rel=\"noopener\"><strong>COLING 2025</strong></a>.",
+          "tag": "paper",
+          "fold": true
         }
       ]
     }
   ],
   "impact": {
     "summary": "My research has been cited in government reports and professional or clinical guidance, and reported by national and specialist media, such as",
+    "externalUseLead": "My benchmarks have been used in public evaluations by",
+    "externalUseClose": "These public records cover more than 27 AI systems and evaluation environments.",
     "organizations": [
+      {
+        "name": "xAI",
+        "document": "Grok 4 Fast",
+        "url": "https://x.ai/news/grok-4-fast",
+        "logo": "https://www.google.com/s2/favicons?domain=x.ai&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Microsoft Research",
+        "document": "InfoAgent",
+        "url": "https://github.com/microsoft/InfoAgent",
+        "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "NVIDIA",
+        "document": "Qwen3.5-397B-A17B model card",
+        "url": "https://build.nvidia.com/qwen/qwen3.5-397b-a17b/modelcard",
+        "logo": "https://www.google.com/s2/favicons?domain=nvidia.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Alibaba / Tongyi",
+        "document": "DeepResearch",
+        "url": "https://github.com/Alibaba-NLP/DeepResearch",
+        "logo": "https://www.google.com/s2/favicons?domain=alibaba.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "ByteDance Seed",
+        "document": "Seed2",
+        "url": "https://seed.bytedance.com/en/seed2",
+        "logo": "https://www.google.com/s2/favicons?domain=bytedance.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "DeepSeek",
+        "document": "DeepSeek-V3.2-Exp",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp",
+        "logo": "https://www.google.com/s2/favicons?domain=deepseek.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Moonshot AI / Kimi",
+        "document": "Kimi-K2-Thinking",
+        "url": "https://huggingface.co/moonshotai/Kimi-K2-Thinking",
+        "logo": "https://www.google.com/s2/favicons?domain=moonshot.cn&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "openPangu",
+        "document": "openPangu-Embedded-7B-DeepDiver",
+        "url": "https://huggingface.co/openpangu/openPangu-Embedded-7B-DeepDiver",
+        "logo": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "MiniMax",
+        "document": "MiniMax-M2",
+        "url": "https://github.com/MiniMax-AI/MiniMax-M2",
+        "logo": "https://www.google.com/s2/favicons?domain=minimaxi.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Meituan",
+        "document": "LongCat-Flash-Thinking-2601",
+        "url": "https://github.com/meituan-longcat/LongCat-Flash-Thinking-2601",
+        "logo": "https://www.google.com/s2/favicons?domain=meituan.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Zhipu / Z.ai",
+        "document": "GLM-5",
+        "url": "https://huggingface.co/zai-org/GLM-5",
+        "logo": "https://www.google.com/s2/favicons?domain=z.ai&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Li Auto",
+        "document": "arXiv:2604.14518",
+        "url": "https://arxiv.org/abs/2604.14518",
+        "logo": "https://www.google.com/s2/favicons?domain=lixiang.com&sz=128",
+        "category": "technology"
+      },
+      {
+        "name": "Baichuan",
+        "document": "Baichuan-M1-14B-Instruct",
+        "url": "https://huggingface.co/baichuan-inc/Baichuan-M1-14B-Instruct",
+        "logo": "https://www.google.com/s2/favicons?domain=baichuan-ai.com&sz=128",
+        "category": "technology"
+      },
       {
         "name": "National Academies of Sciences, Engineering, and Medicine",
         "document": "Sex and Gender Identification and Implications for Disability Evaluation, commissioned by the U.S. Social Security Administration",
@@ -1428,6 +1657,20 @@
       "description": "Benchmarks and evaluation for models and agents.",
       "publications": [
         {
+          "title": "StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents",
+          "url": "https://arxiv.org/abs/2608.18050",
+          "authors": "<strong>Hua Y</strong>, Na H, Zhou Y, Kalose A, Ayubcha C, Lian L",
+          "venue": "<em>arXiv preprint</em> arXiv:2608.18050 (2026)",
+          "description": "We propose StagedWorkspace, a versioned workspace that binds parsed records, review diffs, and submitted artifacts to the same evolving file state for knowledge-work agents. In fixed-harness ablations on OfficeQA Pro and APEX-Agents, dual parsed/native access improves OfficeQA Pass@1 by 8.3–12.1 points and APEX mean rubric score by 4.7–9.2 points relative to a more limiting single view.",
+          "figure": {
+            "src": "files/img/papers/stagedworkspace.png",
+            "alt": "Workspace synchronization across parsed, native, and review views in StagedWorkspace"
+          },
+          "topics": [
+            "Agents"
+          ]
+        },
+        {
           "title": "CARE-Bench: Benchmarking Patient-Facing LLM Triage",
           "url": "https://arxiv.org/abs/2608.03731",
           "authors": "<strong>Hua Y</strong>, Na H, Ayubcha C",
@@ -1474,7 +1717,7 @@
           "url": "https://ai.jmir.org/2025/1/e69006",
           "authors": "<strong>Hua Y</strong>, Xia W, Bates D.W., Hartstein G.L., Kim H.T., Li M., Nelson B.W., Stromeyer C. IV, King D., Suh J., Zhou L., Torous J.",
           "venue": "<em>JMIR AI</em>. 4:e69006 (2025)",
-          "description": "A PRISMA-guided systematic review of 11 evaluation frameworks (from 266 records) for health care AI chatbots that develops HAICEF, the Health Care AI Chatbot Evaluation Framework. HAICEF maps 271 evaluation questions into 3 priority domains (safety/privacy/fairness; trustworthiness/usefulness; design and operational effectiveness), 18 subdomains, and 60 constructs to scaffold standardized, stakeholder-informed assessment.",
+          "description": "A PRISMA-guided systematic review of 11 evaluation frameworks (from 266 records) for health care AI chatbots that develops HAICEF, the Health Care AI Chatbot Evaluation Framework. HAICEF maps 271 evaluation questions into 3 priority domains (safety/privacy/fairness; trustworthiness/usefulness; design and operational effectiveness), 18 subdomains, and 60 constructs to scaffold standardized, stakeholder-informed assessment. <a href=\"https://com2.ai/blog/haicef-evaluation-framework-healthcare-ai-chatbots\" target=\"_blank\" rel=\"noopener\">Companion</a> states that its prompting architecture was built on HAICEF.",
           "figure": {
             "src": "files/img/papers/pub3.jpg",
             "alt": "Healthcare AI chatbot evaluation figure"
@@ -1544,7 +1787,7 @@
           "url": "https://github.com/williamliujl/CMExam",
           "authors": "Liu J, Zhou P, <strong>Hua Y</strong>, Chong D, Tian Z, Liu A, Wang H, You C, Guo Z, Zhu L, Li M.L., et al.",
           "venue": "<em>NeurIPS</em> 2023 (Datasets and Benchmarks Track)",
-          "description": "We introduce CMExam, a 60K+ Chinese medical QA benchmark built from the National Medical Licensing Examination, with multiple-choice questions, solution explanations, and five expert-verified test labels (ICD-11 group, department, discipline, competency, difficulty). Across general and medical LLMs, GPT-4 reaches 61.6% accuracy vs. 71.6% for humans, while current Chinese medical LLMs perform poorly zero-shot. Finetuning lightweight LLMs on CMExam narrows the gap to GPT-3.5 and yields better explanations, but still falls short of clinically reliable performance.",
+          "description": "We introduce CMExam, a 60K+ Chinese medical QA benchmark built from the National Medical Licensing Examination, with multiple-choice questions, solution explanations, and five expert-verified test labels (ICD-11 group, department, discipline, competency, difficulty). Across general and medical LLMs, GPT-4 reaches 61.6% accuracy vs. 71.6% for humans, while current Chinese medical LLMs perform poorly zero-shot. Finetuning lightweight LLMs on CMExam narrows the gap to GPT-3.5 and yields better explanations, but still falls short of clinically reliable performance. Alibaba DAMO <a href=\"https://github.com/alibaba-damo-academy/MedEvalKit\" target=\"_blank\" rel=\"noopener\">MedEvalKit</a> includes CMExam in its medical evaluation suite, and Baichuan's official <a href=\"https://huggingface.co/baichuan-inc/Baichuan-M1-14B-Instruct\" target=\"_blank\" rel=\"noopener\">M1-14B model card</a> reports CMExam results.",
           "figure": {
             "src": "files/img/papers/pub10.jpg",
             "alt": "Overview of the CMExam Chinese medical exam benchmark and LLM evaluation results"
@@ -1682,7 +1925,11 @@
           "url": "https://shop.elsevier.com/books/artificial-intelligence-in-behavioral-and-mental-health-care/luxton/978-0-443-33151-0",
           "authors": "<strong>Hua Y</strong>, Torous J",
           "venue": "Invited chapter 10 in D. D. Luxton (Ed.), <em>Artificial Intelligence in Behavioral and Mental Health Care</em> (2nd ed.). Elsevier (published 30 July 2026)",
-          "description": "We review the history of AI in mental health research, survey key application areas, and outline current challenges and future directions.",
+          "description": "This invited chapter reviews how AI has been used in mental health research, from earlier statistical and rule-based methods to current language-model systems. We survey key application areas, discuss evidence, evaluation, safety, and translation challenges, and outline directions for more valid and clinically useful work. The publisher version is not posted here; I am happy to share an author copy on request.",
+          "requestCopy": {
+            "label": "Request a copy",
+            "url": "mailto:yininghua@g.harvard.edu?subject=Request%20for%20Copy%3A%20Advancing%20Mental%20Health%20Research%20With%20AI&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20chapter%20%27Advancing%20Mental%20Health%20Research%20With%20AI%27%20from%20%27Artificial%20Intelligence%20in%20Behavioral%20and%20Mental%20Health%20Care%20(2nd%20ed.)%27.%0A%0AThank%20you."
+          },
           "figure": {
             "src": "files/img/papers/ai-behavioral-mental-health-care.png",
             "alt": "Cover of Artificial Intelligence in Behavioral and Mental Health Care, 2nd edition"
@@ -1766,7 +2013,7 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/40948070/",
           "authors": "<strong>Hua Y</strong>, Siddals S, Ma Z, Galatzer-Levy I, Xia W, Hau C, Na H, Flathers M, Linardon J, Ayubcha C, Torous J",
           "venue": "<em>World Psychiatry</em> 24:383:394 (2025)",
-          "description": "This systematic review of 160 studies (2020–2024) maps the evolution of mental health chatbots across three architectural paradigms: rule-based, machine learning-based, and large language model-based systems, and three evaluation tiers: technical validation, pilot feasibility, and clinical efficacy. It reviews chatbot functions (emotional support, therapy, education, assessment), target conditions (depression, anxiety, general well-being), evaluation outcomes (usability, clinical benefit, safety), and participant types. While LLM-based systems now dominate technical research, most clinically tested chatbots remain rule-based.",
+          "description": "This systematic review of 160 studies (2020–2024) maps the evolution of mental health chatbots across three architectural paradigms: rule-based, machine learning-based, and large language model-based systems, and three evaluation tiers: technical validation, pilot feasibility, and clinical efficacy. It reviews chatbot functions (emotional support, therapy, education, assessment), target conditions (depression, anxiety, general well-being), evaluation outcomes (usability, clinical benefit, safety), and participant types. While LLM-based systems now dominate technical research, 77% of studies remained at early validation and 16% reached clinical-efficacy testing; most clinically tested chatbots remain rule-based.",
           "figure": {
             "src": "files/img/papers/pub2.jpg",
             "alt": "AI mental health chatbot evolution figure"
@@ -2041,6 +2288,7 @@
       "summary": "An independent research initiative and network advancing the methods, infrastructure, evidence, and scientific practice of AI agent evaluation.",
       "theme": "blue",
       "icon": "people",
+      "logo": "files/img/aes-mark.svg",
       "examplesHeading": "",
       "examples": [
         {
@@ -2190,6 +2438,13 @@
 			profileCard.innerHTML = html;
 		}
 
+		function foldCaretSvg() {
+			return '<svg class="fold-caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.2 3.6 L5 6.4 L7.8 3.6" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+		}
+		function foldToggleHtml(showLabel, hideLabel) {
+			return `<button class="fold-toggle" type="button" aria-expanded="false" data-label-show="${showLabel}" data-label-hide="${hideLabel}"><span class="fold-label">${showLabel}</span>${foldCaretSvg()}</button>`;
+		}
+
 		function renderIntroduction(intro) {
 			const introContent = document.getElementById('introduction-content');
 			const credentialsContent = document.getElementById('credentials-content');
@@ -2200,24 +2455,41 @@
 			// Current/primary roles (Present / expected degree): near-black; others muted
 			const isCredentialEmphasis = (item) => /\bPresent\b|Expected May 2027/.test(item);
 
-			const renderCredentialItems = (items) =>
-				(items || []).map(item => {
+			const renderCredentialGroup = (label, items) => {
+				const list = items || [];
+				const current = list.filter(isCredentialEmphasis);
+				const earlier = list.filter(item => !isCredentialEmphasis(item));
+				const renderItems = (group) => group.map(item => {
 					const cls = isCredentialEmphasis(item) ? ' class="credential-emphasis"' : '';
 					return `<li${cls}>${item}</li>`;
 				}).join('');
+				let html = `<div class="credential-group">`;
+				html += `<p><strong>${label}:</strong></p>`;
+				html += `<ul>${renderItems(current.length ? current : list)}</ul>`;
+				if (current.length && earlier.length) {
+					html += `<ul class="is-folded is-hidden">${renderItems(earlier)}</ul>`;
+					html += foldToggleHtml('more', 'less');
+				}
+				html += '</div>';
+				return html;
+			};
 
-			let credentialsHtml = '<p><strong>Education:</strong></p>';
-			credentialsHtml += '<ul style="margin-top: 0.5rem; padding-left: 1.5rem;">';
-			credentialsHtml += renderCredentialItems(intro.education);
-			credentialsHtml += '</ul>';
-			credentialsHtml += '<p style="margin-top: 1.25rem;"><strong>Experience:</strong></p>';
-			credentialsHtml += '<ul style="margin-top: 0.5rem; padding-left: 1.5rem;">';
-			credentialsHtml += renderCredentialItems(intro.experience);
-			credentialsHtml += '</ul>';
-			credentialsContent.innerHTML = credentialsHtml;
+			credentialsContent.innerHTML = renderCredentialGroup('Education', intro.education)
+				+ renderCredentialGroup('Experience', intro.experience);
+
+			credentialsContent.querySelectorAll('.fold-toggle').forEach(btn => {
+				btn.addEventListener('click', () => {
+					const expanded = btn.getAttribute('aria-expanded') === 'true';
+					const next = !expanded;
+					const group = btn.closest('.credential-group');
+					btn.setAttribute('aria-expanded', String(next));
+					btn.querySelector('.fold-label').textContent = next ? btn.dataset.labelHide : btn.dataset.labelShow;
+					group?.querySelector('.is-folded')?.classList.toggle('is-hidden', !next);
+				});
+			});
 		}
 
-		function wireLegendFilter({ root, buttonSelector, itemSelector, getItemKey, groupSelector, matches }) {
+		function wireLegendFilter({ root, buttonSelector, itemSelector, getItemKey, groupSelector, matches, afterApply }) {
 			const buttons = Array.from(root.querySelectorAll(buttonSelector));
 			const items = Array.from(root.querySelectorAll(itemSelector));
 			const groups = groupSelector ? Array.from(root.querySelectorAll(groupSelector)) : [];
@@ -2233,9 +2505,10 @@
 					item.hidden = !show;
 				});
 				groups.forEach(group => {
-					const visible = Array.from(group.querySelectorAll(itemSelector)).some(item => !item.hidden);
+					const visible = Array.from(group.querySelectorAll(itemSelector)).some(item => !item.hidden && !item.classList.contains('is-folded'));
 					group.hidden = !visible;
 				});
+				if (afterApply) afterApply(selected);
 			};
 
 			buttons.forEach(btn => {
@@ -2291,21 +2564,61 @@
 							${yearGroup.items.map(item => {
 								const meta = newsTags[item.tag] || newsTags.paper;
 								const tag = item.tag || 'paper';
-								const itemClass = tag === 'community' ? ' class="participant-call"' : '';
-								return `<li${itemClass} data-news-tag="${tag}"><span class="news-tag news-tag-${tag}" role="img" aria-label="${meta.label}" title="${meta.label}"><span class="news-tag-icon" aria-hidden="true">${meta.icon}</span></span> <span class="news-date">${item.date}</span> ${item.text}</li>`;
+								const classes = [
+									tag === 'community' ? 'participant-call' : '',
+									item.fold ? 'is-folded' : ''
+								].filter(Boolean).join(' ');
+								const classAttr = classes ? ` class="${classes}"` : '';
+								return `<li${classAttr} data-news-tag="${tag}" data-folded="${item.fold ? 'true' : 'false'}"><span class="news-tag news-tag-${tag}" role="img" aria-label="${meta.label}" title="${meta.label}"><span class="news-tag-icon" aria-hidden="true">${meta.icon}</span></span> <span class="news-date">${item.date}</span> ${item.text}</li>`;
 							}).join('')}
 						</ul>
 					</div>
 				`;
 			});
+			html += `<div class="news-fold-wrap">${foldToggleHtml('more', 'less')}</div>`;
 
 			newsContent.innerHTML = html;
+
+			const foldBtn = newsContent.querySelector('.fold-toggle');
+			let newsExpanded = false;
+			const newsItems = () => Array.from(newsContent.querySelectorAll('.news-list li'));
+			const newsYears = () => Array.from(newsContent.querySelectorAll('.news-year'));
+
+			const applyNewsFold = (selected) => {
+				newsItems().forEach(item => {
+					const folded = item.dataset.folded === 'true';
+					item.classList.toggle('is-folded', folded && !newsExpanded && selected === 'all');
+				});
+				newsYears().forEach(group => {
+					const visible = Array.from(group.querySelectorAll('.news-list li')).some(item => !item.hidden && !item.classList.contains('is-folded'));
+					group.hidden = !visible;
+				});
+				if (foldBtn) {
+					const hasFolded = newsItems().some(item => item.dataset.folded === 'true');
+					const wrap = foldBtn.closest('.news-fold-wrap');
+					const showToggle = hasFolded && selected === 'all';
+					foldBtn.hidden = !showToggle;
+					if (wrap) wrap.hidden = !showToggle;
+					foldBtn.setAttribute('aria-expanded', String(newsExpanded));
+					const label = foldBtn.querySelector('.fold-label');
+					if (label) label.textContent = newsExpanded ? foldBtn.dataset.labelHide : foldBtn.dataset.labelShow;
+					wrap?.classList.toggle('is-expanded', newsExpanded);
+				}
+			};
+
 			wireLegendFilter({
 				root: newsContent,
 				buttonSelector: '.news-tag-legend [data-filter-value]',
 				itemSelector: '.news-list li',
 				getItemKey: (item) => item.dataset.newsTag,
-				groupSelector: '.news-year'
+				groupSelector: '.news-year',
+				afterApply: applyNewsFold
+			});
+
+			foldBtn?.addEventListener('click', () => {
+				newsExpanded = !newsExpanded;
+				const selectedBtn = newsContent.querySelector('.news-tag-legend [aria-pressed="true"]');
+				applyNewsFold(selectedBtn?.dataset.filterValue || 'all');
 			});
 		}
 
@@ -2353,10 +2666,13 @@
 				` : '';
 				const titleTag = project.section ? 'h3' : 'h2';
 				const examplesHeading = project.examplesHeading == null ? 'Examples' : project.examplesHeading;
+				const visual = project.logo
+					? `<img class="hero-logo" src="${project.logo}" alt="">`
+					: projectIconSvg(project.icon || 'clipboard', 'hero-icon');
 				return `
 					${sectionHeading}
-					<article class="project-card ${theme}">
-						<div class="visual-box" aria-hidden="true">${projectIconSvg(project.icon || 'clipboard', 'hero-icon')}</div>
+					<article class="project-card ${theme}${metrics ? '' : ' no-metrics'}">
+						<div class="visual-box" aria-hidden="true">${visual}</div>
 						<div class="project-body">
 							<${titleTag} class="project-title">${title}</${titleTag}>
 							<p class="project-description">${project.summary}</p>
@@ -2408,6 +2724,7 @@
 				'Exploring Social Media for Early Detection of Depression in COVID-19 Patients': ['LLM - Application'],
 				'Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications': ['LLM - Application'],
 				'Design and Report Benchmarks for Knowledge Work': ['Framework'],
+				'StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents': ['Agents'],
 				'You Never Know a Person, You Only Know Their Defenses: Detecting Levels of Psychological Defense Mechanisms in Supportive Conversations': ['Benchmarks'],
 				'Standardizing and scaffolding healthcare AI-chatbot evaluation': ['Framework'],
 				'BrowseComp-ZH: Benchmarking Web Browsing Ability of Large Language Models in Chinese': ['Benchmarks'],
@@ -2464,6 +2781,16 @@
 				const years = String(pub.venue || '').match(/\b(20\d{2})\b/g);
 				return years ? Math.max(...years.map(Number)) : 0;
 			};
+			const publicationTime = pub => {
+				const fromUrl = String(pub.url || '');
+				const fromVenue = String(pub.venue || '');
+				const arxiv = fromUrl.match(/arxiv\.org\/abs\/(\d{2})(\d{2})\.(\d+)/i)
+					|| fromVenue.match(/arXiv:(\d{2})(\d{2})\.(\d+)/i);
+				if (arxiv) {
+					return (2000 + Number(arxiv[1])) * 1e8 + Number(arxiv[2]) * 1e6 + Number(arxiv[3]);
+				}
+				return publicationYear(pub) * 1e8;
+			};
 			const topicsInOrder = (publications) => {
 				const seen = [];
 				publications.forEach(pub => {
@@ -2474,12 +2801,22 @@
 				return seen;
 			};
 
-			const tabs = groupedResearch.map((area, index) => `
+			const researchSections = [
+				...groupedResearch,
+				{
+					area: 'View all',
+					description: 'All selected publications, sorted by publication time.',
+					publications: groupedResearch.flatMap(area => area.publications)
+				}
+			];
+			const tabs = researchSections.map((area, index) => `
 				<button class="pub-subarea-tab" type="button" role="tab" id="pub-subarea-tab-${index}" aria-controls="pub-subarea-panel-${index}" aria-selected="${index === 0 ? 'true' : 'false'}">${area.area}</button>
 			`).join('');
 
-			const panels = groupedResearch.map((area, index) => {
-				const ordered = [...area.publications].sort((a, b) => publicationYear(b) - publicationYear(a));
+			const panels = researchSections.map((area, index) => {
+				const ordered = [...area.publications].sort((a, b) => area.area === 'View all'
+					? publicationTime(b) - publicationTime(a)
+					: publicationYear(b) - publicationYear(a));
 				const usedTopics = topicsInOrder(ordered);
 				const legend = usedTopics.length ? `
 					<div class="research-topic-legend" role="group" aria-label="Filter ${area.area} publications by topic">
@@ -2539,6 +2876,7 @@
 						<p class="publication-authors">${pub.authors}</p>
 						<p class="publication-venue">${pub.venue}</p>
 						<p class="publication-desc">${pub.description}</p>
+						${pub.requestCopy && pub.requestCopy.url ? `<p class="publication-request"><a href="${pub.requestCopy.url}">${pub.requestCopy.label || 'Request a copy'}</a></p>` : ''}
 					</div>
 			`;
 
@@ -2594,12 +2932,22 @@
 			return `<a href="${org.url}" target="_blank" rel="noopener" title="${linkLabel}">${org.name}<img class="impact-sup-logo" src="${org.logo}" alt="" loading="lazy" onerror="this.style.display='none'"></a>`;
 		}
 
+		function joinInlineLinks(orgs) {
+			const links = (orgs || []).map(renderOrgInlineLink);
+			if (links.length < 2) return links.join('');
+			if (links.length === 2) return `${links[0]} and ${links[1]}`;
+			return `${links.slice(0, -1).join(', ')}, and ${links[links.length - 1]}`;
+		}
+
 		function renderImpact(impact) {
 			const impactContent = document.getElementById('impact-content');
 			if (!impactContent || !impact) return;
 			const featured = (impact.organizations || []).filter(org => org.featured);
-			const orgs = featured.map(renderOrgInlineLink).join(', ');
-			impactContent.innerHTML = `<p class="impact-inline">${impact.summary} ${orgs}. Read more below.</p>`;
+			const techOrgs = (impact.organizations || []).filter(org => org.category === 'technology');
+			impactContent.innerHTML = `
+				<p class="impact-inline">${impact.summary} ${joinInlineLinks(featured)}. Read more below.</p>
+				<p class="impact-external-use"><strong>External use.</strong> ${impact.externalUseLead} ${joinInlineLinks(techOrgs)}. ${impact.externalUseClose}</p>
+			`;
 		}
 
 		function renderMediaCoverage(impact) {
@@ -2629,6 +2977,7 @@
 				return `
 					<div class="media-coverage-category">
 						<h4 class="media-coverage-category-title">${category.title}</h4>
+						${category.intro ? `<p class="media-coverage-category-intro">${category.intro}</p>` : ''}
 						${orgs.map(renderOrgItem).join('')}
 					</div>
 				`;
