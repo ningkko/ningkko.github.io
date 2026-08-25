@@ -2750,16 +2750,31 @@
 			};
 			const retag = pub => ({ ...pub, topics: topicOverrides[pub.title] || pub.topics || [] });
 			const development = source['LLM & Agent Development'] || [];
+			const evaluation = source['Evaluation & Benchmarks'] || [];
+			const alsoInDevelopmentTitles = new Set([
+				'StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents'
+			]);
+			const uniqueByTitle = publications => {
+				const seen = new Set();
+				return publications.filter(pub => {
+					if (seen.has(pub.title)) return false;
+					seen.add(pub.title);
+					return true;
+				});
+			};
 			const groupedResearch = [
 				{
 					area: 'LLM & Agent Development',
 					description: 'Model development, adaptation, and agent systems.',
-					publications: development.filter(pub => !inferenceOnlyAppliedTitles.has(pub.title)).map(retag)
+					publications: uniqueByTitle([
+						...evaluation.filter(pub => alsoInDevelopmentTitles.has(pub.title)),
+						...development.filter(pub => !inferenceOnlyAppliedTitles.has(pub.title))
+					]).map(retag)
 				},
 				{
 					area: 'Evaluation & Benchmarks',
 					description: 'Methods and benchmarks for model reliability and safety in high-stakes settings.',
-					publications: (source['Evaluation & Benchmarks'] || []).map(retag)
+					publications: evaluation.map(retag)
 				},
 				{
 					area: 'Applied NLP',
@@ -2806,7 +2821,7 @@
 				{
 					area: 'View all',
 					description: 'All selected publications, sorted by publication time.',
-					publications: groupedResearch.flatMap(area => area.publications)
+					publications: uniqueByTitle(groupedResearch.flatMap(area => area.publications))
 				}
 			];
 			const tabs = researchSections.map((area, index) => `
