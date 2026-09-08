@@ -391,6 +391,20 @@ a:focus {
     background: #fff;
 }
 
+/* Keep column scrolling, but do not show an inner scrollbar track. */
+.content-column,
+.profile-column {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.content-column::-webkit-scrollbar,
+.profile-column::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 .content-column .section-block {
     font-size: inherit;
 }
