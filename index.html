@@ -96,6 +96,31 @@
 		.news-fold-wrap[hidden] { display: none !important; }
 		.news-year:not(:has(.news-list li:not(.is-folded):not([hidden]))) { display: none; }
 		.about-news { margin-top: 1.75rem; }
+		.news-spotlight {
+			margin: 0 0 1.15rem;
+			padding: 1rem 1.1rem 1.05rem;
+			border: 1px solid #e0e5e9;
+			border-radius: 0.5rem;
+			background: #f7f9fa;
+			color: var(--text, #1a1a1a);
+			line-height: 1.55;
+		}
+		.news-spotlight-item {
+			display: grid;
+			grid-template-columns: 5.4rem minmax(0, 1fr);
+			column-gap: 0.75rem;
+			margin: 0.2rem 0;
+		}
+		.news-spotlight-date { font-weight: 700; color: #17324d; }
+		.news-spotlight-note { margin: 0.8rem 0 0; }
+		#Introduction .news-spotlight a {
+			border-bottom-color: rgba(0, 68, 255, 0.28);
+		}
+		#Introduction .news-spotlight a:hover,
+		#Introduction .news-spotlight a:focus-visible {
+			color: var(--klein, #0044FF);
+			border-bottom-color: var(--klein, #0044FF);
+		}
 		.news-tag-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 1rem; color: #6b7780; font-size: 0.82rem; }
 		.news-tag { display: inline-flex; align-items: center; gap: 0.28rem; border: 1px solid #dbe1e6; border-radius: 999px; background: #f7f9fa; color: #52616d; padding: 0.14rem 0.48rem; font-size: 0.75rem; font-weight: 600; line-height: 1.2; white-space: nowrap; vertical-align: 0.08rem; margin-right: 0.5rem; }
 		.news-list .news-tag { border: 0; border-radius: 0; background: transparent; padding: 0; }
@@ -1078,11 +1103,11 @@
     "title": "Interested in collaborating?",
     "text": "Contact me about research collaboration in AI evaluation or health data.",
     "buttonLabel": "Get in touch",
-    "buttonUrl": "mailto:yininghua@g.harvard.edu"
+    "buttonUrl": "mailto:contact@evalscience.org"
   },
   "introduction": {
     "paragraphs": [
-      "Hi, I'm Yining (Nin) Hua. I’m a PhD student at Harvard advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>, trained in computer science, epidemiology, and biostatistics. I develop algorithms, models, and agents that generate evidence from real-world data, and I study how to evaluate them for reliability and safety in high-stakes settings.",
+      "Hi, I'm Yining (Nin) Hua. I’m a PhD student at Harvard advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>, trained in computer science, epidemiology, and biostatistics. I study how AI systems and agents should be evaluated for real-world work, including benchmark design, evaluation environments, information access, and reliability. I also develop methods for generating evidence from real-world health data.",
       "I am also a founding director of <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><img class=\"aes-inline-logo\" src=\"files/img/aes-mark.svg\" alt=\"\" width=\"18\" height=\"18\">Agent Evaluation Science (AES)</a>, an independent nonprofit initiative advancing the science of AI agent evaluation. I share notes on the <a href=\"https://evalscience.org/resources/notes/\" target=\"_blank\" rel=\"noopener\">AES Briefs</a> page, and I hope they can inspire you."
     ],
     "education": [
@@ -1099,15 +1124,23 @@
     ],
     "closingParagraphs": []
   },
+  "newsSpotlight": {
+    "items": [
+      {
+        "date": "Sep 2026",
+        "text": "First <a href=\"https://evalscience.org/2026fall-cambridge/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science</strong> working group</a>, September 30 at MIT."
+      },
+      {
+        "date": "Nov 2026",
+        "text": "<a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science Fall Symposium</strong></a>, November 20 in Downtown Manhattan."
+      }
+    ],
+    "note": "We are expanding AES and looking for people to help build the community. If you would like to co-organize an event, contribute to our research activities, or be matched with industry partners working on real implementations and datasets, please <a href=\"mailto:yininghua@g.harvard.edu?subject=Agent%20Evaluation%20Science\">contact me</a>."
+  },
   "news": [
     {
       "year": "2026",
       "items": [
-        {
-          "date": "Aug 2026",
-          "text": "We are organizing the <a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\"><strong>AES Fall 2026 symposium</strong></a> on November 20 in New York City. <a href=\"https://evalscience.org/2026fall-nyc/submissions/\" target=\"_blank\" rel=\"noopener\">Call for Presentations</a> opens August 25.",
-          "tag": "community"
-        },
         {
           "date": "Aug 2026",
           "text": "We are inviting epidemiologists, biostatisticians, and other professionals working in evidence generation to help evaluate <strong>evidence-generation agents</strong>. Funding is available through the <a href=\"https://www.raycaster.ai/ai-fellows\" target=\"_blank\" rel=\"noopener\">Raycaster AI Fellows program</a>. <a href=\"mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration\">Express interest</a>",
@@ -1658,6 +1691,20 @@
       "description": "Benchmarks and evaluation for models and agents.",
       "publications": [
         {
+          "title": "WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks",
+          "url": "https://arxiv.org/abs/2609.23806",
+          "authors": "<strong>Hua Y</strong>, Lian L",
+          "venue": "<em>arXiv preprint</em> arXiv:2609.23806 (2026)",
+          "description": "An evaluation infrastructure that fixes organizational state before introducing tasks, enabling controlled study of how workplace context affects agent performance. A world first fixes a revision, date, and employee seat and materializes the organizational state that the employee can access; tasks are introduced only afterward. Across 192 matched evaluations in a synthetic pharmaceutical company, moving from task-curated context to the full role-visible workplace reduced evidence access from 90.4% to 74.5% and criterion pass from 79.4% to 68.2%, while pass conditional on evidence access remained nearly unchanged.",
+          "figure": {
+            "src": "files/img/papers/workworlds.png",
+            "alt": "WorkWorlds experimental design: construction validation of a fixed workplace and a matched comparison of full versus task-curated information"
+          },
+          "topics": [
+            "Framework"
+          ]
+        },
+        {
           "title": "StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents",
           "url": "https://arxiv.org/abs/2608.18050",
           "authors": "<strong>Hua Y</strong>, Na H, Zhou Y, Kalose A, Ayubcha C, Lian L",
@@ -2028,6 +2075,18 @@
   ],
   "talks": [
     {
+      "date": "09/2026",
+      "type": "Event",
+      "title": "Agent Evaluation Science Working Group",
+      "venue": "MIT"
+    },
+    {
+      "date": "11/2026",
+      "type": "Event",
+      "title": "Agent Evaluation Science Fall Symposium",
+      "venue": "Downtown Manhattan"
+    },
+    {
       "date": "07/2026",
       "type": "Event",
       "title": "The PsyDefDetect Shared Task",
@@ -2298,28 +2357,28 @@
           "external": true
         },
         {
+          "label": "Boston working group",
+          "url": "https://evalscience.org/2026fall-cambridge/",
+          "external": true
+        },
+        {
           "label": "Fall 2026 symposium",
           "url": "https://evalscience.org/2026fall-nyc/",
           "external": true
         },
         {
-          "label": "Call for Presentations",
-          "url": "https://evalscience.org/2026fall-nyc/submissions/",
+          "label": "Notes & updates",
+          "url": "https://evalscience.org/news/",
           "external": true
         },
         {
-          "label": "Committee",
-          "url": "https://evalscience.org/2026fall-nyc/committee/",
-          "external": true
-        },
-        {
-          "label": "Resources",
+          "label": "Research",
           "url": "https://evalscience.org/resources/",
           "external": true
         },
         {
-          "label": "Community",
-          "url": "https://evalscience.org/community/",
+          "label": "About",
+          "url": "https://evalscience.org/about/",
           "external": true
         }
       ],
@@ -2356,7 +2415,7 @@
 
 			renderProfile(data.profile);
 			renderIntroduction(data.introduction);
-			renderNews(data.news);
+			renderNews(data.news, data.newsSpotlight);
 			renderProjects(data.projects, data.projectsIntro, data.projectsCta);
 			renderResearch(data.research);
 			adjustFigureHeights();
@@ -2527,7 +2586,7 @@
 			apply('all');
 		}
 
-		function renderNews(news) {
+		function renderNews(news, spotlight) {
 			const newsContent = document.getElementById('news-content');
 			const newsTags = {
 				paper: { icon: '📄', label: 'Paper' },
@@ -2545,6 +2604,18 @@
 				});
 			});
 
+			const spotlightHtml = (spotlight && ((spotlight.items && spotlight.items.length) || spotlight.note)) ? `
+				<div class="news-spotlight">
+					${(spotlight.items || []).map(item => `
+						<div class="news-spotlight-item">
+							<span class="news-spotlight-date">${item.date}</span>
+							<span>${item.text}</span>
+						</div>
+					`).join('')}
+					${spotlight.note ? `<p class="news-spotlight-note">${spotlight.note}</p>` : ''}
+				</div>
+			` : '';
+
 			const legend = `
 				<div class="news-tag-legend" role="group" aria-label="Filter news by tag">
 					<span>Tags:</span>
@@ -2556,7 +2627,7 @@
 				</div>
 			`;
 
-			let html = legend;
+			let html = spotlightHtml + legend;
 			news.forEach(yearGroup => {
 				html += `
 					<div class="news-year">
@@ -2701,6 +2772,13 @@
 			root.innerHTML = introHtml + `<div class="project-stack">${cards}</div>` + ctaHtml;
 		}
 
+		function escapeHtml(value) {
+			return String(value)
+				.replace(/&/g, '&amp;')
+				.replace(/"/g, '&quot;')
+				.replace(/</g, '&lt;');
+		}
+
 		function renderResearch(research) {
 			const researchContent = document.getElementById('research-content');
 			const topicClass = topic => 'research-topic-' + topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -2725,6 +2803,7 @@
 				'Exploring Social Media for Early Detection of Depression in COVID-19 Patients': ['LLM - Application'],
 				'Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications': ['LLM - Application'],
 				'Design and Report Benchmarks for Knowledge Work': ['Framework'],
+				'WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks': ['Framework'],
 				'StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents': ['Agents'],
 				'You Never Know a Person, You Only Know Their Defenses: Detecting Levels of Psychological Defense Mechanisms in Supportive Conversations': ['Benchmarks'],
 				'Standardizing and scaffolding healthcare AI-chatbot evaluation': ['Framework'],
@@ -2817,12 +2896,24 @@
 				return seen;
 			};
 
+			const sectionsByTitle = new Map();
+			groupedResearch.forEach(area => {
+				area.publications.forEach(pub => {
+					const sections = sectionsByTitle.get(pub.title) || [];
+					if (!sections.includes(area.area)) sections.push(area.area);
+					sectionsByTitle.set(pub.title, sections);
+				});
+			});
 			const researchSections = [
 				...groupedResearch,
 				{
 					area: 'View all',
 					description: 'All selected publications, sorted by publication time.',
-					publications: uniqueByTitle(groupedResearch.flatMap(area => area.publications))
+					filterMode: 'section',
+					publications: uniqueByTitle(groupedResearch.flatMap(area => area.publications)).map(pub => ({
+						...pub,
+						sections: sectionsByTitle.get(pub.title) || []
+					}))
 				}
 			];
 			const tabs = researchSections.map((area, index) => `
@@ -2833,17 +2924,20 @@
 				const ordered = [...area.publications].sort((a, b) => area.area === 'View all'
 					? publicationTime(b) - publicationTime(a)
 					: publicationYear(b) - publicationYear(a));
-				const usedTopics = topicsInOrder(ordered);
-				const legend = usedTopics.length ? `
-					<div class="research-topic-legend" role="group" aria-label="Filter ${area.area} publications by topic">
+				const filters = area.filterMode === 'section'
+					? groupedResearch.map(group => group.area)
+					: topicsInOrder(ordered);
+				const legendLabel = area.filterMode === 'section' ? 'research section' : 'topic';
+				const legend = filters.length ? `
+					<div class="research-topic-legend" role="group" aria-label="Filter ${area.area} publications by ${legendLabel}">
 						<button class="research-topic research-topic-all" type="button" data-filter-value="all" aria-pressed="true">All</button>
-						${usedTopics.map(topic =>
-							`<button class="research-topic ${topicClass(topic)}" type="button" data-filter-value="${topic}" aria-pressed="false">${topic}</button>`
+						${filters.map(topic =>
+							`<button class="research-topic ${topicClass(topic)}" type="button" data-filter-value="${escapeHtml(topic)}" aria-pressed="false">${escapeHtml(topic)}</button>`
 						).join('')}
 					</div>
 				` : '';
 				return `
-				<div class="pub-subarea-panel research-area" id="pub-subarea-panel-${index}" role="tabpanel" aria-labelledby="pub-subarea-tab-${index}" ${index === 0 ? '' : 'hidden'}>
+				<div class="pub-subarea-panel research-area" id="pub-subarea-panel-${index}" role="tabpanel" aria-labelledby="pub-subarea-tab-${index}" data-filter-mode="${area.filterMode || 'topic'}" ${index === 0 ? '' : 'hidden'}>
 					<p class="research-area-desc">${area.description}</p>
 					${legend}
 					${ordered.map(pub => renderPublication(pub)).join('')}
@@ -2873,10 +2967,12 @@
 					root: panel,
 					buttonSelector: '.research-topic-legend [data-filter-value]',
 					itemSelector: '.publication-item',
-					matches: (item, selected) => (item.dataset.publicationTopics || '')
-						.split('|')
-						.filter(Boolean)
-						.includes(selected)
+					matches: (item, selected) => {
+						const raw = panel.dataset.filterMode === 'section'
+							? item.dataset.publicationSections
+							: item.dataset.publicationTopics;
+						return (raw || '').split('|').filter(Boolean).includes(selected);
+					}
 				});
 			});
 			adjustFigureHeights();
@@ -2884,9 +2980,11 @@
 
 		function renderPublication(pub) {
 			const topics = (pub.topics || []).join('|');
-			const topicAttr = topics ? ` data-publication-topics="${topics}"` : '';
+			const sections = (pub.sections || []).join('|');
+			const topicAttr = topics ? ` data-publication-topics="${escapeHtml(topics)}"` : '';
+			const sectionAttr = sections ? ` data-publication-sections="${escapeHtml(sections)}"` : '';
 			let html = `
-				<div class="publication-item"${topicAttr}>
+				<div class="publication-item"${topicAttr}${sectionAttr}>
 					<div class="publication-content">
 						<h5 class="publication-title"><strong><a href="${pub.url}" target="_blank" rel="noopener">${pub.title}</a></strong></h5>
 						<p class="publication-authors">${pub.authors}</p>

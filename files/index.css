@@ -1819,19 +1819,6 @@ hr {
     flex: 0 0 0.82rem;
 }
 
-.publication-figure,
-.publication-figure:hover {
-    transform: none;
-    overflow: hidden;
-    box-shadow: none;
-    border: 1px solid var(--line);
-    background: #fff;
-}
-
-.publication-figure:hover {
-    border-color: var(--accent);
-}
-
 .main-site-tab[aria-selected="true"],
 .nav-menu-horizontal a.active,
 .nav-menu-horizontal a[aria-current="page"] {
