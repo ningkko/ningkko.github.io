@@ -47,6 +47,38 @@
 			color: var(--text, #1a1a1a);
 		}
 		.credential-group .is-folded.is-hidden { display: none; }
+		.about-me { margin: 1.15rem 0 0; }
+		.about-me-toggle {
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.38rem;
+			padding: 0;
+			border: 0;
+			background: none;
+			color: #9aa3ab;
+			font: inherit;
+			font-size: 0.78rem;
+			font-weight: 500;
+			letter-spacing: 0.01em;
+			line-height: 1;
+		}
+		.about-me-sign {
+			display: inline-block;
+			width: 0.7rem;
+			font-size: 1rem;
+			font-weight: 400;
+			line-height: 1;
+			text-align: center;
+		}
+		.about-me-toggle:hover,
+		.about-me-toggle:focus-visible {
+			color: var(--klein, #0044FF);
+		}
+		#credentials-content .about-me-panel { margin-top: 0.7rem; color: var(--text, #1a1a1a); }
+		#credentials-content .about-me-panel p { margin: 0.7rem 0 0; }
+		#credentials-content .about-me-panel p:first-child { margin-top: 0; }
+		.about-me-panel[hidden] { display: none !important; }
 		.fold-toggle {
 			cursor: pointer;
 			display: inline-flex;
@@ -1107,7 +1139,7 @@
   },
   "introduction": {
     "paragraphs": [
-      "Hi, I'm Yining (Nin) Hua. I’m a PhD student at Harvard advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>, trained in computer science, epidemiology, and biostatistics. I study how AI systems and agents should be evaluated for real-world work, including benchmark design, evaluation environments, information access, and reliability. I also develop methods for generating evidence from real-world health data.",
+      "Hi, I'm Yining (Ning) Hua. I’m a PhD student at Harvard, trained in computer science, epidemiology, and biostatistics. I study how AI systems and agents should be evaluated for real-world work, including benchmark and evaluation environment design, controlled studies of agent behavior, and analysis of evaluation bias and reliability.",
       "I am also a founding director of <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><img class=\"aes-inline-logo\" src=\"files/img/aes-mark.svg\" alt=\"\" width=\"18\" height=\"18\">Agent Evaluation Science (AES)</a>, an independent nonprofit initiative advancing the science of AI agent evaluation. I share notes on the <a href=\"https://evalscience.org/resources/notes/\" target=\"_blank\" rel=\"noopener\">AES Briefs</a> page, and I hope they can inspire you."
     ],
     "education": [
@@ -1122,7 +1154,14 @@
       "<strong>Dandelion Health</strong> · PhD Intern · Boston, MA · July 2025–Jan 2026",
       "<strong>Harvard Medical School & Other Affiliated Hospitals (BWH, BCH, BIDMC)</strong> · Boston, MA · 2021–2025"
     ],
-    "closingParagraphs": []
+    "closingParagraphs": [],
+    "aboutMe": {
+      "label": "about me",
+      "paragraphs": [
+        "I started doing research as a creative activity and as a way to engage in deep intellectual collaborations with people. Over the years, I have worked with many amazing researchers and received guidance from many advisors and mentors. I am currently advised by <a href=\"https://hsph.harvard.edu/profile/lori-chibnik/\" target=\"_blank\" rel=\"noopener\">Lori B. Chibnik</a>. You can see more of the people I have worked with through my publications and coauthors on <a href=\"https://scholar.google.com/citations?user=1uaV0JEAAAAJ&hl=en&oi=ao\" target=\"_blank\" rel=\"noopener\">Google Scholar</a>.",
+        "Outside of research, I am a dancer and private pilot; I was trained in fine arts and have played both guzheng and jazz drums growing up (I was part of the Smith College jazz ensemble). These days I spend most of my free time on acrobatics and metalwork. I am aesthetically interested in Arctic architecture, shamanism, and Buddhism."
+      ]
+    }
   },
   "newsSpotlight": {
     "items": [
@@ -2534,8 +2573,21 @@
 				return html;
 			};
 
+			const about = intro.aboutMe;
+			const aboutHtml = (about && about.paragraphs && about.paragraphs.length) ? `
+				<div class="about-me">
+					<button class="about-me-toggle" type="button" aria-expanded="false" aria-controls="about-me-panel">
+						<span class="about-me-sign" aria-hidden="true">+</span>
+						<span>${about.label || 'about me'}</span>
+					</button>
+					<div class="about-me-panel" id="about-me-panel" hidden>
+						${about.paragraphs.map(p => `<p>${p}</p>`).join('')}
+					</div>
+				</div>` : '';
+
 			credentialsContent.innerHTML = renderCredentialGroup('Education', intro.education)
-				+ renderCredentialGroup('Experience', intro.experience);
+				+ renderCredentialGroup('Experience', intro.experience)
+				+ aboutHtml;
 
 			credentialsContent.querySelectorAll('.fold-toggle').forEach(btn => {
 				btn.addEventListener('click', () => {
@@ -2547,6 +2599,18 @@
 					group?.querySelector('.is-folded')?.classList.toggle('is-hidden', !next);
 				});
 			});
+
+			const aboutToggle = credentialsContent.querySelector('.about-me-toggle');
+			if (aboutToggle) {
+				aboutToggle.addEventListener('click', () => {
+					const expanded = aboutToggle.getAttribute('aria-expanded') === 'true';
+					const next = !expanded;
+					aboutToggle.setAttribute('aria-expanded', String(next));
+					aboutToggle.querySelector('.about-me-sign').textContent = next ? '−' : '+';
+					const panel = document.getElementById('about-me-panel');
+					if (panel) panel.hidden = !next;
+				});
+			}
 		}
 
 		function wireLegendFilter({ root, buttonSelector, itemSelector, getItemKey, groupSelector, matches, afterApply }) {
