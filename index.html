@@ -1191,11 +1191,6 @@
         },
         {
           "date": "Oct 2026",
-          "text": "Started <a href=\"https://evalscience.org/education/\" target=\"_blank\" rel=\"noopener\"><strong>EvalScience Mentored Projects</strong></a> and a Call for Course Design for an open curriculum on agent evaluation.",
-          "tag": "community"
-        },
-        {
-          "date": "Oct 2026",
           "text": "Hosted the <a href=\"https://evalscience.org/2026fall-sf/\" target=\"_blank\" rel=\"noopener\"><strong>AES Bay Area Research Gathering</strong></a> in the South Bay, bringing together academic and industry researchers working on agent evaluation.",
           "tag": "community"
         },
@@ -2753,7 +2748,7 @@
 								const meta = newsTags[item.tag] || newsTags.paper;
 								const tag = item.tag || 'paper';
 								const classes = [
-									tag === 'community' ? 'participant-call' : '',
+									item.highlight ? 'participant-call' : '',
 									item.fold ? 'is-folded' : ''
 								].filter(Boolean).join(' ');
 								const classAttr = classes ? ` class="${classes}"` : '';
