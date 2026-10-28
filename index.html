@@ -255,6 +255,7 @@
 		.talk-type-talk { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
 		.talk-type-lecture { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
 		.talk-type-event { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
+		.talk-type-poster { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
 		.talk-title .talk-type { margin-right: 0.4rem; vertical-align: 0.08rem; }
 		.talk-item[hidden] { display: none !important; }
 		.main-tab-panel[hidden] { display: none !important; }
@@ -2169,6 +2170,12 @@
       "venue": "BioNLP Workshop @ ACL 2026, San Diego, CA, USA"
     },
     {
+      "date": "05/2026",
+      "type": "Poster",
+      "title": "Document-Native Orchestration for Long-Horizon LLM Agents (with Levi Lian)",
+      "venue": "North East AI Agents Day, Jane Street, New York, NY"
+    },
+    {
       "date": "11/2025",
       "type": "Talk",
       "title": "Charting the Evolution of AI Mental Health Chatbots from Rule-Based Systems to Large Language Models",
@@ -2254,6 +2261,11 @@
     }
   ],
   "awards": [
+    {
+      "year": 2026,
+      "source": "Schmidt Sciences:",
+      "text": "Funding for the <a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\">Agent Evaluation Science Fall Symposium</a>."
+    },
     {
       "year": 2026,
       "source": "Anthropic:",
@@ -3121,7 +3133,7 @@
 
 		function renderTalks(talks) {
 			const talksContent = document.getElementById('talks-content');
-			const typeOrder = ['Talk', 'Lecture', 'Event'];
+			const typeOrder = ['Talk', 'Poster', 'Lecture', 'Event'];
 			const presentTypes = typeOrder.filter(type => talks.some(talk => talk.type === type));
 
 			const legend = `
