@@ -255,7 +255,6 @@
 		.talk-type-talk { background: #eaf3fb; border-color: #9fc3df; color: #245879; }
 		.talk-type-lecture { background: #f2ecf8; border-color: #c6addb; color: #65457d; }
 		.talk-type-event { background: #eaf5ef; border-color: #9fc9ae; color: #326848; }
-		.talk-type-poster { background: #fff6e8; border-color: #e2c48a; color: #7a5620; }
 		.talk-title .talk-type { margin-right: 0.4rem; vertical-align: 0.08rem; }
 		.talk-item[hidden] { display: none !important; }
 		.main-tab-panel[hidden] { display: none !important; }
@@ -2171,8 +2170,8 @@
     },
     {
       "date": "05/2026",
-      "type": "Poster",
-      "title": "Document-Native Orchestration for Long-Horizon LLM Agents (with Levi Lian)",
+      "type": "Talk",
+      "title": "Document-Native Orchestration for Long-Horizon LLM Agents",
       "venue": "North East AI Agents Day, Jane Street, New York, NY"
     },
     {
@@ -3133,7 +3132,7 @@
 
 		function renderTalks(talks) {
 			const talksContent = document.getElementById('talks-content');
-			const typeOrder = ['Talk', 'Poster', 'Lecture', 'Event'];
+			const typeOrder = ['Talk', 'Lecture', 'Event'];
 			const presentTypes = typeOrder.filter(type => talks.some(talk => talk.type === type));
 
 			const legend = `
