@@ -1112,6 +1112,7 @@
     },
     "contact": {
       "email": "yininghua@g.harvard.edu",
+      "note": "Open to collaboration and advising. Email is the best way to reach me (I don't check social media) and I reply fast. No reply in three days? Please ping me again.",
       "links": [
         {
           "text": "Google Scholar",
@@ -2585,6 +2586,7 @@
 							`<a href="${link.url}" target="_blank" rel="noopener">${link.text}</a>`
 						).join(' | ')}</li>
 						<li>${profile.contact.email}</li>
+						${profile.contact.note ? `<li>${profile.contact.note}</li>` : ''}
 					</ul>
 				</div>
 				<div class="profile-section">
