@@ -4140,7 +4140,7 @@ G.lf=G.lf||{};if(!G.lf.onb){G.lf.onb=1;if(!G.floors.includes('3'))G.floors.push(
 function hints(){const v=G.vis||{},t=[];const fl=G.floors||[];
  if(!v.apt)t.push('Press the button panel in the elevator until it says 3, then walk out the door. The 3rd floor is home: the Sunset Apartment.');
  if(v.apt&&!G.lf.hintHome)t.push('At home: talk to the soft creatures on the sofa, water the plant by the window, make tea in the kettle. The door leads to the Plush Forest.');
- if(!(G.duMeet>=1))t.push('Take the elevator to 1F, the corridor. Someone is waiting to be met there.');
+ if(!(G.duMeet>=1))t.push(dreamCount()<FIGHTAT?'Try different floors and explore. Someone in a hood keeps passing through the dreams.':'He\'s near. Go into a dream (the corridor, the night road, the school) and look around.');
  else if((G.duMeet||0)<3)t.push('Keep exploring the dreams. You\'ll keep running into him, maybe on the night road (B) or at the school.');
  if((G.duHurt||0)>=3)t.push('He visits your home some days. Sit with him, talk, or do something together.');
  if(fl.includes('B')&&!v.inn)t.push('On the night road (floor B), there\'s an inn with no sign. Ten guests, ten stories. Read the rules on the wall.');
@@ -4155,11 +4155,87 @@ document.addEventListener('keydown',e=>{if(e.key.toLowerCase()=='t'&&!e.repeat&&
 {const bb=document.getElementById('bBag');if(bb){bb.insertAdjacentHTML('beforebegin','<button id="bHint" class="sm">What now? (T)</button> ');document.getElementById('bHint').addEventListener('click',()=>showHints())}}
 {const _a=arrive;arrive=function(f){const was=S.map;_a(f);
  if(S.map=='apt'&&!G.lf.hintHome){G.lf.hintHome=1;save();setTimeout(()=>{let n=0;const tr=()=>{if(S.map!='apt'||n++>10)return;if(S.dlg||S.fade){setTimeout(tr,700);return}say(D('',['(This is home. It\'s always sunset here, and time stands still.)','(The soft things on the sofa are your friends. The kettle makes tea. The door by the window opens onto the Plush Forest.)','(When you want to go dreaming, take the elevator again.)']))};tr()},2200)}
- /* first visit to the corridor: he's there, for sure */
- if(S.map=='corr'&&was!=='corr'&&!(G.duMeet>=1)&&!G.lf.boom1){G.lf.boom1=1;save();setTimeout(()=>{if(S.map!='corr')return;let n=0;const tr=()=>{if(S.map!='corr'||n++>10)return;if(S.dlg||S.fade){setTimeout(tr,700);return}boom(S.px+8+40,S.py);setTimeout(()=>duMeet(1),650)};tr()},2500)}}}
+ /* first visit to the corridor: only a quiet glimpse of him. The fight comes later. */
+ if(S.map=='corr'&&was!=='corr'&&!(G.duMeet>=1)&&!G.lf.duGlimpse){setTimeout(()=>{let n=0;const tr=()=>{if(S.map!='corr'||n++>10||G.lf.duGlimpse)return;if(S.dlg||S.fade){setTimeout(tr,700);return}duGlimpse()};tr()},2500)}
+ /* after a few dreams, he really shows up: the first fight */
+ if(was!==S.map&&DUMEETMAP.includes(S.map)&&!(G.duMeet>=1)&&dreamCount()>=FIGHTAT&&!G.lf.fight1&&!S.fightPend){S.fightPend=1;setTimeout(()=>{let n=0;const m=S.map;const tr=()=>{if(S.map!=m||n++>12||(G.duMeet>=1)){S.fightPend=0;return}if(S.dlg||S.fade||S.bt){setTimeout(tr,700);return}S.fightPend=0;G.lf.fight1=1;save();boom(S.px+8+(S.dir=='left'?-20:20),S.py);setTimeout(()=>duMeet(1),650)};tr()},1800)}}}
 
 /* safety: never let a scene transition hang forever */
 setInterval(()=>{try{if(S.fade&&performance.now()-S.fade.t0>3500){if(!S.fade.done){S.fade.done=1;try{arrive(S.fade)}catch(e){}}S.fade=null}}catch(e){}},700);
+
+/* ===================== The first fight comes later ===================== */
+const FIGHTAT=4;
+function dreamCount(){return Object.keys(G.vis||{}).filter(m=>m!='elev'&&!HOME.includes(m)).length}
+function duGlimpse(){G.lf.duGlimpse=1;save();say(D('',['(At the far end of the corridor, someone in a hood is standing on a chair, changing a lightbulb.)','(The new bulb flickers. Then it holds.)','(He steps down. He glances at you, just once.)','(Then he walks through a door you hadn\'t noticed, and it\'s gone too.)']))}
+{const _m=duMeet;duMeet=function(n){if(n==1&&dreamCount()<FIGHTAT&&!G.lf.fight1){G.lf.boom1=0;save();
+  if(S.map!='corr')return;
+  if(!G.lf.duGlimpse){duGlimpse();return}
+  say(D('',['(The door bangs open. Only white steam comes out.)','(Through it, you catch the back of someone in a hood, shutting another door behind him.)','(When the steam clears, the room is empty.)']));return}
+ return _m.apply(this,arguments)}}
+
+/* ===================== Fights: no skipping through them ===================== */
+S.lineAt=0;S.btEnd=-1e9;
+{const _s=showD;let ld=null,li=-1;showD=function(){if(S.dlg!==ld||S.di!==li){ld=S.dlg;li=S.di;S.lineAt=performance.now()}return _s.apply(this,arguments)}}
+const inFight=()=>!!S.bt||performance.now()-S.btEnd<6000;
+{const _a=advance;advance=function(){if(S.dlg&&inFight()&&performance.now()-S.lineAt<(chShown()?450:750))return;return _a.apply(this,arguments)}}
+{const _p=pick;pick=function(i){if(inFight()&&performance.now()-S.lineAt<450)return;return _p.apply(this,arguments)}}
+
+/* ===================== Sound effects ===================== */
+function sfxOut(){if(typeof muInit=='function')muInit();if(!MU.ctx||!MU.on)return null;if(MU.ctx.state=='suspended')MU.ctx.resume();if(!MU.sfx){MU.sfx=MU.ctx.createGain();MU.sfx.gain.value=.9;MU.sfx.connect(MU.master)}return MU.sfx}
+function sNoise(t,dur,v,f,q,type){const c=MU.ctx,b=c.createBuffer(1,Math.ceil(c.sampleRate*dur),c.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+ const s=c.createBufferSource();s.buffer=b;const fl=c.createBiquadFilter();fl.type=type||'bandpass';fl.frequency.value=f;fl.Q.value=q||1;const g=c.createGain();g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);s.connect(fl);fl.connect(g);g.connect(MU.sfx);s.start(t);s.stop(t+dur+.05)}
+function sTone(t,f,dur,v,type,bend){const c=MU.ctx,o=c.createOscillator(),g=c.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);if(bend)o.frequency.exponentialRampToValueAtTime(f*bend,t+dur);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(v,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(MU.sfx);o.start(t);o.stop(t+dur+.05)}
+const SFX={
+ boom:t=>{sTone(t,90,.7,.5,'sine',.35);sNoise(t,.6,.5,300,.7,'lowpass')},
+ start:t=>{sTone(t,55,1.6,.25,'sawtooth',1.02);sTone(t,58,1.6,.18,'sawtooth',.98);sNoise(t,1.2,.15,180,2)},
+ hit:t=>{sNoise(t,.12,.6,2400,1.5);sTone(t,180,.15,.35,'square',.5)},
+ ally:t=>{sNoise(t,.08,.35,4000,4,'highpass');sTone(t+.02,520,.12,.12,'triangle',.6)},
+ guard:t=>{sTone(t,880,.35,.18,'triangle');sTone(t,1320,.25,.08,'sine')},
+ hurt:t=>{sTone(t,300,.35,.35,'sawtooth',.4);sNoise(t,.25,.3,600,1)},
+ heavy:t=>{sTone(t,120,.6,.5,'sawtooth',.3);sNoise(t,.5,.5,250,.8,'lowpass')},
+ heal:t=>{[0,.08,.16].forEach((d,i)=>sTone(t+d,[660,880,1320][i],.4,.12,'sine'))},
+ bell:t=>{[0,.02].forEach(d=>{sTone(t+d,1568,1.6,.15,'sine');sTone(t+d,1568*2.76,.8,.05,'sine')})},
+ win:t=>{[523,659,784,1047].forEach((f,i)=>sTone(t+i*.12,f,.9,.12,'triangle'))},
+ lose:t=>{[392,330,262].forEach((f,i)=>sTone(t+i*.2,f,.8,.14,'sine'))},
+ tick:t=>{sTone(t,1200,.03,.04,'square')}
+};
+function sfx(k){try{if(!sfxOut())return;SFX[k](MU.ctx.currentTime+.01)}catch(e){}}
+{const _b=boom;boom=function(){if(!(G.duMeet>=1)&&dreamCount()<FIGHTAT&&!G.lf.fight1&&S.map!='corr')return;sfx('boom');return _b.apply(this,arguments)}}
+{const _s=btStart;btStart=function(){sfx('start');return _s.apply(this,arguments)}}
+{const _t=btTurn;btTurn=function(a){const b=S.bt;const eh=b?b.hp:0,ph=G.hp??10,tele=b&&b.tele;const r=_t.apply(this,arguments);
+ const seq=[];if(a=='hit')seq.push('hit');if(a=='def')seq.push('guard');if(a=='heal')seq.push('heal');if(a=='bell')seq.push('bell');
+ if(b&&b.ally&&(eh-(b.hp||0))>0&&a!='hit')seq.push('ally');else if(b&&b.ally&&a=='hit')seq.push('ally');
+ const lost=ph-(G.hp??10);if(lost>0)seq.push(tele=='c'?'heavy':'hurt');else if(a=='def')seq.push('guard');
+ seq.forEach((k,i)=>setTimeout(()=>sfx(k),i*260));return r}}
+{const _w=btWin;btWin=function(){S.btEnd=performance.now();setTimeout(()=>sfx('win'),600);return _w.apply(this,arguments)}}
+{const _l=btLose;btLose=function(){S.btEnd=performance.now();setTimeout(()=>sfx('lose'),600);return _l.apply(this,arguments)}}
+/* a slow heartbeat under the fight */
+setInterval(()=>{if(S.bt){try{if(!sfxOut())return;const t=MU.ctx.currentTime+.01;sTone(t,62,.18,.35,'sine',.6);sTone(t+.22,58,.2,.28,'sine',.6)}catch(e){}}},1100);
+
+/* ===================== Fight screen layout: nothing hidden under the text box ===================== */
+drawBattle=function(t){const b=S.bt;if(!b)return;R(0,0,W,H,'#2a2040');g.globalAlpha=.5;E(W/2+40,70,70,34,'#4a3a66');g.globalAlpha=1;
+ for(let i=0;i<30;i++){const x=(i*53+t/40)%W,y=(i*37)%H;g.globalAlpha=.25;R(x,y,1,1,'#c8b8ff');g.globalAlpha=1}
+ g.save();g.translate(W/2+40+Math.round(Math.sin(t/400)*2),66);b.e.draw(t);g.restore();
+ const bar=(x,y,w,v,m,c,l)=>{g.fillStyle='#f4ecff';g.font='7px sans-serif';g.textBaseline='alphabetic';g.fillText(l,x,y-2);R(x,y,w,4,'#2a2030');R(x,y,Math.max(0,w*v/m),4,c);R(x,y,w,1,'rgba(255,255,255,.3)')};
+ bar(10,12,120,Math.max(0,b.hp),b.max,'#c84a5a',b.e.name);
+ bar(10,30,60,G.hp??10,10,'#8ad0a0','You');
+ if(b.ally)bar(78,30,52,10,10,'#a8b8ff','Him');
+ img(spr('girlup0b',18,27,()=>drawGirl('up',0)),40,100);if(b.ally)img(spr('dA'+'up',24,36,()=>drawDu('up')),62,91);
+ b.fx=b.fx.filter(f=>t-f.t<900);b.fx.forEach(f=>{const k=(t-f.t)/900;g.globalAlpha=1-k;g.fillStyle=f.c;g.font='bold 10px sans-serif';const fy=f.y==40?-2:f.y;g.fillText(f.txt,f.x==-90?W/2-90:W/2+40+f.x,(f.x==-90?92:66)+fy-k*14);g.globalAlpha=1})};
+{const tog=()=>{const on=!!S.bt;[FB,HB].forEach(el=>{if(el)el.style.visibility=on?'hidden':''})};setInterval(tog,200)}
+
+/* ===================== After home, the first dream goes straight to the Devil ===================== */
+function devilFirst(){return G.vis&&G.vis.apt&&!(G.vis.pole)&&!G.lf.devilRide&&!G.devilGone}
+{const _g=go;go=function(m,tag){if(S.map=='elev'&&m!=='apt'&&devilFirst()){G.lf.devilRide=1;save();
+  say(D('',['(You press the button. The elevator starts to go down.)','(It doesn\'t stop. It keeps going, past every floor, past the numbers.)','(It gets cold. Frost grows on the mirror.)','(Ding.)'],{cb:()=>{const keep=ARRT.pole;ARRT.pole=['The doors open onto snow. Pinkish-purple snow.','At the top of very, very tall steps is a bus stop.','Someone in a tall hat is standing there, waiting for the bus.'];_g('pole');setTimeout(()=>{ARRT.pole=keep},4000);return null}}));return}
+ return _g.apply(this,arguments)}}
+{const _h=hints;hints=function(){const t=_h(),v=G.vis||{};
+ if(v.apt&&!v.pole&&!G.devilGone)t.unshift('Get back in the elevator and press any button. It may not stop where you think.');
+ else if(v.pole&&!G.deaf&&!G.devilGone)t.unshift('In the pink snow, climb the tall steps to the bus stop. Someone in a tall hat is waiting there. Talk to him.');
+ return t.slice(0,4)}}
+
+/* safety: a fight never sits there with no menu */
+{let idle=0;setInterval(()=>{if(S.bt&&!S.dlg&&!UI&&!S.fade){if(++idle>=3){idle=0;const d=btMenu();if(d)say(d)}}else idle=0},400)}
 
 </script>
 </body>
