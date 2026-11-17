@@ -3501,7 +3501,7 @@ VILL[2].l=[['Your clothes are so black!'],['My grandpa says there was once a gen
 {const f=MAPS.town.objs;MAPS.town.objs=()=>f().map(o=>o.tiles&&o.tiles[0]&&o.tiles[0][0]==15&&o.tiles[0][1]==6&&String(o.talk).includes('Old Man Seeing People Off')?{...o,lab:'Old Man Seeing People Off',talk:()=>D('Old Man Seeing People Off',['A group of doctors just left, heading south.','The Goddess walked at the front.','(He points down the road south. There\'s no one left on it.)'])}:o)}
 
 /* ===================== 出口：所有地方的门都标出来 ===================== */
-const EXLAB=s=>{const m=s.match(/\['((?:[^'\\]|\\.){1,60})/);return m?m[1].replace(/\\'/g,"'").replace(/[.,!?].*$/,'').slice(0,26):'Door'};
+const EXLAB=s=>{const m=s.match(/\['((?:[^'\\]|\\.){1,60})/);return m?m[1].replace(/\\'/g,"'").replace(/[.,!?].*$/,'').replace(/"/g,'').replace(/^([\s\S]{46})[\s\S]+$/,(a,b)=>b.replace(/\s+\S*$/,'')+'…'):'Door'};
 Object.keys(MAPS).forEach(m=>{const z=MAPS[m].zones;if(!z)return;MAPS[m].zones=()=>z().map(o=>{if(!o||!o.talk||o.exit!=null)return o;const src=String(o.talk);const ex=/go\(/.test(src);return {...o,exit:ex,lab:o.lab||(ex?EXLAB(src):o.lab)}})});
 {const _p=postDraw;postDraw=function(t,cx,cy){_p(t,cx,cy);if(S.dlg||S.fade||UI||S.bt||DOORMAPS.includes(S.map))return;let zs=[];try{zs=MAPS[S.map].zones()}catch(e){}
  g.font='bold 8px sans-serif';g.textAlign='center';zs.forEach(o=>{if(!o.exit||!o.tiles.length||o.tiles.length>12)return;const xs=o.tiles.map(a=>a[0]),ys=o.tiles.map(a=>a[1]);const x=(Math.min(...xs)+Math.max(...xs)+1)*8-cx,y=(Math.min(...ys)+Math.max(...ys)+1)*8-cy+Math.round(Math.sin(t/250)*2);
