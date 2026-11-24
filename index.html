@@ -16,6 +16,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="google-site-verification" content="7t0aFyHLjdNZJfVvPZwQSDagYdEwqC6Fx8rLPMqDUe4">
+	<title>Yining (Ning) Hua | AI Agent Evaluation, Harvard PhD</title>
+	<meta name="description" content="Yining (Ning) Hua is a PhD candidate at Harvard and founder of EvalScience. She studies how AI agents should be evaluated for real work: benchmark design, evaluation environments, and the validity of evaluation results.">
+	<link rel="canonical" href="https://ningkko.github.io/">
+	<meta property="og:title" content="Yining (Ning) Hua | AI Agent Evaluation">
+	<meta property="og:description" content="Benchmarks, evaluation environments and study design for AI agents doing real work. PhD candidate at Harvard; founder of EvalScience.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://ningkko.github.io/">
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -144,7 +151,8 @@
 			margin: 0.2rem 0;
 		}
 		.news-spotlight-date { font-weight: 700; color: #17324d; }
-		.news-spotlight-note { margin: 0.8rem 0 0; }
+		.news-spotlight-list { margin: 0.35rem 0 0; padding-left: 1.2rem; list-style: disc; }
+		.news-spotlight-list li { margin: 0.2rem 0; }
 		#Introduction .news-spotlight a {
 			border-bottom-color: rgba(0, 68, 255, 0.28);
 		}
@@ -1028,7 +1036,15 @@
 			<div class="content-column">
 				<section class="section-block main-tab-panel" id="Introduction" role="tabpanel" aria-labelledby="main-tab-about">
 					<h3 class="section-title centered">Introduction</h3>
-					<div id="introduction-content"><!-- Introduction content will be populated by JavaScript --></div>
+					<div id="introduction-content"><!-- Static fallback for crawlers and no-JavaScript readers; replaced by JavaScript on load -->
+						<p>Hi, I'm Yining (Ning) Hua. I'm a PhD candidate at Harvard and the founder of <a href="https://evalscience.org/">EvalScience</a>. I study how AI agents should be evaluated for real work: how to design benchmarks and evaluation environments, and how far evaluation results can be trusted.</p>
+						<p><strong>Selected agent evaluation papers</strong></p>
+						<p><a href="https://arxiv.org/abs/2609.23806">WorkWorlds: Evaluating Agents in a Company Built Before the Task</a>. Many knowledge-work benchmarks choose the context after or together with the task, which does part of the information-finding work for the agent. WorkWorlds builds the organizational environment first, for a fixed date and employee role, and only then adds tasks. In 192 matched evaluations, task-specific curation raised evidence access from 72.8% to 90.4%.</p>
+						<p><a href="https://arxiv.org/abs/2608.18050">StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents</a>. Agents that edit documents, spreadsheets and slides can end up reading, editing and submitting different versions of the same file. StagedWorkspace ties parsed views and review diffs to content hashes of the native files, so every view matches one workspace state. Giving agents both parsed and native access worked best across the tested models.</p>
+						<p><a href="https://arxiv.org/abs/2605.23262">Designing Benchmarks for Knowledge Work</a>. We describe an agent benchmark with four fields: the work activity covered, the testing conditions, the deliverable expected, and the part of the deliverable that is scored. We also build an 18-category inventory of work activities from O*NET task data. Applied to three benchmarks, the fields show that each one measures a different part of work.</p>
+						<p><a href="https://arxiv.org/abs/2608.03731">CARE-Bench: Benchmarking Patient-Facing LLM Triage</a>. A benchmark built from real medical dialogues that tests whether LLMs can decide what a patient should do next as symptom information accumulates. Across 11 models, models often recommended care before enough information had been gathered, and prompting alone did not fix this.</p>
+						<p><a href="https://arxiv.org/abs/2608.17330">LLMs for Medical Consultation Are Evaluated Too Late: The Preformulation Gap</a>. On four physician-written, multi-turn medical cases, an instruction improved the order and documentation of the consultation but did not reliably make models ask about the facts that mattered most. We argue early-stage consultation behavior should be measured directly instead of inferred from final answers.</p>
+					</div>
 					<div id="credentials-content"><!-- Education and experience will be populated by JavaScript --></div>
 					<div class="about-news">
 						<h3 class="section-title centered">Latest News</h3>
@@ -1130,17 +1146,17 @@
       { "label": "Health AI & Epidemiology", "icon": "healthchart" }
     ]
   },
-  "projectsIntro": "Two connected research programs in AI evaluation and real-world health data, and Agent Evaluation Science (AES), an independent nonprofit research initiative.",
+  "projectsIntro": "Two connected research programs in AI evaluation and real-world health data, and EvalScience, an independent nonprofit research initiative.",
   "projectsCta": {
     "title": "Interested in collaborating?",
-    "text": "Contact me about research collaboration in AI evaluation or health data.",
+    "text": "Contact us about research collaboration in AI evaluation or health data.",
     "buttonLabel": "Get in touch",
     "buttonUrl": "mailto:contact@evalscience.org"
   },
   "introduction": {
     "paragraphs": [
       "Hi, I'm Yining (Ning) Hua. I’m a PhD student at Harvard, trained in computer science, epidemiology, and biostatistics. I study how AI systems and agents should be evaluated for real-world work, including benchmark and evaluation environment design, controlled studies of agent behavior, and analysis of evaluation bias and reliability.",
-      "I am also a founding director of <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><img class=\"aes-inline-logo\" src=\"files/img/aes-mark.svg\" alt=\"\" width=\"18\" height=\"18\">Agent Evaluation Science (AES)</a>, an independent nonprofit initiative advancing the science of AI agent evaluation. I share notes on the <a href=\"https://evalscience.org/resources/notes/\" target=\"_blank\" rel=\"noopener\">AES Briefs</a> page, and I hope they can inspire you."
+      "I am also the founder and executive director of <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><img class=\"aes-inline-logo\" src=\"files/img/aes-mark.svg\" alt=\"\" width=\"18\" height=\"18\">EvalScience</a>, an independent nonprofit initiative advancing the scientific design and evaluation of agentic systems."
     ],
     "education": [
       "<strong>PhD, Epidemiology (Population Health Sciences)</strong>, Harvard T.H. Chan School of Public Health (Expected May 2027)",
@@ -1148,7 +1164,7 @@
       "<strong>BA, Computer Science</strong>, Smith College (2017–2021; exchange at Harvard College 2020–2021)"
     ],
     "experience": [
-      "<strong>Agent Evaluation Science (AES)</strong> · Founding Director · NYC · March 2026–Present",
+      "<strong>EvalScience</strong> · Founder & Executive Director · NYC · March 2026–Present",
       "<strong>Department of Neurology, Massachusetts General Hospital</strong> · Boston, MA · Oct 2025–Present",
       "<strong>Squirrel AI</strong> · PhD Research Intern · Seattle, WA (Remote) · June 2025–Jan 2026",
       "<strong>Dandelion Health</strong> · PhD Intern · Boston, MA · July 2025–Jan 2026",
@@ -1164,26 +1180,53 @@
     }
   },
   "newsSpotlight": {
+    "title": "Looking forward",
     "items": [
       {
-        "date": "Sep 2026",
-        "text": "First <a href=\"https://evalscience.org/2026fall-cambridge/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science</strong> working group</a>, September 30 at MIT."
+        "text": "At NeurIPS? <a href=\"mailto:contact@evalscience.org?subject=NeurIPS%20coffee%20chat\">Book a coffee chat</a>."
       },
       {
-        "date": "Nov 2026",
-        "text": "<a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science Fall Symposium</strong></a>, November 20 in Downtown Manhattan."
+        "text": "Working groups pause in December. See you in January in Boston and NYC. Interested in joining or leading our Bay Area working group? We are in discussion with Bay Area networks. <a href=\"mailto:contact@evalscience.org?subject=Bay%20Area%20working%20group\">Get in touch</a>."
+      },
+      {
+        "text": "Co-organizing the <a href=\"https://bench-to-evidence.github.io\" target=\"_blank\" rel=\"noopener\"><strong>AAAI-27 Bridge Program</strong></a> on agent benchmarks to deployment evidence."
+      },
+      {
+        "text": "40+ experts joined <strong>HEED</strong>, a design and evaluation tool for pre-deployment evidence on healthcare agentic systems. <a href=\"https://evalscience.org/resources/tools/#heed\" target=\"_blank\" rel=\"noopener\">Join the Expert Group</a>."
+      },
+      {
+        "text": "<strong>Instantiating Professional Knowledge Work for AI Agents</strong> was accepted to CHI 2027 (May 10–14, Pittsburgh). CFP and website out in early December."
       }
-    ],
-    "note": "We are expanding AES and looking for people to help build the community. If you would like to co-organize an event, contribute to our research activities, or be matched with industry partners working on real implementations and datasets, please <a href=\"mailto:yininghua@g.harvard.edu?subject=Agent%20Evaluation%20Science\">contact me</a>."
+    ]
   },
   "news": [
     {
       "year": "2026",
       "items": [
         {
-          "date": "Aug 2026",
-          "text": "We are inviting epidemiologists, biostatisticians, and other professionals working in evidence generation to help evaluate <strong>evidence-generation agents</strong>. Funding is available through the <a href=\"https://www.raycaster.ai/ai-fellows\" target=\"_blank\" rel=\"noopener\">Raycaster AI Fellows program</a>. <a href=\"mailto:yininghua@g.harvard.edu?subject=Evidence-generation%20agent%20evaluation%20collaboration\">Express interest</a>",
+          "date": "Nov 2026",
+          "text": "<a href=\"https://evalscience.org/2026fall-nyc/\" target=\"_blank\" rel=\"noopener\">NYC Symposium</a> (Nov 20): the first symposium received 1,300+ registrations and 210+ submissions for 150 seats. We are glad to see the great interest in this field. See you next year!",
           "tag": "community"
+        },
+        {
+          "date": "Nov 2026",
+          "text": "Released <a href=\"https://www.raycaster.ai/blog/biopharma-bench-v02\" target=\"_blank\" rel=\"noopener\">Biopharma Bench v0.2</a>: 81 assignments across 24 company environments. Top pharma companies are joining the next version.",
+          "tag": "paper"
+        },
+        {
+          "date": "Oct 2026",
+          "text": "EvalScience hosted a closed-door gathering with 40+ <a href=\"https://luma.com/calendar/cal-H5Y7ZpsLoNOGB04\" target=\"_blank\" rel=\"noopener\">agent eval experts</a> in Palo Alto. <a href=\"https://evalscience.org/2026fall-sf/summary/\" target=\"_blank\" rel=\"noopener\">Summary and lessons</a>.",
+          "tag": "community"
+        },
+        {
+          "date": "Sep 2026",
+          "text": "Started the <a href=\"https://evalscience.org/2026fall-cambridge/\" target=\"_blank\" rel=\"noopener\">Boston Working Group</a> at MIT (Sep 30). Summaries: <a href=\"https://evalscience.org/working-groups/boston/2026-09-30/\" target=\"_blank\" rel=\"noopener\">Sep 30</a>, <a href=\"https://evalscience.org/working-groups/boston/2026-10-28/\" target=\"_blank\" rel=\"noopener\">Oct 28</a>.",
+          "tag": "community"
+        },
+        {
+          "date": "Sep 2026",
+          "text": "Released <a href=\"https://www.raycaster.ai/blog/biopharma-bench\" target=\"_blank\" rel=\"noopener\">Biopharma Bench</a>: 71 professional assignments across 12 company environments, built as a real-data replay. A small side study asks how much an expert-constructed environment can skew the outcome: <a href=\"https://arxiv.org/abs/2609.23806\" target=\"_blank\" rel=\"noopener\">WorkWorlds</a>.",
+          "tag": "paper"
         },
         {
           "date": "Aug 2026",
@@ -1203,8 +1246,7 @@
         {
           "date": "Jul 2026",
           "text": "The <a href=\"https://psydefdetect-shared-task.github.io/\" target=\"_blank\" rel=\"noopener\">PsyDefDetect Shared Task</a> at BioNLP @ ACL 2026 is now archived.",
-          "tag": "milestone",
-          "fold": true
+          "tag": "community"
         },
         {
           "date": "Spring 2026",
@@ -1214,8 +1256,8 @@
         },
         {
           "date": "Mar 2026",
-          "text": "Founded <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><strong>Agent Evaluation Science (AES)</strong></a>, an independent nonprofit for AI agent evaluation.",
-          "tag": "milestone",
+          "text": "Founded <a href=\"https://evalscience.org/\" target=\"_blank\" rel=\"noopener\"><strong>EvalScience</strong></a>, an independent nonprofit for AI agent evaluation.",
+          "tag": "role",
           "fold": true
         }
       ]
@@ -1730,7 +1772,7 @@
       "description": "Benchmarks and evaluation for models and agents.",
       "publications": [
         {
-          "title": "WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks",
+          "title": "WorkWorlds: Evaluating Agents in a Company Built Before the Task",
           "url": "https://arxiv.org/abs/2609.23806",
           "authors": "<strong>Hua Y</strong>, Lian L",
           "venue": "<em>arXiv preprint</em> arXiv:2609.23806 (2026)",
@@ -2114,16 +2156,34 @@
   ],
   "talks": [
     {
-      "date": "09/2026",
+      "date": "05/2027",
       "type": "Event",
-      "title": "Agent Evaluation Science Working Group",
-      "venue": "MIT"
+      "title": "Instantiating Professional Knowledge Work for AI Agents",
+      "venue": "CHI 2027 Workshop, Pittsburgh, PA"
+    },
+    {
+      "date": "02/2027",
+      "type": "Event",
+      "title": "AAAI-27 Bridge Program: From Agent Benchmarks to Deployment Evidence",
+      "venue": "AAAI-27, Montréal, Canada"
     },
     {
       "date": "11/2026",
       "type": "Event",
-      "title": "Agent Evaluation Science Fall Symposium",
+      "title": "EvalScience Fall Symposium",
       "venue": "Downtown Manhattan"
+    },
+    {
+      "date": "10/2026",
+      "type": "Event",
+      "title": "EvalScience Bay Area Research Gathering",
+      "venue": "Palo Alto, CA"
+    },
+    {
+      "date": "09/2026",
+      "type": "Event",
+      "title": "EvalScience Boston Working Group",
+      "venue": "MIT"
     },
     {
       "date": "07/2026",
@@ -2309,6 +2369,16 @@
 
       "examples": [
         {
+          "label": "Biopharma Bench v0.2",
+          "url": "https://www.raycaster.ai/blog/biopharma-bench-v02",
+          "external": true
+        },
+        {
+          "label": "WorkWorlds",
+          "url": "https://arxiv.org/abs/2609.23806",
+          "external": true
+        },
+        {
           "label": "CARE-Bench",
           "url": "https://arxiv.org/abs/2608.03731",
           "external": true
@@ -2381,9 +2451,9 @@
       "overviewUrl": "projects/real-world-medical-applications/"
     },
     {
-      "section": "Agent Evaluation Science (AES)",
+      "section": "EvalScience",
       "sectionSummary": "An independent nonprofit research initiative and network.",
-      "title": "Agent Evaluation Science (AES)",
+      "title": "EvalScience",
       "summary": "An independent research initiative and network advancing the methods, infrastructure, evidence, and scientific practice of AI agent evaluation.",
       "theme": "blue",
       "icon": "people",
@@ -2391,13 +2461,18 @@
       "examplesHeading": "",
       "examples": [
         {
-          "label": "Visit AES",
+          "label": "Visit EvalScience",
           "url": "https://evalscience.org/",
           "external": true
         },
         {
           "label": "Boston working group",
           "url": "https://evalscience.org/2026fall-cambridge/",
+          "external": true
+        },
+        {
+          "label": "Bay Area summary",
+          "url": "https://evalscience.org/2026fall-sf/summary/",
           "external": true
         },
         {
@@ -2668,15 +2743,12 @@
 				});
 			});
 
-			const spotlightHtml = (spotlight && ((spotlight.items && spotlight.items.length) || spotlight.note)) ? `
+			const spotlightHtml = (spotlight && spotlight.items && spotlight.items.length) ? `
 				<div class="news-spotlight">
-					${(spotlight.items || []).map(item => `
-						<div class="news-spotlight-item">
-							<span class="news-spotlight-date">${item.date}</span>
-							<span>${item.text}</span>
-						</div>
-					`).join('')}
-					${spotlight.note ? `<p class="news-spotlight-note">${spotlight.note}</p>` : ''}
+					${spotlight.title ? `<div class="news-spotlight-date">${spotlight.title}</div>` : ''}
+					<ul class="news-spotlight-list">
+						${spotlight.items.map(item => `<li>${item.text}</li>`).join('')}
+					</ul>
 				</div>
 			` : '';
 
@@ -2701,7 +2773,6 @@
 								const meta = newsTags[item.tag] || newsTags.paper;
 								const tag = item.tag || 'paper';
 								const classes = [
-									tag === 'community' ? 'participant-call' : '',
 									item.fold ? 'is-folded' : ''
 								].filter(Boolean).join(' ');
 								const classAttr = classes ? ` class="${classes}"` : '';
@@ -2867,7 +2938,7 @@
 				'Exploring Social Media for Early Detection of Depression in COVID-19 Patients': ['LLM - Application'],
 				'Using Twitter to understand perceptions of approved vs. off-label COVID-19 medications': ['LLM - Application'],
 				'Design and Report Benchmarks for Knowledge Work': ['Framework'],
-				'WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks': ['Framework'],
+				'WorkWorlds: Evaluating Agents in a Company Built Before the Task': ['Framework'],
 				'StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents': ['Agents'],
 				'You Never Know a Person, You Only Know Their Defenses: Detecting Levels of Psychological Defense Mechanisms in Supportive Conversations': ['Benchmarks'],
 				'Standardizing and scaffolding healthcare AI-chatbot evaluation': ['Framework'],
@@ -3073,6 +3144,8 @@
 		}
 
 		function renderTalks(talks) {
+			const talkKey = t => { const [m, y] = t.date.split('/'); return Number(y) * 100 + Number(m); };
+			talks = talks.map((t, i) => [t, i]).sort((a, b) => talkKey(b[0]) - talkKey(a[0]) || a[1] - b[1]).map(x => x[0]);
 			const talksContent = document.getElementById('talks-content');
 			const typeOrder = ['Talk', 'Lecture', 'Event'];
 			const presentTypes = typeOrder.filter(type => talks.some(talk => talk.type === type));
